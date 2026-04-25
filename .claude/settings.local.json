@@ -1,7 +1,24 @@
 {
   "permissions": {
     "allow": [
-      "Bash(grep:*)"
+      "Bash(git clone *)",
+      "Read(//d/Downloads/**)",
+      "Bash(git --version)",
+      "Bash(git config *)",
+      "Bash(gh --version)",
+      "Bash(gh auth *)",
+      "Bash(cp /d/Downloads/oncodigest/.claude/settings.local.json /d/Downloads/oncodigest/.claude/settings.local.json.bak)",
+      "Bash(mv /d/Downloads/oncodigest-tmp/.git /d/Downloads/oncodigest/.git)",
+      "Bash(mv /d/Downloads/oncodigest-tmp/*.md /d/Downloads/oncodigest-tmp/*.html /d/Downloads/oncodigest-tmp/data /d/Downloads/oncodigest/)",
+      "Bash(rm -rf /d/Downloads/oncodigest-tmp)",
+      "Bash(rm /d/Downloads/oncodigest/.claude/settings.local.json.bak)",
+      "Bash(git -C /d/Downloads/oncodigest status)",
+      "Bash(git -C /d/Downloads/oncodigest log --oneline -5)",
+      "Bash(git -C /d/Downloads/oncodigest remote rename origin upstream)",
+      "Bash(git -C /d/Downloads/oncodigest remote add origin https://github.com/MouadBAKHCHANE/oncodigestnews.git)",
+      "Bash(git -C /d/Downloads/oncodigest remote -v)",
+      "Bash(git -C /d/Downloads/oncodigest push -u origin main)",
+      "Bash(git -C /d/Downloads/oncodigest push origin main)"
     ]
   }
 }

@@ -1,0 +1,56 @@
+/**
+ * Design tokens — extracted verbatim from index.html :root.
+ *
+ * Variable names use the double-dash convention (e.g. --cod-gray--900) to match
+ * the existing CSS and allow component CSS to be copied verbatim during the port.
+ *
+ * If any token changes, update PHASE-1-STATE-CATALOG.md acceptance criteria too.
+ */
+
+:root {
+  /* ─── Cod gray scale ─────────────────────────────────────── */
+  --cod-gray--0: #fff;
+  --cod-gray--50: #ededed;
+  --cod-gray--100: #e5e5e5;
+  --cod-gray--200: #d1d1d1;
+  --cod-gray--300: #b0b0b0;
+  --cod-gray--400: #888;
+  --cod-gray--500: #6d6d6d;
+  --cod-gray--600: #5d5d5d;
+  --cod-gray--700: #4c4c4c;
+  --cod-gray--800: #333;
+  --cod-gray--900: #242424;
+  --cod-gray--950: #0f0f0f;
+
+  /* ─── Canary accents ─────────────────────────────────────── */
+  --canary--300: #f0ff4d;
+  --canary--400: #e2f625;
+  --canary--900: #4b590e;
+  --canary--950: #283201;
+
+  /* ─── Husk neutrals ──────────────────────────────────────── */
+  --husk--50: #f7f6ef;
+  --husk--600: #82734c;
+  --husk--900: #514932;
+
+  /* ─── Satin linen ────────────────────────────────────────── */
+  --satin-linen--50: #f9f7f3;
+  --satin-linen--100: #e9e6dd;
+  --satin-linen--800: #5b4c3e;
+  --satin-linen--900: #3d3229;
+
+  /* ─── Layout ─────────────────────────────────────────────── */
+  --nav-height: 72px;
+  --container-max: 1440px;
+
+  /* ─── Easings (from PHASE-1-STATE-CATALOG.md) ────────────── */
+  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ─── Z-index scale ──────────────────────────────────────── */
+  --z-grain: 9999;
+  --z-loader: 1100;
+  --z-mobile-menu: 1000;
+  --z-navbar: 900;
+}

@@ -1,0 +1,102 @@
+/* Button base + variants — copied verbatim from index.html lines 172-240. */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 32px;
+  font-size: 12.3809px;
+  font-weight: 400;
+  font-family: Suisseintl, Arial, sans-serif;
+  letter-spacing: -0.285715px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  text-decoration: none;
+  border: 0 none;
+}
+
+.btnSm {
+  padding: 8.84354px 15.9183px;
+}
+
+.btnWhite {
+  background: #fff;
+  color: var(--cod-gray--700);
+}
+.btnWhite:hover {
+  background: var(--cod-gray--50);
+}
+
+.btnYellow {
+  background: var(--canary--300);
+  color: var(--canary--900);
+  padding: 7.8px 13.9905px;
+  gap: 10.08px;
+}
+.btnYellow:hover {
+  background: var(--canary--400);
+}
+
+.btnDark {
+  background: var(--cod-gray--900);
+  color: #fff;
+  gap: 4px;
+  letter-spacing: -0.2px;
+}
+.btnDark:hover {
+  background: var(--cod-gray--800);
+}
+
+.btnHusk {
+  background: var(--husk--900);
+  color: var(--husk--50);
+  gap: 4px;
+  line-height: 18.5714px;
+}
+.btnHusk:hover {
+  opacity: 0.9;
+}
+
+.btnSatin {
+  background: var(--satin-linen--900);
+  color: var(--satin-linen--50);
+}
+.btnSatin:hover {
+  opacity: 0.9;
+}
+
+.btnText {
+  background: transparent;
+  color: var(--cod-gray--700);
+  border: 1px solid var(--cod-gray--100);
+  border-radius: 32px;
+  padding: 8.84354px 15.9183px;
+}
+.btnText:hover {
+  background: var(--cod-gray--50);
+}
+
+.btnGlass {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--cod-gray--50);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6.08px;
+  padding: 12.3809px 14.1497px;
+  gap: 10.08px;
+  backdrop-filter: blur(4px);
+}
+.btnGlass:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Mobile — match the existing HTML's 44px touch target */
+@media (max-width: 768px) {
+  .btn {
+    min-height: 44px;
+  }
+  .btnYellow {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+}

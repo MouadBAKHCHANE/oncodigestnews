@@ -1,0 +1,346 @@
+/* Footer — copied verbatim from index.html (lines 1593-1797 + responsive). */
+
+.footer {
+  background: #fff;
+}
+
+.footerPaddingVertical {
+  padding: 80px 0 80px;
+  position: relative;
+}
+
+.footerTop {
+  display: grid;
+  grid-template-columns: 524fr 881fr;
+  gap: 11.4286px;
+}
+
+.footerLeftCard {
+  background: rgb(36, 36, 36);
+  border-radius: 5.06667px;
+  padding: 53.3333px 45.7143px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footerLeftHeading {
+  font-family: 'Reckless Rockfi', Arial, sans-serif;
+  font-size: 38.0952px;
+  font-weight: 400;
+  line-height: 38.0952px;
+  letter-spacing: -1.2px;
+  color: rgb(255, 255, 255);
+  margin: 0;
+}
+
+.footerSubtext {
+  color: rgb(136, 136, 136);
+  font-size: 13.3333px;
+  line-height: 20px;
+  letter-spacing: -0.285715px;
+  font-family: Suisseintl, Arial, sans-serif;
+}
+
+.footerSubtext a {
+  color: rgb(136, 136, 136);
+  text-decoration: underline;
+}
+
+.footerEmailForm {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.footerEmailInput {
+  flex: 1;
+  padding: 8.84354px 0;
+  border: none;
+  border-bottom: 1px solid rgb(93, 93, 93);
+  border-radius: 0;
+  background: transparent;
+  font-family: Suisseintl, Arial, sans-serif;
+  font-size: 12.3809px;
+  line-height: 17.687px;
+  letter-spacing: -0.2px;
+  color: rgb(255, 255, 255);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.footerEmailInput:focus {
+  border-bottom-color: rgb(255, 255, 255);
+}
+
+.footerEmailInput::placeholder {
+  color: rgb(136, 136, 136);
+}
+
+.footerSubscribeBtn {
+  background: rgb(255, 255, 255);
+  color: rgb(36, 36, 36);
+  font-family: Suisseintl, Arial, sans-serif;
+  font-size: 12.3809px;
+  font-weight: 400;
+  line-height: 18.5714px;
+  letter-spacing: -0.2px;
+  padding: 8.84354px 15.9183px;
+  border-radius: 32px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.footerSubscribeBtn:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.footerSubscribeBtn:disabled {
+  cursor: default;
+}
+
+.footerRightCard {
+  background: rgb(249, 247, 243);
+  border-radius: 6.08px;
+  padding: 53.3333px 45.7143px;
+  padding-right: 304.761px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.footerRightHeading {
+  font-family: 'Reckless Rockfi', Arial, sans-serif;
+  font-size: 45.7143px;
+  font-weight: 400;
+  line-height: 45.7143px;
+  letter-spacing: -0.96px;
+  color: rgb(61, 50, 41);
+  margin: 0;
+}
+
+.footerRightIcon {
+  width: 23px;
+  height: 24px;
+  margin-bottom: 24px;
+}
+
+.footerCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgb(61, 50, 41);
+  color: rgb(249, 247, 243);
+  font-family: Suisseintl, Arial, sans-serif;
+  font-size: 12.3809px;
+  font-weight: 400;
+  line-height: 18.5714px;
+  letter-spacing: -0.2px;
+  padding: 8.84354px 15.9183px;
+  border-radius: 32px;
+  border: none;
+  text-decoration: none;
+  margin-top: 32px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  width: max-content;
+}
+
+.footerCtaBtn:hover {
+  opacity: 0.85;
+}
+
+.footerLinksSection {
+  padding: 11.4286px 0;
+}
+
+.footerLinksBottom {
+  padding: 0 0 91.4285px;
+}
+
+.footerLinks {
+  display: grid;
+  grid-template-columns: 524fr 881fr;
+  gap: 11.4286px;
+}
+
+.footerLinksLeft {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5.06667px;
+}
+
+.footerLogoBox {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 11.4286px;
+}
+
+.footerLogoBoxInner {
+  font-family: 'Reckless Rockfi', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--cod-gray--900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--cod-gray--50);
+  border-radius: 6px;
+}
+
+.footerLinksRight {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 11.4286px;
+}
+
+.footerLinkColumn {
+  display: block;
+}
+
+.footerLinkHeading {
+  font-size: 13.3333px;
+  font-weight: 400;
+  color: var(--cod-gray--700);
+  line-height: 20px;
+  letter-spacing: -0.285715px;
+  font-family: Suisseintl, Arial, sans-serif;
+  margin-bottom: 8px;
+}
+
+.footerLinkList {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerLinkList a {
+  display: block;
+  font-size: 13.3333px;
+  color: rgb(136, 136, 136);
+  line-height: 20px;
+  letter-spacing: -0.285715px;
+  padding: 2.08px 0;
+  transition: color 0.2s;
+  font-family: Suisseintl, Arial, sans-serif;
+}
+
+.footerLinkList a:hover {
+  color: rgb(76, 76, 76);
+}
+
+.isBtn {
+  display: flex !important;
+  align-items: center;
+  gap: 6.08px;
+}
+
+.footerCredit {
+  padding: 11.4286px;
+  font-size: 12.3809px;
+  color: rgb(136, 136, 136);
+  line-height: 18.5714px;
+  letter-spacing: -0.285715px;
+  font-family: Suisseintl, Arial, sans-serif;
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .footerTop {
+    grid-template-columns: 1fr;
+  }
+  .footerRightCard {
+    padding-right: 45.7143px;
+  }
+  .footerLinks {
+    grid-template-columns: 1fr;
+  }
+  .footerLinksRight {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .footerPaddingVertical {
+    padding: 80px 0 60px;
+  }
+  .footerLeftHeading {
+    font-size: clamp(24px, 4vw, 38px);
+  }
+  .footerRightHeading {
+    font-size: clamp(28px, 4.5vw, 45.7px);
+  }
+  .footerLinksBottom {
+    padding: 0 0 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footerLinksRight {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footerPaddingVertical {
+    padding: 80px 0 48px;
+  }
+  .footerLeftHeading {
+    font-size: 24px;
+    line-height: 1.1;
+  }
+  .footerRightHeading {
+    font-size: 28px;
+    line-height: 1.1;
+  }
+  .footerLeftCard {
+    padding: 32px 24px;
+  }
+  .footerRightCard {
+    padding: 32px 24px;
+  }
+  .footerLinksBottom {
+    padding: 0 0 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footerPaddingVertical {
+    padding: 56px 0 32px;
+  }
+  .footerLeftCard {
+    padding: 24px 20px;
+  }
+  .footerRightCard {
+    padding: 24px 20px;
+  }
+  .footerLeftHeading {
+    font-size: 20px;
+  }
+  .footerRightHeading {
+    font-size: 22px;
+  }
+  .footerLinksBottom {
+    padding: 0 0 24px;
+  }
+  .footerLinksRight {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 390px) {
+  .footerPaddingVertical {
+    padding: 40px 0 24px;
+  }
+  .footerLeftHeading {
+    font-size: 18px;
+  }
+  .footerRightHeading {
+    font-size: 20px;
+  }
+}

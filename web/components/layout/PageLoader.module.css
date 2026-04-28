@@ -1,0 +1,44 @@
+/* Page loader — copied verbatim from index.html (lines 1956-1980 + reduced-motion). */
+
+.pageLoader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--husk--50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+    visibility 0.6s;
+}
+
+.isHidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.logoMark {
+  font-family: 'Reckless Rockfi', Arial, serif;
+  font-size: 28px;
+  letter-spacing: -0.6px;
+  color: var(--husk--900);
+  animation: loaderFadeIn 0.4s ease both;
+}
+
+@keyframes loaderFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pageLoader {
+    display: none !important;
+  }
+}

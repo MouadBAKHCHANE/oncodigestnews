@@ -1,0 +1,3948 @@
+<!DOCTYPE html>
+<html lang="fr" class="lenis">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OncoDigest - L'information oncologique de r&eacute;f&eacute;rence</title>
+  <meta name="description" content="OncoDigest, plateforme d'information medicale specialisee en chirurgie digestive et oncologie : articles scientifiques, congres, videos.">
+  <meta property="og:title" content="OncoDigest - L'information oncologique de r&eacute;f&eacute;rence">
+  <meta property="og:description" content="OncoDigest, plateforme d'information medicale specialisee en chirurgie digestive et oncologie : articles scientifiques, congres, videos.">
+  <meta property="og:image" content="data/PHOTO-2026-03-12-08-57-26.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <style>
+    @font-face { font-family: Suisseintl; src: url("https://cdn.prod.website-files.com/6895a11a67e50a85e0b93804/68ee1cad62d9c1fccfd5f03b_SuisseIntl-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: Suisseintl; src: url("https://cdn.prod.website-files.com/6895a11a67e50a85e0b93804/68ee1cadc11de1624efedf03_SuisseIntl-Semibold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+    @font-face { font-family: Suisseintl; src: url("https://cdn.prod.website-files.com/6895a11a67e50a85e0b93804/68ee1cad44f80664433a7b37_SuisseIntl-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Reckless Rockfi"; src: url("https://cdn.prod.website-files.com/6895a11a67e50a85e0b93804/69847290f07aedca6d0153bf_Reckless-RockFi.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+  </style>
+
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --cod-gray--0: #fff;
+      --cod-gray--50: #ededed;
+      --cod-gray--100: #e5e5e5;
+      --cod-gray--200: #d1d1d1;
+      --cod-gray--300: #b0b0b0;
+      --cod-gray--400: #888;
+      --cod-gray--500: #6d6d6d;
+      --cod-gray--600: #5d5d5d;
+      --cod-gray--700: #4c4c4c;
+      --cod-gray--800: #333;
+      --cod-gray--900: #242424;
+      --cod-gray--950: #0f0f0f;
+
+      --canary--300: #f0ff4d;
+      --canary--400: #e2f625;
+      --canary--900: #4b590e;
+      --canary--950: #283201;
+
+      --husk--50: #f7f6ef;
+      --husk--600: #82734c;
+      --husk--900: #514932;
+
+      --satin-linen--50: #f9f7f3;
+      --satin-linen--100: #e9e6dd;
+      --satin-linen--800: #5b4c3e;
+      --satin-linen--900: #3d3229;
+
+      --nav-height: 72px;
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+    .animate-on-scroll,
+    .promesse_strip,
+    .advisor_card,
+    .hero_img-inner img {
+      will-change: transform, opacity;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+    }
+
+    body {
+      font-family: Suisseintl, Arial, sans-serif;
+      font-size: 13.3333px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: -0.285715px;
+      color: rgb(93, 93, 93);
+      background: #fff;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    ul, ol { list-style: none; }
+    button { border: none; cursor: pointer; font-family: inherit; }
+
+    /* ===== LAYOUT UTILS ===== */
+    .padding-global { padding-left: 11.4286px; padding-right: 11.4286px; }
+    .container-large { max-width: 1440px; margin: 0 auto; width: 100%; }
+
+    /* ===== NAVBAR — SLIM SOLID BAR ===== */
+    .nav_fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      height: var(--nav-height);
+      background: #fff;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .navbar_component {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .navbar_logo-link {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .navbar_logo-link svg { width: 76px; height: 21px; color: var(--cod-gray--900); }
+
+    .navbar_menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .navbar_link {
+      font-size: 12.5px;
+      font-weight: 400;
+      color: var(--cod-gray--500);
+      position: relative;
+      transition: color 0.2s ease;
+      white-space: nowrap;
+    }
+    .navbar_link:hover {
+      color: var(--cod-gray--900);
+    }
+    /* Dot separator between links */
+    .navbar_link + .navbar_link::before {
+      content: '';
+      position: absolute;
+      left: -18px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--cod-gray--200);
+    }
+    .navbar_link::after { display: none; }
+
+    .navbar_button-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .navbar_button-wrapper .btn {
+      font-size: 12px;
+    }
+    .navbar_button-wrapper .btn-white {
+      background: transparent;
+      color: var(--cod-gray--600);
+      border: none;
+      padding: 7px 0;
+    }
+    .navbar_button-wrapper .btn-white:hover {
+      color: var(--cod-gray--900);
+      background: transparent;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 32px;
+      font-size: 12.3809px;
+      font-weight: 400;
+      font-family: Suisseintl, Arial, sans-serif;
+      letter-spacing: -0.285715px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .btn-sm { padding: 8.84354px 15.9183px; }
+    .btn-white {
+      background: #fff;
+      color: var(--cod-gray--700);
+      border: 0px none;
+    }
+    .btn-white:hover { background: var(--cod-gray--50); }
+    .btn-yellow {
+      background: var(--canary--300);
+      color: var(--canary--900);
+      border: 0px none;
+      padding: 7.8px 13.9905px;
+      gap: 10.08px;
+    }
+    .btn-yellow:hover { background: var(--canary--400); }
+    .btn-dark {
+      background: var(--cod-gray--900);
+      color: #fff;
+      border: 0px none;
+      gap: 4px;
+      letter-spacing: -0.2px;
+    }
+    .btn-dark:hover { background: var(--cod-gray--800); }
+    .btn-husk {
+      background: var(--husk--900);
+      color: var(--husk--50);
+      border: none;
+      gap: 4px;
+      line-height: 18.5714px;
+    }
+    .btn-husk:hover { opacity: 0.9; }
+    .btn-satin {
+      background: var(--satin-linen--900);
+      color: var(--satin-linen--50);
+      border: 0px none;
+    }
+    .btn-satin:hover { opacity: 0.9; }
+    .btn-glass {
+      background: rgba(255,255,255,0.15);
+      color: var(--cod-gray--50);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6.08px;
+      padding: 12.3809px 14.1497px;
+      gap: 10.08px;
+      backdrop-filter: blur(4px);
+    }
+    .btn-glass:hover { background: rgba(255,255,255,0.25); }
+    .btn-text {
+      background: transparent;
+      color: var(--cod-gray--700);
+      border: 1px solid var(--cod-gray--100);
+      border-radius: 32px;
+      padding: 8.84354px 15.9183px;
+    }
+    .btn-text:hover { background: var(--cod-gray--50); }
+
+    .btn .dot-icon { width: 16px; height: 12px; flex-shrink: 0; }
+    .btn .dot-icon circle, .btn .dot-icon path { transition: opacity 0.3s ease; }
+
+    .icon-sm { width: 12px; height: 12px; }
+
+    /* 3-dot vertical icon (used in nav buttons) */
+    .icon-3dot { width: 12px; height: 12px; flex-shrink: 0; }
+
+    /* Hamburger - hidden on desktop */
+    .navbar_hamburger { display: none; }
+
+    /* ===== PAGE WRAPPER ===== */
+    .page-wrapper { padding-top: var(--nav-height); }
+
+    /* ===== HERO SECTION ===== */
+    .section_hero {
+      display: flex;
+      flex-direction: column;
+      padding: 0 0 30.4761px;
+      min-height: 100vh;
+      position: relative;
+    }
+    .section_hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 45%;
+      background-image: radial-gradient(circle, rgba(180,176,168,0.4) 1.2px, transparent 1.2px);
+      background-size: 18px 18px;
+      pointer-events: none;
+      z-index: 0;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 50%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 50%);
+    }
+    .hero_padding-global {
+      padding: 0 11.4286px;
+    }
+    .hero_grid {
+      display: grid;
+      grid-template-columns: 1fr minmax(0, 520px);
+      gap: 32px;
+      max-width: 1440px;
+      margin: 0 auto;
+      min-height: calc(80vh - 30.4761px);
+    }
+    .hero_left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 200px 0 0 11.4286px;
+      position: relative;
+    }
+    .hero_h1 {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 60.9524px;
+      font-weight: 400;
+      line-height: 60.9524px;
+      letter-spacing: -2px;
+      color: var(--cod-gray--900);
+      margin-bottom: 24px;
+    }
+
+    /* Typewriter rotating text */
+    .hero_typewriter-wrapper {
+      height: 24px;
+      margin-bottom: 32px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .hero_typewriter-prefix {
+      font-size: 18px;
+      line-height: 20px;
+      color: rgb(176, 176, 176);
+      letter-spacing: -0.3px;
+      white-space: nowrap;
+    }
+    .hero_typewriter-text {
+      font-size: 21px;
+      line-height: 20px;
+      color: var(--cod-gray--600);
+      letter-spacing: -0.3px;
+      font-weight: 500;
+      position: relative;
+      white-space: nowrap;
+    }
+    .hero_typewriter-cursor {
+      display: inline-block;
+      width: 1px;
+      height: 14px;
+      background: var(--cod-gray--400);
+      margin-left: 1px;
+      vertical-align: middle;
+      animation: cursorBlink 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+    }
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .hero_right {
+      position: relative;
+      display: block;
+      padding-top: 40px;
+    }
+    .hero_img-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border-radius: 5.06667px;
+      width: 100%;
+      height: 100%;
+    }
+    .hero_img-inner {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border-radius: 5.06667px;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+    }
+    .hero_img-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 5.06667px;
+      will-change: transform;
+      transform: translateY(0px);
+    }
+    .hero_img-overlay {
+      position: absolute;
+      bottom: 16px;
+      left: 15px;
+      right: 11px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+    .hero_advisor-info { display: flex; flex-direction: column; gap: 3.71428px; font-size: 13px; letter-spacing: -0.120714px; line-height: 19.5px; }
+    .hero_advisor-name { color: rgb(237, 237, 237); font-weight: 400; transition: color 0.3s ease; }
+    .hero_advisor-role { color: rgb(176, 176, 176); font-weight: 400; transition: color 0.3s ease; }
+    /* When overlay exits image area — dark text on white background */
+    .hero_img-overlay.is-outside .hero_advisor-name { color: var(--cod-gray--900); }
+    .hero_img-overlay.is-outside .hero_advisor-role { color: var(--cod-gray--400); }
+    .hero_img-overlay.is-outside .btn-glass {
+      background: var(--cod-gray--900);
+      color: #fff;
+      border-color: var(--cod-gray--900);
+      backdrop-filter: none;
+    }
+    /* Mobile caption — shown below image instead of overlay */
+    .hero_mobile-caption {
+      display: none;
+      margin-top: 12px;
+      padding: 0 4px;
+    }
+    .hero_mobile-caption-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--cod-gray--900);
+      letter-spacing: -0.2px;
+    }
+    .hero_mobile-caption-role {
+      font-size: 12px;
+      color: var(--cod-gray--400);
+      margin-top: 2px;
+    }
+
+    .hero_tagline {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 0 22.8572px 0 0;
+      color: rgb(136, 136, 136);
+      font-size: 15px;
+      line-height: 22px;
+      letter-spacing: -0.3px;
+      margin-top: 32px;
+    }
+
+    /* ===== SECTION STYLES ===== */
+    .section-padding { padding: 80px 0; }
+    .section-padding-lg { padding: 80px 0; }
+
+    .tag {
+      display: inline-block;
+      background: var(--cod-gray--50);
+      color: rgb(136, 136, 136);
+      font-size: 12.3809px;
+      padding: 5.30611px 12.3809px;
+      border-radius: 6.19047px;
+      margin-bottom: 20px;
+    }
+    .tag.is-beige {
+      background: var(--husk--50);
+      color: rgb(136, 136, 136);
+      border: 1px solid rgb(213, 211, 179);
+      border-radius: 6.19047px;
+      padding: 5.30611px 12.3809px;
+      line-height: 18.5714px;
+      display: flex;
+      align-items: center;
+      gap: 6.19047px;
+      margin-bottom: 0;
+    }
+
+    .heading-h2 {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: clamp(32px, 3.2vw, 45.7143px);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--cod-gray--900);
+      margin-bottom: 20px;
+    }
+    .heading-h3 {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 38.0952px;
+      font-weight: 400;
+      line-height: 38.0952px;
+      letter-spacing: -1.2px;
+      color: var(--cod-gray--900);
+      margin-bottom: 20px;
+    }
+    .heading-h4 {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: clamp(18px, 1.6vw, 22.86px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--cod-gray--900);
+    }
+
+    .text-body { color: var(--cod-gray--600); font-size: 15px; line-height: 22px; }
+    .heading-h2 + .text-body,
+    .heading-h3 + .text-body { margin-top: 12px; }
+
+    /* Word-by-word animation — enhanced with blur + rotateX for "lens focus" feel */
+    .word-wrap { display: flex; flex-wrap: wrap; gap: 0; perspective: 800px; justify-content: center; }
+    .word-wrap br { flex-basis: 100%; height: 0; }
+    .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(50%) rotateX(-20deg);
+      filter: blur(4px);
+      transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                  transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                  filter 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+      margin-right: 0.3em;
+      transform-origin: center bottom;
+    }
+    .word.visible {
+      opacity: 1;
+      transform: translateY(0) rotateX(0);
+      filter: blur(0);
+    }
+
+    /* Italic emphasis for emotional words */
+    .word-italic {
+      font-style: italic;
+    }
+
+    /* ===== PROMESSE SECTION — Venetian Reveal ===== */
+    .section_promesse { padding: 0; position: relative; }
+    .section_promesse::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background-image: radial-gradient(circle, rgba(180,176,168,0.4) 1.2px, transparent 1.2px);
+      background-size: 18px 18px;
+      pointer-events: none;
+      z-index: 0;
+      mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+    }
+
+    .promesse_scroll-space {
+      height: 220vh;
+      position: relative;
+    }
+
+    .promesse_sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Background heading — visible through strip gaps */
+    .promesse_bg-heading {
+      position: absolute;
+      top: 50%;
+      right: 8%;
+      transform: translateY(-50%);
+      z-index: 1;
+      width: 50%;
+      max-width: 620px;
+      aspect-ratio: 3 / 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 48px;
+      pointer-events: none;
+    }
+
+    .promesse_bg-heading p {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: clamp(32px, 3.2vw, 48px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--cod-gray--900);
+      text-align: center;
+    }
+
+    /* Warm light wash — ambient glow behind the strips */
+    .promesse_light-wash {
+      position: absolute;
+      top: 50%;
+      right: 5%;
+      transform: translateY(-50%);
+      z-index: 1;
+      width: 60%;
+      max-width: 760px;
+      aspect-ratio: 3 / 4;
+      background: radial-gradient(ellipse at 55% 40%, rgba(247, 246, 239, 0.55) 0%, rgba(247, 246, 239, 0.2) 40%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Venetian strips container */
+    .promesse_strips-container {
+      position: absolute;
+      top: 50%;
+      right: 8%;
+      transform: translateY(-50%);
+      z-index: 2;
+      width: 50%;
+      max-width: 620px;
+      aspect-ratio: 3 / 4;
+    }
+
+    .promesse_strip {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      background-repeat: no-repeat;
+      will-change: transform, filter, box-shadow;
+    }
+
+    /* Floating frosted text panel */
+    .promesse_panel {
+      position: absolute;
+      left: 5%;
+      top: 50%;
+      transform: translateY(-50%) translateX(-30px);
+      z-index: 5;
+      background: rgba(255, 255, 255, 0.93);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 6px;
+      padding: 44px 36px;
+      max-width: 460px;
+      width: 38%;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                  transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .promesse_panel.visible {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+      pointer-events: auto;
+    }
+
+    .promesse_panel .tag { margin-bottom: 18px; }
+
+    .promesse_panel .heading-h3 {
+      font-size: clamp(26px, 3vw, 38px);
+      line-height: 1.1;
+      letter-spacing: -1.2px;
+      margin-bottom: 16px;
+    }
+
+    /* Mobile image fallback — hidden on desktop */
+    .promesse_mobile-img {
+      display: none;
+    }
+
+
+    /* ===== PARTNERS / RASSURANCE SECTION ===== */
+    .section_partners {
+      padding: 24px 0;
+      text-align: center;
+    }
+    .partners_heading {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 38.0952px;
+      font-weight: 400;
+      line-height: 38.0952px;
+      letter-spacing: -1.2px;
+      color: rgb(36, 36, 36);
+      text-align: center;
+      margin: 0;
+    }
+    .partners_grid {
+      display: grid;
+      gap: 11.4286px;
+      align-items: center;
+      padding: 30.4761px 0;
+    }
+    .partners_row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: nowrap;
+    }
+    .partner-item {
+      width: 160px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22.8572px;
+      opacity: 0.45;
+      will-change: opacity;
+      transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .partner-item:hover { opacity: 0.75; }
+    .partner-item svg { width: 100%; height: auto; max-height: 32px; }
+
+    .partners_stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 24px;
+      padding-top: 0;
+      border-top: none;
+    }
+    .stat-item { text-align: center; }
+    .stat-value {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--cod-gray--900);
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      color: var(--cod-gray--400);
+      font-size: 13.3333px;
+    }
+
+    /* ===== NOTRE VISION / LARGE BANNER ===== */
+    .section_banner {
+      padding: 40px 11.4286px;
+    }
+    .banner_card {
+      background: var(--husk--50);
+      border-radius: 6.08px;
+      padding: 36px 48px 56px;
+      position: relative;
+      overflow: visible;
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 22.8572px;
+      height: auto;
+      border: 1px solid rgb(234, 234, 215);
+    }
+    .banner_content {
+      position: relative;
+      z-index: 2;
+      max-width: 506.667px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0;
+    }
+    .banner_content .tag {
+      margin-bottom: 24px;
+      font-size: 14px;
+      padding: 7px 16px;
+    }
+    .banner_content .heading-h2 {
+      color: var(--husk--900);
+      font-size: 45.7143px;
+      line-height: 45.7143px;
+      letter-spacing: -0.96px;
+      margin-bottom: 20px;
+    }
+    .banner_features {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 11.4286px;
+      margin: 0 0 24px;
+      width: 100%;
+      color: rgb(130, 115, 76);
+    }
+    .banner_feature-item {
+      display: inline;
+      color: rgb(130, 115, 76);
+      font-size: 13.3333px;
+    }
+    .banner_feature-item .bullet {
+      display: none;
+    }
+    .banner_dot-separator {
+      width: 9px;
+      height: 9px;
+      flex-shrink: 0;
+      color: rgb(130, 115, 76);
+    }
+    .banner_bg-r {
+      position: absolute;
+      right: 79.0476px;
+      top: 0;
+      bottom: 0;
+      width: 601px;
+      height: 542px;
+      z-index: 1;
+      color: rgb(234, 234, 215);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+      opacity: 1;
+    }
+    .banner_bg-r svg {
+      display: block;
+      overflow: hidden;
+    }
+
+    /* ===== EXPERTISE / ACCORDION + IMAGE SWAP ===== */
+    .section_expertise { padding: 80px 0; }
+    .expertise_grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* Left: Sticky Image Panel */
+    .expertise_image-panel {
+      position: sticky;
+      top: 100px;
+      aspect-ratio: 4 / 5;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #F0EDE8;
+    }
+    .expertise_img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1);
+      transition: opacity 600ms ease-in-out;
+      will-change: opacity, transform;
+    }
+    .expertise_img.active {
+      opacity: 1;
+      transform: scale(1.03);
+      transition: opacity 600ms ease-in-out, transform 4s ease-out;
+    }
+
+    /* Right: Accordion Panel */
+    .expertise_accordion {
+      padding: 8px 0;
+    }
+
+    /* Accordion Item Header */
+    .expertise_item-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 0;
+      cursor: pointer;
+      user-select: none;
+    }
+    .expertise_item-number {
+      font-family: "Reckless Rockfi", serif;
+      font-size: 14px;
+      font-variant-numeric: tabular-nums;
+      min-width: 24px;
+      color: rgba(42, 36, 28, 0.35);
+      transition: color 300ms ease;
+    }
+    .expertise_item-title {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.2px;
+      color: rgba(42, 36, 28, 0.50);
+      flex: 1;
+      transition: color 300ms ease;
+    }
+
+    /* Active header */
+    .expertise_item.active .expertise_item-number {
+      color: rgba(42, 36, 28, 0.90);
+    }
+    .expertise_item.active .expertise_item-title {
+      color: rgba(42, 36, 28, 0.90);
+    }
+
+    /* Hover on collapsed */
+    .expertise_item:not(.active) .expertise_item-header:hover .expertise_item-number {
+      color: rgba(42, 36, 28, 0.60);
+    }
+    .expertise_item:not(.active) .expertise_item-header:hover .expertise_item-title {
+      color: rgba(42, 36, 28, 0.75);
+    }
+    .expertise_item:not(.active) .expertise_item-header:hover .expertise_item-icon .bar {
+      background: rgba(42, 36, 28, 0.50);
+    }
+
+    /* Divider */
+    .expertise_item-divider {
+      height: 1px;
+      background: rgba(42, 36, 28, 0.10);
+    }
+
+    /* Plus/Minus Icon */
+    .expertise_item-icon {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    .expertise_item-icon .bar {
+      position: absolute;
+      background: rgba(42, 36, 28, 0.30);
+      border-radius: 1px;
+      transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+                  background 300ms ease;
+    }
+    .expertise_item-icon .bar-h {
+      width: 14px;
+      height: 1.5px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .expertise_item-icon .bar-v {
+      width: 1.5px;
+      height: 14px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .expertise_item.active .expertise_item-icon .bar-v {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+    .expertise_item.active .expertise_item-icon .bar {
+      background: rgba(42, 36, 28, 0.70);
+    }
+
+    /* Expandable Body */
+    .expertise_item-body {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      padding-left: 40px;
+      transition: max-height 400ms cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 300ms ease;
+    }
+    .expertise_item.active .expertise_item-body {
+      max-height: 400px;
+      opacity: 1;
+      padding-bottom: 28px;
+    }
+
+    /* Staggered content fade-in */
+    .expertise_item-body > * {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 300ms ease-out, transform 300ms ease-out;
+      transition-delay: 0ms;
+    }
+    .expertise_item.active .expertise_item-body > *:nth-child(1) {
+      opacity: 1; transform: translateY(0); transition-delay: 80ms;
+    }
+    .expertise_item.active .expertise_item-body > *:nth-child(2) {
+      opacity: 1; transform: translateY(0); transition-delay: 150ms;
+    }
+    .expertise_item.active .expertise_item-body > *:nth-child(3) {
+      opacity: 1; transform: translateY(0); transition-delay: 220ms;
+    }
+
+    /* Content Styling */
+    .expertise_heading {
+      font-family: "Reckless Rockfi", serif;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: rgb(36, 36, 36);
+      margin-bottom: 16px;
+    }
+    .expertise_text {
+      font-size: 15px;
+      line-height: 1.65;
+      color: rgb(130, 130, 130);
+      margin-bottom: 24px;
+      max-width: 420px;
+    }
+
+    .dot-separator {
+      width: 24px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+
+    /* ===== ADVISORS SECTION — Stacked Dossiers ===== */
+    .section_advisors {
+      padding: 0;
+      margin-bottom: 0;
+    }
+
+    .advisors_scroll-space {
+      height: 220vh;
+      position: relative;
+    }
+
+    .advisors_sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .advisors_header {
+      text-align: center;
+      padding: 64px 24px 0;
+      max-width: 700px;
+      z-index: 10;
+    }
+
+    .advisors_header .tag { margin-bottom: 16px; }
+
+    .advisors_header .heading-h2 {
+      font-size: clamp(32px, 4vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      margin-bottom: 0;
+    }
+
+    .advisors_desc {
+      color: var(--cod-gray--400);
+      font-size: 13.3333px;
+      line-height: 20px;
+      letter-spacing: -0.3px;
+      max-width: 420px;
+      text-align: center;
+      margin: 14px auto 0;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .advisors_desc.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .advisors_cards-area {
+      flex: 1;
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: 24px auto 0;
+      padding: 0 24px;
+    }
+
+    .advisor_card {
+      position: absolute;
+      top: 4%;
+      width: 30%;
+      max-width: 380px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 8px;
+      padding: 12px 12px 20px;
+      will-change: transform;
+      cursor: pointer;
+      transition: box-shadow 0.5s ease;
+    }
+
+    .advisor_card[data-card="0"] { left: 1.5%; }
+    .advisor_card[data-card="1"] { left: 34.5%; }
+    .advisor_card[data-card="2"] { left: 67.5%; }
+
+    .advisor_card .advisor_img-wrapper {
+      border-radius: 5px;
+      overflow: hidden;
+      background: var(--cod-gray--900);
+    }
+
+    .advisor_card .advisor_main-img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .advisor_card:nth-child(1) .advisor_main-img { aspect-ratio: 4 / 3; }
+    .advisor_card:nth-child(2) .advisor_main-img { aspect-ratio: 4 / 3; }
+    .advisor_card:nth-child(3) .advisor_main-img { aspect-ratio: 4 / 3; }
+
+    .advisor_card .advisor_quote {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.3;
+      letter-spacing: -0.4px;
+      color: var(--canary--950);
+      margin: 12px 0;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .advisor_card.placed .advisor_quote {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .advisor_card .advisor_info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 0.4s ease 0.15s;
+    }
+
+    .advisor_card.placed .advisor_info {
+      opacity: 1;
+    }
+
+    .advisor_card .advisor_avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .advisor_card .advisor_name {
+      font-size: 12.4px;
+      line-height: 1.2;
+      letter-spacing: 0.1px;
+      color: var(--cod-gray--600);
+    }
+
+    .advisor_card .advisor_role {
+      font-size: 12.4px;
+      line-height: 1.2;
+      letter-spacing: 0.1px;
+      color: var(--cod-gray--300);
+    }
+
+    .advisors_buttons {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      padding: 28px 0 24px;
+      background: linear-gradient(to top, #fff 50%, rgba(255,255,255,0) 100%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .advisors_buttons.visible {
+      opacity: 1;
+    }
+
+    .button-group {
+      display: flex;
+      align-items: center;
+      gap: 22.8572px;
+      justify-content: center;
+      margin-top: 48px;
+    }
+
+    /* ===== CTA SECTION — THE SIGNATURE ===== */
+    .section_cta-block { padding: 0; }
+    .padding-section-cta {
+      padding: 48px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    /* CTA organic background — cellular rings + glow */
+    .padding-section-cta::before,
+    .padding-section-cta::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .padding-section-cta::before {
+      width: 600px;
+      height: 600px;
+      left: -100px;
+      top: -150px;
+      border: 2px solid rgba(130, 115, 76, 0.15);
+      background: radial-gradient(circle, rgba(247, 246, 239, 0.4) 0%, transparent 60%);
+      animation: cta-ring-drift 18s ease-in-out infinite;
+    }
+    .padding-section-cta::after {
+      display: none;
+    }
+    @keyframes cta-ring-drift {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(20px, -15px) scale(1.03); }
+      66% { transform: translate(-12px, 10px) scale(0.97); }
+    }
+    .cta_glow {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      left: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: radial-gradient(circle, rgba(234, 234, 215, 0.6) 0%, rgba(247, 246, 239, 0.3) 40%, transparent 70%);
+      pointer-events: none;
+      animation: cta-glow-pulse 8s ease-in-out infinite;
+    }
+    @keyframes cta-glow-pulse {
+      0%, 100% { opacity: 0.4; transform: translateY(-50%) scale(1); }
+      50% { opacity: 0.7; transform: translateY(-50%) scale(1.1); }
+    }
+    .cta_signature {
+      max-width: 720px;
+      position: relative;
+      z-index: 1;
+    }
+    .cta_signature .heading-h2 {
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 64px;
+    }
+    .cta_signature .heading-h2 em {
+      font-style: italic;
+    }
+    .cta_line-wrap {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .cta_signature-line {
+      flex: 1;
+      height: 1px;
+      background: var(--cod-gray--900);
+      transform-origin: left center;
+      transform: scaleX(0);
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cta_line-wrap.visible .cta_signature-line {
+      transform: scaleX(1);
+    }
+    /* ===== VIDEO SECTION ===== */
+    .section_videos { padding: 80px 0; }
+    .videos_header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .videos_grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .videos_featured {
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: var(--cod-gray--100);
+    }
+    .videos_featured iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .videos_list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .videos_card {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 20px;
+      align-items: start;
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 0.2s;
+    }
+    .videos_card:hover { opacity: 0.7; }
+    .videos_card-thumb {
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      background: var(--cod-gray--100);
+    }
+    .videos_card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .videos_card-info { padding-top: 4px; }
+    .videos_card-title {
+      font-family: "Reckless Rockfi", serif;
+      font-size: 17px;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+    .videos_card-duration {
+      font-size: 13px;
+      color: var(--cod-gray--500);
+      letter-spacing: 0.02em;
+    }
+
+    /* ===== JOURNAL SECTION ===== */
+    .section_journal { padding: 80px 0; }
+    .journal_header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: end;
+      margin-bottom: 48px;
+    }
+    .journal_grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .journal_card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 6px;
+      cursor: pointer;
+      display: block;
+    }
+    .journal_card img,
+    .journal_card > svg {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      display: block;
+      transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .journal_card:hover img,
+    .journal_card:hover > svg { transform: scale(1.05); }
+    /* Overlay reveal */
+    .journal_reveal {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 60px 24px 28px 24px;
+      background: linear-gradient(
+        to top,
+        rgba(18, 14, 10, 0.88) 0%,
+        rgba(18, 14, 10, 0.72) 40%,
+        rgba(18, 14, 10, 0.25) 80%,
+        rgba(18, 14, 10, 0.00) 100%
+      );
+      transform: translateY(100%);
+      transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      will-change: transform;
+    }
+    .journal_card:hover .journal_reveal,
+    .journal_card:focus-within .journal_reveal {
+      transform: translateY(0%);
+    }
+    /* Staggered content fade-in */
+    .journal_reveal > * {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 300ms ease-out, transform 300ms ease-out;
+      transition-delay: 0ms;
+    }
+    .journal_card:hover .journal_reveal > *,
+    .journal_card:focus-within .journal_reveal > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .journal_card:hover .journal_tag,
+    .journal_card:focus-within .journal_tag { transition-delay: 150ms; }
+    .journal_card:hover .journal_title,
+    .journal_card:focus-within .journal_title { transition-delay: 220ms; }
+    .journal_card:hover .journal_desc,
+    .journal_card:focus-within .journal_desc { transition-delay: 290ms; }
+    .journal_card:hover .journal_meta,
+    .journal_card:focus-within .journal_meta { transition-delay: 340ms; }
+    .journal_card:hover .journal_read,
+    .journal_card:focus-within .journal_read { transition-delay: 380ms; }
+    /* Content styling inside overlay */
+    .journal_tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.60);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      padding: 4px 10px;
+      border-radius: 100px;
+      width: fit-content;
+      margin-bottom: 14px;
+    }
+    .journal_reveal .journal_title {
+      font-family: "Reckless Rockfi", serif;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #FFFFFF;
+      margin: 0 0 10px;
+    }
+    .journal_reveal .journal_desc {
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.70);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .journal_reveal .journal_meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 16px;
+    }
+    .journal_read {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: #FFFFFF;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .journal_read .arrow {
+      transition: transform 300ms ease-out;
+    }
+    .journal_card:hover .journal_read .arrow {
+      transform: translateX(4px);
+    }
+
+    /* ===== FAQ SECTION ===== */
+    /* ===== FAQ SECTION — WATERMARK DOSSIER ===== */
+    .section_faq {
+      padding: 40px 0;
+    }
+    .faq_layout {
+      display: grid;
+      grid-template-columns: 38% 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    /* Left column — sticky heading + watermark */
+    .faq_left {
+      position: sticky;
+      top: 120px;
+      padding-right: 24px;
+    }
+    .faq_left .tag {
+      margin-bottom: 20px;
+    }
+    .faq_heading {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: clamp(32px, 4vw, 46px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.96px;
+      color: var(--cod-gray--900);
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+    /* Giant watermark number */
+    .faq_watermark {
+      font-family: "Reckless Rockfi", serif;
+      font-size: clamp(160px, 18vw, 240px);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -8px;
+      color: var(--cod-gray--900);
+      opacity: 0.055;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      user-select: none;
+      transition: opacity 0.4s ease;
+      z-index: 0;
+      white-space: nowrap;
+    }
+    .faq_watermark-num {
+      display: inline-block;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.3s ease;
+    }
+    .faq_watermark-num.changing {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .faq_left-inner {
+      position: relative;
+      overflow: hidden;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    /* Right column — accordion list */
+    .faq_list {
+      display: flex;
+      flex-direction: column;
+    }
+    .faq_item {
+      border-top: 1px solid rgb(237, 237, 237);
+    }
+    .faq_item:last-child {
+      border-bottom: 1px solid rgb(237, 237, 237);
+    }
+    .faq_question {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 22px 0;
+      cursor: pointer;
+      width: 100%;
+      border: none;
+      background: none;
+      font-family: Suisseintl, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+      color: var(--cod-gray--600);
+      text-align: left;
+      transition: color 0.3s ease;
+    }
+    .faq_question:hover {
+      color: var(--cod-gray--900);
+    }
+    .faq_item.open .faq_question {
+      color: var(--cod-gray--900);
+    }
+    .faq_num {
+      font-family: "Reckless Rockfi", serif;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      color: var(--cod-gray--400);
+      flex-shrink: 0;
+      min-width: 22px;
+      transition: color 0.3s ease;
+    }
+    .faq_item.open .faq_num {
+      color: var(--husk);
+    }
+    .faq_q-text {
+      flex: 1;
+    }
+    .faq_icon {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                  color 0.3s ease;
+      color: var(--cod-gray--400);
+    }
+    .faq_item.open .faq_icon {
+      transform: rotate(45deg);
+      color: var(--cod-gray--900);
+    }
+    /* Answer panel */
+    .faq_answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .faq_answer-inner {
+      padding: 0 0 24px 38px;
+      border-left: 2px solid var(--husk);
+      margin-left: 10px;
+      color: var(--cod-gray--400);
+      font-family: Suisseintl, Arial, sans-serif;
+      font-size: 13.5px;
+      line-height: 1.6;
+      letter-spacing: -0.2px;
+      max-width: 540px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
+    }
+    .faq_item.open .faq_answer {
+      max-height: 300px;
+    }
+    .faq_item.open .faq_answer-inner {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 0;
+    }
+    .footer_padding-vertical {
+      padding: 80px 0 80px;
+      position: relative;
+    }
+    .footer_top {
+      display: grid;
+      grid-template-columns: 524fr 881fr;
+      gap: 11.4286px;
+    }
+    .footer_left-card {
+      background: rgb(36, 36, 36);
+      border-radius: 5.06667px;
+      padding: 53.3333px 45.7143px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .footer_left-heading {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 38.0952px;
+      font-weight: 400;
+      line-height: 38.0952px;
+      letter-spacing: -1.2px;
+      color: rgb(255, 255, 255);
+      margin: 0;
+    }
+    .footer_subtext {
+      color: rgb(136, 136, 136);
+      font-size: 13.3333px;
+      line-height: 20px;
+      letter-spacing: -0.285715px;
+      font-family: Suisseintl, Arial, sans-serif;
+    }
+    .footer_subtext a {
+      color: rgb(136, 136, 136);
+      text-decoration: underline;
+    }
+    .footer_email-form {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .footer_email-input {
+      flex: 1;
+      padding: 8.84354px 0;
+      border: none;
+      border-bottom: 1px solid rgb(93, 93, 93);
+      border-radius: 0;
+      background: transparent;
+      font-family: Suisseintl, Arial, sans-serif;
+      font-size: 12.3809px;
+      line-height: 17.687px;
+      letter-spacing: -0.2px;
+      color: rgb(255, 255, 255);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .footer_email-input:focus { border-bottom-color: rgb(255, 255, 255); }
+    .footer_email-input::placeholder { color: rgb(136, 136, 136); }
+    .footer_subscribe-btn {
+      background: rgb(255, 255, 255);
+      color: rgb(36, 36, 36);
+      font-family: Suisseintl, Arial, sans-serif;
+      font-size: 12.3809px;
+      font-weight: 400;
+      line-height: 18.5714px;
+      letter-spacing: -0.2px;
+      padding: 8.84354px 15.9183px;
+      border-radius: 32px;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .footer_subscribe-btn:hover { opacity: 0.85; }
+
+    .footer_right-card {
+      background: rgb(249, 247, 243);
+      border-radius: 6.08px;
+      padding: 53.3333px 45.7143px;
+      padding-right: 304.761px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .footer_right-heading {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 45.7143px;
+      font-weight: 400;
+      line-height: 45.7143px;
+      letter-spacing: -0.96px;
+      color: rgb(61, 50, 41);
+      margin: 0;
+    }
+    .footer_right-icon {
+      width: 23px;
+      height: 24px;
+      margin-bottom: 24px;
+    }
+    .footer_cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgb(61, 50, 41);
+      color: rgb(249, 247, 243);
+      font-family: Suisseintl, Arial, sans-serif;
+      font-size: 12.3809px;
+      font-weight: 400;
+      line-height: 18.5714px;
+      letter-spacing: -0.2px;
+      padding: 8.84354px 15.9183px;
+      border-radius: 32px;
+      border: none;
+      text-decoration: none;
+      margin-top: 32px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .footer_cta-btn:hover { opacity: 0.85; }
+    .footer_bg-r {
+      position: absolute;
+      right: -40px;
+      bottom: -40px;
+      width: 341px;
+      height: 385px;
+      color: rgb(233, 230, 221);
+      opacity: 1;
+    }
+
+    .footer_links-section {
+      padding: 11.4286px 0;
+    }
+    .footer_links-bottom {
+      padding: 0 0 91.4285px;
+    }
+    .footer_links {
+      display: grid;
+      grid-template-columns: 524fr 881fr;
+      gap: 11.4286px;
+    }
+    .footer_links-left {
+      display: flex;
+      flex-direction: column;
+      border-radius: 5.06667px;
+    }
+    .footer_logo-box {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 11.4286px;
+    }
+    .footer_logo-box svg { width: 56px; height: 56px; color: var(--cod-gray--900); }
+
+    .footer_links-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 11.4286px;
+    }
+    .footer_link-column {
+      display: block;
+    }
+    .footer_link-heading {
+      font-size: 13.3333px;
+      font-weight: 400;
+      color: rgb(76, 76, 76);
+      line-height: 20px;
+      letter-spacing: -0.285715px;
+      font-family: Suisseintl, Arial, sans-serif;
+      margin-bottom: 8px;
+    }
+    .footer_link-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .footer_link-list a {
+      display: block;
+      font-size: 13.3333px;
+      color: rgb(136, 136, 136);
+      line-height: 20px;
+      letter-spacing: -0.285715px;
+      padding: 2.08px 0;
+      transition: color 0.2s;
+      font-family: Suisseintl, Arial, sans-serif;
+    }
+    .footer_link-list a:hover { color: rgb(76, 76, 76); }
+    .footer_link-list a.is-btn {
+      display: flex;
+      align-items: center;
+      gap: 6.08px;
+    }
+
+    .footer_credit {
+      padding: 11.4286px;
+      font-size: 12.3809px;
+      color: rgb(136, 136, 136);
+      line-height: 18.5714px;
+      letter-spacing: -0.285715px;
+      font-family: Suisseintl, Arial, sans-serif;
+    }
+
+    /* ===== GRAIN / NOISE OVERLAY ===== */
+    .grain::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: multiply;
+    }
+
+    /* ===== ADVISOR CARD HOVER (Dossier mode) ===== */
+    .advisor_card:hover {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+    .advisor_card:hover .advisor_main-img {
+      transform: scale(1.03);
+    }
+
+    /* ===== DARK PULL-QUOTE SECTION ===== */
+    .section_dark-quote {
+      background: var(--cod-gray--900);
+      padding: 48px 11.4286px;
+      position: relative;
+      overflow: hidden;
+    }
+    .dark-quote_inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .dark-quote_mark {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 160px;
+      line-height: 1;
+      color: rgba(255,255,255,0.04);
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      user-select: none;
+    }
+    .dark-quote_text {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.8px;
+      color: var(--husk--50);
+      max-width: 720px;
+      margin: 0 auto 40px;
+      font-style: italic;
+    }
+    .dark-quote_author {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .dark-quote_author-name {
+      font-size: 13.3333px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.5px;
+    }
+    .dark-quote_author-role {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+    .dark-quote_dot-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+    .dark-quote_dot-row span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--husk--600);
+      opacity: 0.4;
+    }
+    .dark-quote_dot-row span:nth-child(2) { opacity: 0.7; }
+    .dark-quote_dot-row span:nth-child(3) { opacity: 1; }
+    .dark-quote_dot-row span:nth-child(4) { opacity: 0.7; }
+    .dark-quote_dot-row span:nth-child(5) { opacity: 0.4; }
+    .dark-quote_cta {
+      margin-top: 48px;
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--husk--50);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 32px;
+      padding: 8.84354px 15.9183px;
+      transition: all 0.3s ease;
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.3);
+    }
+    /* Subtle R watermark in dark section */
+    .dark-quote_bg-r {
+      position: absolute;
+      right: 8%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 300px;
+      height: 340px;
+      opacity: 0.025;
+      color: #fff;
+      pointer-events: none;
+    }
+
+    /* ===== DOT PATTERN SECTION DIVIDERS ===== */
+    .dot-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      user-select: none;
+    }
+    .dot-divider::before {
+      content: '·   ·   ·   ·   ·';
+      font-size: 10px;
+      letter-spacing: 8px;
+      color: rgba(0,0,0,0.12);
+    }
+
+    /* ===== SOFT SHADOWS (mixed with borders) ===== */
+    .cta_signature {
+      box-shadow: none;
+    }
+
+    /* ===== BUTTON DOT MORPH ===== */
+    .btn .dot-icon path,
+    .btn .dot-icon circle,
+    .btn .icon-3dot circle,
+    .btn svg path,
+    .btn svg circle {
+      transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s ease;
+      transform-origin: center;
+    }
+    .btn:hover .dot-icon path:nth-child(1),
+    .btn:hover svg.dot-icon path:nth-child(1) {
+      transform: translateY(-1px);
+    }
+    .btn:hover .dot-icon path:nth-child(3),
+    .btn:hover svg.dot-icon path:nth-child(3) {
+      transform: translateY(1px);
+    }
+
+    /* ===== PAGE LOAD TRANSITION ===== */
+    .page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: var(--husk--50);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+                  visibility 0.6s;
+    }
+    .page-loader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .page-loader svg {
+      width: 64px;
+      height: 18px;
+      color: var(--husk--900);
+      animation: loaderFadeIn 0.4s ease both;
+    }
+    @keyframes loaderFadeIn {
+      0% { opacity: 0; transform: translateY(6px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== JOURNAL ASYMMETRIC LAYOUT ===== */
+    .journal_header {
+      grid-template-columns: 38% 1fr;
+    }
+
+
+    /* ===== ANIMATED NUMBER COUNTERS ===== */
+    .stat-value[data-count] {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .animate-on-scroll.delay-1 { transition-delay: 0.1s; }
+    .animate-on-scroll.delay-2 { transition-delay: 0.2s; }
+    .animate-on-scroll.delay-3 { transition-delay: 0.3s; }
+
+    /* ===== REDUCED MOTION ===== */
+    @media (prefers-reduced-motion: reduce) {
+      .word {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+      }
+      .animate-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .advisor_card .advisor_main-img,
+      .advisor_card .advisor_quote,
+      .journal_card img,
+      .journal_card > svg {
+        transition: none !important;
+        transform: none !important;
+      }
+      .journal_reveal {
+        transform: translateY(0%) !important;
+        transition: none !important;
+      }
+      .journal_reveal > * {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .advisor_card .advisor_quote,
+      .advisor_card .advisor_info {
+        opacity: 1 !important;
+      }
+      .expertise_img,
+      .expertise_item-body,
+      .expertise_item-body > *,
+      .expertise_item-icon .bar {
+        transition: none !important;
+      }
+      .advisors_scroll-space { height: auto !important; }
+      .advisors_sticky { position: relative !important; height: auto !important; }
+      .advisor_card { transform: none !important; }
+      .advisors_desc { opacity: 1 !important; transform: none !important; }
+      .advisors_buttons { opacity: 1 !important; }
+      .cta_signature-line {
+        transform: scaleX(1) !important;
+        transition: none !important;
+      }
+      .cta_constellation {
+        opacity: 1 !important;
+        transition: none !important;
+      }
+      .cta_constellation svg {
+        width: 100%;
+        height: auto;
+      }
+      .faq_answer-inner {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .faq_watermark-num {
+        transition: none !important;
+      }
+      .faq_icon {
+        transition: none !important;
+      }
+      .page-loader {
+        display: none !important;
+      }
+      .hero_typewriter-cursor {
+        animation: none !important;
+      }
+      .promesse_scroll-space { height: auto !important; }
+      .promesse_sticky { position: relative !important; height: auto !important; min-height: 100vh; }
+      .promesse_strip { transform: none !important; filter: none !important; box-shadow: none !important; }
+      .promesse_bg-heading { display: none !important; }
+      .promesse_light-wash { display: none !important; }
+      .promesse_panel {
+        opacity: 1 !important;
+        transform: translateY(-50%) translateX(0) !important;
+        pointer-events: auto !important;
+        transition: none !important;
+      }
+    }
+
+    /* ===== CTA LAYOUT (moved from inline) ===== */
+    .cta_layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .cta_form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cta_form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .videos_header { grid-template-columns: 1fr; gap: 24px; }
+      .videos_grid { grid-template-columns: 1fr; }
+      .navbar_link { font-size: 11.5px; }
+      .navbar_menu { gap: 24px; }
+      .navbar_link + .navbar_link::before { left: -14px; }
+      .navbar_button-wrapper .btn-white { display: none; }
+      .navbar_component { padding: 0 20px; }
+      .hero_grid { grid-template-columns: 1fr; gap: 0; min-height: auto; }
+      .section_hero { min-height: auto; }
+      .hero_right { margin-top: 32px; }
+      .hero_img-wrapper { min-height: 360px; max-height: 50vh; }
+      .hero_left { padding-top: 40px; }
+      .hero_padding-global { padding: 0 16px; }
+      .hero_tagline { margin-top: 32px; }
+      /* Overlay — scale down for tablet */
+      .hero_img-overlay { padding: 0 12px 10px 12px; }
+      .hero_advisor-info { font-size: 12px; gap: 2px; }
+      .hero_img-overlay .btn-glass { font-size: 11px; padding: 8px 12px; }
+      .promesse_scroll-space { height: auto; }
+      .promesse_sticky {
+        position: relative;
+        height: auto;
+        padding: 64px 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .promesse_bg-heading { display: none; }
+      /* Hide the strip-based image on mobile — shows seam lines */
+      .promesse_strips-container { display: none; }
+      .promesse_light-wash { display: none; }
+      /* Show clean single image on mobile */
+      .promesse_mobile-img {
+        display: block;
+        order: 2;
+        margin-top: 32px;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .promesse_mobile-img img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        display: block;
+      }
+      .promesse_panel,
+      .promesse_panel.visible {
+        position: relative;
+        left: auto; top: auto;
+        transform: none;
+        width: 100%;
+        max-width: none;
+        opacity: 1;
+        pointer-events: auto;
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        order: 1;
+      }
+      .expertise_grid { grid-template-columns: 1fr; }
+      .expertise_image-panel {
+        position: relative;
+        top: 0;
+        aspect-ratio: 16 / 10;
+        margin-bottom: 24px;
+      }
+      .expertise_item-body { padding-left: 32px; }
+      .expertise_heading { font-size: 24px; }
+      .advisors_scroll-space { height: auto; }
+      .advisors_sticky {
+        position: relative;
+        height: auto;
+        padding: 32px 16px 60px;
+      }
+      .advisors_header { padding-top: 0; }
+      .advisors_cards-area {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 32px;
+        padding: 0;
+      }
+      .advisor_card {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        width: 100% !important;
+        max-width: none;
+        transform: none !important;
+      }
+      .advisor_card .advisor_quote { opacity: 1; transform: none; }
+      .advisor_card .advisor_info { opacity: 1; }
+      .advisors_desc { opacity: 1; transform: none; }
+      .advisors_buttons {
+        opacity: 1;
+        margin-top: 40px;
+      }
+      .padding-section-cta { padding: 48px 0; }
+      .cta_signature .heading-h2 { margin-bottom: 48px; }
+      .cta_line-wrap { gap: 24px; }
+      .cta_constellation { width: 45%; }
+      .journal_header { grid-template-columns: 1fr; }
+      .journal_grid { grid-template-columns: 1fr 1fr; }
+      .faq_layout { grid-template-columns: 1fr; gap: 40px; }
+      .faq_left { position: relative; top: auto; }
+      .footer_top { grid-template-columns: 1fr; }
+      .footer_right-card { padding-right: 45.7143px; }
+      .footer_links { grid-template-columns: 1fr; }
+      .footer_links-right { grid-template-columns: repeat(4, 1fr); }
+      .banner_card { padding: 48px 36px; height: auto; }
+      .banner_content .heading-h2 { font-size: clamp(28px, 5vw, 45.7143px); }
+      .banner_bg-r { display: none; }
+      .banner_features { flex-wrap: wrap; justify-content: center; }
+      .section_banner { padding: 80px 11.4286px; }
+      .partner-item { width: 140px; }
+      .partners_row { flex-wrap: wrap; justify-content: center; }
+      .partners_heading { font-size: clamp(24px, 4vw, 38px); }
+      .section_dark-quote { padding: 48px 11.4286px; }
+      .dark-quote_text { font-size: 28px; }
+      .section_videos { padding: 80px 0; }
+      .section_journal { padding: 80px 0; }
+      .footer_padding-vertical { padding: 80px 0 60px; }
+      .footer_left-heading { font-size: clamp(24px, 4vw, 38px); }
+      .footer_right-heading { font-size: clamp(28px, 4.5vw, 45.7px); }
+      .footer_links-bottom { padding: 0 0 48px; }
+    }
+
+    @media (max-width: 768px) {
+      .navbar_component { padding: 0 12px; }
+      .navbar_menu { display: none; }
+      .navbar_hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 8px;
+      }
+      .navbar_hamburger span { display: block; width: 18px; height: 1.5px; background: var(--cod-gray--900); transition: all 0.3s; }
+      .navbar_button-wrapper .btn-white { display: none; }
+      /* Hide dot separators in mobile vertical menu */
+      .navbar_link + .navbar_link::before { display: none; }
+      /* Hero overlay — hide on mobile, show caption below instead */
+      .hero_img-overlay { display: none; }
+      .hero_mobile-caption { display: block; }
+      /* Promesse section — tighter on mobile */
+      .promesse_sticky { padding: 48px 16px; }
+      .promesse_panel .heading-h3 { font-size: clamp(22px, 5vw, 28px); }
+      .promesse_mobile-img { margin-top: 24px; }
+      .promesse_mobile-img img { aspect-ratio: 16 / 10; }
+      .hero_h1 { font-size: clamp(28px, 7vw, 40px); line-height: 1.1; letter-spacing: -1px; }
+      .hero_img-wrapper { min-height: 280px; max-height: 40vh; }
+      .hero_tagline { gap: 12px; padding-right: 0; font-size: 12px; }
+      .padding-global { padding-left: 16px; padding-right: 16px; }
+      .hero_padding-global { padding: 0 16px; }
+      .btn { min-height: 44px; }
+      input, select, textarea { min-height: 44px; font-size: 16px; }
+      .advisors_cards-area { grid-template-columns: 1fr; }
+      .advisor_card .advisor_quote { font-size: 15px; }
+      .journal_grid { grid-template-columns: 1fr; }
+      .journal_reveal {
+        transform: translateY(0%);
+      }
+      .journal_reveal > * {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .journal_reveal .journal_title { font-size: 20px; }
+      .faq_watermark { display: none; }
+      .faq_left-inner { min-height: auto; }
+      .section_faq { padding: 32px 0; }
+      .faq_heading { font-size: 28px; }
+      .partners_row { gap: 12px; flex-wrap: wrap; }
+      .partners_heading { font-size: 24px; }
+      .partner-item { width: 110px; }
+      .partner-item svg { max-height: 26px; }
+      .partners_stats { gap: 32px; margin-top: 16px; padding-top: 0; }
+      .footer_links-right { grid-template-columns: 1fr 1fr; }
+      .footer_padding-vertical { padding: 80px 0 48px; }
+      .footer_left-heading { font-size: 24px; line-height: 1.1; }
+      .footer_right-heading { font-size: 28px; line-height: 1.1; }
+      .footer_left-card { padding: 32px 24px; }
+      .footer_right-card { padding: 32px 24px !important; }
+      .footer_links-bottom { padding: 0 0 32px; }
+      .banner_card { padding: 40px 24px; height: auto; }
+      .banner_content .heading-h2 { font-size: clamp(24px, 6vw, 36px); line-height: 1.1; }
+      .section_banner { padding: 48px 16px; }
+      .section_videos { padding: 64px 0; }
+      .section_journal { padding: 64px 0; }
+      .padding-section-cta { padding: 36px 0; }
+      .padding-section-cta::before { width: 350px; height: 350px; left: -80px; top: -100px; }
+      .padding-section-cta::after { width: 250px; height: 250px; left: 50px; bottom: -60px; }
+      .cta_glow { width: 250px; height: 250px; left: 0; }
+      .cta_layout { grid-template-columns: 1fr; gap: 32px; }
+      .cta_form-row { grid-template-columns: 1fr; }
+      .cta_signature .heading-h2 { margin-bottom: 24px; }
+      .cta_line-wrap { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .cta_signature { max-width: 100%; }
+      .cta_constellation { display: none; }
+      .heading-h3 { font-size: 28px; }
+      .section_dark-quote { padding: 48px 16px; }
+      .dark-quote_text { font-size: 24px; }
+      .dark-quote_mark { font-size: 100px; top: -30px; }
+      .dark-quote_bg-r { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .hero_h1 { font-size: clamp(24px, 6.5vw, 32px); line-height: 1.1; }
+      .hero_img-wrapper { min-height: 220px; max-height: 35vh; }
+      .heading-h2 { font-size: clamp(20px, 5.5vw, 28px); }
+      .promesse_sticky { padding: 40px 16px; }
+      .promesse_panel .heading-h3 { font-size: 20px; line-height: 1.2; }
+      .promesse_panel .text-body { font-size: 13px; }
+      .promesse_mobile-img img { aspect-ratio: 3 / 2; }
+      .section_expertise, .section_advisors, .section_cta-block, .section_faq { padding-top: 48px; padding-bottom: 48px; }
+      .section_videos { padding-top: 24px; padding-bottom: 48px; }
+      .padding-section-cta::before { width: 250px; height: 250px; left: -60px; top: -80px; }
+      .padding-section-cta::after { width: 180px; height: 180px; left: 30px; bottom: -40px; }
+      .cta_glow { width: 200px; height: 200px; }
+      .section_journal { padding: 48px 0; }
+      .section_dark-quote { padding: 32px 16px; }
+      .dark-quote_text { font-size: 20px; }
+      .dark-quote_mark { font-size: 64px; top: -20px; }
+      .videos_card { grid-template-columns: 120px 1fr; gap: 16px; }
+      .videos_card-thumb { width: 100%; max-width: 120px; aspect-ratio: 16 / 9; }
+      .cta_form { gap: 12px; }
+      .footer_padding-vertical { padding: 56px 0 32px; }
+      .footer_left-card { padding: 24px 20px; }
+      .footer_right-card { padding: 24px 20px !important; }
+      .footer_left-heading { font-size: 20px; }
+      .footer_right-heading { font-size: 22px; }
+      .footer_links-bottom { padding: 0 0 24px; }
+      .footer_links-right { grid-template-columns: 1fr; }
+      .partners_stats { flex-direction: column; gap: 16px; }
+      .partners_heading { font-size: 20px; }
+      .banner_content .heading-h2 { font-size: 22px; }
+      .banner_card { padding: 32px 20px; }
+      .section_banner { padding: 32px 16px; }
+      .journal_reveal .journal_title { font-size: 18px; }
+      .advisor_card .advisor_quote { font-size: 14px; }
+    }
+    /* Touch devices: always reveal journal overlay */
+    @media (hover: none) {
+      .journal_reveal {
+        transform: translateY(0%);
+      }
+      .journal_reveal > * {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 390px) {
+      .navbar_button-wrapper .btn-yellow { font-size: 11px; padding: 6px 12px; }
+    }
+
+    @media (max-width: 360px) {
+      .hero_h1 { font-size: 24px; }
+      .hero_img-wrapper { min-height: 180px; max-height: 30vh; }
+      .heading-h2 { font-size: 20px; }
+      .navbar_component { padding: 0 10px; }
+      .padding-global { padding-left: 12px; padding-right: 12px; }
+      .hero_padding-global { padding: 0 12px; }
+      .btn { font-size: 12px; padding: 8px 14px; min-height: 44px; }
+      .tag { font-size: 10px; padding: 4px 8px; }
+      .footer_padding-vertical { padding: 40px 0 24px; }
+      .footer_left-heading { font-size: 18px; }
+      .footer_right-heading { font-size: 20px; }
+      .banner_content .heading-h2 { font-size: 20px; }
+      .dark-quote_text { font-size: 18px; }
+    }
+  </style>
+</head>
+<body class="grain">
+
+  <!-- ===== PAGE LOAD TRANSITION ===== -->
+  <div class="page-loader" id="pageLoader">
+    <span style="font-family:'Reckless Rockfi',serif;font-size:24px;font-weight:400;color:var(--husk--900);">LOGO</span>
+  </div>
+
+  <!-- ===== FIXED NAVBAR ===== -->
+  <div class="nav_fixed" id="navbar">
+    <div class="navbar_component">
+      <a href="index.html" class="navbar_logo-link">
+        <!-- OncoDigest logo SVG -->
+        <span style="font-family:'Reckless Rockfi',serif;font-size:20px;font-weight:400;color:var(--cod-gray--900);letter-spacing:-0.5px;">LOGO</span>
+      </a>
+
+      <nav class="navbar_menu">
+        <a href="actualites.html" class="navbar_link">Actualit&eacute;s</a>
+        <a href="articles-scientifiques.html" class="navbar_link">Articles scientifiques</a>
+        <a href="congres.html" class="navbar_link">Congr&egrave;s</a>
+        <a href="videos.html" class="navbar_link">Vid&eacute;os</a>
+        <a href="contact.html" class="navbar_link">Contact</a>
+      </nav>
+
+      <div class="navbar_button-wrapper">
+        <a href="inscription.html" class="btn btn-white btn-sm" target="_blank">
+          S'inscrire
+        </a>
+        <a href="connexion.html" class="btn btn-yellow btn-sm">Acc&egrave;s Pro</a>
+      </div>
+
+      <div class="navbar_hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PAGE WRAPPER ===== -->
+  <div class="page-wrapper">
+
+    <!-- ===== HERO ===== -->
+    <section class="section_hero">
+      <div class="hero_padding-global">
+        <div class="hero_grid">
+          <div class="hero_left">
+            <!-- Top content group -->
+            <div class="hero_top-content">
+              <h1 class="hero_h1 animate-on-scroll">L'information oncologique,<br>rigoureuse et accessible.</h1>
+
+              <div class="hero_typewriter-wrapper">
+                <span class="hero_typewriter-prefix">Pour&nbsp;</span>
+                <span class="hero_typewriter-text" id="typewriterText"></span>
+                <span class="hero_typewriter-cursor"></span>
+              </div>
+
+              <div class="hero_btn-group" style="display:flex;gap:5.06667px;">
+                <a href="actualites.html" class="btn btn-dark btn-sm animate-on-scroll delay-1">
+                  D&eacute;couvrir nos contenus
+                  <svg class="dot-icon" viewBox="0 0 16 16" fill="none"><path d="M8 0.77C7.27 0.77 6.69 1.36 6.69 2.08C6.69 2.81 7.27 3.4 8 3.4C8.73 3.4 9.31 2.81 9.31 2.08C9.31 1.36 8.73 0.77 8 0.77Z" fill="currentColor"/><path d="M8 5.77C7.27 5.77 6.69 6.36 6.69 7.08C6.69 7.81 7.27 8.4 8 8.4C8.73 8.4 9.31 7.81 9.31 7.08C9.31 6.36 8.73 5.77 8 5.77Z" fill="currentColor"/><path d="M8 10.77C7.27 10.77 6.69 11.36 6.69 12.08C6.69 12.81 7.27 13.4 8 13.4C8.73 13.4 9.31 12.81 9.31 12.08C9.31 11.36 8.73 10.77 8 10.77Z" fill="currentColor"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Tagline pushed to bottom via margin-top:auto -->
+            <div class="hero_tagline animate-on-scroll delay-3">
+              <p style="color:rgb(136,136,136);">OncoDigest r&eacute;unit l'essentiel de l'actualit&eacute; en chirurgie digestive et oncologie&nbsp;: articles, congr&egrave;s, vid&eacute;os.</p>
+            </div>
+          </div>
+
+          <div class="hero_right animate-on-scroll delay-2">
+            <div class="hero_img-wrapper">
+              <!-- Overlay layer (sits on top of image via z-index) -->
+              <div class="hero_img-overlay">
+                <div class="hero_advisor-info">
+                  <div class="hero_advisor-name">Dr. Mohammed Amal Benzakour</div>
+                  <div class="hero_advisor-role">Chirurgien Visc&eacute;ral, Digestif &amp; Robotique</div>
+                </div>
+                <a href="a-propos.html" class="btn btn-glass">
+                  <svg class="icon-3dot" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="1.5" r="1.3" fill="currentColor"/><circle cx="6" cy="6" r="1.3" fill="currentColor"/><circle cx="6" cy="10.5" r="1.3" fill="currentColor"/></svg>
+                  D&eacute;couvrir le comit&eacute;
+                </a>
+              </div>
+              <!-- Image layer -->
+              <div class="hero_img-inner">
+                <img src="data/PHOTO-2026-03-12-08-57-26.jpg" alt="Dr. Mohammed Amal Benzakour — Chirurgie Robotique" loading="eager">
+              </div>
+            </div>
+            <!-- Mobile caption — visible only on mobile -->
+            <div class="hero_mobile-caption">
+              <div class="hero_mobile-caption-name">Dr. Mohammed Amal Benzakour</div>
+              <div class="hero_mobile-caption-role">Chirurgien Visc&eacute;ral, Digestif &amp; Robotique</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NOTRE PROMESSE — Venetian Reveal ===== -->
+    <section class="section_promesse">
+      <div class="promesse_scroll-space" id="promesseScrollSpace">
+        <div class="promesse_sticky">
+
+          <!-- Background heading visible through strip gaps (decorative) -->
+          <div class="promesse_bg-heading" id="promesseBgHeading" aria-hidden="true">
+            <p>La rigueur scientifique au service de la pratique quotidienne.</p>
+          </div>
+
+          <!-- Warm ambient light wash -->
+          <div class="promesse_light-wash"></div>
+
+          <!-- Venetian strips — assembled by JS (desktop only) -->
+          <div class="promesse_strips-container" id="promesseStripsContainer"></div>
+          <!-- Clean image fallback (mobile only) -->
+          <div class="promesse_mobile-img">
+            <img src="data/IMG_0024.jpg" alt="Dr. Benzakour — Bloc opératoire" loading="lazy">
+          </div>
+
+          <!-- Frosted text panel -->
+          <div class="promesse_panel" id="promessePanel">
+            <div class="tag">Notre mission</div>
+            <h2 class="heading-h3">La rigueur scientifique au service de la pratique quotidienne.</h2>
+            <p class="text-body">Apr&egrave;s plusieurs ann&eacute;es d&eacute;di&eacute;es &agrave; la chirurgie visc&eacute;rale, OncoDigest est n&eacute; d'une exigence : offrir aux praticiens une information technique de haut niveau, sans jamais perdre de vue la dimension humaine du soin.</p>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NOS PARTENAIRES ===== -->
+    <section class="section_partners">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="partners_heading-wrap">
+            <h2 class="partners_heading animate-on-scroll">OncoDigest en chiffres</h2>
+          </div>
+          <!-- Stats row -->
+          <div class="partners_stats animate-on-scroll">
+            <div class="stat-item">
+              <div class="stat-value" data-count="200" data-suffix="+">0+</div>
+              <div class="stat-label">Articles publi&eacute;s</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" data-count="50" data-suffix="+">0+</div>
+              <div class="stat-label">Congr&egrave;s couverts</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" data-count="1000" data-prefix="" data-suffix="+">0+</div>
+              <div class="stat-label">Professionnels inscrits</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NOTRE VISION / LARGE BANNER ===== -->
+    <section class="section_banner" id="banner">
+      <div class="banner_card">
+        <div class="banner_content">
+          <div class="tag is-beige animate-on-scroll">Notre vision</div>
+          <h2 class="heading-h2 animate-on-scroll delay-1">Une information libre de tout conflit d'int&eacute;r&ecirc;t.</h2>
+          <div class="banner_features animate-on-scroll delay-2">
+            <div class="banner_feature-item">Ind&eacute;pendance &eacute;ditoriale</div>
+            <svg class="banner_dot-separator" width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="2.65" fill="currentColor"/></svg>
+            <div class="banner_feature-item">Comit&eacute; scientifique</div>
+            <svg class="banner_dot-separator" width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="2.65" fill="currentColor"/></svg>
+            <div class="banner_feature-item">Acc&egrave;s ouvert</div>
+          </div>
+          <a href="a-propos.html" class="btn btn-husk btn-sm animate-on-scroll delay-3">
+            D&eacute;couvrir notre ligne &eacute;ditoriale
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EXPERTISE / ACCORDION + IMAGE SWAP ===== -->
+    <section class="section_expertise">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="expertise_grid">
+
+            <!-- LEFT: Sticky Image Panel -->
+            <div class="expertise_image-panel">
+              <img src="data/PHOTO-2026-03-12-08-57-26.jpg" class="expertise_img active" data-item="0" alt="Chirurgie digestive — Da Vinci Xi">
+              <img src="data/IMG_0024.jpg" class="expertise_img" data-item="1" alt="Dr. Benzakour — Bloc op&eacute;ratoire">
+              <img src="data/IMG_0025.jpg" class="expertise_img" data-item="2" alt="Dr. Benzakour — Portrait professionnel">
+            </div>
+
+            <!-- RIGHT: Accordion Panel -->
+            <div class="expertise_accordion">
+
+              <!-- Item 0 — expanded by default -->
+              <div class="expertise_item active" data-item="0">
+                <div class="expertise_item-header" role="button" aria-expanded="true" aria-controls="expertise-body-0" id="expertise-header-0">
+                  <span class="expertise_item-number">01</span>
+                  <span class="expertise_item-title">Chirurgie digestive</span>
+                  <span class="expertise_item-icon">
+                    <span class="bar bar-h"></span>
+                    <span class="bar bar-v"></span>
+                  </span>
+                </div>
+                <div class="expertise_item-divider"></div>
+                <div class="expertise_item-body" id="expertise-body-0" role="region" aria-labelledby="expertise-header-0">
+                  <h3 class="expertise_heading">De la technique op&eacute;ratoire aux r&eacute;sultats cliniques.</h3>
+                  <p class="expertise_text">Retrouvez les derni&egrave;res avanc&eacute;es en chirurgie colorectale, h&eacute;patobiliaire, pancr&eacute;atique et bariatrique, analys&eacute;es par des praticiens de terrain.</p>
+                  <a href="articles-scientifiques.html" class="btn btn-dark btn-sm">Voir les articles</a>
+                </div>
+              </div>
+
+              <!-- Item 1 — collapsed -->
+              <div class="expertise_item" data-item="1">
+                <div class="expertise_item-header" role="button" aria-expanded="false" aria-controls="expertise-body-1" id="expertise-header-1">
+                  <span class="expertise_item-number">02</span>
+                  <span class="expertise_item-title">Oncologie</span>
+                  <span class="expertise_item-icon">
+                    <span class="bar bar-h"></span>
+                    <span class="bar bar-v"></span>
+                  </span>
+                </div>
+                <div class="expertise_item-divider"></div>
+                <div class="expertise_item-body" id="expertise-body-1" role="region" aria-labelledby="expertise-header-1">
+                  <h3 class="expertise_heading">Comprendre les avanc&eacute;es th&eacute;rapeutiques.</h3>
+                  <p class="expertise_text">Immunoth&eacute;rapie, th&eacute;rapies cibl&eacute;es, essais cliniques : suivez l'&eacute;volution des traitements en oncologie digestive avec des synth&egrave;ses claires et document&eacute;es.</p>
+                  <a href="articles-scientifiques.html" class="btn btn-dark btn-sm">Voir les articles</a>
+                </div>
+              </div>
+
+              <!-- Item 2 — collapsed -->
+              <div class="expertise_item" data-item="2">
+                <div class="expertise_item-header" role="button" aria-expanded="false" aria-controls="expertise-body-2" id="expertise-header-2">
+                  <span class="expertise_item-number">03</span>
+                  <span class="expertise_item-title">Congr&egrave;s</span>
+                  <span class="expertise_item-icon">
+                    <span class="bar bar-h"></span>
+                    <span class="bar bar-v"></span>
+                  </span>
+                </div>
+                <div class="expertise_item-divider"></div>
+                <div class="expertise_item-body" id="expertise-body-2" role="region" aria-labelledby="expertise-header-2">
+                  <h3 class="expertise_heading">L'essentiel des congr&egrave;s, en synth&egrave;se.</h3>
+                  <p class="expertise_text">ASCO, ESMO, SFCD, JFHOD — nous couvrons les congr&egrave;s majeurs avec des rapports structur&eacute;s, des points cl&eacute;s et des interviews d'experts.</p>
+                  <a href="articles-scientifiques.html" class="btn btn-dark btn-sm">Voir les rapports</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DOT DIVIDER ===== -->
+    <div class="dot-divider" aria-hidden="true"></div>
+
+    <!-- ===== ADVISORS SECTION — Stacked Dossiers ===== -->
+    <section class="section_advisors">
+      <div class="advisors_scroll-space" id="advisorsScrollSpace">
+        <div class="advisors_sticky">
+
+          <!-- Header — centered -->
+          <div class="advisors_header">
+            <div class="tag animate-on-scroll">Comit&eacute; scientifique</div>
+            <h2 class="heading-h2 animate-on-scroll delay-1 word-animate" data-break-after="service">Un comit&eacute; d'experts au service de la <em>qualit&eacute;</em>.</h2>
+            <p class="advisors_desc" id="advisorsDesc">Chaque contenu publi&eacute; sur OncoDigest est valid&eacute; par notre comit&eacute; scientifique, compos&eacute; de praticiens reconnus en chirurgie digestive et oncologie.</p>
+          </div>
+
+          <!-- Cards area -->
+          <div class="advisors_cards-area" id="advisorsCardsArea">
+            <div class="advisor_card" data-card="0">
+              <div class="advisor_img-wrapper">
+                <img class="advisor_main-img" src="data/PHOTO-2026-03-12-08-57-26.jpg" alt="Dr. Benzakour — Console Da Vinci Xi" loading="lazy">
+              </div>
+              <div class="advisor_quote">&ldquo;La chirurgie robotique prolonge la main du chirurgien avec une pr&eacute;cision millim&eacute;trique, au b&eacute;n&eacute;fice direct du patient.&rdquo;</div>
+              <div class="advisor_info">
+                <img class="advisor_avatar" src="data/PHOTO-2026-03-12-09-00-33.jpg" alt="">
+                <div>
+                  <div class="advisor_name">Dr. Mohammed Amal Benzakour</div>
+                  <div class="advisor_role">Chirurgie Visc&eacute;rale, Digestive &amp; Robotique</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="advisor_card" data-card="1">
+              <div class="advisor_img-wrapper">
+                <img class="advisor_main-img" src="data/IMG_0024.jpg" alt="Dr. Benzakour — Bloc op&eacute;ratoire" loading="lazy">
+              </div>
+              <div class="advisor_quote">&ldquo;L'information m&eacute;dicale de qualit&eacute; ne devrait jamais &ecirc;tre un privil&egrave;ge. OncoDigest la rend accessible &agrave; tous les praticiens francophones.&rdquo;</div>
+              <div class="advisor_info">
+                <img class="advisor_avatar" src="data/IMG_0025.jpg" alt="">
+                <div>
+                  <div class="advisor_name">Dr. M.A. Benzakour</div>
+                  <div class="advisor_role">Fondateur OncoDigest</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="advisor_card" data-card="2">
+              <div class="advisor_img-wrapper">
+                <img class="advisor_main-img" src="data/PHOTO-2026-03-12-09-03-26.jpg" alt="Dr. Benzakour — Console MedBot" loading="lazy">
+              </div>
+              <div class="advisor_quote">&ldquo;Allier la rigueur de la chirurgie traditionnelle aux b&eacute;n&eacute;fices des technologies de pointe, c'est notre engagement quotidien.&rdquo;</div>
+              <div class="advisor_info">
+                <img class="advisor_avatar" src="data/PHOTO-2026-03-12-09-00-33.jpg" alt="">
+                <div>
+                  <div class="advisor_name">Dr. Benzakour</div>
+                  <div class="advisor_role">Ancien attach&eacute; des H&ocirc;pitaux de Toulouse</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="advisors_buttons" id="advisorsButtons">
+            <a href="a-propos.html" class="btn btn-dark btn-sm">
+              D&eacute;couvrir le comit&eacute;
+            </a>
+            <a href="contact.html" class="btn btn-text" style="border:none;padding:8.84354px 0;">
+              <svg width="12.4" height="12.4" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;"><circle cx="4" cy="4" r="1.8" fill="currentColor"/><circle cx="12" cy="4" r="1.8" fill="currentColor"/><circle cx="4" cy="12" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/></svg>
+              Nous rejoindre
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DARK PULL-QUOTE SECTION ===== -->
+    <section class="section_dark-quote">
+      <div class="dark-quote_inner">
+        <blockquote class="dark-quote_text animate-on-scroll">
+          L'information m&eacute;dicale de qualit&eacute; ne devrait jamais &ecirc;tre un <em>privil&egrave;ge</em>.
+        </blockquote>
+        <div class="dark-quote_author animate-on-scroll delay-1">
+          <div class="dark-quote_author-name">Dr. Mohammed Amal Benzakour</div>
+          <div class="dark-quote_author-role">Fondateur &mdash; OncoDigest</div>
+        </div>
+        <div class="dark-quote_cta animate-on-scroll delay-2">
+          <a href="a-propos.html" class="btn btn-ghost btn-sm">
+            D&eacute;couvrir notre mission
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 0.77C7.27 0.77 6.69 1.36 6.69 2.08C6.69 2.81 7.27 3.4 8 3.4C8.73 3.4 9.31 2.81 9.31 2.08C9.31 1.36 8.73 0.77 8 0.77Z" fill="currentColor"/><path d="M8 5.77C7.27 5.77 6.69 6.36 6.69 7.08C6.69 7.81 7.27 8.4 8 8.4C8.73 8.4 9.31 7.81 9.31 7.08C9.31 6.36 8.73 5.77 8 5.77Z" fill="currentColor"/><path d="M8 10.77C7.27 10.77 6.69 11.36 6.69 12.08C6.69 12.81 7.27 13.4 8 13.4C8.73 13.4 9.31 12.81 9.31 12.08C9.31 11.36 8.73 10.77 8 10.77Z" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DOT DIVIDER ===== -->
+    <div class="dot-divider" aria-hidden="true"></div>
+
+    <!-- ===== CTA SECTION — THE SIGNATURE ===== -->
+    <section class="section_cta-block">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="padding-section-cta cta_layout">
+            <div class="cta_glow" aria-hidden="true"></div>
+            <div class="cta_signature">
+              <h2 class="heading-h2 animate-on-scroll word-animate">Rejoignez la communaut&eacute; <em>OncoDigest</em>.</h2>
+
+            </div>
+            <form class="cta_form animate-on-scroll delay-2" onsubmit="event.preventDefault();">
+              <div class="cta_form-row">
+                <div>
+                  <label style="display:block;font-size:13px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px;color:var(--cod-gray--600);">Nom</label>
+                  <input type="text" name="nom" required style="width:100%;padding:14px 16px;border:1px solid var(--cod-gray--200);border-radius:8px;font-family:Suisseintl,sans-serif;font-size:15px;background:var(--satin-linen--50);transition:border-color 0.2s;" placeholder="Votre nom">
+                </div>
+                <div>
+                  <label style="display:block;font-size:13px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px;color:var(--cod-gray--600);">Pr&eacute;nom</label>
+                  <input type="text" name="prenom" required style="width:100%;padding:14px 16px;border:1px solid var(--cod-gray--200);border-radius:8px;font-family:Suisseintl,sans-serif;font-size:15px;background:var(--satin-linen--50);transition:border-color 0.2s;" placeholder="Votre pr&eacute;nom">
+                </div>
+              </div>
+              <div>
+                <label style="display:block;font-size:13px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px;color:var(--cod-gray--600);">Adresse email</label>
+                <input type="email" name="email" required style="width:100%;padding:14px 16px;border:1px solid var(--cod-gray--200);border-radius:8px;font-family:Suisseintl,sans-serif;font-size:15px;background:var(--satin-linen--50);transition:border-color 0.2s;" placeholder="votre@email.com">
+              </div>
+              <div>
+                <label style="display:block;font-size:13px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px;color:var(--cod-gray--600);">Profession</label>
+                <select name="profession" required style="width:100%;padding:14px 16px;border:1px solid var(--cod-gray--200);border-radius:8px;font-family:Suisseintl,sans-serif;font-size:15px;background:var(--satin-linen--50);transition:border-color 0.2s;cursor:pointer;">
+                  <option value="" disabled selected>S&eacute;lectionnez votre profession</option>
+                  <option value="chirurgien">Chirurgien</option>
+                  <option value="oncologue">Oncologue</option>
+                  <option value="gastro">Gastro-ent&eacute;rologue</option>
+                  <option value="interne">Interne</option>
+                  <option value="autre">Autre</option>
+                </select>
+              </div>
+              <div class="cta_form-row">
+                <div>
+                  <label style="display:block;font-size:13px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px;color:var(--cod-gray--600);">Sp&eacute;cialit&eacute;</label>
+                  <input type="text" name="specialite" style="width:100%;padding:14px 16px;border:1px solid var(--cod-gray--200);border-radius:8px;font-family:Suisseintl,sans-serif;font-size:15px;background:var(--satin-linen--50);transition:border-color 0.2s;" placeholder="Votre sp&eacute;cialit&eacute;">
+                </div>
+                <div>
+                  <label style="display:block;font-size:13px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px;color:var(--cod-gray--600);">Ville</label>
+                  <input type="text" name="ville" style="width:100%;padding:14px 16px;border:1px solid var(--cod-gray--200);border-radius:8px;font-family:Suisseintl,sans-serif;font-size:15px;background:var(--satin-linen--50);transition:border-color 0.2s;" placeholder="Votre ville">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-yellow btn-sm" style="width:100%;margin-top:8px;padding:16px;font-size:16px;">
+                Cr&eacute;er mon compte
+              </button>
+              <p style="font-size:12px;color:var(--cod-gray--500);text-align:center;margin-top:4px;">En vous inscrivant, vous acceptez nos conditions d'utilisation.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VIDEOS SECTION ===== -->
+    <section class="section_videos">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="videos_header">
+            <div>
+              <div class="tag animate-on-scroll">Vid&eacute;os</div>
+              <h2 class="heading-h2 animate-on-scroll delay-1 word-animate">Conf&eacute;rences, interviews et lives.</h2>
+            </div>
+            <p class="text-body animate-on-scroll delay-2">Retrouvez nos sessions en direct et rediffusions sur les sujets majeurs en oncologie digestive.</p>
+          </div>
+
+          <div class="videos_grid">
+            <div class="videos_featured animate-on-scroll">
+              <video controls preload="metadata" poster="data/PHOTO-2026-03-12-09-03-26.jpg" style="width:100%;height:100%;object-fit:cover;">
+  <source src="data/int%C3%A9r%C3%AAt_de_la_chirurgie_robotique_dans_l%27oncologie_visc%C3%A9ral-_dr_mounir_dhib_v1%20%282160p%29.mp4" type="video/mp4">
+</video>
+            </div>
+            <div class="videos_list">
+              <a class="videos_card animate-on-scroll delay-1" href="/videos/conference-sfcd-2026">
+                <div class="videos_card-thumb">
+                  <img src="data/IMG_0024.jpg" alt="Chirurgie robotique" loading="lazy">
+                </div>
+                <div class="videos_card-info">
+                  <h3 class="videos_card-title">Int&eacute;r&ecirc;t de la chirurgie robotique dans l'oncologie visc&eacute;rale</h3>
+                  <span class="videos_card-duration">Dr. Benzakour &middot; Conf&eacute;rence</span>
+                </div>
+              </a>
+              <a class="videos_card animate-on-scroll delay-2" href="/videos/interview-immunotherapie">
+                <div class="videos_card-thumb">
+                  <img src="data/PHOTO-2026-03-12-08-57-26.jpg" alt="Chirurgie endom&eacute;triose" loading="lazy">
+                </div>
+                <div class="videos_card-info">
+                  <h3 class="videos_card-title">La chirurgie de l'endom&eacute;triose profonde par robotique</h3>
+                  <span class="videos_card-duration">Dr. Benzakour &middot; D&eacute;monstration</span>
+                </div>
+              </a>
+              <a class="videos_card animate-on-scroll delay-3" href="/videos/live-jfhod">
+                <div class="videos_card-thumb">
+                  <img src="data/PHOTO-2026-03-12-09-03-26.jpg" alt="Chirurgie mini-invasive" loading="lazy">
+                </div>
+                <div class="videos_card-info">
+                  <h3 class="videos_card-title">Techniques mini-invasives en chirurgie digestive</h3>
+                  <span class="videos_card-duration">Dr. Benzakour &middot; Formation</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="button-group" style="margin-top:48px;">
+            <a href="/videos" class="btn btn-dark btn-sm">
+              Voir toutes les vid&eacute;os
+              <svg class="dot-icon" viewBox="0 0 16 16" fill="none"><path d="M8 0.77C7.27 0.77 6.69 1.36 6.69 2.08C6.69 2.81 7.27 3.4 8 3.4C8.73 3.4 9.31 2.81 9.31 2.08C9.31 1.36 8.73 0.77 8 0.77Z" fill="currentColor"/><path d="M8 5.77C7.27 5.77 6.69 6.36 6.69 7.08C6.69 7.81 7.27 8.4 8 8.4C8.73 8.4 9.31 7.81 9.31 7.08C9.31 6.36 8.73 5.77 8 5.77Z" fill="currentColor"/><path d="M8 10.77C7.27 10.77 6.69 11.36 6.69 12.08C6.69 12.81 7.27 13.4 8 13.4C8.73 13.4 9.31 12.81 9.31 12.08C9.31 11.36 8.73 10.77 8 10.77Z" fill="currentColor"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== JOURNAL SECTION ===== -->
+    <section class="section_journal">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="journal_header">
+            <div>
+              <div class="tag animate-on-scroll">Actualit&eacute;s</div>
+              <h2 class="heading-h2 animate-on-scroll delay-1 word-animate">Les derni&egrave;res publications.</h2>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:12px;">
+              <p class="text-body animate-on-scroll delay-2">Articles scientifiques, comptes-rendus de congr&egrave;s, interviews d'experts. L'actualit&eacute; oncologique digestive, synth&eacute;tis&eacute;e pour vous.</p>
+            </div>
+          </div>
+
+          <div class="journal_grid">
+            <a class="journal_card animate-on-scroll" href="/journal/spotlight-maxime-durand">
+              <svg viewBox="0 0 450 600" width="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chirurgie robotique">
+                <defs>
+                  <linearGradient id="grad-journal-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f0ede6"/><stop offset="100%" stop-color="#d8d0be"/>
+                  </linearGradient>
+                </defs>
+                <rect width="450" height="600" fill="url(#grad-journal-1)"/>
+                <g stroke="#6b5e3e" stroke-width="0.3" opacity="0.05">
+                  <line x1="25" y1="30" x2="425" y2="30"/><line x1="25" y1="38" x2="425" y2="38"/><line x1="25" y1="46" x2="425" y2="46"/><line x1="25" y1="54" x2="425" y2="54"/>
+                </g>
+                <g fill="#6b5e3e" opacity="0.04">
+                  <circle cx="45" cy="120" r="0.7"/><circle cx="130" cy="85" r="0.5"/><circle cx="210" cy="250" r="0.6"/><circle cx="340" cy="170" r="0.8"/><circle cx="390" cy="310" r="0.5"/><circle cx="80" cy="400" r="0.7"/><circle cx="280" cy="350" r="0.6"/>
+                </g>
+                <!-- Cross/medical motif -->
+                <g stroke="#6b5e3e" fill="none" opacity="0.10" stroke-width="1.2">
+                  <rect x="300" y="80" width="80" height="80" rx="2"/><line x1="340" y1="90" x2="340" y2="150"/><line x1="310" y1="120" x2="370" y2="120"/>
+                  <rect x="320" y="190" width="50" height="50" rx="2"/><line x1="345" y1="198" x2="345" y2="232"/><line x1="327" y1="215" x2="363" y2="215"/>
+                  <circle cx="350" cy="290" r="25" stroke-width="1"/>
+                  <circle cx="310" cy="340" r="15" stroke-width="0.8"/>
+                </g>
+                <text x="25" y="470" font-family="'Reckless Rockfi', Georgia, serif" font-size="72" font-weight="400" fill="#4a3f28" opacity="0.85">Article</text>
+                <text x="27" y="510" font-family="Suisseintl, Arial, sans-serif" font-size="18" font-weight="400" fill="#4a3f28" opacity="0.5">Chirurgie colorectale</text>
+                <line x1="25" y1="540" x2="425" y2="540" stroke="#4a3f28" stroke-width="0.5" opacity="0.15"/>
+              </svg>
+              <div class="journal_reveal">
+                <span class="journal_tag">Article</span>
+                <h3 class="journal_title">Prise en charge laparoscopique du cancer colorectal</h3>
+                <p class="journal_desc">Revue des derni&egrave;res &eacute;tudes comparant les approches mini-invasives aux techniques conventionnelles en chirurgie colorectale.</p>
+                <div class="journal_meta">
+                  <span>Dr. Benzakour</span>
+                  <span>&middot;</span>
+                  <span>12/03/2026</span>
+                </div>
+                <span class="journal_read">Lire <span class="arrow">&rarr;</span></span>
+              </div>
+            </a>
+
+            <a class="journal_card animate-on-scroll delay-1" href="/evenements/soirees-ritz-paris">
+              <svg viewBox="0 0 450 600" width="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rapport de congrès ASCO 2026">
+                <defs>
+                  <linearGradient id="grad-journal-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#faf8f0"/><stop offset="100%" stop-color="#e5dcc0"/>
+                  </linearGradient>
+                </defs>
+                <rect width="450" height="600" fill="url(#grad-journal-2)"/>
+                <g stroke="#8a7a50" stroke-width="0.3" opacity="0.04">
+                  <line x1="25" y1="25" x2="425" y2="25"/><line x1="25" y1="33" x2="425" y2="33"/><line x1="25" y1="41" x2="425" y2="41"/><line x1="25" y1="49" x2="425" y2="49"/>
+                </g>
+                <g fill="#8a7a50" opacity="0.04">
+                  <circle cx="50" cy="130" r="0.7"/><circle cx="140" cy="90" r="0.5"/><circle cx="220" cy="260" r="0.6"/><circle cx="350" cy="180" r="0.8"/><circle cx="400" cy="320" r="0.5"/><circle cx="90" cy="420" r="0.7"/>
+                </g>
+                <!-- Honeycomb hexagonal grid -->
+                <g stroke="#8a7a50" fill="none" opacity="0.12">
+                  <polygon points="300,80 321.65,92.5 321.65,117.5 300,130 278.35,117.5 278.35,92.5" stroke-width="1.2"/>
+                  <polygon points="350,80 371.65,92.5 371.65,117.5 350,130 328.35,117.5 328.35,92.5" stroke-width="1.2"/>
+                  <polygon points="325,123 346.65,135.5 346.65,160.5 325,173 303.35,160.5 303.35,135.5" stroke-width="1.2"/>
+                  <polygon points="375,123 396.65,135.5 396.65,160.5 375,173 353.35,160.5 353.35,135.5" stroke-width="1.2"/>
+                  <polygon points="310,180 325.59,189 325.59,207 310,216 294.41,207 294.41,189" stroke-width="1"/>
+                  <polygon points="360,180 375.59,189 375.59,207 360,216 344.41,207 344.41,189" stroke-width="1"/>
+                  <circle cx="321.65" cy="117.5" r="3" fill="#8a7a50" stroke="none"/>
+                  <circle cx="328.35" cy="117.5" r="3" fill="#8a7a50" stroke="none"/>
+                  <circle cx="371.65" cy="117.5" r="3" fill="#8a7a50" stroke="none"/>
+                  <circle cx="346.65" cy="160.5" r="3" fill="#8a7a50" stroke="none"/>
+                </g>
+                <text x="25" y="440" font-family="'Reckless Rockfi', Georgia, serif" font-size="90" font-weight="400" fill="#5a4e2f" opacity="0.9">ASCO</text>
+                <text x="27" y="480" font-family="'Reckless Rockfi', Georgia, serif" font-size="28" font-weight="400" fill="#5a4e2f" opacity="0.6">2026</text>
+                <line x1="25" y1="510" x2="425" y2="510" stroke="#5a4e2f" stroke-width="0.5" opacity="0.2"/>
+              </svg>
+              <div class="journal_reveal">
+                <span class="journal_tag">Congr&egrave;s</span>
+                <h3 class="journal_title">ASCO 2026 : les points cl&eacute;s</h3>
+                <p class="journal_desc">Synth&egrave;se des communications majeures en oncologie digestive pr&eacute;sent&eacute;es lors du congr&egrave;s annuel de l'ASCO.</p>
+                <div class="journal_meta">
+                  <span>08/03/2026</span>
+                </div>
+                <span class="journal_read">Lire <span class="arrow">&rarr;</span></span>
+              </div>
+            </a>
+
+            <a class="journal_card animate-on-scroll delay-2" href="/videos/interview-pr-fassi">
+              <svg viewBox="0 0 450 600" width="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interview Dr. Benzakour">
+                <defs>
+                  <linearGradient id="grad-journal-3" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#edf0f5"/><stop offset="100%" stop-color="#cdd5e2"/>
+                  </linearGradient>
+                </defs>
+                <rect width="450" height="600" fill="url(#grad-journal-3)"/>
+                <g fill="#3d4d6b" opacity="0.03">
+                  <circle cx="50" cy="40" r="3"/><circle cx="120" cy="100" r="2"/><circle cx="210" cy="65" r="2.5"/><circle cx="300" cy="140" r="1.8"/><circle cx="85" cy="290" r="2.5"/><circle cx="170" cy="340" r="3"/><circle cx="380" cy="50" r="2.5"/><circle cx="400" cy="200" r="2"/>
+                </g>
+                <!-- Play button / video motif -->
+                <g stroke="#3d4d6b" fill="none" opacity="0.10">
+                  <circle cx="340" cy="140" r="50" stroke-width="1.5"/>
+                  <polygon points="325,115 325,165 365,140" fill="#3d4d6b" stroke="none" opacity="0.08"/>
+                  <circle cx="300" cy="240" r="30" stroke-width="1"/>
+                  <circle cx="370" cy="270" r="20" stroke-width="0.8"/>
+                  <line x1="280" y1="310" x2="400" y2="310" stroke-width="0.6"/>
+                  <line x1="300" y1="325" x2="380" y2="325" stroke-width="0.6"/>
+                  <line x1="310" y1="340" x2="370" y2="340" stroke-width="0.6"/>
+                </g>
+                <text x="25" y="450" font-family="'Reckless Rockfi', Georgia, serif" font-size="64" font-weight="400" fill="#2d3a52" opacity="0.85">Vid&eacute;o</text>
+                <text x="27" y="490" font-family="Suisseintl, Arial, sans-serif" font-size="18" font-weight="400" fill="#2d3a52" opacity="0.5">Interview &middot; Chirurgie robotique</text>
+                <line x1="25" y1="520" x2="425" y2="520" stroke="#2d3a52" stroke-width="0.5" opacity="0.15"/>
+              </svg>
+              <div class="journal_reveal">
+                <span class="journal_tag">Vid&eacute;o</span>
+                <h3 class="journal_title">Interview Dr. Benzakour : chirurgie robotique</h3>
+                <p class="journal_desc">Le Dr. Benzakour partage son exp&eacute;rience de premier chirurgien marocain &agrave; r&eacute;aliser des interventions digestives robot-assist&eacute;es de fa&ccedil;on autonome.</p>
+                <div class="journal_meta">
+                  <span>01/03/2026</span>
+                </div>
+                <span class="journal_read">Lire <span class="arrow">&rarr;</span></span>
+              </div>
+            </a>
+          </div>
+
+          <div class="button-group">
+            <a href="actualites.html" class="btn btn-dark btn-sm">
+              Tous les articles
+              <svg class="dot-icon" viewBox="0 0 16 16" fill="none"><path d="M8 0.77C7.27 0.77 6.69 1.36 6.69 2.08C6.69 2.81 7.27 3.4 8 3.4C8.73 3.4 9.31 2.81 9.31 2.08C9.31 1.36 8.73 0.77 8 0.77Z" fill="currentColor"/><path d="M8 5.77C7.27 5.77 6.69 6.36 6.69 7.08C6.69 7.81 7.27 8.4 8 8.4C8.73 8.4 9.31 7.81 9.31 7.08C9.31 6.36 8.73 5.77 8 5.77Z" fill="currentColor"/><path d="M8 10.77C7.27 10.77 6.69 11.36 6.69 12.08C6.69 12.81 7.27 13.4 8 13.4C8.73 13.4 9.31 12.81 9.31 12.08C9.31 11.36 8.73 10.77 8 10.77Z" fill="currentColor"/></svg>
+            </a>
+            <a href="videos.html" class="btn btn-text">
+              <svg class="icon-3dot" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="1.5" r="1.3" fill="currentColor"/><circle cx="6" cy="6" r="1.3" fill="currentColor"/><circle cx="6" cy="10.5" r="1.3" fill="currentColor"/></svg>
+              Voir les vid&eacute;os
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ SECTION ===== -->
+    <section class="section_faq">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="faq_layout">
+            <!-- Left column: sticky heading + watermark -->
+            <div class="faq_left">
+              <div class="tag animate-on-scroll">FAQ</div>
+              <div class="faq_left-inner">
+                <div class="faq_watermark"><span class="faq_watermark-num">01</span></div>
+                <h2 class="faq_heading animate-on-scroll">Vos questions, nos r&eacute;ponses</h2>
+              </div>
+            </div>
+            <!-- Right column: numbered accordion -->
+            <div class="faq_list">
+              <div class="faq_item" data-faq-num="01">
+                <button class="faq_question">
+                  <span class="faq_num">01</span>
+                  <span class="faq_q-text">Qui peut s'inscrire sur OncoDigest&nbsp;?</span>
+                  <svg class="faq_icon" viewBox="0 0 12 18"><path d="M6.60449 8.39551H12V9.59473H6.60449V15H5.40527V9.59473H0V8.39551H5.40527V3H6.60449V8.39551Z" fill="currentColor"/></svg>
+                </button>
+                <div class="faq_answer"><div class="faq_answer-inner">OncoDigest est ouvert &agrave; tous les professionnels de sant&eacute;&nbsp;: chirurgiens, oncologues, gastro-ent&eacute;rologues, internes, et chercheurs en oncologie digestive.</div></div>
+              </div>
+              <div class="faq_item" data-faq-num="02">
+                <button class="faq_question">
+                  <span class="faq_num">02</span>
+                  <span class="faq_q-text">Le contenu est-il gratuit&nbsp;?</span>
+                  <svg class="faq_icon" viewBox="0 0 12 18"><path d="M6.60449 8.39551H12V9.59473H6.60449V15H5.40527V9.59473H0V8.39551H5.40527V3H6.60449V8.39551Z" fill="currentColor"/></svg>
+                </button>
+                <div class="faq_answer"><div class="faq_answer-inner">La partie grand public (actualit&eacute;s, vid&eacute;os s&eacute;lectionn&eacute;es) est en acc&egrave;s libre. Les articles scientifiques, rapports de congr&egrave;s d&eacute;taill&eacute;s et lives sont r&eacute;serv&eacute;s aux membres inscrits.</div></div>
+              </div>
+              <div class="faq_item" data-faq-num="03">
+                <button class="faq_question">
+                  <span class="faq_num">03</span>
+                  <span class="faq_q-text">Qui r&eacute;dige les articles&nbsp;?</span>
+                  <svg class="faq_icon" viewBox="0 0 12 18"><path d="M6.60449 8.39551H12V9.59473H6.60449V15H5.40527V9.59473H0V8.39551H5.40527V3H6.60449V8.39551Z" fill="currentColor"/></svg>
+                </button>
+                <div class="faq_answer"><div class="faq_answer-inner">Nos articles sont r&eacute;dig&eacute;s par des praticiens sp&eacute;cialis&eacute;s et valid&eacute;s par notre comit&eacute; scientifique, compos&eacute; d'experts reconnus en chirurgie digestive et oncologie.</div></div>
+              </div>
+              <div class="faq_item" data-faq-num="04">
+                <button class="faq_question">
+                  <span class="faq_num">04</span>
+                  <span class="faq_q-text">Comment acc&eacute;der aux contenus r&eacute;serv&eacute;s&nbsp;?</span>
+                  <svg class="faq_icon" viewBox="0 0 12 18"><path d="M6.60449 8.39551H12V9.59473H6.60449V15H5.40527V9.59473H0V8.39551H5.40527V3H6.60449V8.39551Z" fill="currentColor"/></svg>
+                </button>
+                <div class="faq_answer"><div class="faq_answer-inner">Il suffit de cr&eacute;er un compte gratuit avec vos informations professionnelles. Vous recevrez vos identifiants par email pour acc&eacute;der &agrave; l'espace priv&eacute;.</div></div>
+              </div>
+              <div class="faq_item" data-faq-num="05">
+                <button class="faq_question">
+                  <span class="faq_num">05</span>
+                  <span class="faq_q-text">Les vid&eacute;os sont-elles des lives ou des rediffusions&nbsp;?</span>
+                  <svg class="faq_icon" viewBox="0 0 12 18"><path d="M6.60449 8.39551H12V9.59473H6.60449V15H5.40527V9.59473H0V8.39551H5.40527V3H6.60449V8.39551Z" fill="currentColor"/></svg>
+                </button>
+                <div class="faq_answer"><div class="faq_answer-inner">Les deux. Nous organisons des sessions en direct sur YouTube avec des experts, et toutes les sessions sont ensuite disponibles en rediffusion sur la plateforme.</div></div>
+              </div>
+              <div class="faq_item" data-faq-num="06">
+                <button class="faq_question">
+                  <span class="faq_num">06</span>
+                  <span class="faq_q-text">Comment sont prot&eacute;g&eacute;es mes donn&eacute;es personnelles&nbsp;?</span>
+                  <svg class="faq_icon" viewBox="0 0 12 18"><path d="M6.60449 8.39551H12V9.59473H6.60449V15H5.40527V9.59473H0V8.39551H5.40527V3H6.60449V8.39551Z" fill="currentColor"/></svg>
+                </button>
+                <div class="faq_answer"><div class="faq_answer-inner">Vos donn&eacute;es sont trait&eacute;es conform&eacute;ment au RGPD et &agrave; la r&eacute;glementation marocaine en vigueur. Elles ne sont jamais partag&eacute;es avec des tiers sans votre consentement.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="padding-global">
+        <div class="container-large">
+          <!-- Footer top: Newsletter + CTA cards -->
+          <div class="footer_padding-vertical">
+            <div class="footer_top">
+              <!-- Left: Dark newsletter card -->
+              <div class="footer_left-card">
+                <div>
+                  <div style="margin-bottom:24px;">
+                    <h2 class="footer_left-heading animate-on-scroll">Restez inform&eacute;</h2>
+                  </div>
+                  <div style="margin-bottom:48px;">
+                    <p class="footer_subtext">Recevez chaque semaine une synth&egrave;se des derni&egrave;res publications en oncologie digestive.</p>
+                  </div>
+                </div>
+                <form class="footer_email-form" onsubmit="event.preventDefault();">
+                  <input type="email" class="footer_email-input" placeholder="Votre email professionnel" required>
+                  <button type="submit" class="footer_subscribe-btn">S'abonner</button>
+                </form>
+              </div>
+
+              <!-- Right: Cream CTA card -->
+              <div class="footer_right-card">
+                <div class="footer_right-icon">
+                  <svg width="23" height="24" viewBox="0 0 24 24" fill="none"><circle cx="4" cy="4" r="2.5" fill="#E9E6DD"/><circle cx="12" cy="4" r="2.5" fill="#72604F"/><circle cx="20" cy="4" r="2.5" fill="#E9E6DD"/><circle cx="4" cy="12" r="2.5" fill="#72604F"/><circle cx="12" cy="12" r="2.5" fill="#E9E6DD"/><circle cx="20" cy="12" r="2.5" fill="#72604F"/><circle cx="4" cy="20" r="2.5" fill="#E9E6DD"/><circle cx="12" cy="20" r="2.5" fill="#72604F"/><circle cx="20" cy="20" r="2.5" fill="#E9E6DD"/></svg>
+                </div>
+                <div style="margin-bottom:32px;">
+                  <h2 class="footer_right-heading animate-on-scroll">Acc&eacute;dez &agrave; l'information oncologique de r&eacute;f&eacute;rence.</h2>
+                </div>
+                <div>
+                  <a href="inscription.html" class="footer_cta-btn">
+                    Cr&eacute;er mon compte
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 0.77C7.27 0.77 6.69 1.36 6.69 2.08C6.69 2.81 7.27 3.4 8 3.4C8.73 3.4 9.31 2.81 9.31 2.08C9.31 1.36 8.73 0.77 8 0.77Z" fill="currentColor"/><path d="M8 5.77C7.27 5.77 6.69 6.36 6.69 7.08C6.69 7.81 7.27 8.4 8 8.4C8.73 8.4 9.31 7.81 9.31 7.08C9.31 6.36 8.73 5.77 8 5.77Z" fill="currentColor"/><path d="M8 10.77C7.27 10.77 6.69 11.36 6.69 12.08C6.69 12.81 7.27 13.4 8 13.4C8.73 13.4 9.31 12.81 9.31 12.08C9.31 11.36 8.73 10.77 8 10.77Z" fill="currentColor"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer links section -->
+          <div class="footer_links-section">
+            <div class="footer_links-bottom">
+              <div class="footer_links">
+                <!-- Left: OncoDigest logo -->
+                <div class="footer_links-left">
+                  <a href="index.html" class="footer_logo-box">
+                    <span style="font-family:'Reckless Rockfi',serif;font-size:18px;font-weight:400;color:var(--cod-gray--900);display:flex;align-items:center;justify-content:center;width:56px;height:56px;border:1px solid #EDEDED;border-radius:6px;">LOGO</span>
+                  </a>
+                </div>
+                <!-- Right: 4-column link grid -->
+                <div class="footer_links-right">
+                  <div class="footer_link-column">
+                    <div class="footer_link-heading">Plateforme</div>
+                    <div class="footer_link-list">
+                      <a href="actualites.html">Actualit&eacute;s</a>
+                      <a href="articles-scientifiques.html">Articles</a>
+                      <a href="congres.html">Congr&egrave;s</a>
+                    </div>
+                  </div>
+                  <div class="footer_link-column">
+                    <div class="footer_link-heading">Ressources</div>
+                    <div class="footer_link-list">
+                      <a href="a-propos.html">Comit&eacute; scientifique</a>
+                      <a href="a-propos.html">&Agrave; propos</a>
+                      <a href="contact.html">Contact</a>
+                    </div>
+                  </div>
+                  <div class="footer_link-column">
+                    <div class="footer_link-heading">Nous suivre</div>
+                    <div class="footer_link-list">
+                      <a href="https://youtube.com/" target="_blank" rel="noopener" class="is-btn">YouTube</a>
+                      <a href="https://linkedin.com/company/oncodigest/" target="_blank" rel="noopener" class="is-btn">
+                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none"><path d="M12.96 0.5H1.03C0.46 0.5 0 0.96 0 1.53V13.47C0 14.04 0.46 14.5 1.03 14.5H12.96C13.54 14.5 14 14.04 14 13.47V1.53C14 0.96 13.54 0.5 12.96 0.5ZM4.15 12.47H2.08V5.87H4.15V12.47ZM3.12 4.96C2.45 4.96 1.91 4.42 1.91 3.75C1.91 3.08 2.45 2.54 3.12 2.54C3.79 2.54 4.33 3.08 4.33 3.75C4.33 4.42 3.79 4.96 3.12 4.96ZM11.96 12.47H9.89V9.26C9.89 8.47 9.87 7.45 8.79 7.45C7.69 7.45 7.52 8.31 7.52 9.2V12.47H5.46V5.87H7.44V6.81H7.47C7.74 6.27 8.44 5.7 9.47 5.7C11.56 5.7 11.96 7.08 11.96 8.87V12.47Z" fill="currentColor"/></svg>
+                        LinkedIn
+                      </a>
+                    </div>
+                  </div>
+                  <div class="footer_link-column">
+                    <div class="footer_link-heading">L&eacute;gal</div>
+                    <div class="footer_link-list">
+                      <a href="mentions-legales.html">Mentions l&eacute;gales</a>
+                      <a href="politique-de-confidentialite.html">Politique de confidentialit&eacute;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer credit -->
+          <div class="footer_credit">
+            OncoDigest est une plateforme d'information m&eacute;dicale sp&eacute;cialis&eacute;e en chirurgie digestive et oncologie. Le contenu publi&eacute; a une vocation informative et ne se substitue pas &agrave; l'avis m&eacute;dical. OncoDigest &mdash; oncodigestnews.com
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- .page-wrapper -->
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+
+    // ===== PAGE LOAD TRANSITION =====
+    (function() {
+      const loader = document.getElementById('pageLoader');
+      if (!loader) return;
+      // Skip if already visited this session
+      if (sessionStorage.getItem('oncodigest-visited')) {
+        loader.classList.add('is-hidden');
+        return;
+      }
+      sessionStorage.setItem('oncodigest-visited', '1');
+      window.addEventListener('load', () => {
+        setTimeout(() => loader.classList.add('is-hidden'), 800);
+      });
+      // Fallback: hide after 2s even if load event delays
+      setTimeout(() => loader.classList.add('is-hidden'), 2000);
+    })();
+
+    // ===== NAVBAR =====
+    const navbar = document.getElementById('navbar');
+
+    // ===== BACKGROUND COLOR SHIFT ON SCROLL =====
+    (function() {
+      const body = document.body;
+      // White (#FFFFFF) → Husk-50 (#F7F6EF) — interpolate RGB
+      const startR = 255, startG = 255, startB = 255;
+      const endR = 247, endG = 246, endB = 239;
+
+      function updateBgColor() {
+        const scrollMax = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = Math.min(window.scrollY / (scrollMax * 0.5), 1); // complete by 50%
+        const eased = progress * progress * (3 - 2 * progress); // smoothstep
+        const r = Math.round(startR + (endR - startR) * eased);
+        const g = Math.round(startG + (endG - startG) * eased);
+        const b = Math.round(startB + (endB - startB) * eased);
+        body.style.backgroundColor = `rgb(${r},${g},${b})`;
+      }
+
+      window.addEventListener('scroll', updateBgColor, { passive: true });
+      updateBgColor();
+    })();
+
+    // ===== FAQ ACCORDION + WATERMARK =====
+    (function() {
+      var watermarkNum = document.querySelector('.faq_watermark-num');
+      var currentNum = '01';
+
+      function updateWatermark(num) {
+        if (!watermarkNum || num === currentNum) return;
+        watermarkNum.classList.add('changing');
+        setTimeout(function() {
+          watermarkNum.textContent = num;
+          currentNum = num;
+          watermarkNum.classList.remove('changing');
+        }, 300);
+      }
+
+      document.querySelectorAll('.faq_question').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var item = btn.closest('.faq_item');
+          var isOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq_item.open').forEach(function(i) { i.classList.remove('open'); });
+          if (!isOpen) {
+            item.classList.add('open');
+            updateWatermark(item.getAttribute('data-faq-num') || '01');
+          }
+        });
+      });
+    })();
+
+    // ===== EXPERTISE ACCORDION + IMAGE SWAP =====
+    (function() {
+      const items = document.querySelectorAll('.expertise_item');
+      const images = document.querySelectorAll('.expertise_img');
+      if (!items.length) return;
+
+      items.forEach(item => {
+        const header = item.querySelector('.expertise_item-header');
+        header.addEventListener('click', () => {
+          if (item.classList.contains('active')) return;
+
+          // Deactivate all
+          items.forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.expertise_item-header').setAttribute('aria-expanded', 'false');
+          });
+
+          // Activate clicked
+          item.classList.add('active');
+          header.setAttribute('aria-expanded', 'true');
+
+          // Crossfade images
+          const itemId = item.dataset.item;
+          images.forEach(img => img.classList.remove('active'));
+          const targetImg = document.querySelector(`.expertise_img[data-item="${itemId}"]`);
+          if (targetImg) targetImg.classList.add('active');
+        });
+
+        // Keyboard support
+        header.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            header.click();
+          }
+        });
+        header.setAttribute('tabindex', '0');
+      });
+    })();
+
+    // ===== SCROLL-TRIGGERED ANIMATIONS (enhanced word reveal) =====
+    const italicWords = ['relation', 'accompagnement', 'confiance', 'humaine'];
+
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+
+          // Enhanced word-by-word animation with blur + rotateX
+          if (entry.target.classList.contains('word-animate')) {
+            const html = entry.target.innerHTML;
+            const text = entry.target.textContent;
+            const words = text.split(/\s+/).filter(w => w.length > 0);
+            // Detect line break hints from data attribute
+            const breakAfter = entry.target.dataset.breakAfter || '';
+            entry.target.innerHTML = '';
+            entry.target.classList.add('word-wrap');
+            words.forEach((word, i) => {
+              const span = document.createElement('span');
+              span.className = 'word';
+              // Check for italic emphasis words
+              const cleanWord = word.replace(/[.,;:!?"""'']/g, '').toLowerCase();
+              if (italicWords.includes(cleanWord)) {
+                span.classList.add('word-italic');
+              }
+              span.textContent = word;
+              span.style.transitionDelay = `${i * 0.06}s`;
+              entry.target.appendChild(span);
+              // Insert line break after specified word
+              if (breakAfter && cleanWord === breakAfter) {
+                entry.target.appendChild(document.createElement('br'));
+              }
+              requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                  span.classList.add('visible');
+                });
+              });
+            });
+          }
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    // ===== DOT CONSTELLATION (removed — replaced with CSS-only organic rings) =====
+    (function() {
+      var section = document.querySelector('.padding-section-cta--disabled');
+      if (!section) return;
+
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Grid: 7 columns × 5 rows = 35 dots
+      var COLS = 7, ROWS = 5;
+      var accentSet = { 3:1, 9:1, 16:1, 22:1, 27:1, 33:1 };
+
+      // Connection pairs [dotA, dotB] — selective mesh, not full grid
+      var connections = [
+        // Horizontal (~70%)
+        [0,1],[2,3],[3,4],[5,6],
+        [7,8],[8,9],[11,12],[12,13],
+        [14,15],[16,17],[17,18],[19,20],
+        [21,22],[23,24],[24,25],[26,27],
+        [28,29],[30,31],[32,33],[33,34],
+        // Vertical (~50%)
+        [0,7],[14,21],[21,28],
+        [1,8],[15,22],
+        [9,16],[23,30],
+        [3,10],[17,24],
+        [4,11],[18,25],
+        [5,12],[26,33],
+        [6,13],[20,27],
+        // Diagonal (~25%)
+        [0,8],[3,9],[5,13],[9,17],[13,19],
+        [15,23],[19,27],[21,29],[24,32],[26,32],[27,33]
+      ];
+
+      // Build dot data
+      var dots = [];
+      for (var r = 0; r < ROWS; r++) {
+        for (var c = 0; c < COLS; c++) {
+          var idx = r * COLS + c;
+          dots.push({
+            homeX: 50 + c * 100,
+            homeY: 50 + r * 100,
+            x: 0, y: 0,
+            angle: Math.random() * Math.PI * 2,
+            radius: 4 + Math.random() * 2,
+            speed: 4 + Math.random() * 3,
+            phase: Math.random() * Math.PI * 2,
+            isAccent: !!accentSet[idx],
+            el: null
+          });
+        }
+      }
+
+      // Create SVG
+      var NS = 'http://www.w3.org/2000/svg';
+      var constellationEl = document.createElement('div');
+      constellationEl.className = 'cta_constellation';
+      constellationEl.setAttribute('aria-hidden', 'true');
+
+      var svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('viewBox', '0 0 700 500');
+      svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+      svg.style.width = '100%';
+      svg.style.height = '100%';
+
+      // Lines first (render behind dots)
+      var linesG = document.createElementNS(NS, 'g');
+      var lineEls = [];
+      connections.forEach(function(pair) {
+        var line = document.createElementNS(NS, 'line');
+        line.setAttribute('class', 'constellation-line');
+        var dA = dots[pair[0]], dB = dots[pair[1]];
+        line.setAttribute('x1', dA.homeX);
+        line.setAttribute('y1', dA.homeY);
+        line.setAttribute('x2', dB.homeX);
+        line.setAttribute('y2', dB.homeY);
+        linesG.appendChild(line);
+        lineEls.push({ el: line, a: pair[0], b: pair[1] });
+      });
+      svg.appendChild(linesG);
+
+      // Dots
+      var dotsG = document.createElementNS(NS, 'g');
+      dots.forEach(function(dot) {
+        var circle = document.createElementNS(NS, 'circle');
+        circle.setAttribute('cx', dot.homeX);
+        circle.setAttribute('cy', dot.homeY);
+        circle.setAttribute('r', dot.isAccent ? 2.5 : 1.5);
+        circle.setAttribute('class', 'constellation-dot' + (dot.isAccent ? ' accent' : ''));
+        dotsG.appendChild(circle);
+        dot.el = circle;
+      });
+      svg.appendChild(dotsG);
+
+      constellationEl.appendChild(svg);
+      section.appendChild(constellationEl);
+
+      // Breathing animation — runs from page load so dots are mid-float on fade-in
+      var animId = null;
+      function breathe(time) {
+        var t = time / 1000;
+        for (var i = 0; i < dots.length; i++) {
+          var d = dots[i];
+          var cycle = Math.sin((t / d.speed) * Math.PI * 2 + d.phase);
+          d.x = Math.cos(d.angle) * d.radius * cycle;
+          d.y = Math.sin(d.angle) * d.radius * cycle;
+          d.el.setAttribute('cx', d.homeX + d.x);
+          d.el.setAttribute('cy', d.homeY + d.y);
+
+          // Accent opacity pulse (0.667–1.0 relative)
+          if (d.isAccent) {
+            var pulse = 0.667 + 0.333 * (0.5 + 0.5 * Math.sin(t * 0.8 + d.phase * 1.3));
+            d.el.style.opacity = pulse;
+          }
+        }
+        // Update line endpoints to follow dots
+        for (var j = 0; j < lineEls.length; j++) {
+          var L = lineEls[j];
+          var dA = dots[L.a], dB = dots[L.b];
+          L.el.setAttribute('x1', dA.homeX + dA.x);
+          L.el.setAttribute('y1', dA.homeY + dA.y);
+          L.el.setAttribute('x2', dB.homeX + dB.x);
+          L.el.setAttribute('y2', dB.homeY + dB.y);
+        }
+        animId = requestAnimationFrame(breathe);
+      }
+
+      // Start animation immediately (dots drift while invisible)
+      if (!reducedMotion) {
+        animId = requestAnimationFrame(breathe);
+      }
+
+      // Fade in on scroll
+      var ctaObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            constellationEl.classList.add('is-visible');
+            ctaObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      ctaObs.observe(section);
+    })();
+
+    // ===== VENETIAN REVEAL (Promesse section) =====
+    (function() {
+      const scrollSpace = document.getElementById('promesseScrollSpace');
+      const container = document.getElementById('promesseStripsContainer');
+      const bgHeading = document.getElementById('promesseBgHeading');
+      const panel = document.getElementById('promessePanel');
+
+      if (!scrollSpace || !container) return;
+
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isMobile = window.innerWidth <= 1024;
+
+      const STRIP_COUNT = 10;
+      const IMG_URL = 'data/IMG_0024.jpg';
+
+      // Create strips — slight overlap (0.5%) to eliminate sub-pixel seam gaps
+      const OVERLAP = 0.5;
+      for (let i = 0; i < STRIP_COUNT; i++) {
+        const strip = document.createElement('div');
+        strip.className = 'promesse_strip';
+
+        const stripH = 100 / STRIP_COUNT;
+        strip.style.height = (stripH + OVERLAP) + '%';
+        strip.style.top = (i * stripH) + '%';
+        strip.style.backgroundImage = 'url("' + IMG_URL + '")';
+        strip.style.backgroundSize = '100% ' + (STRIP_COUNT * 100) + '%';
+        strip.style.backgroundPosition = 'center ' + (i / (STRIP_COUNT - 1)) * 100 + '%';
+
+        strip.dataset.index = i;
+        strip.dataset.dir = i % 2 === 0 ? '-1' : '1';
+
+        // Initial state: off-screen (desktop only)
+        if (!reducedMotion && !isMobile) {
+          strip.style.transform = 'translateX(' + (parseInt(strip.dataset.dir) * 110) + '%)';
+        }
+
+        container.appendChild(strip);
+      }
+
+      // Skip animation for reduced motion or mobile
+      if (reducedMotion || isMobile) {
+        if (panel) panel.classList.add('visible');
+        return;
+      }
+
+      const strips = container.querySelectorAll('.promesse_strip');
+
+      function updateVenetian() {
+        const rect = scrollSpace.getBoundingClientRect();
+        const scrollH = scrollSpace.offsetHeight - window.innerHeight;
+        if (scrollH <= 0) return;
+
+        let progress = -rect.top / scrollH;
+        progress = Math.max(0, Math.min(1, progress));
+
+        // Phase 1: Strips slide in (progress 0 → 0.5)
+        strips.forEach(function(strip, i) {
+          var dir = parseInt(strip.dataset.dir);
+          var stagger = i * 0.025;
+          var stripProg = Math.max(0, Math.min(1, (progress - stagger) / 0.42));
+          // Ease out cubic
+          var eased = 1 - Math.pow(1 - stripProg, 3);
+          var xOffset = (1 - eased) * dir * 110;
+
+          // Phase 1.5: Gaps close (progress 0.35 → 0.6)
+          var gapProg = Math.max(0, Math.min(1, (progress - 0.35) / 0.25));
+          var gapEased = 1 - Math.pow(1 - gapProg, 2);
+          var maxGap = 5;
+          var currentGap = maxGap * (1 - gapEased);
+          var totalGap = (STRIP_COUNT - 1) * currentGap;
+          var yOffset = i * currentGap - totalGap / 2;
+
+          strip.style.transform = 'translateX(' + xOffset + '%) translateY(' + yOffset + 'px)';
+
+          // Motion blur — strips blur while moving, sharpen when settled
+          var velocity = Math.abs(1 - eased); // 1 = full speed, 0 = settled
+          var blurAmount = velocity * 3; // max 3px blur
+          strip.style.filter = blurAmount > 0.1 ? 'blur(' + blurAmount.toFixed(1) + 'px)' : 'none';
+
+          // Shadow cascade — stronger shadows while separated, dissolve when assembled
+          var shadowStrength = (1 - gapEased) * 0.08;
+          if (shadowStrength > 0.005) {
+            strip.style.boxShadow = '0 2px 6px rgba(0,0,0,' + shadowStrength.toFixed(3) + '), 0 0 2px rgba(0,0,0,' + (shadowStrength * 0.5).toFixed(3) + ')';
+          } else {
+            strip.style.boxShadow = 'none';
+          }
+        });
+
+        // Background heading fades as gaps close (0.25 → 0.5)
+        if (bgHeading) {
+          var headingOpacity = 1 - Math.max(0, Math.min(1, (progress - 0.25) / 0.25));
+          bgHeading.style.opacity = headingOpacity;
+        }
+
+        // Panel appears (0.55 threshold)
+        if (panel) {
+          if (progress > 0.55) {
+            panel.classList.add('visible');
+          } else {
+            panel.classList.remove('visible');
+          }
+        }
+
+      }
+
+      // Scroll listener with rAF throttle
+      var ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            updateVenetian();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      // Initial state
+      updateVenetian();
+    })();
+
+    // ===== STACKED DOSSIERS (Advisors section) =====
+    (function() {
+      var scrollSpace = document.getElementById('advisorsScrollSpace');
+      var cardsArea = document.getElementById('advisorsCardsArea');
+      var desc = document.getElementById('advisorsDesc');
+      var buttons = document.getElementById('advisorsButtons');
+
+      if (!scrollSpace || !cardsArea) return;
+
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var isMobile = window.innerWidth <= 1024;
+
+      var cards = cardsArea.querySelectorAll('.advisor_card');
+
+      // Skip animation for reduced motion or mobile
+      if (reducedMotion || isMobile) {
+        cards.forEach(function(c) { c.classList.add('placed'); });
+        if (desc) desc.classList.add('visible');
+        if (buttons) buttons.classList.add('visible');
+        return;
+      }
+
+      // Stack configuration per card
+      var stackConfigs = [
+        { dx: -18, dy: -8, r: -2.5, z: 3 },
+        { dx: 12, dy: 6, r: 1.8, z: 2 },
+        { dx: -6, dy: 14, r: -1.2, z: 1 }
+      ];
+
+      // Calculate how far each card needs to translate to reach center
+      function calcOffsets() {
+        var areaW = cardsArea.offsetWidth;
+        cards.forEach(function(card, i) {
+          var cardW = card.offsetWidth;
+          var centerX = (areaW - cardW) / 2;
+          var cardLeft = card.offsetLeft;
+          card._stackDx = centerX - cardLeft + stackConfigs[i].dx;
+          card._stackDy = stackConfigs[i].dy;
+          card._stackR = stackConfigs[i].r;
+          card._stackZ = stackConfigs[i].z;
+        });
+      }
+
+      calcOffsets();
+      window.addEventListener('resize', calcOffsets);
+
+      // Set initial stacked state
+      cards.forEach(function(card) {
+        card.style.transform = 'translateX(' + card._stackDx + 'px) translateY(' + card._stackDy + 'px) rotate(' + card._stackR + 'deg)';
+        card.style.zIndex = card._stackZ;
+      });
+
+      // Card peel timing (staggered)
+      var cardTimings = [
+        { start: 0.08, end: 0.33 },
+        { start: 0.22, end: 0.48 },
+        { start: 0.36, end: 0.62 }
+      ];
+
+      function easeOutBack(x) {
+        var c1 = 1.70158;
+        var c3 = c1 + 1;
+        return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2);
+      }
+
+      function updateDossiers() {
+        var rect = scrollSpace.getBoundingClientRect();
+        var scrollH = scrollSpace.offsetHeight - window.innerHeight;
+        if (scrollH <= 0) return;
+
+        var progress = -rect.top / scrollH;
+        progress = Math.max(0, Math.min(1, progress));
+
+        cards.forEach(function(card, i) {
+          var timing = cardTimings[i];
+          var cardProg = Math.max(0, Math.min(1, (progress - timing.start) / (timing.end - timing.start)));
+          var eased = easeOutBack(cardProg);
+
+          var dx = card._stackDx * (1 - eased);
+          var dy = card._stackDy * (1 - eased);
+          var r = card._stackR * (1 - eased);
+
+          card.style.transform = 'translateX(' + dx + 'px) translateY(' + dy + 'px) rotate(' + r + 'deg)';
+
+          // Z-index: stacked order during animation, flat after
+          card.style.zIndex = cardProg < 0.95 ? card._stackZ : 1;
+
+          // Shadow lifts while peeling, settles after
+          if (cardProg > 0.02 && cardProg < 0.85) {
+            var lift = Math.sin(cardProg * Math.PI);
+            card.style.boxShadow = '0 ' + (4 + lift * 24) + 'px ' + (12 + lift * 40) + 'px rgba(0,0,0,' + (0.04 + lift * 0.08).toFixed(3) + ')';
+          } else if (cardProg >= 0.85) {
+            card.style.boxShadow = '0 4px 20px rgba(0,0,0,0.04)';
+          }
+
+          // Quote + info reveal after card is 75% placed
+          if (cardProg > 0.75) {
+            card.classList.add('placed');
+          } else {
+            card.classList.remove('placed');
+          }
+        });
+
+        // Description text
+        if (desc) {
+          if (progress > 0.3) desc.classList.add('visible');
+          else desc.classList.remove('visible');
+        }
+
+        // Buttons
+        if (buttons) {
+          if (progress > 0.72) buttons.classList.add('visible');
+          else buttons.classList.remove('visible');
+        }
+      }
+
+      var ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            updateDossiers();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      updateDossiers();
+    })();
+
+    // ===== ANIMATED NUMBER COUNTERS =====
+    (function() {
+      const statValues = document.querySelectorAll('.stat-value[data-count]');
+      if (!statValues.length) return;
+
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.dataset.count);
+            const suffix = el.dataset.suffix || '';
+            const prefix = el.dataset.prefix || '';
+            const duration = 2000;
+            const startTime = performance.now();
+
+            function animate(currentTime) {
+              const elapsed = currentTime - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              // Ease-out cubic
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const current = Math.round(target * eased);
+              el.textContent = prefix + current + suffix;
+              if (progress < 1) {
+                requestAnimationFrame(animate);
+              }
+            }
+
+            requestAnimationFrame(animate);
+            counterObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      statValues.forEach(el => counterObserver.observe(el));
+    })();
+
+    // ===== PARTNER LOGOS CAROUSEL =====
+    (function() {
+      const items = Array.from(document.querySelectorAll('.partner-item'));
+      if (items.length < 5) return;
+      const allLogos = items.map(item => item.innerHTML);
+
+      function shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+
+      const staggerOut = [0, 40, 80, 120, 160];
+      const staggerIn = [160, 120, 80, 40, 0];
+      let cycleDirection = 0;
+
+      function fadeOut(callback) {
+        const delays = cycleDirection === 0 ? staggerOut : [...staggerOut].reverse();
+        items.forEach((item, i) => {
+          setTimeout(() => { item.style.opacity = '0'; }, delays[i]);
+        });
+        setTimeout(callback, 660);
+      }
+
+      function fadeIn() {
+        const delays = cycleDirection === 0 ? staggerIn : [...staggerIn].reverse();
+        items.forEach((item, i) => {
+          setTimeout(() => { item.style.opacity = '1'; }, delays[i]);
+        });
+      }
+
+      function cycle() {
+        fadeOut(() => {
+          const shuffled = shuffle(allLogos);
+          items.forEach((item, i) => { item.innerHTML = shuffled[i]; });
+          cycleDirection = 1 - cycleDirection;
+          fadeIn();
+        });
+      }
+
+      setInterval(cycle, 3000);
+    })();
+
+    // ===== HERO PARALLAX (desktop only) =====
+    (function() {
+      const heroImg = document.querySelector('.hero_img-inner img');
+      const heroSection = document.querySelector('.section_hero');
+      const heroOverlay = document.querySelector('.hero_img-overlay');
+      const heroImgInner = document.querySelector('.hero_img-inner');
+      if (!heroImg || !heroSection) return;
+
+      // Disable parallax on mobile — image is too small, causes jank
+      if (window.innerWidth <= 1024) return;
+
+      function updateParallax() {
+        const scrollY = window.scrollY;
+        const sectionTop = heroSection.offsetTop;
+        const sectionHeight = heroSection.offsetHeight;
+        const scrollInSection = scrollY - sectionTop;
+
+        if (scrollY < sectionTop + sectionHeight && scrollY + window.innerHeight > sectionTop) {
+          const parallaxOffset = Math.max(0, scrollInSection * 0.3);
+          heroImg.style.transform = `translateY(${parallaxOffset}px)`;
+
+          // Detect when the image has scrolled up past the overlay
+          if (heroOverlay) {
+            const wrapperRect = heroOverlay.parentElement.getBoundingClientRect();
+            const imgNaturalBottom = wrapperRect.top + heroImg.offsetHeight - parallaxOffset;
+            const overlayTop = heroOverlay.getBoundingClientRect().top;
+            if (imgNaturalBottom < overlayTop + 30) {
+              heroOverlay.classList.add('is-outside');
+            } else {
+              heroOverlay.classList.remove('is-outside');
+            }
+          }
+        }
+      }
+
+      window.addEventListener('scroll', updateParallax, { passive: true });
+      updateParallax();
+    })();
+
+    // ===== HERO TYPEWRITER =====
+    (function() {
+      const el = document.getElementById('typewriterText');
+      if (!el) return;
+
+      const words = ['les chirurgiens', 'les oncologues', 'les gastro-ent\u00e9rologues', 'les internes'];
+      let wordIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let pauseTimer = null;
+
+      const typeSpeed = 65;    // ms per character when typing
+      const deleteSpeed = 35;  // ms per character when deleting
+      const pauseAfterType = 2200;  // ms to hold the completed word
+      const pauseAfterDelete = 400; // ms pause before typing next word
+
+      function tick() {
+        const currentWord = words[wordIndex];
+
+        if (!isDeleting) {
+          // Typing
+          charIndex++;
+          el.textContent = currentWord.substring(0, charIndex);
+
+          if (charIndex === currentWord.length) {
+            // Word complete — pause then delete
+            pauseTimer = setTimeout(() => {
+              isDeleting = true;
+              tick();
+            }, pauseAfterType);
+            return;
+          }
+          setTimeout(tick, typeSpeed);
+        } else {
+          // Deleting
+          charIndex--;
+          el.textContent = currentWord.substring(0, charIndex);
+
+          if (charIndex === 0) {
+            // Fully deleted — move to next word
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(tick, pauseAfterDelete);
+            return;
+          }
+          setTimeout(tick, deleteSpeed);
+        }
+      }
+
+      // Start with first word already visible
+      el.textContent = words[0];
+      charIndex = words[0].length;
+      setTimeout(() => {
+        isDeleting = true;
+        tick();
+      }, pauseAfterType);
+    })();
+
+    // ===== MAGNETIC BUTTONS =====
+    (function() {
+      if ('ontouchstart' in window || window.innerWidth < 1024) return;
+
+      const magneticBtns = document.querySelectorAll('.btn-dark, .btn-husk, .btn-satin, .footer_cta-btn, .btn-ghost');
+
+      magneticBtns.forEach(btn => {
+        const parent = btn.parentElement;
+
+        parent.addEventListener('mousemove', (e) => {
+          const rect = btn.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+          const distX = e.clientX - centerX;
+          const distY = e.clientY - centerY;
+          const dist = Math.sqrt(distX * distX + distY * distY);
+
+          if (dist < 80) {
+            const strength = (1 - dist / 80) * 0.15;
+            btn.style.transform = `translate(${distX * strength}px, ${distY * strength}px)`;
+          }
+        });
+
+        parent.addEventListener('mouseleave', () => {
+          btn.style.transform = '';
+          btn.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)';
+          setTimeout(() => { btn.style.transition = ''; }, 400);
+        });
+      });
+    })();
+
+    // ===== MOBILE HAMBURGER =====
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.querySelector('.navbar_menu');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        navMenu.style.position = 'fixed';
+        navMenu.style.top = 'var(--nav-height)';
+        navMenu.style.left = '0';
+        navMenu.style.right = '0';
+        navMenu.style.background = '#fff';
+        navMenu.style.flexDirection = 'column';
+        navMenu.style.padding = '24px';
+        navMenu.style.zIndex = '1000';
+        navMenu.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)';
+      });
+    }
+  </script>
+
+</body>
+</html>

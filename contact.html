@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="fr" class="lenis">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact &mdash; OncoDigest</title>
+  <meta name="description" content="Contactez l'&eacute;quipe OncoDigest pour toute question, proposition d'article ou partenariat.">
+  <meta property="og:title" content="Contact &mdash; OncoDigest">
+  <meta property="og:description" content="Contactez l'&eacute;quipe OncoDigest pour toute question, proposition d'article ou partenariat.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <style>
+    @font-face { font-family: Suisseintl; src: url("https://cdn.prod.website-files.com/6895a11a67e50a85e0b93804/68ee1cad62d9c1fccfd5f03b_SuisseIntl-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: Suisseintl; src: url("https://cdn.prod.website-files.com/6895a11a67e50a85e0b93804/68ee1cadc11de1624efedf03_SuisseIntl-Semibold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+    @font-face { font-family: Suisseintl; src: url("https://cdn.prod.website-files.com/6895a11a67e50a85e0b93804/68ee1cad44f80664433a7b37_SuisseIntl-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Reckless Rockfi"; src: url("https://cdn.prod.website-files.com/6895a11a67e50a85e0b93804/69847290f07aedca6d0153bf_Reckless-RockFi.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+  </style>
+
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --cod-gray--0: #fff;
+      --cod-gray--50: #ededed;
+      --cod-gray--100: #e5e5e5;
+      --cod-gray--200: #d1d1d1;
+      --cod-gray--300: #b0b0b0;
+      --cod-gray--400: #888;
+      --cod-gray--500: #6d6d6d;
+      --cod-gray--600: #5d5d5d;
+      --cod-gray--700: #4c4c4c;
+      --cod-gray--800: #333;
+      --cod-gray--900: #242424;
+      --cod-gray--950: #0f0f0f;
+
+      --canary--300: #f0ff4d;
+      --canary--400: #e2f625;
+      --canary--900: #4b590e;
+      --canary--950: #283201;
+
+      --husk--50: #f7f6ef;
+      --husk--600: #82734c;
+      --husk--900: #514932;
+
+      --satin-linen--50: #f9f7f3;
+      --satin-linen--100: #e9e6dd;
+      --satin-linen--800: #5b4c3e;
+      --satin-linen--900: #3d3229;
+
+      --nav-height: 52px;
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: Suisseintl, Arial, sans-serif;
+      font-size: 13.3333px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: -0.285715px;
+      color: rgb(93, 93, 93);
+      background: #fff;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    ul, ol { list-style: none; }
+    button { border: none; cursor: pointer; font-family: inherit; }
+
+    /* ===== LAYOUT UTILS ===== */
+    .padding-global { padding-left: 11.4286px; padding-right: 11.4286px; }
+    .container-large { max-width: 1440px; margin: 0 auto; width: 100%; }
+
+    /* ===== NAVBAR — SLIM SOLID BAR ===== */
+    .nav_fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      height: var(--nav-height);
+      background: #fff;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .navbar_component {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .navbar_logo-link {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .navbar_logo-link svg { width: 76px; height: 21px; color: var(--cod-gray--900); }
+
+    .navbar_menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .navbar_link {
+      font-size: 12.5px;
+      font-weight: 400;
+      color: var(--cod-gray--500);
+      position: relative;
+      transition: color 0.2s ease;
+      white-space: nowrap;
+    }
+    .navbar_link:hover {
+      color: var(--cod-gray--900);
+    }
+    .navbar_link.is-active {
+      color: var(--cod-gray--900);
+      font-weight: 500;
+    }
+    /* Dot separator between links */
+    .navbar_link + .navbar_link::before {
+      content: '';
+      position: absolute;
+      left: -18px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--cod-gray--200);
+    }
+    .navbar_link::after { display: none; }
+
+    .navbar_button-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .navbar_button-wrapper .btn {
+      font-size: 12px;
+    }
+    .navbar_button-wrapper .btn-white {
+      background: transparent;
+      color: var(--cod-gray--600);
+      border: none;
+      padding: 7px 0;
+    }
+    .navbar_button-wrapper .btn-white:hover {
+      color: var(--cod-gray--900);
+      background: transparent;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 32px;
+      font-size: 12.3809px;
+      font-weight: 400;
+      font-family: Suisseintl, Arial, sans-serif;
+      letter-spacing: -0.285715px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .btn-sm { padding: 8.84354px 15.9183px; }
+    .btn-white {
+      background: #fff;
+      color: var(--cod-gray--700);
+      border: 0px none;
+    }
+    .btn-white:hover { background: var(--cod-gray--50); }
+    .btn-yellow {
+      background: var(--canary--300);
+      color: var(--canary--900);
+      border: 0px none;
+      padding: 7.8px 13.9905px;
+      gap: 10.08px;
+    }
+    .btn-yellow:hover { background: var(--canary--400); }
+    .btn-dark {
+      background: var(--cod-gray--900);
+      color: #fff;
+      border: 0px none;
+      gap: 4px;
+      letter-spacing: -0.2px;
+    }
+    .btn-dark:hover { background: var(--cod-gray--800); }
+    .btn-husk {
+      background: var(--husk--900);
+      color: var(--husk--50);
+      border: none;
+      gap: 4px;
+      line-height: 18.5714px;
+    }
+    .btn-husk:hover { opacity: 0.9; }
+    .btn-satin {
+      background: var(--satin-linen--900);
+      color: var(--satin-linen--50);
+      border: 0px none;
+    }
+    .btn-satin:hover { opacity: 0.9; }
+    .btn-glass {
+      background: rgba(255,255,255,0.15);
+      color: var(--cod-gray--50);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6.08px;
+      padding: 12.3809px 14.1497px;
+      gap: 10.08px;
+      backdrop-filter: blur(4px);
+    }
+    .btn-glass:hover { background: rgba(255,255,255,0.25); }
+    .btn-text {
+      background: transparent;
+      color: var(--cod-gray--700);
+      border: 1px solid var(--cod-gray--100);
+      border-radius: 32px;
+      padding: 8.84354px 15.9183px;
+    }
+    .btn-text:hover { background: var(--cod-gray--50); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--husk--50);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 32px;
+      padding: 8.84354px 15.9183px;
+      transition: all 0.3s ease;
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    .btn .dot-icon { width: 16px; height: 12px; flex-shrink: 0; }
+    .btn .dot-icon circle, .btn .dot-icon path { transition: opacity 0.3s ease; }
+
+    .icon-sm { width: 12px; height: 12px; }
+
+    /* 3-dot vertical icon (used in nav buttons) */
+    .icon-3dot { width: 12px; height: 12px; flex-shrink: 0; }
+
+    /* Hamburger - hidden on desktop */
+    .navbar_hamburger { display: none; }
+
+    /* ===== PAGE WRAPPER ===== */
+    .page-wrapper { padding-top: var(--nav-height); }
+
+    /* ===== SECTION STYLES ===== */
+    .section-padding { padding: 80px 0; }
+    .section-padding-lg { padding: 100px 0; }
+
+    .tag {
+      display: inline-block;
+      background: var(--cod-gray--50);
+      color: rgb(136, 136, 136);
+      font-size: 12.3809px;
+      padding: 5.30611px 12.3809px;
+      border-radius: 6.19047px;
+      margin-bottom: 20px;
+    }
+    .tag.is-beige {
+      background: var(--husk--50);
+      color: rgb(136, 136, 136);
+      border: 1px solid rgb(213, 211, 179);
+      border-radius: 6.19047px;
+      padding: 5.30611px 12.3809px;
+      line-height: 18.5714px;
+      display: flex;
+      align-items: center;
+      gap: 6.19047px;
+      margin-bottom: 0;
+    }
+
+    .heading-h2 {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: clamp(32px, 3.2vw, 45.7143px);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--cod-gray--900);
+      margin-bottom: 20px;
+    }
+    .heading-h3 {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 38.0952px;
+      font-weight: 400;
+      line-height: 38.0952px;
+      letter-spacing: -1.2px;
+      color: var(--cod-gray--900);
+      margin-bottom: 20px;
+    }
+    .heading-h4 {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: clamp(18px, 1.6vw, 22.86px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--cod-gray--900);
+    }
+
+    .text-body { color: var(--cod-gray--600); font-size: 13.3333px; line-height: 20px; }
+
+    /* Word-by-word animation — enhanced with blur + rotateX for "lens focus" feel */
+    .word-wrap { display: flex; flex-wrap: wrap; gap: 0; perspective: 800px; }
+    .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(50%) rotateX(-20deg);
+      filter: blur(4px);
+      transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                  transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                  filter 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+      margin-right: 0.3em;
+      transform-origin: center bottom;
+    }
+    .word.visible {
+      opacity: 1;
+      transform: translateY(0) rotateX(0);
+      filter: blur(0);
+    }
+
+    /* Italic emphasis for emotional words */
+    .word-italic {
+      font-style: italic;
+    }
+
+    /* ===== BUTTON DOT MORPH ===== */
+    .btn .dot-icon path,
+    .btn .dot-icon circle,
+    .btn .icon-3dot circle,
+    .btn svg path,
+    .btn svg circle {
+      transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s ease;
+      transform-origin: center;
+    }
+    .btn:hover .dot-icon path:nth-child(1),
+    .btn:hover svg.dot-icon path:nth-child(1) {
+      transform: translateY(-1px);
+    }
+    .btn:hover .dot-icon path:nth-child(3),
+    .btn:hover svg.dot-icon path:nth-child(3) {
+      transform: translateY(1px);
+    }
+
+    /* ===== PAGE LOAD TRANSITION ===== */
+    .page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: var(--husk--50);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+                  visibility 0.6s;
+    }
+    .page-loader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .page-loader svg {
+      width: 64px;
+      height: 18px;
+      color: var(--husk--900);
+      animation: loaderFadeIn 0.4s ease both;
+    }
+    @keyframes loaderFadeIn {
+      0% { opacity: 0; transform: translateY(6px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .animate-on-scroll.delay-1 { transition-delay: 0.1s; }
+    .animate-on-scroll.delay-2 { transition-delay: 0.2s; }
+    .animate-on-scroll.delay-3 { transition-delay: 0.3s; }
+
+    /* ===== GRAIN / NOISE OVERLAY ===== */
+    .grain::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: multiply;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 0;
+    }
+    .footer_padding-vertical {
+      padding: 213.333px 0 91.4285px;
+      position: relative;
+    }
+    .footer_top {
+      display: grid;
+      grid-template-columns: 524fr 881fr;
+      gap: 11.4286px;
+    }
+    .footer_left-card {
+      background: rgb(36, 36, 36);
+      border-radius: 5.06667px;
+      padding: 53.3333px 45.7143px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .footer_left-heading {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 38.0952px;
+      font-weight: 400;
+      line-height: 38.0952px;
+      letter-spacing: -1.2px;
+      color: rgb(255, 255, 255);
+      margin: 0;
+    }
+    .footer_subtext {
+      color: rgb(136, 136, 136);
+      font-size: 13.3333px;
+      line-height: 20px;
+      letter-spacing: -0.285715px;
+      font-family: Suisseintl, Arial, sans-serif;
+    }
+    .footer_subtext a {
+      color: rgb(136, 136, 136);
+      text-decoration: underline;
+    }
+    .footer_email-form {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .footer_email-input {
+      flex: 1;
+      padding: 8.84354px 0;
+      border: none;
+      border-bottom: 1px solid rgb(93, 93, 93);
+      border-radius: 0;
+      background: transparent;
+      font-family: Suisseintl, Arial, sans-serif;
+      font-size: 12.3809px;
+      line-height: 17.687px;
+      letter-spacing: -0.2px;
+      color: rgb(255, 255, 255);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .footer_email-input:focus { border-bottom-color: rgb(255, 255, 255); }
+    .footer_email-input::placeholder { color: rgb(136, 136, 136); }
+    .footer_subscribe-btn {
+      background: rgb(255, 255, 255);
+      color: rgb(36, 36, 36);
+      font-family: Suisseintl, Arial, sans-serif;
+      font-size: 12.3809px;
+      font-weight: 400;
+      line-height: 18.5714px;
+      letter-spacing: -0.2px;
+      padding: 8.84354px 15.9183px;
+      border-radius: 32px;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .footer_subscribe-btn:hover { opacity: 0.85; }
+
+    .footer_right-card {
+      background: rgb(249, 247, 243);
+      border-radius: 6.08px;
+      padding: 53.3333px 45.7143px;
+      padding-right: 304.761px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .footer_right-heading {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 45.7143px;
+      font-weight: 400;
+      line-height: 45.7143px;
+      letter-spacing: -0.96px;
+      color: rgb(61, 50, 41);
+      margin: 0;
+    }
+    .footer_right-icon {
+      width: 23px;
+      height: 24px;
+      margin-bottom: 24px;
+    }
+    .footer_cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgb(61, 50, 41);
+      color: rgb(249, 247, 243);
+      font-family: Suisseintl, Arial, sans-serif;
+      font-size: 12.3809px;
+      font-weight: 400;
+      line-height: 18.5714px;
+      letter-spacing: -0.2px;
+      padding: 8.84354px 15.9183px;
+      border-radius: 32px;
+      border: none;
+      text-decoration: none;
+      margin-top: 32px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .footer_cta-btn:hover { opacity: 0.85; }
+    .footer_bg-r {
+      position: absolute;
+      right: -40px;
+      bottom: -40px;
+      width: 341px;
+      height: 385px;
+      color: rgb(233, 230, 221);
+      opacity: 1;
+    }
+
+    .footer_links-section {
+      padding: 11.4286px 0;
+    }
+    .footer_links-bottom {
+      padding: 0 0 91.4285px;
+    }
+    .footer_links {
+      display: grid;
+      grid-template-columns: 524fr 881fr;
+      gap: 11.4286px;
+    }
+    .footer_links-left {
+      display: flex;
+      flex-direction: column;
+      border-radius: 5.06667px;
+    }
+    .footer_logo-box {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 11.4286px;
+    }
+    .footer_logo-box svg { width: 56px; height: 56px; color: var(--cod-gray--900); }
+
+    .footer_links-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 11.4286px;
+    }
+    .footer_link-column {
+      display: block;
+    }
+    .footer_link-heading {
+      font-size: 13.3333px;
+      font-weight: 400;
+      color: rgb(76, 76, 76);
+      line-height: 20px;
+      letter-spacing: -0.285715px;
+      font-family: Suisseintl, Arial, sans-serif;
+      margin-bottom: 8px;
+    }
+    .footer_link-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .footer_link-list a {
+      display: block;
+      font-size: 13.3333px;
+      color: rgb(136, 136, 136);
+      line-height: 20px;
+      letter-spacing: -0.285715px;
+      padding: 2.08px 0;
+      transition: color 0.2s;
+      font-family: Suisseintl, Arial, sans-serif;
+    }
+    .footer_link-list a:hover { color: rgb(76, 76, 76); }
+    .footer_link-list a.is-btn {
+      display: flex;
+      align-items: center;
+      gap: 6.08px;
+    }
+
+    .footer_credit {
+      padding: 11.4286px;
+      font-size: 12.3809px;
+      color: rgb(136, 136, 136);
+      line-height: 18.5714px;
+      letter-spacing: -0.285715px;
+      font-family: Suisseintl, Arial, sans-serif;
+    }
+
+    /* ===== PAGE-SPECIFIC: CONTACT ===== */
+    .section_contact {
+      padding: 120px 0 80px;
+    }
+
+    .contact_grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contact_email-link {
+      display: inline-block;
+      margin-top: 32px;
+      font-size: 14px;
+      color: var(--cod-gray--700);
+      text-decoration: underline;
+    }
+
+    .contact_social-row {
+      display: flex;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .contact_social-link {
+      display: flex;
+      align-items: center;
+      gap: 6.08px;
+      font-size: 13.3333px;
+      color: rgb(136, 136, 136);
+      line-height: 20px;
+      letter-spacing: -0.285715px;
+      font-family: Suisseintl, Arial, sans-serif;
+      transition: color 0.2s;
+    }
+    .contact_social-link:hover {
+      color: rgb(76, 76, 76);
+    }
+
+    /* Contact Form */
+    .contact_form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact_field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact_label {
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--cod-gray--600);
+      margin-bottom: 8px;
+      font-family: Suisseintl, Arial, sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    .contact_input,
+    .contact_select,
+    .contact_textarea {
+      padding: 14px 16px;
+      border: 1px solid var(--cod-gray--200);
+      border-radius: 8px;
+      font-family: Suisseintl, Arial, sans-serif;
+      font-size: 15px;
+      background: var(--satin-linen--50);
+      color: var(--cod-gray--900);
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .contact_input:focus,
+    .contact_select:focus,
+    .contact_textarea:focus {
+      border-color: var(--cod-gray--400);
+    }
+
+    .contact_input::placeholder,
+    .contact_textarea::placeholder {
+      color: var(--cod-gray--400);
+    }
+
+    .contact_select {
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23888' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    .contact_textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .contact_submit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+      font-family: Suisseintl, Arial, sans-serif;
+      font-weight: 400;
+      letter-spacing: -0.2px;
+      background: var(--cod-gray--900);
+      color: #fff;
+      border: none;
+      border-radius: 32px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 8px;
+    }
+    .contact_submit:hover {
+      background: var(--cod-gray--800);
+    }
+
+    .contact_success {
+      display: none;
+      font-size: 15px;
+      color: var(--husk--900);
+      text-align: center;
+      padding: 24px;
+      background: var(--husk--50);
+      border-radius: 12px;
+    }
+
+    /* ===== REDUCED MOTION ===== */
+    @media (prefers-reduced-motion: reduce) {
+      .word {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+      }
+      .animate-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .page-loader {
+        display: none !important;
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .navbar_link { font-size: 11.5px; }
+      .navbar_menu { gap: 24px; }
+      .navbar_link + .navbar_link::before { left: -14px; }
+      .navbar_button-wrapper .btn-white { display: none; }
+      .navbar_component { padding: 0 20px; }
+
+      .footer_top { grid-template-columns: 1fr; }
+      .footer_right-card { padding-right: 45.7143px; }
+      .footer_links { grid-template-columns: 1fr; }
+      .footer_links-right { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .navbar_component { padding: 0 12px; }
+      .padding-global { padding-left: 16px; padding-right: 16px; }
+      .navbar_menu { display: none; }
+      .navbar_hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 8px;
+      }
+      .navbar_hamburger span { display: block; width: 18px; height: 1.5px; background: var(--cod-gray--900); transition: all 0.3s; }
+      .navbar_button-wrapper .btn-white { display: none; }
+      .btn { min-height: 44px; }
+      .contact_input,
+      .contact_select,
+      .contact_textarea { min-height: 44px; font-size: 16px; }
+      .contact_textarea { min-height: 120px; }
+      .heading-h2 { font-size: clamp(28px, 7vw, 40px); }
+
+      .contact_grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section_contact {
+        padding: 80px 0 60px;
+      }
+
+      .contact_social-row {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .footer_links-right { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .footer_links-right { grid-template-columns: 1fr; }
+      .section-padding { padding: 48px 0; }
+      .section_contact { padding: 48px 0; }
+      .contact_input,
+      .contact_select,
+      .contact_textarea { padding: 12px 14px; }
+      .contact_textarea { min-height: 120px; }
+      .contact_social-row { gap: 8px; }
+      .contact_email-link { margin-top: 20px; }
+    }
+
+    @media (max-width: 390px) {
+      .navbar_button-wrapper .btn-yellow { font-size: 11px; padding: 6px 12px; }
+    }
+
+    @media (max-width: 360px) {
+      .navbar_component { padding: 0 10px; }
+      .padding-global { padding-left: 12px; padding-right: 12px; }
+      .btn { font-size: 12px; padding: 8px 14px; min-height: 44px; }
+      .heading-h2 { font-size: 24px; }
+      .contact_label { font-size: 12px; }
+      .contact_input,
+      .contact_select,
+      .contact_textarea { padding: 10px 12px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body class="grain">
+
+  <!-- ===== PAGE LOAD TRANSITION ===== -->
+  <div class="page-loader" id="pageLoader">
+    <span style="font-family:'Reckless Rockfi',serif;font-size:24px;font-weight:400;color:var(--husk--900);">LOGO</span>
+  </div>
+
+  <!-- ===== FIXED NAVBAR ===== -->
+  <div class="nav_fixed" id="navbar">
+    <div class="navbar_component">
+      <a href="index.html" class="navbar_logo-link">
+        <!-- OncoDigest logo SVG -->
+        <span style="font-family:'Reckless Rockfi',serif;font-size:20px;font-weight:400;color:var(--cod-gray--900);letter-spacing:-0.5px;">LOGO</span>
+      </a>
+
+      <nav class="navbar_menu">
+        
+        <a href="articles-scientifiques.html" class="navbar_link">Publications</a>
+        <a href="congres.html" class="navbar_link">Congr&egrave;s</a>
+        <a href="videos.html" class="navbar_link">Vid&eacute;os</a>
+        <a href="contact.html" class="navbar_link is-active">Contact</a>
+      </nav>
+
+      <div class="navbar_button-wrapper">
+        <a href="inscription.html" class="btn btn-white btn-sm">
+          S'inscrire
+        </a>
+        <a href="connexion.html" class="btn btn-yellow btn-sm">Acc&egrave;s Pro</a>
+      </div>
+
+      <div class="navbar_hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PAGE WRAPPER ===== -->
+  <div class="page-wrapper">
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section class="section_contact">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="contact_grid">
+
+            <!-- Left Column -->
+            <div class="contact_left">
+              <div class="tag animate-on-scroll">Contact</div>
+              <h1 class="heading-h2 animate-on-scroll word-animate">Contactez-nous.</h1>
+              <p class="text-body animate-on-scroll delay-1" style="margin-top: 16px;">Une question, une proposition d'article, un partenariat ? &Eacute;crivez-nous.</p>
+              <a href="mailto:contact@oncodigestnews.com" class="contact_email-link animate-on-scroll delay-2">contact@oncodigestnews.com</a>
+              <div class="contact_social-row animate-on-scroll delay-3">
+                <a href="https://youtube.com/" target="_blank" rel="noopener" class="contact_social-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                  YouTube
+                </a>
+                <a href="https://linkedin.com/company/oncodigest/" target="_blank" rel="noopener" class="contact_social-link">
+                  <svg width="14" height="15" viewBox="0 0 14 15" fill="none"><path d="M12.96 0.5H1.03C0.46 0.5 0 0.96 0 1.53V13.47C0 14.04 0.46 14.5 1.03 14.5H12.96C13.54 14.5 14 14.04 14 13.47V1.53C14 0.96 13.54 0.5 12.96 0.5ZM4.15 12.47H2.08V5.87H4.15V12.47ZM3.12 4.96C2.45 4.96 1.91 4.42 1.91 3.75C1.91 3.08 2.45 2.54 3.12 2.54C3.79 2.54 4.33 3.08 4.33 3.75C4.33 4.42 3.79 4.96 3.12 4.96ZM11.96 12.47H9.89V9.26C9.89 8.47 9.87 7.45 8.79 7.45C7.69 7.45 7.52 8.31 7.52 9.2V12.47H5.46V5.87H7.44V6.81H7.47C7.74 6.27 8.44 5.7 9.47 5.7C11.56 5.7 11.96 7.08 11.96 8.87V12.47Z" fill="currentColor"/></svg>
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+
+            <!-- Right Column — Contact Form -->
+            <div class="contact_right">
+              <form class="contact_form" id="contactForm">
+                <div class="contact_field">
+                  <label class="contact_label" for="contactNom">Nom</label>
+                  <input type="text" class="contact_input" id="contactNom" name="nom" required placeholder="Votre nom">
+                </div>
+                <div class="contact_field">
+                  <label class="contact_label" for="contactEmail">Adresse email</label>
+                  <input type="email" class="contact_input" id="contactEmail" name="email" required placeholder="votre@email.com">
+                </div>
+                <div class="contact_field">
+                  <label class="contact_label" for="contactSujet">Sujet</label>
+                  <select class="contact_select" id="contactSujet" name="sujet">
+                    <option value="question">Question g&eacute;n&eacute;rale</option>
+                    <option value="article">Proposition d'article</option>
+                    <option value="partenariat">Partenariat</option>
+                    <option value="erreur">Signaler une erreur</option>
+                    <option value="autre">Autre</option>
+                  </select>
+                </div>
+                <div class="contact_field">
+                  <label class="contact_label" for="contactMessage">Message</label>
+                  <textarea class="contact_textarea" id="contactMessage" name="message" rows="6" required placeholder="Votre message..."></textarea>
+                </div>
+                <button type="submit" class="contact_submit">Envoyer</button>
+              </form>
+              <div class="contact_success" id="contactSuccess">
+                Message envoy&eacute;. Nous vous r&eacute;pondrons dans les plus brefs d&eacute;lais.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="padding-global">
+        <div class="container-large">
+          <!-- Footer top: Newsletter + CTA cards -->
+          <div class="footer_padding-vertical">
+            <div class="footer_top">
+              <!-- Left: Dark newsletter card -->
+              <div class="footer_left-card">
+                <div>
+                  <div style="margin-bottom:24px;">
+                    <h2 class="footer_left-heading animate-on-scroll">Restez inform&eacute;</h2>
+                  </div>
+                  <div style="margin-bottom:48px;">
+                    <p class="footer_subtext">Recevez chaque semaine une synth&egrave;se des derni&egrave;res publications en oncologie digestive.</p>
+                  </div>
+                </div>
+                <form class="footer_email-form" onsubmit="event.preventDefault();">
+                  <input type="email" class="footer_email-input" placeholder="Votre email professionnel" required>
+                  <button type="submit" class="footer_subscribe-btn">S'abonner</button>
+                </form>
+              </div>
+
+              <!-- Right: Cream CTA card -->
+              <div class="footer_right-card">
+                <div class="footer_right-icon">
+                  <svg width="23" height="24" viewBox="0 0 24 24" fill="none"><circle cx="4" cy="4" r="2.5" fill="#E9E6DD"/><circle cx="12" cy="4" r="2.5" fill="#72604F"/><circle cx="20" cy="4" r="2.5" fill="#E9E6DD"/><circle cx="4" cy="12" r="2.5" fill="#72604F"/><circle cx="12" cy="12" r="2.5" fill="#E9E6DD"/><circle cx="20" cy="12" r="2.5" fill="#72604F"/><circle cx="4" cy="20" r="2.5" fill="#E9E6DD"/><circle cx="12" cy="20" r="2.5" fill="#72604F"/><circle cx="20" cy="20" r="2.5" fill="#E9E6DD"/></svg>
+                </div>
+                <div style="margin-bottom:32px;">
+                  <h2 class="footer_right-heading animate-on-scroll">Acc&eacute;dez &agrave; l'information oncologique de r&eacute;f&eacute;rence.</h2>
+                </div>
+                <div>
+                  <a href="inscription.html" class="footer_cta-btn">
+                    Cr&eacute;er mon compte
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 0.77C7.27 0.77 6.69 1.36 6.69 2.08C6.69 2.81 7.27 3.4 8 3.4C8.73 3.4 9.31 2.81 9.31 2.08C9.31 1.36 8.73 0.77 8 0.77Z" fill="currentColor"/><path d="M8 5.77C7.27 5.77 6.69 6.36 6.69 7.08C6.69 7.81 7.27 8.4 8 8.4C8.73 8.4 9.31 7.81 9.31 7.08C9.31 6.36 8.73 5.77 8 5.77Z" fill="currentColor"/><path d="M8 10.77C7.27 10.77 6.69 11.36 6.69 12.08C6.69 12.81 7.27 13.4 8 13.4C8.73 13.4 9.31 12.81 9.31 12.08C9.31 11.36 8.73 10.77 8 10.77Z" fill="currentColor"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer links section -->
+          <div class="footer_links-section">
+            <div class="footer_links-bottom">
+              <div class="footer_links">
+                <!-- Left: OncoDigest logo -->
+                <div class="footer_links-left">
+                  <a href="index.html" class="footer_logo-box">
+                    <span style="font-family:'Reckless Rockfi',serif;font-size:18px;font-weight:400;color:var(--cod-gray--900);display:flex;align-items:center;justify-content:center;width:56px;height:56px;border:1px solid #EDEDED;border-radius:6px;">LOGO</span>
+                  </a>
+                </div>
+                <!-- Right: 4-column link grid -->
+                <div class="footer_links-right">
+                  <div class="footer_link-column">
+                    <div class="footer_link-heading">Plateforme</div>
+                    <div class="footer_link-list">
+                      <a href="articles-scientifiques.html">Publications</a>
+                      <a href="congres.html">Congr&egrave;s</a>
+                    </div>
+                  </div>
+                  <div class="footer_link-column">
+                    <div class="footer_link-heading">Ressources</div>
+                    <div class="footer_link-list">
+                      <a href="a-propos.html">Comit&eacute; scientifique</a>
+                      <a href="a-propos.html">&Agrave; propos</a>
+                      <a href="contact.html">Contact</a>
+                    </div>
+                  </div>
+                  <div class="footer_link-column">
+                    <div class="footer_link-heading">Nous suivre</div>
+                    <div class="footer_link-list">
+                      <a href="https://youtube.com/" target="_blank" rel="noopener" class="is-btn">YouTube</a>
+                      <a href="https://linkedin.com/company/oncodigest/" target="_blank" rel="noopener" class="is-btn">
+                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none"><path d="M12.96 0.5H1.03C0.46 0.5 0 0.96 0 1.53V13.47C0 14.04 0.46 14.5 1.03 14.5H12.96C13.54 14.5 14 14.04 14 13.47V1.53C14 0.96 13.54 0.5 12.96 0.5ZM4.15 12.47H2.08V5.87H4.15V12.47ZM3.12 4.96C2.45 4.96 1.91 4.42 1.91 3.75C1.91 3.08 2.45 2.54 3.12 2.54C3.79 2.54 4.33 3.08 4.33 3.75C4.33 4.42 3.79 4.96 3.12 4.96ZM11.96 12.47H9.89V9.26C9.89 8.47 9.87 7.45 8.79 7.45C7.69 7.45 7.52 8.31 7.52 9.2V12.47H5.46V5.87H7.44V6.81H7.47C7.74 6.27 8.44 5.7 9.47 5.7C11.56 5.7 11.96 7.08 11.96 8.87V12.47Z" fill="currentColor"/></svg>
+                        LinkedIn
+                      </a>
+                    </div>
+                  </div>
+                  <div class="footer_link-column">
+                    <div class="footer_link-heading">L&eacute;gal</div>
+                    <div class="footer_link-list">
+                      <a href="mentions-legales.html">Mentions l&eacute;gales</a>
+                      <a href="politique-de-confidentialite.html">Politique de confidentialit&eacute;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer credit -->
+          <div class="footer_credit">
+            OncoDigest est une plateforme d'information m&eacute;dicale sp&eacute;cialis&eacute;e en chirurgie digestive et oncologie. Le contenu publi&eacute; a une vocation informative et ne se substitue pas &agrave; l'avis m&eacute;dical. OncoDigest &mdash; oncodigestnews.com
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- .page-wrapper -->
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // ===== PAGE LOAD TRANSITION =====
+    (function() {
+      const loader = document.getElementById('pageLoader');
+      if (!loader) return;
+      // Skip if already visited this session
+      if (sessionStorage.getItem('oncodigest-visited')) {
+        loader.classList.add('is-hidden');
+        return;
+      }
+      sessionStorage.setItem('oncodigest-visited', '1');
+      window.addEventListener('load', () => {
+        setTimeout(() => loader.classList.add('is-hidden'), 800);
+      });
+      // Fallback: hide after 2s even if load event delays
+      setTimeout(() => loader.classList.add('is-hidden'), 2000);
+    })();
+
+    // ===== NAVBAR =====
+    const navbar = document.getElementById('navbar');
+
+    // ===== BACKGROUND COLOR SHIFT ON SCROLL =====
+    (function() {
+      const body = document.body;
+      // White (#FFFFFF) → Husk-50 (#F7F6EF) — interpolate RGB
+      const startR = 255, startG = 255, startB = 255;
+      const endR = 247, endG = 246, endB = 239;
+
+      function updateBgColor() {
+        const scrollMax = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = Math.min(window.scrollY / (scrollMax * 0.5), 1); // complete by 50%
+        const eased = progress * progress * (3 - 2 * progress); // smoothstep
+        const r = Math.round(startR + (endR - startR) * eased);
+        const g = Math.round(startG + (endG - startG) * eased);
+        const b = Math.round(startB + (endB - startB) * eased);
+        body.style.backgroundColor = `rgb(${r},${g},${b})`;
+      }
+
+      window.addEventListener('scroll', updateBgColor, { passive: true });
+      updateBgColor();
+    })();
+
+    // ===== SCROLL-TRIGGERED ANIMATIONS (enhanced word reveal) =====
+    const italicWords = ['relation', 'accompagnement', 'confiance', 'humaine'];
+
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+
+          // Enhanced word-by-word animation with blur + rotateX
+          if (entry.target.classList.contains('word-animate')) {
+            const text = entry.target.textContent;
+            const words = text.split(/\s+/).filter(w => w.length > 0);
+            entry.target.innerHTML = '';
+            entry.target.classList.add('word-wrap');
+            words.forEach((word, i) => {
+              const span = document.createElement('span');
+              span.className = 'word';
+              // Check for italic emphasis words
+              const cleanWord = word.replace(/[.,;:!?"""'']/g, '').toLowerCase();
+              if (italicWords.includes(cleanWord)) {
+                span.classList.add('word-italic');
+              }
+              span.textContent = word;
+              span.style.transitionDelay = `${i * 0.06}s`;
+              entry.target.appendChild(span);
+              requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                  span.classList.add('visible');
+                });
+              });
+            });
+          }
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    // ===== CONTACT FORM SUBMISSION =====
+    (function() {
+      const form = document.getElementById('contactForm');
+      const success = document.getElementById('contactSuccess');
+      if (!form || !success) return;
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        form.style.display = 'none';
+        success.style.display = 'block';
+      });
+    })();
+
+    // ===== MAGNETIC BUTTONS =====
+    (function() {
+      if ('ontouchstart' in window || window.innerWidth < 1024) return;
+
+      const magneticBtns = document.querySelectorAll('.btn-dark, .btn-husk, .btn-satin, .footer_cta-btn, .btn-ghost, .contact_submit');
+
+      magneticBtns.forEach(btn => {
+        const parent = btn.parentElement;
+
+        parent.addEventListener('mousemove', (e) => {
+          const rect = btn.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+          const distX = e.clientX - centerX;
+          const distY = e.clientY - centerY;
+          const dist = Math.sqrt(distX * distX + distY * distY);
+
+          if (dist < 80) {
+            const strength = (1 - dist / 80) * 0.15;
+            btn.style.transform = `translate(${distX * strength}px, ${distY * strength}px)`;
+          }
+        });
+
+        parent.addEventListener('mouseleave', () => {
+          btn.style.transform = '';
+          btn.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)';
+          setTimeout(() => { btn.style.transition = ''; }, 400);
+        });
+      });
+    })();
+
+    // ===== MOBILE HAMBURGER =====
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.querySelector('.navbar_menu');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        navMenu.style.position = 'fixed';
+        navMenu.style.top = 'var(--nav-height)';
+        navMenu.style.left = '0';
+        navMenu.style.right = '0';
+        navMenu.style.background = '#fff';
+        navMenu.style.flexDirection = 'column';
+        navMenu.style.padding = '24px';
+        navMenu.style.zIndex = '1000';
+        navMenu.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)';
+      });
+    }
+  </script>
+
+</body>
+</html>

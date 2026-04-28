@@ -1,0 +1,1933 @@
+<!DOCTYPE html>
+<html lang="fr" class="lenis">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vid&eacute;os - OncoDigest</title>
+  <meta name="description" content="Vid&eacute;os en oncologie digestive : conf&eacute;rences, interviews d'experts, lives et rediffusions.">
+  <meta property="og:title" content="Vid&eacute;os - OncoDigest">
+  <meta property="og:description" content="Vid&eacute;os en oncologie digestive : conf&eacute;rences, interviews d'experts, lives et rediffusions.">
+  <meta property="og:image" content="https://cdn.prod.website-files.com/6895a11a67e50a85e0b93804/68da2698a39774da36864a44_Rectangle%20135.png">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <style>
+    @font-face { font-family: Suisseintl; src: url("https://cdn.prod.website-files.com/6895a11a67e50a85e0b93804/68ee1cad62d9c1fccfd5f03b_SuisseIntl-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: Suisseintl; src: url("https://cdn.prod.website-files.com/6895a11a67e50a85e0b93804/68ee1cadc11de1624efedf03_SuisseIntl-Semibold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+    @font-face { font-family: Suisseintl; src: url("https://cdn.prod.website-files.com/6895a11a67e50a85e0b93804/68ee1cad44f80664433a7b37_SuisseIntl-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Reckless Rockfi"; src: url("https://cdn.prod.website-files.com/6895a11a67e50a85e0b93804/69847290f07aedca6d0153bf_Reckless-RockFi.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+  </style>
+
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --cod-gray--0: #fff;
+      --cod-gray--50: #ededed;
+      --cod-gray--100: #e5e5e5;
+      --cod-gray--200: #d1d1d1;
+      --cod-gray--300: #b0b0b0;
+      --cod-gray--400: #888;
+      --cod-gray--500: #6d6d6d;
+      --cod-gray--600: #5d5d5d;
+      --cod-gray--700: #4c4c4c;
+      --cod-gray--800: #333;
+      --cod-gray--900: #242424;
+      --cod-gray--950: #0f0f0f;
+
+      --canary--300: #f0ff4d;
+      --canary--400: #e2f625;
+      --canary--900: #4b590e;
+      --canary--950: #283201;
+
+      --husk--50: #f7f6ef;
+      --husk--600: #82734c;
+      --husk--900: #514932;
+
+      --satin-linen--50: #f9f7f3;
+      --satin-linen--100: #e9e6dd;
+      --satin-linen--800: #5b4c3e;
+      --satin-linen--900: #3d3229;
+
+      --nav-height: 52px;
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: Suisseintl, Arial, sans-serif;
+      font-size: 13.3333px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: -0.285715px;
+      color: rgb(93, 93, 93);
+      background: #fff;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    ul, ol { list-style: none; }
+    button { border: none; cursor: pointer; font-family: inherit; }
+
+    /* ===== LAYOUT UTILS ===== */
+    .padding-global { padding-left: 11.4286px; padding-right: 11.4286px; }
+    .container-large { max-width: 1440px; margin: 0 auto; width: 100%; }
+
+    /* ===== NAVBAR — SLIM SOLID BAR ===== */
+    .nav_fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      height: var(--nav-height);
+      background: #fff;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .navbar_component {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .navbar_logo-link {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .navbar_logo-link svg { width: 76px; height: 21px; color: var(--cod-gray--900); }
+
+    .navbar_menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .navbar_link {
+      font-size: 12.5px;
+      font-weight: 400;
+      color: var(--cod-gray--500);
+      position: relative;
+      transition: color 0.2s ease;
+      white-space: nowrap;
+    }
+    .navbar_link:hover {
+      color: var(--cod-gray--900);
+    }
+    .navbar_link.is-active {
+      color: var(--cod-gray--900);
+      font-weight: 500;
+    }
+    /* Dot separator between links */
+    .navbar_link + .navbar_link::before {
+      content: '';
+      position: absolute;
+      left: -18px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--cod-gray--200);
+    }
+    .navbar_link::after { display: none; }
+
+    .navbar_button-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .navbar_button-wrapper .btn {
+      font-size: 12px;
+    }
+    .navbar_button-wrapper .btn-white {
+      background: transparent;
+      color: var(--cod-gray--600);
+      border: none;
+      padding: 7px 0;
+    }
+    .navbar_button-wrapper .btn-white:hover {
+      color: var(--cod-gray--900);
+      background: transparent;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 32px;
+      font-size: 12.3809px;
+      font-weight: 400;
+      font-family: Suisseintl, Arial, sans-serif;
+      letter-spacing: -0.285715px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .btn-sm { padding: 8.84354px 15.9183px; }
+    .btn-white {
+      background: #fff;
+      color: var(--cod-gray--700);
+      border: 0px none;
+    }
+    .btn-white:hover { background: var(--cod-gray--50); }
+    .btn-yellow {
+      background: var(--canary--300);
+      color: var(--canary--900);
+      border: 0px none;
+      padding: 7.8px 13.9905px;
+      gap: 10.08px;
+    }
+    .btn-yellow:hover { background: var(--canary--400); }
+    .btn-dark {
+      background: var(--cod-gray--900);
+      color: #fff;
+      border: 0px none;
+      gap: 4px;
+      letter-spacing: -0.2px;
+    }
+    .btn-dark:hover { background: var(--cod-gray--800); }
+    .btn-husk {
+      background: var(--husk--900);
+      color: var(--husk--50);
+      border: none;
+      gap: 4px;
+      line-height: 18.5714px;
+    }
+    .btn-husk:hover { opacity: 0.9; }
+    .btn-satin {
+      background: var(--satin-linen--900);
+      color: var(--satin-linen--50);
+      border: 0px none;
+    }
+    .btn-satin:hover { opacity: 0.9; }
+    .btn-glass {
+      background: rgba(255,255,255,0.15);
+      color: var(--cod-gray--50);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6.08px;
+      padding: 12.3809px 14.1497px;
+      gap: 10.08px;
+      backdrop-filter: blur(4px);
+    }
+    .btn-glass:hover { background: rgba(255,255,255,0.25); }
+    .btn-text {
+      background: transparent;
+      color: var(--cod-gray--700);
+      border: 1px solid var(--cod-gray--100);
+      border-radius: 32px;
+      padding: 8.84354px 15.9183px;
+    }
+    .btn-text:hover { background: var(--cod-gray--50); }
+
+    .btn .dot-icon { width: 16px; height: 12px; flex-shrink: 0; }
+    .btn .dot-icon circle, .btn .dot-icon path { transition: opacity 0.3s ease; }
+
+    .icon-sm { width: 12px; height: 12px; }
+
+    /* 3-dot vertical icon (used in nav buttons) */
+    .icon-3dot { width: 12px; height: 12px; flex-shrink: 0; }
+
+    /* Hamburger - hidden on desktop */
+    .navbar_hamburger { display: none; }
+
+    /* ===== PAGE WRAPPER ===== */
+    .page-wrapper { padding-top: var(--nav-height); }
+
+    /* ===== SECTION STYLES ===== */
+    .section-padding { padding: 80px 0; }
+    .section-padding-lg { padding: 100px 0; }
+
+    .tag {
+      display: inline-block;
+      background: var(--cod-gray--50);
+      color: rgb(136, 136, 136);
+      font-size: 12.3809px;
+      padding: 5.30611px 12.3809px;
+      border-radius: 6.19047px;
+      margin-bottom: 20px;
+    }
+    .tag.is-beige {
+      background: var(--husk--50);
+      color: rgb(136, 136, 136);
+      border: 1px solid rgb(213, 211, 179);
+      border-radius: 6.19047px;
+      padding: 5.30611px 12.3809px;
+      line-height: 18.5714px;
+      display: flex;
+      align-items: center;
+      gap: 6.19047px;
+      margin-bottom: 0;
+    }
+
+    .heading-h2 {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: clamp(32px, 3.2vw, 45.7143px);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--cod-gray--900);
+      margin-bottom: 20px;
+    }
+    .heading-h3 {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 38.0952px;
+      font-weight: 400;
+      line-height: 38.0952px;
+      letter-spacing: -1.2px;
+      color: var(--cod-gray--900);
+      margin-bottom: 20px;
+    }
+    .heading-h4 {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: clamp(18px, 1.6vw, 22.86px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--cod-gray--900);
+    }
+
+    .text-body { color: var(--cod-gray--600); font-size: 13.3333px; line-height: 20px; }
+
+    /* Word-by-word animation — enhanced with blur + rotateX for "lens focus" feel */
+    .word-wrap { display: flex; flex-wrap: wrap; gap: 0; perspective: 800px; }
+    .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(50%) rotateX(-20deg);
+      filter: blur(4px);
+      transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                  transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                  filter 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+      margin-right: 0.3em;
+      transform-origin: center bottom;
+    }
+    .word.visible {
+      opacity: 1;
+      transform: translateY(0) rotateX(0);
+      filter: blur(0);
+    }
+
+    /* Italic emphasis for emotional words */
+    .word-italic {
+      font-style: italic;
+    }
+
+    /* ===== BUTTON DOT MORPH ===== */
+    .btn .dot-icon path,
+    .btn .dot-icon circle,
+    .btn .icon-3dot circle,
+    .btn svg path,
+    .btn svg circle {
+      transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s ease;
+      transform-origin: center;
+    }
+    .btn:hover .dot-icon path:nth-child(1),
+    .btn:hover svg.dot-icon path:nth-child(1) {
+      transform: translateY(-1px);
+    }
+    .btn:hover .dot-icon path:nth-child(3),
+    .btn:hover svg.dot-icon path:nth-child(3) {
+      transform: translateY(1px);
+    }
+
+    /* ===== PAGE LOAD TRANSITION ===== */
+    .page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: var(--husk--50);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+                  visibility 0.6s;
+    }
+    .page-loader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .page-loader svg {
+      width: 64px;
+      height: 18px;
+      color: var(--husk--900);
+      animation: loaderFadeIn 0.4s ease both;
+    }
+    @keyframes loaderFadeIn {
+      0% { opacity: 0; transform: translateY(6px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .animate-on-scroll.delay-1 { transition-delay: 0.1s; }
+    .animate-on-scroll.delay-2 { transition-delay: 0.2s; }
+    .animate-on-scroll.delay-3 { transition-delay: 0.3s; }
+
+    /* ===== GRAIN / NOISE OVERLAY ===== */
+    .grain::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: multiply;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 0;
+    }
+    .footer_padding-vertical {
+      padding: 213.333px 0 91.4285px;
+      position: relative;
+    }
+    .footer_top {
+      display: grid;
+      grid-template-columns: 524fr 881fr;
+      gap: 11.4286px;
+    }
+    .footer_left-card {
+      background: rgb(36, 36, 36);
+      border-radius: 5.06667px;
+      padding: 53.3333px 45.7143px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .footer_left-heading {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 38.0952px;
+      font-weight: 400;
+      line-height: 38.0952px;
+      letter-spacing: -1.2px;
+      color: rgb(255, 255, 255);
+      margin: 0;
+    }
+    .footer_subtext {
+      color: rgb(136, 136, 136);
+      font-size: 13.3333px;
+      line-height: 20px;
+      letter-spacing: -0.285715px;
+      font-family: Suisseintl, Arial, sans-serif;
+    }
+    .footer_subtext a {
+      color: rgb(136, 136, 136);
+      text-decoration: underline;
+    }
+    .footer_email-form {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .footer_email-input {
+      flex: 1;
+      padding: 8.84354px 0;
+      border: none;
+      border-bottom: 1px solid rgb(93, 93, 93);
+      border-radius: 0;
+      background: transparent;
+      font-family: Suisseintl, Arial, sans-serif;
+      font-size: 12.3809px;
+      line-height: 17.687px;
+      letter-spacing: -0.2px;
+      color: rgb(255, 255, 255);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .footer_email-input:focus { border-bottom-color: rgb(255, 255, 255); }
+    .footer_email-input::placeholder { color: rgb(136, 136, 136); }
+    .footer_subscribe-btn {
+      background: rgb(255, 255, 255);
+      color: rgb(36, 36, 36);
+      font-family: Suisseintl, Arial, sans-serif;
+      font-size: 12.3809px;
+      font-weight: 400;
+      line-height: 18.5714px;
+      letter-spacing: -0.2px;
+      padding: 8.84354px 15.9183px;
+      border-radius: 32px;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .footer_subscribe-btn:hover { opacity: 0.85; }
+
+    .footer_right-card {
+      background: rgb(249, 247, 243);
+      border-radius: 6.08px;
+      padding: 53.3333px 45.7143px;
+      padding-right: 304.761px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .footer_right-heading {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 45.7143px;
+      font-weight: 400;
+      line-height: 45.7143px;
+      letter-spacing: -0.96px;
+      color: rgb(61, 50, 41);
+      margin: 0;
+    }
+    .footer_right-icon {
+      width: 23px;
+      height: 24px;
+      margin-bottom: 24px;
+    }
+    .footer_cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgb(61, 50, 41);
+      color: rgb(249, 247, 243);
+      font-family: Suisseintl, Arial, sans-serif;
+      font-size: 12.3809px;
+      font-weight: 400;
+      line-height: 18.5714px;
+      letter-spacing: -0.2px;
+      padding: 8.84354px 15.9183px;
+      border-radius: 32px;
+      border: none;
+      text-decoration: none;
+      margin-top: 32px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .footer_cta-btn:hover { opacity: 0.85; }
+    .footer_bg-r {
+      position: absolute;
+      right: -40px;
+      bottom: -40px;
+      width: 341px;
+      height: 385px;
+      color: rgb(233, 230, 221);
+      opacity: 1;
+    }
+
+    .footer_links-section {
+      padding: 11.4286px 0;
+    }
+    .footer_links-bottom {
+      padding: 0 0 91.4285px;
+    }
+    .footer_links {
+      display: grid;
+      grid-template-columns: 524fr 881fr;
+      gap: 11.4286px;
+    }
+    .footer_links-left {
+      display: flex;
+      flex-direction: column;
+      border-radius: 5.06667px;
+    }
+    .footer_logo-box {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 11.4286px;
+    }
+    .footer_logo-box svg { width: 56px; height: 56px; color: var(--cod-gray--900); }
+
+    .footer_links-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 11.4286px;
+    }
+    .footer_link-column {
+      display: block;
+    }
+    .footer_link-heading {
+      font-size: 13.3333px;
+      font-weight: 400;
+      color: rgb(76, 76, 76);
+      line-height: 20px;
+      letter-spacing: -0.285715px;
+      font-family: Suisseintl, Arial, sans-serif;
+      margin-bottom: 8px;
+    }
+    .footer_link-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .footer_link-list a {
+      display: block;
+      font-size: 13.3333px;
+      color: rgb(136, 136, 136);
+      line-height: 20px;
+      letter-spacing: -0.285715px;
+      padding: 2.08px 0;
+      transition: color 0.2s;
+      font-family: Suisseintl, Arial, sans-serif;
+    }
+    .footer_link-list a:hover { color: rgb(76, 76, 76); }
+    .footer_link-list a.is-btn {
+      display: flex;
+      align-items: center;
+      gap: 6.08px;
+    }
+
+    .footer_credit {
+      padding: 11.4286px;
+      font-size: 12.3809px;
+      color: rgb(136, 136, 136);
+      line-height: 18.5714px;
+      letter-spacing: -0.285715px;
+      font-family: Suisseintl, Arial, sans-serif;
+    }
+
+    /* ===== PAGE-SPECIFIC: VIDEOS ===== */
+
+    /* Section: Page Header */
+    .section_page-header {
+      padding: 120px 0 48px;
+    }
+    .page-header_grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .page-header_desc {
+      max-width: 560px;
+    }
+
+    /* Section: Featured Video */
+    .section_featured-video {
+      padding: 0 0 64px;
+    }
+    .featured-video_embed {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--cod-gray--100);
+    }
+    .featured-video_embed iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .featured-video_meta {
+      margin-top: 24px;
+    }
+    .featured-video_badges {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .featured-video_duration {
+      font-size: 13px;
+      color: var(--cod-gray--500);
+      font-weight: 500;
+    }
+    .featured-video_title {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--cod-gray--900);
+      margin-top: 12px;
+    }
+    .featured-video_speaker {
+      font-size: 14px;
+      color: var(--cod-gray--500);
+      margin-top: 8px;
+    }
+
+    /* Section: Upcoming Lives — Calendar */
+    .section_upcoming-lives {
+      padding: 0 0 64px;
+    }
+    .upcoming-lives_heading {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--cod-gray--900);
+      margin-bottom: 24px;
+    }
+
+    /* Calendar Layout */
+    .lives-calendar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* Calendar Grid */
+    .cal_wrapper {
+      border: 1px solid var(--cod-gray--100);
+      border-radius: 16px;
+      background: #fff;
+      padding: 24px;
+    }
+    .cal_header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .cal_month-label {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--cod-gray--900);
+    }
+    .cal_nav-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+      color: var(--cod-gray--600);
+    }
+    .cal_nav-btn:hover {
+      background: var(--cod-gray--50);
+      color: var(--cod-gray--900);
+    }
+    .cal_nav-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .cal_weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      margin-bottom: 4px;
+    }
+    .cal_weekday {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--cod-gray--400);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 6px 0;
+    }
+
+    .cal_days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+    }
+    .cal_day {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 0;
+      border-radius: 10px;
+      font-size: 13px;
+      color: var(--cod-gray--600);
+      cursor: default;
+      transition: background 0.15s ease, color 0.15s ease;
+      min-height: 40px;
+      background: transparent;
+      border: none;
+      font-family: inherit;
+      width: 100%;
+    }
+    .cal_day.is-outside {
+      color: var(--cod-gray--300);
+    }
+    .cal_day.is-today {
+      font-weight: 600;
+      color: var(--cod-gray--900);
+      box-shadow: inset 0 0 0 1px var(--cod-gray--300);
+    }
+    .cal_day.has-event {
+      cursor: pointer;
+      color: var(--cod-gray--900);
+      font-weight: 500;
+    }
+    .cal_day.has-event:hover {
+      background: var(--husk--50);
+    }
+    .cal_day.is-selected {
+      background: var(--canary--300);
+      color: var(--canary--900);
+      font-weight: 600;
+    }
+    .cal_day.is-selected:hover {
+      background: var(--canary--400);
+    }
+
+    /* Event dot */
+    .cal_dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--canary--400);
+      margin-top: 3px;
+    }
+    .cal_day.is-selected .cal_dot {
+      background: var(--canary--900);
+    }
+
+    /* Event Detail Panel */
+    .cal_events {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cal_events-heading {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--cod-gray--400);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .cal_event-card {
+      border: 1px solid var(--cod-gray--100);
+      border-radius: 16px;
+      background: #fff;
+      padding: 24px;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .cal_event-card:hover {
+      border-color: var(--canary--400);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .cal_event-date {
+      background: var(--canary--300);
+      color: var(--canary--900);
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cal_event-date::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--canary--900);
+      animation: livePulse 2s ease-in-out infinite;
+    }
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .cal_event-title {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--cod-gray--900);
+      margin-top: 14px;
+    }
+    .cal_event-speaker {
+      font-size: 14px;
+      color: var(--cod-gray--500);
+      margin-top: 8px;
+    }
+    .cal_event-time {
+      font-size: 13px;
+      color: var(--cod-gray--400);
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cal_event-time::before {
+      content: '';
+      width: 14px;
+      height: 14px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E") no-repeat center;
+      background-size: contain;
+      flex-shrink: 0;
+    }
+    .cal_event-btn {
+      margin-top: 16px;
+    }
+    .cal_event-empty {
+      font-size: 14px;
+      color: var(--cod-gray--400);
+      text-align: center;
+      padding: 32px 16px;
+      border: 1px dashed var(--cod-gray--200);
+      border-radius: 16px;
+    }
+    .live-join-btn.is-disabled {
+      background: var(--cod-gray--100);
+      color: var(--cod-gray--400);
+      pointer-events: none;
+      cursor: default;
+      opacity: 0.7;
+    }
+
+    /* Section: Filter Pills */
+    .section_filter-pills {
+      padding: 0 0 32px;
+    }
+    .filter_pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      background: var(--husk--50);
+      padding: 6px;
+      border-radius: 40px;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .filter_pill {
+      font-size: 12.3809px;
+      font-family: Suisseintl, Arial, sans-serif;
+      letter-spacing: -0.285715px;
+      border-radius: 32px;
+      transition: all 0.25s ease;
+    }
+    .filter_pill.btn-dark {
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .filter_pill.btn-text {
+      border-color: transparent;
+      background: transparent;
+    }
+    .filter_pill.btn-text:hover {
+      background: rgba(0,0,0,0.04);
+    }
+
+    /* Section: Video Grid */
+    .section_video-grid {
+      padding: 0 0 80px;
+    }
+    .video_grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .video_card {
+      background: #fff;
+      border: 1px solid var(--cod-gray--100);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .video_card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+    .video_card.is-hidden {
+      display: none;
+    }
+    .video_thumb {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 16px 16px 0 0;
+      background: var(--cod-gray--100);
+    }
+    .video_thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .video_card:hover .video_thumb img {
+      transform: scale(1.05);
+    }
+    .video_play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+    .video_play-icon svg {
+      width: 18px;
+      height: 18px;
+      color: var(--cod-gray--900);
+      margin-left: 2px;
+    }
+    .video_duration-badge {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      z-index: 2;
+    }
+    .video_lock-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 28px;
+      height: 28px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+    .video_lock-badge svg {
+      width: 14px;
+      height: 14px;
+      color: #fff;
+    }
+    .video_content {
+      padding: 20px;
+    }
+    .video_tag {
+      display: inline-block;
+      background: var(--cod-gray--50);
+      color: rgb(136, 136, 136);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 100px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .video_title {
+      font-family: "Reckless Rockfi", Arial, sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.35;
+      color: var(--cod-gray--900);
+      margin-top: 10px;
+    }
+    .video_speaker {
+      font-size: 13px;
+      color: var(--cod-gray--500);
+      margin-top: 8px;
+    }
+    .video_date {
+      font-size: 12px;
+      color: var(--cod-gray--400);
+      margin-top: 4px;
+    }
+
+    /* Section: Load More */
+    .section_load-more {
+      padding: 0 0 80px;
+      text-align: center;
+    }
+
+    /* ===== REDUCED MOTION ===== */
+    @media (prefers-reduced-motion: reduce) {
+      .word {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+      }
+      .animate-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .page-loader {
+        display: none !important;
+      }
+      .video_thumb img {
+        transition: none !important;
+        transform: none !important;
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .navbar_link { font-size: 11.5px; }
+      .navbar_menu { gap: 24px; }
+      .navbar_link + .navbar_link::before { left: -14px; }
+      .navbar_button-wrapper .btn-white { display: none; }
+      .navbar_component { padding: 0 20px; }
+
+      .page-header_grid { grid-template-columns: 1fr; }
+      .video_grid { grid-template-columns: repeat(2, 1fr); }
+
+      .footer_top { grid-template-columns: 1fr; }
+      .footer_right-card { padding-right: 45.7143px; }
+      .footer_links { grid-template-columns: 1fr; }
+      .footer_links-right { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .navbar_component { padding: 0 12px; }
+      .padding-global { padding-left: 16px; padding-right: 16px; }
+      .navbar_menu { display: none; }
+      .navbar_hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 8px;
+      }
+      .navbar_hamburger span { display: block; width: 18px; height: 1.5px; background: var(--cod-gray--900); transition: all 0.3s; }
+      .navbar_button-wrapper .btn-white { display: none; }
+
+      .btn { min-height: 44px; }
+      input, select, textarea { min-height: 44px; font-size: 16px; }
+      .section_page-header h1 { font-size: clamp(28px, 7vw, 40px); }
+
+      .video_grid { grid-template-columns: 1fr; }
+      .section_page-header { padding: 80px 0 32px; }
+      .featured-video_embed { aspect-ratio: 16/9; }
+
+      .section_upcoming-lives { padding: 0 0 48px; }
+      .lives-calendar { grid-template-columns: 1fr; gap: 24px; }
+      .filter_pills { display: inline-flex; }
+      .section_filter-pills { padding: 0 0 24px; }
+
+      .footer_links-right { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .heading-h2 { font-size: clamp(20px, 5.5vw, 28px); }
+      .filter_pills {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 4px;
+        gap: 4px;
+        border-radius: 32px;
+      }
+      .filter_pill {
+        flex-shrink: 0;
+        font-size: 11.5px;
+        padding: 7px 14px;
+      }
+      .cal_wrapper { padding: 16px; }
+      .cal_day { min-height: 36px; font-size: 12px; padding: 6px 0; }
+      .cal_event-title { font-size: 16px; }
+      .section_video-grid { padding-top: 48px; padding-bottom: 48px; }
+      .video_grid { gap: 16px; }
+      .footer_links-right { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 390px) {
+      .navbar_button-wrapper .btn-yellow { font-size: 11px; padding: 6px 12px; }
+    }
+
+    @media (max-width: 360px) {
+      .navbar_component { padding: 0 10px; }
+      .padding-global { padding-left: 12px; padding-right: 12px; }
+      .btn { font-size: 12px; padding: 8px 14px; min-height: 44px; }
+      .tag { font-size: 10px; padding: 4px 8px; }
+      .section_page-header h1 { font-size: 24px; }
+      .heading-h2 { font-size: 20px; }
+      .video_title, .cal_event-title, .featured-video_title { font-size: 15px; }
+      .cal_wrapper { padding: 12px; }
+      .cal_day { min-height: 32px; font-size: 11px; }
+      .cal_month-label { font-size: 16px; }
+      .filter_pill { font-size: 11px; padding: 6px 12px; }
+      .filter_pills { gap: 3px; padding: 3px; }
+      .upcoming-lives_heading { font-size: 20px; }
+    }
+  </style>
+</head>
+<body class="grain">
+
+  <!-- ===== PAGE LOAD TRANSITION ===== -->
+  <div class="page-loader" id="pageLoader">
+    <span style="font-family:'Reckless Rockfi',serif;font-size:24px;font-weight:400;color:var(--husk--900);">LOGO</span>
+  </div>
+
+  <!-- ===== FIXED NAVBAR ===== -->
+  <div class="nav_fixed" id="navbar">
+    <div class="navbar_component">
+      <a href="index.html" class="navbar_logo-link">
+        <!-- OncoDigest logo SVG -->
+        <span style="font-family:'Reckless Rockfi',serif;font-size:20px;font-weight:400;color:var(--cod-gray--900);letter-spacing:-0.5px;">LOGO</span>
+      </a>
+
+      <nav class="navbar_menu">
+        <a href="actualites.html" class="navbar_link">Actualit&eacute;s</a>
+        <a href="articles-scientifiques.html" class="navbar_link">Articles scientifiques</a>
+        <a href="congres.html" class="navbar_link">Congr&egrave;s</a>
+        <a href="videos.html" class="navbar_link is-active">Vid&eacute;os</a>
+        <a href="contact.html" class="navbar_link">Contact</a>
+      </nav>
+
+      <div class="navbar_button-wrapper">
+        <a href="inscription.html" class="btn btn-white btn-sm">
+          S'inscrire
+        </a>
+        <a href="connexion.html" class="btn btn-yellow btn-sm">Acc&egrave;s Pro</a>
+      </div>
+
+      <div class="navbar_hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PAGE WRAPPER ===== -->
+  <div class="page-wrapper">
+
+    <!-- ===== SECTION 1: PAGE HEADER ===== -->
+    <section class="section_page-header">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="page-header_grid">
+            <div>
+              <div class="tag animate-on-scroll">Vid&eacute;os</div>
+              <h1 class="heading-h2 animate-on-scroll word-animate">Conf&eacute;rences, interviews et lives.</h1>
+            </div>
+            <div>
+              <p class="text-body page-header_desc animate-on-scroll delay-1">Retrouvez nos sessions en direct et rediffusions sur les sujets majeurs en oncologie digestive.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 2: FEATURED VIDEO ===== -->
+    <section class="section_featured-video">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="featured-video_embed animate-on-scroll">
+            <video controls preload="metadata" poster="data/PHOTO-2026-03-12-09-03-26.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:16px;">
+              <source src="data/int%C3%A9r%C3%AAt_de_la_chirurgie_robotique_dans_l%27oncologie_visc%C3%A9ral-_dr_mounir_dhib_v1%20%282160p%29.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="featured-video_meta animate-on-scroll delay-1">
+            <div class="featured-video_badges">
+              <span class="tag" style="margin-bottom:0;">Conf&eacute;rence</span>
+              <span class="featured-video_duration">45 min</span>
+            </div>
+            <h2 class="featured-video_title">Int&eacute;r&ecirc;t de la chirurgie robotique dans l'oncologie visc&eacute;rale</h2>
+            <p class="featured-video_speaker">Dr. Mohammed Amal Benzakour &mdash; Chirurgien digestif</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 3: UPCOMING LIVES — CALENDAR ===== -->
+    <section class="section_upcoming-lives">
+      <div class="padding-global">
+        <div class="container-large">
+          <h2 class="upcoming-lives_heading animate-on-scroll">Prochains lives</h2>
+          <div class="lives-calendar animate-on-scroll delay-1" id="livesCalendar">
+            <!-- Calendar grid (left) -->
+            <div class="cal_wrapper">
+              <div class="cal_header">
+                <button class="cal_nav-btn" id="calPrev" aria-label="Mois pr&eacute;c&eacute;dent">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <span class="cal_month-label" id="calMonthLabel"></span>
+                <button class="cal_nav-btn" id="calNext" aria-label="Mois suivant">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+              </div>
+              <div class="cal_weekdays">
+                <span class="cal_weekday">Lu</span>
+                <span class="cal_weekday">Ma</span>
+                <span class="cal_weekday">Me</span>
+                <span class="cal_weekday">Je</span>
+                <span class="cal_weekday">Ve</span>
+                <span class="cal_weekday">Sa</span>
+                <span class="cal_weekday">Di</span>
+              </div>
+              <div class="cal_days" id="calDays"></div>
+            </div>
+            <!-- Event detail (right) -->
+            <div class="cal_events" id="calEvents"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 4: FILTER PILLS ===== -->
+    <section class="section_filter-pills">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="filter_pills animate-on-scroll">
+            <button class="btn btn-dark btn-sm filter_pill" data-filter="tous">Tous</button>
+            <button class="btn btn-text btn-sm filter_pill" data-filter="conference">Conf&eacute;rences</button>
+            <button class="btn btn-text btn-sm filter_pill" data-filter="demonstration">D&eacute;monstrations</button>
+            <button class="btn btn-text btn-sm filter_pill" data-filter="interview">Interviews</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 5: VIDEO GRID ===== -->
+    <section class="section_video-grid">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="video_grid" id="videoGrid">
+
+            <!-- Card 1 -->
+            <div class="video_card animate-on-scroll" data-type="conference" data-video="data/int%C3%A9r%C3%AAt_de_la_chirurgie_robotique_dans_l%27oncologie_visc%C3%A9ral-_dr_mounir_dhib_v1%20%282160p%29.mp4">
+              <div class="video_thumb">
+                <img src="data/PHOTO-2026-03-12-09-03-26.jpg" alt="Int&eacute;r&ecirc;t de la chirurgie robotique dans l'oncologie visc&eacute;rale" loading="lazy">
+                <div class="video_play-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 20,12 8,19"/></svg>
+                </div>
+                <span class="video_duration-badge">Conf&eacute;rence</span>
+              </div>
+              <div class="video_content">
+                <span class="video_tag">Conf&eacute;rence</span>
+                <h3 class="video_title">Int&eacute;r&ecirc;t de la chirurgie robotique dans l'oncologie visc&eacute;rale</h3>
+                <p class="video_speaker">Dr. M.A. Benzakour</p>
+                <p class="video_date">12/03/2026</p>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="video_card animate-on-scroll delay-1" data-type="demonstration" data-video="data/La%20chirurgie%20de%20l%27endometriose%20profonde%20par%20robotique_25_2492kbps%281280x720%29%20-%20Copie.mp4">
+              <div class="video_thumb">
+                <img src="data/PHOTO-2026-03-12-08-57-26.jpg" alt="La chirurgie de l'endom&eacute;triose profonde par robotique" loading="lazy">
+                <div class="video_play-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 20,12 8,19"/></svg>
+                </div>
+                <span class="video_duration-badge">D&eacute;monstration</span>
+              </div>
+              <div class="video_content">
+                <span class="video_tag">D&eacute;monstration</span>
+                <h3 class="video_title">La chirurgie de l'endom&eacute;triose profonde par robotique</h3>
+                <p class="video_speaker">Dr. M.A. Benzakour</p>
+                <p class="video_date">12/03/2026</p>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="video_card animate-on-scroll delay-2" data-type="conference" data-video="data/video_1_v1%20%281440p%29.mp4">
+              <div class="video_thumb">
+                <img src="data/IMG_0024.jpg" alt="Chol&eacute;cystectomie par chirurgie robotique" loading="lazy">
+                <div class="video_play-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 20,12 8,19"/></svg>
+                </div>
+                <span class="video_duration-badge">Chirurgie</span>
+              </div>
+              <div class="video_content">
+                <span class="video_tag">Chirurgie</span>
+                <h3 class="video_title">Chol&eacute;cystectomie par chirurgie robotique</h3>
+                <p class="video_speaker">Dr. M.A. Benzakour</p>
+                <p class="video_date">10/03/2026</p>
+              </div>
+            </div>
+
+            <!-- Card 4 (initially hidden) -->
+            <div class="video_card animate-on-scroll is-hidden" data-type="conference" data-batch="2" data-video="data/video_2_v1%20%282160p%29.mp4">
+              <div class="video_thumb">
+                <img src="data/IMG_0025.jpg" alt="H&eacute;micolectomie droite robot-assist&eacute;e" loading="lazy">
+                <div class="video_play-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 20,12 8,19"/></svg>
+                </div>
+                <span class="video_duration-badge">Chirurgie</span>
+              </div>
+              <div class="video_content">
+                <span class="video_tag">Chirurgie</span>
+                <h3 class="video_title">H&eacute;micolectomie droite robot-assist&eacute;e</h3>
+                <p class="video_speaker">Dr. M.A. Benzakour</p>
+                <p class="video_date">08/03/2026</p>
+              </div>
+            </div>
+
+            <!-- Card 5 (initially hidden) -->
+            <div class="video_card animate-on-scroll" data-type="interview" data-video="data/video_3_v1%20%282160p%29.mp4">
+              <div class="video_thumb">
+                <img src="data/PHOTO-2026-03-12-09-00-33.jpg" alt="Gastrectomie par voie laparoscopique" loading="lazy">
+                <div class="video_play-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 20,12 8,19"/></svg>
+                </div>
+                <span class="video_duration-badge">Formation</span>
+              </div>
+              <div class="video_content">
+                <span class="video_tag">Formation</span>
+                <h3 class="video_title">Gastrectomie par voie laparoscopique</h3>
+                <p class="video_speaker">Dr. M.A. Benzakour</p>
+                <p class="video_date">05/03/2026</p>
+              </div>
+            </div>
+
+            <!-- Card 6 (initially hidden) -->
+            <div class="video_card animate-on-scroll is-hidden" data-type="conference" data-batch="2" data-video="data/video_4_v1%20%282160p%29.mp4">
+              <div class="video_thumb">
+                <img src="data/PHOTO-2026-03-12-08-57-26.jpg" alt="R&eacute;section du rectum par chirurgie robotique" loading="lazy">
+                <div class="video_play-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 20,12 8,19"/></svg>
+                </div>
+                <span class="video_duration-badge">Chirurgie</span>
+              </div>
+              <div class="video_content">
+                <span class="video_tag">Chirurgie</span>
+                <h3 class="video_title">R&eacute;section du rectum par chirurgie robotique</h3>
+                <p class="video_speaker">Dr. M.A. Benzakour</p>
+                <p class="video_date">01/03/2026</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 6: LOAD MORE ===== -->
+    <section class="section_load-more">
+      <div class="padding-global">
+        <div class="container-large">
+          <button class="btn btn-dark btn-sm" id="loadMoreBtn">Voir plus de vid&eacute;os</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="padding-global">
+        <div class="container-large">
+          <!-- Footer top: Newsletter + CTA cards -->
+          <div class="footer_padding-vertical">
+            <div class="footer_top">
+              <!-- Left: Dark newsletter card -->
+              <div class="footer_left-card">
+                <div>
+                  <div style="margin-bottom:24px;">
+                    <h2 class="footer_left-heading animate-on-scroll">Restez inform&eacute;</h2>
+                  </div>
+                  <div style="margin-bottom:48px;">
+                    <p class="footer_subtext">Recevez chaque semaine une synth&egrave;se des derni&egrave;res publications en oncologie digestive.</p>
+                  </div>
+                </div>
+                <form class="footer_email-form" onsubmit="event.preventDefault();">
+                  <input type="email" class="footer_email-input" placeholder="Votre email professionnel" required>
+                  <button type="submit" class="footer_subscribe-btn">S'abonner</button>
+                </form>
+              </div>
+
+              <!-- Right: Cream CTA card -->
+              <div class="footer_right-card">
+                <div class="footer_right-icon">
+                  <svg width="23" height="24" viewBox="0 0 24 24" fill="none"><circle cx="4" cy="4" r="2.5" fill="#E9E6DD"/><circle cx="12" cy="4" r="2.5" fill="#72604F"/><circle cx="20" cy="4" r="2.5" fill="#E9E6DD"/><circle cx="4" cy="12" r="2.5" fill="#72604F"/><circle cx="12" cy="12" r="2.5" fill="#E9E6DD"/><circle cx="20" cy="12" r="2.5" fill="#72604F"/><circle cx="4" cy="20" r="2.5" fill="#E9E6DD"/><circle cx="12" cy="20" r="2.5" fill="#72604F"/><circle cx="20" cy="20" r="2.5" fill="#E9E6DD"/></svg>
+                </div>
+                <div style="margin-bottom:32px;">
+                  <h2 class="footer_right-heading animate-on-scroll">Acc&eacute;dez &agrave; l'information oncologique de r&eacute;f&eacute;rence.</h2>
+                </div>
+                <div>
+                  <a href="inscription.html" class="footer_cta-btn">
+                    Cr&eacute;er mon compte
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 0.77C7.27 0.77 6.69 1.36 6.69 2.08C6.69 2.81 7.27 3.4 8 3.4C8.73 3.4 9.31 2.81 9.31 2.08C9.31 1.36 8.73 0.77 8 0.77Z" fill="currentColor"/><path d="M8 5.77C7.27 5.77 6.69 6.36 6.69 7.08C6.69 7.81 7.27 8.4 8 8.4C8.73 8.4 9.31 7.81 9.31 7.08C9.31 6.36 8.73 5.77 8 5.77Z" fill="currentColor"/><path d="M8 10.77C7.27 10.77 6.69 11.36 6.69 12.08C6.69 12.81 7.27 13.4 8 13.4C8.73 13.4 9.31 12.81 9.31 12.08C9.31 11.36 8.73 10.77 8 10.77Z" fill="currentColor"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer links section -->
+          <div class="footer_links-section">
+            <div class="footer_links-bottom">
+              <div class="footer_links">
+                <!-- Left: OncoDigest logo -->
+                <div class="footer_links-left">
+                  <a href="index.html" class="footer_logo-box">
+                    <span style="font-family:'Reckless Rockfi',serif;font-size:18px;font-weight:400;color:var(--cod-gray--900);display:flex;align-items:center;justify-content:center;width:56px;height:56px;border:1px solid #EDEDED;border-radius:6px;">LOGO</span>
+                  </a>
+                </div>
+                <!-- Right: 4-column link grid -->
+                <div class="footer_links-right">
+                  <div class="footer_link-column">
+                    <div class="footer_link-heading">Plateforme</div>
+                    <div class="footer_link-list">
+                      <a href="actualites.html">Actualit&eacute;s</a>
+                      <a href="articles-scientifiques.html">Articles</a>
+                      <a href="congres.html">Congr&egrave;s</a>
+                    </div>
+                  </div>
+                  <div class="footer_link-column">
+                    <div class="footer_link-heading">Ressources</div>
+                    <div class="footer_link-list">
+                      <a href="a-propos.html">Comit&eacute; scientifique</a>
+                      <a href="a-propos.html">&Agrave; propos</a>
+                      <a href="contact.html">Contact</a>
+                    </div>
+                  </div>
+                  <div class="footer_link-column">
+                    <div class="footer_link-heading">Nous suivre</div>
+                    <div class="footer_link-list">
+                      <a href="https://youtube.com/" target="_blank" rel="noopener" class="is-btn">YouTube</a>
+                      <a href="https://linkedin.com/company/oncodigest/" target="_blank" rel="noopener" class="is-btn">
+                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none"><path d="M12.96 0.5H1.03C0.46 0.5 0 0.96 0 1.53V13.47C0 14.04 0.46 14.5 1.03 14.5H12.96C13.54 14.5 14 14.04 14 13.47V1.53C14 0.96 13.54 0.5 12.96 0.5ZM4.15 12.47H2.08V5.87H4.15V12.47ZM3.12 4.96C2.45 4.96 1.91 4.42 1.91 3.75C1.91 3.08 2.45 2.54 3.12 2.54C3.79 2.54 4.33 3.08 4.33 3.75C4.33 4.42 3.79 4.96 3.12 4.96ZM11.96 12.47H9.89V9.26C9.89 8.47 9.87 7.45 8.79 7.45C7.69 7.45 7.52 8.31 7.52 9.2V12.47H5.46V5.87H7.44V6.81H7.47C7.74 6.27 8.44 5.7 9.47 5.7C11.56 5.7 11.96 7.08 11.96 8.87V12.47Z" fill="currentColor"/></svg>
+                        LinkedIn
+                      </a>
+                    </div>
+                  </div>
+                  <div class="footer_link-column">
+                    <div class="footer_link-heading">L&eacute;gal</div>
+                    <div class="footer_link-list">
+                      <a href="mentions-legales.html">Mentions l&eacute;gales</a>
+                      <a href="politique-de-confidentialite.html">Politique de confidentialit&eacute;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer credit -->
+          <div class="footer_credit">
+            OncoDigest est une plateforme d'information m&eacute;dicale sp&eacute;cialis&eacute;e en chirurgie digestive et oncologie. Le contenu publi&eacute; a une vocation informative et ne se substitue pas &agrave; l'avis m&eacute;dical. OncoDigest &mdash; oncodigestnews.com
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- .page-wrapper -->
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // ===== PAGE LOAD TRANSITION =====
+    (function() {
+      const loader = document.getElementById('pageLoader');
+      if (!loader) return;
+      // Skip if already visited this session
+      if (sessionStorage.getItem('oncodigest-visited')) {
+        loader.classList.add('is-hidden');
+        return;
+      }
+      sessionStorage.setItem('oncodigest-visited', '1');
+      window.addEventListener('load', () => {
+        setTimeout(() => loader.classList.add('is-hidden'), 800);
+      });
+      // Fallback: hide after 2s even if load event delays
+      setTimeout(() => loader.classList.add('is-hidden'), 2000);
+    })();
+
+    // ===== NAVBAR =====
+    const navbar = document.getElementById('navbar');
+
+    // ===== BACKGROUND COLOR SHIFT ON SCROLL =====
+    (function() {
+      const body = document.body;
+      // White (#FFFFFF) -> Husk-50 (#F7F6EF) — interpolate RGB
+      const startR = 255, startG = 255, startB = 255;
+      const endR = 247, endG = 246, endB = 239;
+
+      function updateBgColor() {
+        const scrollMax = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = Math.min(window.scrollY / (scrollMax * 0.5), 1); // complete by 50%
+        const eased = progress * progress * (3 - 2 * progress); // smoothstep
+        const r = Math.round(startR + (endR - startR) * eased);
+        const g = Math.round(startG + (endG - startG) * eased);
+        const b = Math.round(startB + (endB - startB) * eased);
+        body.style.backgroundColor = `rgb(${r},${g},${b})`;
+      }
+
+      window.addEventListener('scroll', updateBgColor, { passive: true });
+      updateBgColor();
+    })();
+
+    // ===== SCROLL-TRIGGERED ANIMATIONS (enhanced word reveal) =====
+    const italicWords = ['relation', 'accompagnement', 'confiance', 'humaine'];
+
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+
+          // Enhanced word-by-word animation with blur + rotateX
+          if (entry.target.classList.contains('word-animate')) {
+            const text = entry.target.textContent;
+            const words = text.split(/\s+/).filter(w => w.length > 0);
+            entry.target.innerHTML = '';
+            entry.target.classList.add('word-wrap');
+            words.forEach((word, i) => {
+              const span = document.createElement('span');
+              span.className = 'word';
+              // Check for italic emphasis words
+              const cleanWord = word.replace(/[.,;:!?"""'']/g, '').toLowerCase();
+              if (italicWords.includes(cleanWord)) {
+                span.classList.add('word-italic');
+              }
+              span.textContent = word;
+              span.style.transitionDelay = `${i * 0.06}s`;
+              entry.target.appendChild(span);
+              requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                  span.classList.add('visible');
+                });
+              });
+            });
+          }
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    // ===== LIVES CALENDAR =====
+    (function() {
+      var MONTH_NAMES = ['Janvier','F\u00e9vrier','Mars','Avril','Mai','Juin','Juillet','Ao\u00fbt','Septembre','Octobre','Novembre','D\u00e9cembre'];
+
+      // Live events data — edit here to add/remove lives
+      var LIVES = [
+        { date: '2026-03-25', time: '20h00', title: 'Cancer du pancr\u00e9as : actualit\u00e9s th\u00e9rapeutiques', speaker: 'Dr. M.A. Benzakour', link: '#' },
+        { date: '2026-04-02', time: '19h00', title: 'Chirurgie bariatrique et risque carcinologique', speaker: 'Dr. M.A. Benzakour', link: '#' },
+        { date: '2026-04-15', time: '20h30', title: 'Immunoth\u00e9rapie : retour d\u2019exp\u00e9rience', speaker: 'Dr. M.A. Benzakour', link: '#' }
+      ];
+
+      var now = new Date();
+      var currentMonth = now.getMonth();
+      var currentYear = now.getFullYear();
+      var selectedDate = null;
+
+      var daysContainer = document.getElementById('calDays');
+      var eventsContainer = document.getElementById('calEvents');
+      var monthLabel = document.getElementById('calMonthLabel');
+      var prevBtn = document.getElementById('calPrev');
+      var nextBtn = document.getElementById('calNext');
+
+      function dateKey(y, m, d) {
+        return y + '-' + String(m + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+      }
+
+      function todayStr() {
+        var t = new Date();
+        return t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0');
+      }
+
+      function isFutureOrToday(dateStr) {
+        return dateStr >= todayStr();
+      }
+
+      function getLivesForDate(key) {
+        return LIVES.filter(function(ev) { return ev.date === key && isFutureOrToday(ev.date); });
+      }
+
+      function hasLivesInMonth(y, m) {
+        var prefix = y + '-' + String(m + 1).padStart(2, '0');
+        return LIVES.some(function(ev) { return ev.date.startsWith(prefix) && isFutureOrToday(ev.date); });
+      }
+
+      function formatDateLabel(key) {
+        var parts = key.split('-');
+        var d = parseInt(parts[2], 10);
+        var m = parseInt(parts[1], 10) - 1;
+        var y = parts[0];
+        return d + ' ' + MONTH_NAMES[m].toLowerCase() + ' ' + y;
+      }
+
+      function getLiveStatus(ev) {
+        var liveDate = new Date(ev.date + 'T' + ev.time.replace('h', ':') + ':00');
+        var diff = liveDate - now;
+        var hourMs = 60 * 60 * 1000;
+        if (diff <= hourMs && diff > -3 * hourMs) {
+          return { text: 'Rejoindre le live', disabled: false };
+        }
+        return { text: 'Bient\u00f4t disponible', disabled: true };
+      }
+
+      function renderEvents(key) {
+        var lives = key ? getLivesForDate(key) : [];
+        eventsContainer.innerHTML = '';
+
+        if (!key) {
+          // Show next upcoming live by default
+          var upcoming = LIVES.filter(function(ev) { return new Date(ev.date) >= new Date(now.getFullYear(), now.getMonth(), now.getDate()); });
+          upcoming.sort(function(a, b) { return new Date(a.date) - new Date(b.date); });
+          if (upcoming.length > 0) {
+            eventsContainer.innerHTML = '<span class="cal_events-heading">Prochain live</span>';
+            renderEventCard(upcoming[0]);
+          } else {
+            eventsContainer.innerHTML = '<span class="cal_events-heading">Lives</span><div class="cal_event-empty">Aucun live pr\u00e9vu prochainement</div>';
+          }
+          return;
+        }
+
+        if (lives.length === 0) {
+          eventsContainer.innerHTML = '<span class="cal_events-heading">' + formatDateLabel(key) + '</span><div class="cal_event-empty">Aucun live pr\u00e9vu ce jour</div>';
+          return;
+        }
+
+        eventsContainer.innerHTML = '<span class="cal_events-heading">' + formatDateLabel(key) + '</span>';
+        lives.forEach(function(ev) { renderEventCard(ev); });
+      }
+
+      function renderEventCard(ev) {
+        var status = getLiveStatus(ev);
+        var card = document.createElement('div');
+        card.className = 'cal_event-card';
+        card.innerHTML =
+          '<span class="cal_event-date">' + formatDateLabel(ev.date) + '</span>' +
+          '<h3 class="cal_event-title">' + ev.title + '</h3>' +
+          '<p class="cal_event-speaker">' + ev.speaker + '</p>' +
+          '<p class="cal_event-time">' + ev.time + '</p>' +
+          '<div class="cal_event-btn">' +
+            '<a href="' + ev.link + '" class="btn btn-dark btn-sm live-join-btn' + (status.disabled ? ' is-disabled' : '') + '" target="_blank" rel="noopener">' + status.text + '</a>' +
+          '</div>';
+        eventsContainer.appendChild(card);
+      }
+
+      function render() {
+        monthLabel.textContent = MONTH_NAMES[currentMonth] + ' ' + currentYear;
+
+        // First day of month (0=Sun, convert to Mon=0)
+        var firstDay = new Date(currentYear, currentMonth, 1).getDay();
+        firstDay = firstDay === 0 ? 6 : firstDay - 1; // Mon=0 ... Sun=6
+
+        var daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        var daysInPrev = new Date(currentYear, currentMonth, 0).getDate();
+
+        var todayKey = dateKey(now.getFullYear(), now.getMonth(), now.getDate());
+
+        daysContainer.innerHTML = '';
+
+        // Previous month trailing days
+        for (var p = firstDay - 1; p >= 0; p--) {
+          var btn = document.createElement('button');
+          btn.className = 'cal_day is-outside';
+          btn.textContent = daysInPrev - p;
+          btn.disabled = true;
+          daysContainer.appendChild(btn);
+        }
+
+        // Current month days
+        for (var d = 1; d <= daysInMonth; d++) {
+          var key = dateKey(currentYear, currentMonth, d);
+          var lives = getLivesForDate(key);
+          var btn = document.createElement('button');
+          btn.className = 'cal_day';
+          if (key === todayKey) btn.classList.add('is-today');
+          if (lives.length > 0) btn.classList.add('has-event');
+          if (selectedDate === key) btn.classList.add('is-selected');
+
+          var numSpan = document.createElement('span');
+          numSpan.textContent = d;
+          btn.appendChild(numSpan);
+
+          if (lives.length > 0) {
+            var dot = document.createElement('span');
+            dot.className = 'cal_dot';
+            btn.appendChild(dot);
+          }
+
+          btn.setAttribute('data-date', key);
+          btn.addEventListener('click', function() {
+            var k = this.getAttribute('data-date');
+            if (!this.classList.contains('has-event')) return;
+            selectedDate = selectedDate === k ? null : k;
+            render();
+            renderEvents(selectedDate);
+          });
+
+          daysContainer.appendChild(btn);
+        }
+
+        // Next month leading days — always fill to 42 cells (6 rows) for consistent height
+        var totalCells = firstDay + daysInMonth;
+        var target = 42; // 6 rows x 7 days
+        for (var n = 1; n <= target - totalCells; n++) {
+          var btn = document.createElement('button');
+          btn.className = 'cal_day is-outside';
+          btn.textContent = n;
+          btn.disabled = true;
+          daysContainer.appendChild(btn);
+        }
+      }
+
+      prevBtn.addEventListener('click', function() {
+        currentMonth--;
+        if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+        selectedDate = null;
+        render();
+        renderEvents(null);
+      });
+
+      nextBtn.addEventListener('click', function() {
+        currentMonth++;
+        if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+        selectedDate = null;
+        render();
+        renderEvents(null);
+      });
+
+      // Initial render
+      render();
+      renderEvents(null);
+
+      // Re-check live button status every minute
+      setInterval(function() {
+        now = new Date();
+        renderEvents(selectedDate);
+      }, 60000);
+    })();
+
+    // ===== FILTER PILLS =====
+    (function() {
+      const pills = document.querySelectorAll('.filter_pill');
+      const cards = document.querySelectorAll('.video_card');
+      const loadMoreBtn = document.getElementById('loadMoreBtn');
+
+      pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          // Toggle active state
+          pills.forEach(p => {
+            p.classList.remove('btn-dark');
+            p.classList.add('btn-text');
+          });
+          pill.classList.remove('btn-text');
+          pill.classList.add('btn-dark');
+
+          applyFilters();
+        });
+      });
+
+      function getActiveFilter() {
+        const activePill = document.querySelector('.filter_pill.btn-dark');
+        return activePill ? activePill.getAttribute('data-filter') : 'tous';
+      }
+
+      function applyFilters() {
+        const filter = getActiveFilter();
+
+        cards.forEach(card => {
+          const type = card.getAttribute('data-type');
+          const isBatch2 = card.hasAttribute('data-batch');
+
+          let matchesFilter = filter === 'tous' || type === filter;
+
+          if (matchesFilter) {
+            // If it's a batch-2 card, only show if load more was already clicked
+            if (isBatch2 && !card.classList.contains('batch-loaded')) {
+              card.style.display = 'none';
+            } else {
+              card.style.display = '';
+              card.classList.remove('is-hidden');
+            }
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Show/hide load more button — only if hidden batch-2 cards match the active filter
+        if (loadMoreBtn) {
+          const hiddenBatch2 = document.querySelectorAll('.video_card[data-batch]:not(.batch-loaded)');
+          let hasMatchingHidden = false;
+          hiddenBatch2.forEach(function(c) {
+            var type = c.getAttribute('data-type');
+            if (filter === 'tous' || type === filter) hasMatchingHidden = true;
+          });
+          loadMoreBtn.style.display = hasMatchingHidden ? '' : 'none';
+        }
+      }
+
+      // Expose for potential use
+      window._applyFilters = applyFilters;
+    })();
+
+    // ===== LOAD MORE =====
+    (function() {
+      const btn = document.getElementById('loadMoreBtn');
+      if (!btn) return;
+
+      btn.addEventListener('click', () => {
+        const hiddenCards = document.querySelectorAll('.video_card[data-batch]:not(.batch-loaded)');
+        hiddenCards.forEach(card => {
+          card.classList.add('batch-loaded');
+          card.classList.remove('is-hidden');
+          card.style.display = '';
+          // Trigger animation
+          observer.observe(card);
+        });
+        btn.style.display = 'none';
+      });
+    })();
+
+    // ===== MAGNETIC BUTTONS =====
+    (function() {
+      if ('ontouchstart' in window || window.innerWidth < 1024) return;
+
+      const magneticBtns = document.querySelectorAll('.btn-dark, .btn-husk, .btn-satin, .footer_cta-btn');
+
+      magneticBtns.forEach(btn => {
+        const parent = btn.parentElement;
+
+        parent.addEventListener('mousemove', (e) => {
+          const rect = btn.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+          const distX = e.clientX - centerX;
+          const distY = e.clientY - centerY;
+          const dist = Math.sqrt(distX * distX + distY * distY);
+
+          if (dist < 80) {
+            const strength = (1 - dist / 80) * 0.15;
+            btn.style.transform = `translate(${distX * strength}px, ${distY * strength}px)`;
+          }
+        });
+
+        parent.addEventListener('mouseleave', () => {
+          btn.style.transform = '';
+          btn.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)';
+          setTimeout(() => { btn.style.transition = ''; }, 400);
+        });
+      });
+    })();
+
+    // ===== MOBILE HAMBURGER =====
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.querySelector('.navbar_menu');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        navMenu.style.position = 'fixed';
+        navMenu.style.top = 'var(--nav-height)';
+        navMenu.style.left = '0';
+        navMenu.style.right = '0';
+        navMenu.style.background = '#fff';
+        navMenu.style.flexDirection = 'column';
+        navMenu.style.padding = '24px';
+        navMenu.style.zIndex = '1000';
+        navMenu.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)';
+      });
+    }
+  </script>
+
+</body>
+</html>

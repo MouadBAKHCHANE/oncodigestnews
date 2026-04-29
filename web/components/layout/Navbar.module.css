@@ -30,7 +30,7 @@
 .logoWordmark {
   font-family: var(--font-display-stack);
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 300;
   color: var(--cod-gray--900);
   letter-spacing: -0.5px;
 }

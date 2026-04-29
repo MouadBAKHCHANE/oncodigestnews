@@ -10,7 +10,7 @@ import './globals.css';
 const fraunces = Fraunces({
   subsets: ['latin'],
   variable: '--font-display',
-  weight: ['400', '500'],
+  weight: ['300', '400', '500'],
   style: ['normal', 'italic'],
   display: 'swap',
 });
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#f7f6ef',
+  themeColor: '#f9f7f3',
 };
 
 export default function RootLayout({

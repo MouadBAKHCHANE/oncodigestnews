@@ -21,6 +21,7 @@
 .logoMark {
   font-family: var(--font-display-stack);
   font-size: 28px;
+  font-weight: 300;
   letter-spacing: -0.6px;
   color: var(--husk--900);
   animation: loaderFadeIn 0.4s ease both;

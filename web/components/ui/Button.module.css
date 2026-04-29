@@ -7,7 +7,7 @@
   border-radius: 32px;
   font-size: 12.3809px;
   font-weight: 400;
-  font-family: Suisseintl, Arial, sans-serif;
+  font-family: var(--font-body-stack);
   letter-spacing: -0.285715px;
   cursor: pointer;
   transition: all 0.3s ease;

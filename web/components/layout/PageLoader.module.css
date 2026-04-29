@@ -19,7 +19,7 @@
 }
 
 .logoMark {
-  font-family: 'Reckless Rockfi', Arial, serif;
+  font-family: var(--font-display-stack);
   font-size: 28px;
   letter-spacing: -0.6px;
   color: var(--husk--900);

@@ -28,7 +28,7 @@
 }
 
 .logoWordmark {
-  font-family: 'Reckless Rockfi', serif;
+  font-family: var(--font-display-stack);
   font-size: 20px;
   font-weight: 400;
   color: var(--cod-gray--900);

@@ -39,6 +39,13 @@
   --satin-linen--800: #5b4c3e;
   --satin-linen--900: #3d3229;
 
+  /* ─── Typography ─────────────────────────────────────────── */
+  /* next/font injects --font-display and --font-body on the <html> element
+     in app/layout.tsx. Components read the *-stack variables below, which
+     reference the injected ones plus extra fallbacks. */
+  --font-display-stack: var(--font-display), 'Reckless Rockfi', Georgia, serif;
+  --font-body-stack: var(--font-body), 'Suisseintl', Arial, sans-serif;
+
   /* ─── Layout ─────────────────────────────────────────────── */
   --nav-height: 72px;
   --container-max: 1440px;

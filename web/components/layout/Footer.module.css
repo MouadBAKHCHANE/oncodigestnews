@@ -25,7 +25,7 @@
 }
 
 .footerLeftHeading {
-  font-family: 'Reckless Rockfi', Arial, sans-serif;
+  font-family: var(--font-display-stack);
   font-size: 38.0952px;
   font-weight: 400;
   line-height: 38.0952px;
@@ -39,7 +39,7 @@
   font-size: 13.3333px;
   line-height: 20px;
   letter-spacing: -0.285715px;
-  font-family: Suisseintl, Arial, sans-serif;
+  font-family: var(--font-body-stack);
 }
 
 .footerSubtext a {
@@ -60,7 +60,7 @@
   border-bottom: 1px solid rgb(93, 93, 93);
   border-radius: 0;
   background: transparent;
-  font-family: Suisseintl, Arial, sans-serif;
+  font-family: var(--font-body-stack);
   font-size: 12.3809px;
   line-height: 17.687px;
   letter-spacing: -0.2px;
@@ -80,7 +80,7 @@
 .footerSubscribeBtn {
   background: rgb(255, 255, 255);
   color: rgb(36, 36, 36);
-  font-family: Suisseintl, Arial, sans-serif;
+  font-family: var(--font-body-stack);
   font-size: 12.3809px;
   font-weight: 400;
   line-height: 18.5714px;
@@ -113,7 +113,7 @@
 }
 
 .footerRightHeading {
-  font-family: 'Reckless Rockfi', Arial, sans-serif;
+  font-family: var(--font-display-stack);
   font-size: 45.7143px;
   font-weight: 400;
   line-height: 45.7143px;
@@ -134,7 +134,7 @@
   gap: 4px;
   background: rgb(61, 50, 41);
   color: rgb(249, 247, 243);
-  font-family: Suisseintl, Arial, sans-serif;
+  font-family: var(--font-body-stack);
   font-size: 12.3809px;
   font-weight: 400;
   line-height: 18.5714px;
@@ -183,7 +183,7 @@
 }
 
 .footerLogoBoxInner {
-  font-family: 'Reckless Rockfi', serif;
+  font-family: var(--font-display-stack);
   font-size: 18px;
   font-weight: 400;
   color: var(--cod-gray--900);
@@ -212,7 +212,7 @@
   color: var(--cod-gray--700);
   line-height: 20px;
   letter-spacing: -0.285715px;
-  font-family: Suisseintl, Arial, sans-serif;
+  font-family: var(--font-body-stack);
   margin-bottom: 8px;
 }
 
@@ -229,7 +229,7 @@
   letter-spacing: -0.285715px;
   padding: 2.08px 0;
   transition: color 0.2s;
-  font-family: Suisseintl, Arial, sans-serif;
+  font-family: var(--font-body-stack);
 }
 
 .footerLinkList a:hover {
@@ -248,7 +248,7 @@
   color: rgb(136, 136, 136);
   line-height: 18.5714px;
   letter-spacing: -0.285715px;
-  font-family: Suisseintl, Arial, sans-serif;
+  font-family: var(--font-body-stack);
 }
 
 /* ─── Responsive ────────────────────────────────────────────── */

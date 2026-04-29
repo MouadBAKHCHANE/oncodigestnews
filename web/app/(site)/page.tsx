@@ -13,7 +13,7 @@ export default function HomePage() {
           className="animate-on-scroll"
           style={{
             fontSize: 'clamp(36px, 5vw, 56px)',
-            fontFamily: '"Reckless Rockfi", Arial, serif',
+            fontFamily: 'var(--font-display-stack)',
             color: 'var(--cod-gray--900)',
             letterSpacing: '-1.2px',
             lineHeight: 1.05,

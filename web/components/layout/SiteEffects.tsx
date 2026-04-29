@@ -1,18 +1,20 @@
 'use client';
 
-import { useScrollBackground } from '@/lib/hooks/useScrollBackground';
 import { useAnimateOnScroll } from '@/lib/hooks/useAnimateOnScroll';
 
 /**
- * Renderless component that mounts site-wide DOM-dependent effects:
- *   - body background interpolates white → husk-50 on scroll
+ * Renderless component that mounts site-wide DOM-dependent effects.
+ *
+ * Currently active:
  *   - elements with `animate-on-scroll` fade in via IntersectionObserver
  *
- * Belongs at the top of the (site) layout. Magnetic-button effects attach
- * per-component via useMagneticButton(ref), not here.
+ * Removed (Phase 3.1): scroll-driven body bg transition. The site now uses
+ * a unified husk-50 background everywhere; the original scroll transition
+ * caused premature cream tinting on short pages and is no longer needed.
+ * The hook still exists in lib/hooks/useScrollBackground.ts if a future
+ * design decision restores it.
  */
 export function SiteEffects() {
-  useScrollBackground();
   useAnimateOnScroll();
   return null;
 }

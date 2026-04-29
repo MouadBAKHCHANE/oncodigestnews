@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/Button';
+import { Logo } from '@/components/ui/Logo';
 import styles from './Navbar.module.css';
 
 const links = [
@@ -36,7 +37,7 @@ export function Navbar() {
     <div className={styles.navFixed} id="navbar">
       <div className={styles.navbarComponent}>
         <Link href="/" className={styles.navbarLogoLink} aria-label="OncoDigest — accueil">
-          <span className={styles.logoWordmark}>LOGO</span>
+          <Logo />
         </Link>
 
         <nav

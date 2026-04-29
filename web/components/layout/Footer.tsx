@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState, type FormEvent } from 'react';
+import { Logo } from '@/components/ui/Logo';
 import styles from './Footer.module.css';
 
 export function Footer() {
@@ -109,8 +110,8 @@ export function Footer() {
             <div className={styles.footerLinksBottom}>
               <div className={styles.footerLinks}>
                 <div className={styles.footerLinksLeft}>
-                  <Link href="/" className={styles.footerLogoBox} aria-label="Accueil">
-                    <span className={styles.footerLogoBoxInner}>LOGO</span>
+                  <Link href="/" className={styles.footerLogoLink} aria-label="OncoDigest — accueil">
+                    <Logo size={22} />
                   </Link>
                 </div>
                 <div className={styles.footerLinksRight}>

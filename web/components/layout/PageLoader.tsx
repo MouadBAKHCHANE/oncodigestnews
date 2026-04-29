@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { Logo } from '@/components/ui/Logo';
 import styles from './PageLoader.module.css';
 
 const SESSION_KEY = 'oncodigest-visited';
@@ -49,7 +50,7 @@ export function PageLoader() {
       aria-hidden
       role="presentation"
     >
-      <span className={styles.logoMark}>OncoDigest</span>
+      <Logo size={28} color="var(--husk--900)" className={styles.logoMark} />
     </div>
   );
 }

@@ -1,8 +1,13 @@
 import { ArticleCard, type ArticleCardData } from '@/components/cards/ArticleCard';
 import { CongressCard, type CongressCardData } from '@/components/cards/CongressCard';
 import { VideoCard, type VideoCardData } from '@/components/cards/VideoCard';
+import { FAQAccordion, type FAQItemData } from '@/components/home/FAQAccordion';
+import { Input } from '@/components/ui/Input';
+import { Select } from '@/components/ui/Select';
+import { Textarea } from '@/components/ui/Textarea';
+import { Checkbox } from '@/components/ui/Checkbox';
 
-export const metadata = { title: 'Dev — Cards', robots: { index: false, follow: false } };
+export const metadata = { title: 'Dev — Components', robots: { index: false, follow: false } };
 
 const articleExcerpt: ArticleCardData['excerpt'] = [
   {
@@ -103,6 +108,63 @@ const videos: VideoCardData[] = [
   },
 ];
 
+const faqItems: FAQItemData[] = [
+  {
+    _id: 'f1',
+    question: "Qui peut s'inscrire sur OncoDigest ?",
+    answer: [
+      {
+        _type: 'block',
+        _key: 'b1',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            _key: 's1',
+            text: 'OncoDigest est ouvert à tous les professionnels de santé : chirurgiens, oncologues, gastro-entérologues, internes, et chercheurs en oncologie digestive.',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    _id: 'f2',
+    question: 'Le contenu est-il gratuit ?',
+    answer: [
+      {
+        _type: 'block',
+        _key: 'b1',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            _key: 's1',
+            text: "La partie grand public (actualités, vidéos sélectionnées) est en accès libre. Les articles scientifiques, rapports de congrès détaillés et lives sont réservés aux membres inscrits.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    _id: 'f3',
+    question: 'Comment proposer une contribution ?',
+    answer: [
+      {
+        _type: 'block',
+        _key: 'b1',
+        style: 'normal',
+        children: [
+          {
+            _type: 'span',
+            _key: 's1',
+            text: 'Contactez-nous via le formulaire de contact en précisant le sujet "Proposition d\'article". Notre comité scientifique examinera votre proposition.',
+          },
+        ],
+      },
+    ],
+  },
+];
+
 const sectionTitle = {
   fontFamily: 'var(--font-display-stack)',
   fontWeight: 300,
@@ -131,7 +193,7 @@ export default function DevCardsPage() {
             marginBottom: 8,
           }}
         >
-          Cards playground
+          Components playground
         </h1>
         <p style={{ color: 'var(--cod-gray--500)', marginBottom: 40, fontSize: 13 }}>
           Internal preview. Not indexed. Used for visual diffing against the existing HTML.
@@ -165,6 +227,54 @@ export default function DevCardsPage() {
             <VideoCard key={v._id} video={v} animationDelay={(i + 1) as 1 | 2} />
           ))}
         </div>
+
+        <h2 style={sectionTitle}>FAQ Accordion</h2>
+        <FAQAccordion items={faqItems} />
+
+        <h2 style={sectionTitle}>Form primitives</h2>
+        <form
+          action=""
+          style={{ display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 560 }}
+        >
+          <Input label="Nom" name="nom" required placeholder="Votre nom" />
+          <Input
+            label="Email"
+            name="email"
+            type="email"
+            required
+            placeholder="exemple@hopital.fr"
+            help="Email professionnel de préférence."
+          />
+          <Input
+            label="Mot de passe"
+            name="password"
+            type="password"
+            required
+            error="Le mot de passe doit contenir au moins 8 caractères"
+          />
+          <Select label="Profession" name="profession" required defaultValue="">
+            <option value="" disabled>
+              Sélectionnez votre profession
+            </option>
+            <option value="chirurgien">Chirurgien</option>
+            <option value="oncologue">Oncologue</option>
+            <option value="gastro-enterologue">Gastro-entérologue</option>
+            <option value="interne">Interne</option>
+            <option value="autre">Autre</option>
+          </Select>
+          <Textarea
+            label="Message"
+            name="message"
+            required
+            placeholder="Votre message..."
+            rows={6}
+          />
+          <Checkbox
+            name="terms"
+            label="J'accepte les conditions d'utilisation"
+            required
+          />
+        </form>
       </div>
     </section>
   );

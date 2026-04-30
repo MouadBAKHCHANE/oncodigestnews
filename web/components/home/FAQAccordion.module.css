@@ -1,0 +1,225 @@
+/* FAQ accordion — copied verbatim from .faq_* in index.html (1438-1587). */
+
+.layout {
+  display: grid;
+  grid-template-columns: 38% 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.left {
+  position: sticky;
+  top: 120px;
+  padding-right: 24px;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--cod-gray--50);
+  color: var(--cod-gray--500);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.heading {
+  font-family: var(--font-display-stack);
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.96px;
+  color: var(--cod-gray--900);
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.watermark {
+  font-family: var(--font-display-stack);
+  font-size: clamp(160px, 18vw, 240px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -8px;
+  color: var(--cod-gray--900);
+  opacity: 0.055;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  white-space: nowrap;
+}
+
+.watermarkNum {
+  display: inline-block;
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease;
+}
+
+.changing {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.leftInner {
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Right column — accordion list */
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  border-top: 1px solid var(--cod-gray--50);
+}
+
+.item:last-child {
+  border-bottom: 1px solid var(--cod-gray--50);
+}
+
+.question {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 0;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: none;
+  font-family: var(--font-body-stack);
+  font-size: 14px;
+  line-height: 1.45;
+  letter-spacing: -0.3px;
+  color: var(--cod-gray--600);
+  text-align: left;
+  transition: color 0.3s ease;
+}
+
+.question:hover {
+  color: var(--cod-gray--900);
+}
+
+.itemOpen .question {
+  color: var(--cod-gray--900);
+}
+
+.num {
+  font-family: var(--font-display-stack);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: var(--cod-gray--400);
+  flex-shrink: 0;
+  min-width: 22px;
+  transition: color 0.3s ease;
+}
+
+.itemOpen .num {
+  color: var(--husk--900);
+}
+
+.qText {
+  flex: 1;
+}
+
+.icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.3s ease;
+  color: var(--cod-gray--400);
+}
+
+.itemOpen .icon {
+  transform: rotate(45deg);
+  color: var(--cod-gray--900);
+}
+
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.answerInner {
+  padding: 0 0 24px 38px;
+  border-left: 2px solid var(--husk--900);
+  margin-left: 10px;
+  color: var(--cod-gray--400);
+  font-family: var(--font-body-stack);
+  font-size: 13.5px;
+  line-height: 1.6;
+  letter-spacing: -0.2px;
+  max-width: 540px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.4s ease 0.1s,
+    transform 0.4s ease 0.1s;
+}
+
+.itemOpen .answer {
+  max-height: 600px;
+}
+
+.itemOpen .answerInner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Portable Text inside answers — paragraphs flow with answer styles */
+.answerInner :global(p) {
+  margin: 0 0 8px;
+}
+.answerInner :global(p:last-child) {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .left {
+    position: relative;
+    top: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .watermark {
+    display: none;
+  }
+  .leftInner {
+    min-height: auto;
+  }
+  .heading {
+    font-size: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .watermarkNum,
+  .icon,
+  .answer,
+  .answerInner {
+    transition: none !important;
+  }
+}

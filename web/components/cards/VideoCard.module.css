@@ -1,0 +1,128 @@
+/* VideoCard — copied verbatim from .video_* in videos.html (937-1050). */
+
+.videoCard {
+  /* Base hover/border/radius inherited from Card.module.css */
+}
+
+.thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+  background: var(--cod-gray--100);
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.videoCard:hover .img {
+  transform: scale(1.05);
+}
+
+.imgPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f8f5ec 0%, #e8dfca 100%);
+}
+
+.playIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.playIcon svg {
+  width: 18px;
+  height: 18px;
+  color: var(--cod-gray--900);
+  margin-left: 2px;
+}
+
+.durationBadge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.lockBadge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.lockBadge svg {
+  width: 14px;
+  height: 14px;
+  color: #fff;
+}
+
+.content {
+  padding: 20px;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--cod-gray--50);
+  color: rgb(136, 136, 136);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-display-stack);
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.35;
+  color: var(--cod-gray--900);
+  margin-top: 10px;
+}
+
+.speaker {
+  font-size: 13px;
+  color: var(--cod-gray--500);
+  margin-top: 8px;
+}
+
+.date {
+  font-size: 12px;
+  color: var(--cod-gray--400);
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 15px;
+  }
+}

@@ -42,6 +42,24 @@ const components: PortableTextComponents = {
   },
 };
 
+/**
+ * Flatten Portable Text blocks to a plain-text string. Useful for card
+ * excerpts where we want CSS line-clamp on a single string, and for
+ * meta descriptions / SEO snippets.
+ */
+export function blocksToPlainText(blocks: PortableTextBlock[] | undefined | null): string {
+  if (!blocks || blocks.length === 0) return '';
+  return blocks
+    .filter((b) => b._type === 'block')
+    .map((b) =>
+      ((b as { children?: { text?: string }[] }).children ?? [])
+        .map((c) => c.text ?? '')
+        .join(''),
+    )
+    .join(' ')
+    .trim();
+}
+
 export function ProseFromPortableText({
   value,
   components: overrides,

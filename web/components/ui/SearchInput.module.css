@@ -1,0 +1,53 @@
+/* SearchInput — copied verbatim from actualites.html (.search_*). */
+
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--cod-gray--400);
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--cod-gray--200);
+  padding: 14px 16px 14px 44px;
+  background: var(--satin-linen--50);
+  font-family: var(--font-body-stack);
+  font-size: 13.3333px;
+  line-height: 20px;
+  letter-spacing: -0.285715px;
+  color: var(--cod-gray--900);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.input:focus {
+  border-color: var(--cod-gray--400);
+}
+
+.input::placeholder {
+  color: var(--cod-gray--400);
+}
+
+/* Hide native search clear button in WebKit; we don't style or use it. */
+.input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+@media (max-width: 768px) {
+  .input {
+    min-height: 44px;
+    font-size: 16px;
+  }
+}

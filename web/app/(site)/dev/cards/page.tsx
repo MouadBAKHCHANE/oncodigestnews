@@ -2,10 +2,12 @@ import { ArticleCard, type ArticleCardData } from '@/components/cards/ArticleCar
 import { CongressCard, type CongressCardData } from '@/components/cards/CongressCard';
 import { VideoCard, type VideoCardData } from '@/components/cards/VideoCard';
 import { FAQAccordion, type FAQItemData } from '@/components/home/FAQAccordion';
+import { LivesCalendar, type LiveEvent } from '@/components/home/LivesCalendar';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Textarea } from '@/components/ui/Textarea';
 import { Checkbox } from '@/components/ui/Checkbox';
+import { FiltersDemo } from './FiltersDemo';
 
 export const metadata = { title: 'Dev — Components', robots: { index: false, follow: false } };
 
@@ -107,6 +109,33 @@ const videos: VideoCardData[] = [
     speakerLine: 'Dr. S. Lebrun',
   },
 ];
+
+// Generate a few mock lives spread across the next 60 days
+const mockLives: LiveEvent[] = (() => {
+  const now = new Date();
+  const offsets = [3, 9, 17, 28, 42];
+  return offsets.map((days, i) => {
+    const d = new Date(now);
+    d.setDate(d.getDate() + days);
+    d.setHours(19, 0, 0, 0);
+    return {
+      _id: `live-${i}`,
+      title: [
+        'Chirurgie robotique du rectum : techniques actuelles',
+        'Cancer du foie : approches multidisciplinaires',
+        'Innovations en chirurgie pancréatique',
+        'ESMO 2026 — Synthèse des moments forts',
+        'Endométriose profonde : approche robotique',
+      ][i],
+      startsAt: d.toISOString(),
+      durationMinutes: 60,
+      registrationUrl: 'https://example.com/register',
+      speakerLine: ['Dr. M.A. Benzakour', 'Pr. S. Lebrun', 'Dr. M. Dhib'][i % 3],
+      description:
+        'Conférence en direct réservée aux professionnels de santé inscrits.',
+    };
+  });
+})();
 
 const faqItems: FAQItemData[] = [
   {
@@ -226,6 +255,14 @@ export default function DevCardsPage() {
           {videos.map((v, i) => (
             <VideoCard key={v._id} video={v} animationDelay={(i + 1) as 1 | 2} />
           ))}
+        </div>
+
+        <h2 style={sectionTitle}>FilterPills + SearchInput</h2>
+        <FiltersDemo />
+
+        <h2 style={sectionTitle}>LivesCalendar (new component)</h2>
+        <div style={{ maxWidth: 720 }}>
+          <LivesCalendar events={mockLives} />
         </div>
 
         <h2 style={sectionTitle}>FAQ Accordion</h2>

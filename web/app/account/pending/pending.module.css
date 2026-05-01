@@ -1,0 +1,130 @@
+.section {
+  min-height: calc(100vh - var(--nav-height));
+  padding: 96px 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: var(--satin-linen--50);
+}
+
+.card {
+  background: var(--cod-gray--0);
+  border: 1px solid var(--cod-gray--100);
+  border-radius: 16px;
+  padding: 48px;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+}
+
+.iconWrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--canary--300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  color: var(--canary--900);
+}
+
+.iconWrap svg {
+  width: 28px;
+  height: 28px;
+}
+
+.heading {
+  font-family: var(--font-display-stack);
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--cod-gray--900);
+  text-align: center;
+  margin: 0 0 16px;
+}
+
+.lead {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--cod-gray--600);
+  text-align: center;
+  margin: 0 0 32px;
+}
+
+.lead strong {
+  color: var(--cod-gray--900);
+  font-weight: 500;
+}
+
+.summary {
+  background: var(--satin-linen--50);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--cod-gray--800);
+}
+
+.summaryLabel {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--cod-gray--500);
+}
+
+.help {
+  font-size: 13px;
+  color: var(--cod-gray--500);
+  text-align: center;
+  margin: 0 0 24px;
+  line-height: 1.5;
+}
+
+.help a {
+  color: var(--cod-gray--900);
+  text-decoration: underline;
+}
+
+.signOut {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 24px;
+  background: transparent;
+  border: 1px solid var(--cod-gray--200);
+  border-radius: 32px;
+  font-family: var(--font-body-stack);
+  font-size: 13px;
+  color: var(--cod-gray--700);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.signOut:hover:not(:disabled) {
+  background: var(--cod-gray--50);
+  border-color: var(--cod-gray--300);
+}
+
+.signOut:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 64px 16px;
+  }
+  .card {
+    padding: 32px 24px;
+  }
+}

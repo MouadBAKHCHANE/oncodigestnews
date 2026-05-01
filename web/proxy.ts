@@ -13,11 +13,10 @@ import { createServerClient } from '@supabase/ssr';
 export async function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
-  // Studio routes: bypass Supabase gate entirely. Studio enforces its own
-  // Sanity-account login, which is sufficient. Re-enable the Supabase admin
-  // check in Phase 6 once /connexion is built.
+  // Studio routes are admin-only. Studio additionally enforces its own
+  // Sanity-account login on top of the Supabase gate (defense-in-depth).
   if (path.startsWith('/admin/studio')) {
-    return NextResponse.next();
+    return enforceAdmin(request);
   }
 
   let response = NextResponse.next({ request });

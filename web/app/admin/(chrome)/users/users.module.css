@@ -92,3 +92,102 @@
   color: var(--cod-gray--400);
   font-style: italic;
 }
+
+.adminTag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 6px;
+  background: var(--canary--300);
+  color: var(--canary--900);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.actionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.actionBtn {
+  font-family: var(--font-body-stack);
+  font-size: 12px;
+  letter-spacing: -0.2px;
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.actionBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.actionBtnPrimary {
+  background: var(--cod-gray--900);
+  color: var(--cod-gray--0);
+}
+.actionBtnPrimary:hover:not(:disabled) {
+  background: var(--cod-gray--800);
+}
+
+.actionBtnGhost {
+  background: transparent;
+  color: var(--cod-gray--700);
+  border-color: var(--cod-gray--200);
+  font-family: var(--font-body-stack);
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.actionBtnGhost:hover:not(:disabled) {
+  background: var(--cod-gray--50);
+  border-color: var(--cod-gray--300);
+}
+
+.actionBtnDanger {
+  background: #d93025;
+  color: #fff;
+}
+.actionBtnDanger:hover:not(:disabled) {
+  background: #b8261c;
+}
+
+.confirmBox {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 220px;
+}
+
+.reasonInput {
+  padding: 6px 10px;
+  border: 1px solid var(--cod-gray--200);
+  border-radius: 6px;
+  font-family: var(--font-body-stack);
+  font-size: 12px;
+  color: var(--cod-gray--900);
+  background: var(--cod-gray--0);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.reasonInput:focus {
+  border-color: var(--cod-gray--500);
+}
+
+.actionError {
+  font-size: 11px;
+  color: #d93025;
+  flex-basis: 100%;
+}

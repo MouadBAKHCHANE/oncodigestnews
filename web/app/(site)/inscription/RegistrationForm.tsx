@@ -59,6 +59,19 @@ export function RegistrationForm() {
       return;
     }
 
+    // Fire-and-forget admin notification — don't block UX if email fails.
+    void fetch('/api/notify-signup', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        fullName: `${values.prenom} ${values.nom}`.trim(),
+        email: values.email,
+        profession: values.profession,
+        specialty: values.specialite || undefined,
+        hospital: values.ville || undefined,
+      }),
+    }).catch(() => {});
+
     // The handle_new_user trigger creates the profiles row automatically
     // (status='pending'). Admin approval is required before login → access.
     setSubmitted(true);

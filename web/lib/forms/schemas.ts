@@ -56,6 +56,24 @@ export const forgotPasswordSchema = z.object({
 
 export type ForgotPasswordInput = z.infer<typeof forgotPasswordSchema>;
 
+export const resetPasswordSchema = z
+  .object({
+    password: z
+      .string()
+      .min(8, 'Au moins 8 caractères')
+      .max(128, 'Mot de passe trop long')
+      .regex(/[A-Z]/, 'Doit contenir une majuscule')
+      .regex(/[a-z]/, 'Doit contenir une minuscule')
+      .regex(/[0-9]/, 'Doit contenir un chiffre'),
+    passwordConfirm: z.string(),
+  })
+  .refine((d) => d.password === d.passwordConfirm, {
+    message: 'Les mots de passe ne correspondent pas',
+    path: ['passwordConfirm'],
+  });
+
+export type ResetPasswordInput = z.infer<typeof resetPasswordSchema>;
+
 export const registrationSchema = z
   .object({
     nom: z

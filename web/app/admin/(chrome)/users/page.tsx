@@ -1,5 +1,6 @@
 import { getSupabaseServerClient } from '@/lib/supabase/server';
 import { requireAdmin } from '@/lib/auth';
+import { UserActions } from './UserActions';
 import styles from './users.module.css';
 
 export const metadata = { title: 'Users — Admin' };
@@ -23,14 +24,16 @@ export default async function UsersPage({
 }: {
   searchParams: Promise<{ tab?: 'pending' | 'approved' | 'revoked' }>;
 }) {
-  await requireAdmin();
+  const admin = await requireAdmin();
   const sp = await searchParams;
   const tab = sp.tab ?? 'pending';
 
   const supabase = await getSupabaseServerClient();
   const { data: profiles } = await supabase
     .from('profiles')
-    .select('id, email, full_name, specialty, hospital, rpps_number, status, role, created_at, approved_at')
+    .select(
+      'id, email, full_name, specialty, hospital, rpps_number, status, role, created_at, approved_at',
+    )
     .eq('status', tab)
     .order('created_at', { ascending: false });
 
@@ -41,9 +44,15 @@ export default async function UsersPage({
       <header className={styles.header}>
         <h1 className={styles.title}>Users</h1>
         <nav className={styles.subtabs}>
-          <SubTab href="?tab=pending" current={tab} value="pending">Pending</SubTab>
-          <SubTab href="?tab=approved" current={tab} value="approved">Approved</SubTab>
-          <SubTab href="?tab=revoked" current={tab} value="revoked">Revoked</SubTab>
+          <SubTab href="?tab=pending" current={tab} value="pending">
+            Pending
+          </SubTab>
+          <SubTab href="?tab=approved" current={tab} value="approved">
+            Approved
+          </SubTab>
+          <SubTab href="?tab=revoked" current={tab} value="revoked">
+            Revoked
+          </SubTab>
         </nav>
       </header>
 
@@ -65,15 +74,22 @@ export default async function UsersPage({
           <tbody>
             {list.map((p) => (
               <tr key={p.id}>
-                <td>{p.full_name}</td>
+                <td>
+                  {p.full_name}
+                  {p.role === 'admin' ? <span className={styles.adminTag}>admin</span> : null}
+                </td>
                 <td>{p.email}</td>
                 <td>{p.specialty ?? '—'}</td>
                 <td>{p.hospital ?? '—'}</td>
                 <td>{p.rpps_number ?? '—'}</td>
                 <td>{new Date(p.created_at).toLocaleDateString('fr-FR')}</td>
                 <td>
-                  {/* Server actions for approve/revoke arrive in Phase 7 */}
-                  <span className={styles.placeholder}>Actions in Phase 7</span>
+                  <UserActions
+                    profileId={p.id}
+                    status={p.status}
+                    isCurrentUser={p.id === admin.id}
+                    isAdmin={p.role === 'admin'}
+                  />
                 </td>
               </tr>
             ))}
@@ -97,7 +113,10 @@ function SubTab({
 }) {
   const active = current === value;
   return (
-    <a href={href} className={active ? `${styles.subtab} ${styles.subtabActive}` : styles.subtab}>
+    <a
+      href={href}
+      className={active ? `${styles.subtab} ${styles.subtabActive}` : styles.subtab}
+    >
       {children}
     </a>
   );

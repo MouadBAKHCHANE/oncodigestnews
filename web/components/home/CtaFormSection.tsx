@@ -67,6 +67,17 @@ export function CtaFormSection() {
       }
       return;
     }
+    void fetch('/api/notify-signup', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        fullName: `${values.prenom} ${values.nom}`.trim(),
+        email: values.email,
+        profession: values.profession,
+        specialty: values.specialite || undefined,
+        hospital: values.ville || undefined,
+      }),
+    }).catch(() => {});
     setSubmitted(true);
   }
 

@@ -8,6 +8,7 @@ import { Select } from '@/components/ui/Select';
 import { Textarea } from '@/components/ui/Textarea';
 import { Checkbox } from '@/components/ui/Checkbox';
 import { FiltersDemo } from './FiltersDemo';
+import { TypewriterDemo } from './TypewriterDemo';
 
 export const metadata = { title: 'Dev — Components', robots: { index: false, follow: false } };
 
@@ -256,6 +257,9 @@ export default function DevCardsPage() {
             <VideoCard key={v._id} video={v} animationDelay={(i + 1) as 1 | 2} />
           ))}
         </div>
+
+        <h2 style={sectionTitle}>Typewriter (Phase 5 hook)</h2>
+        <TypewriterDemo />
 
         <h2 style={sectionTitle}>FilterPills + SearchInput</h2>
         <FiltersDemo />

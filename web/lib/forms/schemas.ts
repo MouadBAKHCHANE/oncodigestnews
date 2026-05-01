@@ -33,3 +33,25 @@ export const contactSchema = z.object({
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;
+
+export const loginSchema = z.object({
+  email: z
+    .string()
+    .email('Adresse email invalide')
+    .toLowerCase()
+    .trim(),
+  password: z.string().min(1, 'Le mot de passe est requis'),
+  rememberMe: z.boolean().optional(),
+});
+
+export type LoginInput = z.infer<typeof loginSchema>;
+
+export const forgotPasswordSchema = z.object({
+  email: z
+    .string()
+    .email('Veuillez entrer une adresse email valide')
+    .toLowerCase()
+    .trim(),
+});
+
+export type ForgotPasswordInput = z.infer<typeof forgotPasswordSchema>;

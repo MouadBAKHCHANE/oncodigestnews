@@ -1,0 +1,229 @@
+/* /actualites — copied verbatim from actualites.html .section_featured +
+   .featured_* + .articles_grid (lines 680-810 + responsive). */
+
+.section {
+  padding: 96px 0 80px;
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--cod-gray--50);
+  color: var(--cod-gray--500);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.heading {
+  font-family: var(--font-display-stack);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -1.2px;
+  color: var(--cod-gray--900);
+  margin: 16px 0 12px;
+}
+
+.lead {
+  font-family: var(--font-body-stack);
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--cod-gray--600);
+  max-width: 640px;
+  margin: 0;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 48px 0 48px;
+  max-width: 720px;
+}
+
+.empty {
+  text-align: center;
+  font-style: italic;
+  color: var(--cod-gray--500);
+  padding: 48px 16px;
+}
+
+/* Featured */
+.featuredSection {
+  padding: 0 0 64px;
+}
+
+.featuredCard {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  gap: 32px;
+  border: 1px solid var(--cod-gray--100);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--cod-gray--0);
+  transition: box-shadow 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.featuredCard:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+.featuredImgWrap {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.featuredImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.featuredCard:hover .featuredImg {
+  transform: scale(1.05);
+}
+
+.featuredImgPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f8f5ec 0%, #e8dfca 100%);
+}
+
+.featuredContent {
+  padding: 32px 32px 32px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.featuredTag {
+  display: inline-block;
+  background: var(--cod-gray--50);
+  color: rgb(136, 136, 136);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6.19047px;
+  margin-bottom: 16px;
+  width: fit-content;
+}
+
+.featuredTitle {
+  font-family: var(--font-display-stack);
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--cod-gray--900);
+  margin: 0 0 12px;
+}
+
+.featuredExcerpt {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--cod-gray--500);
+  margin: 0 0 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.featuredMeta {
+  font-size: 12px;
+  color: var(--cod-gray--400);
+  margin: 0 0 16px;
+}
+
+.featuredLink {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cod-gray--900);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.3s ease;
+}
+
+.featuredCard:hover .featuredLink {
+  gap: 10px;
+}
+
+/* Grid */
+.gridSection {
+  padding: 0 0 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.loadMoreWrap {
+  text-align: center;
+  margin-top: 64px;
+}
+
+.loadMore {
+  background: transparent;
+  border: 1px solid var(--cod-gray--100);
+  color: var(--cod-gray--700);
+  font-family: var(--font-body-stack);
+  font-size: 13px;
+  letter-spacing: -0.2px;
+  padding: 12px 24px;
+  border-radius: 32px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.loadMore:hover {
+  background: var(--cod-gray--50);
+  border-color: var(--cod-gray--200);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .featuredCard {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .featuredContent {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 0 60px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .heading {
+    font-size: 32px;
+  }
+  .featuredTitle {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 64px 0 48px;
+  }
+  .grid {
+    gap: 16px;
+  }
+}

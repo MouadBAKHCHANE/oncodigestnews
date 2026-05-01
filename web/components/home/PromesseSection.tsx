@@ -1,0 +1,56 @@
+'use client';
+
+import { useRef } from 'react';
+import { useVenetianReveal } from '@/lib/hooks/useVenetianReveal';
+import styles from './PromesseSection.module.css';
+
+interface PromesseSectionProps {
+  imageUrl: string;
+  bgHeading?: string;
+  panelTag?: string;
+  panelHeading?: string;
+  panelBody?: string;
+}
+
+export function PromesseSection({
+  imageUrl,
+  bgHeading = 'La rigueur scientifique au service de la pratique quotidienne.',
+  panelTag = 'Notre mission',
+  panelHeading = 'La rigueur scientifique au service de la pratique quotidienne.',
+  panelBody = "Après plusieurs années dédiées à la chirurgie viscérale, OncoDigest est né d'une exigence : offrir aux praticiens une information technique de haut niveau, sans jamais perdre de vue la dimension humaine du soin.",
+}: PromesseSectionProps) {
+  const scrollSpaceRef = useRef<HTMLElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const bgHeadingRef = useRef<HTMLDivElement | null>(null);
+  const panelRef = useRef<HTMLDivElement | null>(null);
+
+  useVenetianReveal({
+    scrollSpaceRef,
+    containerRef,
+    bgHeadingRef,
+    panelRef,
+    imageUrl,
+  });
+
+  return (
+    <section ref={scrollSpaceRef} className={styles.scrollSpace}>
+      <div className={styles.sticky}>
+        <div ref={bgHeadingRef} className={styles.bgHeading} aria-hidden>
+          <p>{bgHeading}</p>
+        </div>
+        <div className={styles.lightWash} aria-hidden />
+        <div ref={containerRef} className={styles.stripsContainer} aria-hidden />
+
+        <div className={styles.mobileImg}>
+          <img src={imageUrl} alt="" loading="lazy" />
+        </div>
+
+        <div ref={panelRef} className={styles.panel}>
+          <span className={styles.tag}>{panelTag}</span>
+          <h2 className={styles.heading}>{panelHeading}</h2>
+          <p className={styles.body}>{panelBody}</p>
+        </div>
+      </div>
+    </section>
+  );
+}

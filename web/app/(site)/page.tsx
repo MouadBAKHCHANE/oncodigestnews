@@ -1,52 +1,185 @@
-/**
- * Homepage stub — Phase 3 placeholder.
- * Real hero + sections arrive in Phase 6 (page port).
- */
-export default function HomePage() {
+import { sanityClient } from '@/lib/sanity/client';
+import { urlForImage } from '@/lib/sanity/image';
+import type { PortableTextBlock } from '@portabletext/types';
+import type { Image as SanityImage } from 'sanity';
+import { Hero } from '@/components/home/Hero';
+import { PromesseSection } from '@/components/home/PromesseSection';
+import { FAQAccordion, type FAQItemData } from '@/components/home/FAQAccordion';
+import { ArticleCard, type ArticleCardData } from '@/components/cards/ArticleCard';
+import { Button } from '@/components/ui/Button';
+import styles from './home.module.css';
+
+export const revalidate = 600;
+
+interface HomeData {
+  settings: {
+    siteName?: string;
+    tagline?: string;
+    heroTypewriterWords?: string[];
+    heroImage?: (SanityImage & { alt?: string }) | null;
+  } | null;
+  advisors: Array<{
+    _id: string;
+    name: string;
+    role?: string;
+    photo?: (SanityImage & { alt?: string }) | null;
+    quote?: string;
+  }>;
+  faqs: Array<{
+    _id: string;
+    question: string;
+    answer: PortableTextBlock[];
+  }>;
+  latestArticles: ArticleCardData[];
+}
+
+const homeQuery = /* groq */ `{
+  "settings": *[_type == "siteSettings"][0]{
+    siteName, tagline, heroTypewriterWords, heroImage
+  },
+  "advisors": *[_type == "advisor"] | order(order asc)[0...3] {
+    _id, name, role, photo, quote
+  },
+  "faqs": *[_type == "faq"] | order(order asc) {
+    _id, question, answer
+  },
+  "latestArticles": *[_type == "article"] | order(publishedAt desc)[0...3] {
+    _id, title, slug, excerpt, coverImage, publishedAt, readingTime, access, tag,
+    "category": category->{title, slug},
+    "author": author->{name, photo}
+  }
+}`;
+
+const FALLBACK_HERO_IMAGE = '/hero-fallback.jpg';
+
+export default async function HomePage() {
+  const data = await sanityClient.fetch<HomeData>(homeQuery);
+
+  const heroImageUrl = data.settings?.heroImage
+    ? urlForImage(data.settings.heroImage).width(1600).height(1200).url()
+    : FALLBACK_HERO_IMAGE;
+
+  const heroAlt =
+    data.settings?.heroImage?.alt ?? 'Chirurgie robotique — OncoDigest';
+
+  const promesseImageUrl = heroImageUrl;
+
+  const faqItems: FAQItemData[] = data.faqs ?? [];
+
   return (
-    <section className="padding-global" style={{ minHeight: '60vh', paddingTop: 80, paddingBottom: 80 }}>
-      <div
-        className="container-large"
-        style={{ maxWidth: 720, margin: '0 auto' }}
-      >
-        <h1
-          className="animate-on-scroll"
-          style={{
-            fontSize: 'clamp(36px, 5vw, 56px)',
-            fontFamily: 'var(--font-display-stack)',
-            fontWeight: 300,
-            color: 'var(--cod-gray--900)',
-            letterSpacing: '-1.2px',
-            lineHeight: 1.05,
-            marginBottom: 24,
-          }}
-        >
-          OncoDigest
-        </h1>
-        <p
-          className="animate-on-scroll delay-1"
-          style={{ color: 'var(--cod-gray--600)', fontSize: 16, lineHeight: 1.6, maxWidth: 560 }}
-        >
-          Phase 3 layout shell is now wired. Navbar, footer, page loader, grain overlay,
-          and scroll-driven body background are all live. Hero + content sections arrive
-          in Phase 6 (see <code>docs/MIGRATION.md</code>).
-        </p>
-        <ul
-          className="animate-on-scroll delay-2"
-          style={{ marginTop: 32, listStyle: 'disc', paddingLeft: 24, color: 'var(--cod-gray--600)' }}
-        >
-          <li>
-            <a href="/admin/studio" style={{ color: 'var(--cod-gray--900)' }}>
-              Sanity Studio (admin)
-            </a>
-          </li>
-          <li>
-            <a href="/admin/users" style={{ color: 'var(--cod-gray--900)' }}>
-              Users dashboard
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
+    <>
+      <Hero
+        imageUrl={heroImageUrl}
+        imageAlt={heroAlt}
+        typewriterWords={
+          data.settings?.heroTypewriterWords && data.settings.heroTypewriterWords.length > 0
+            ? data.settings.heroTypewriterWords
+            : undefined
+        }
+      />
+
+      <PromesseSection imageUrl={promesseImageUrl} />
+
+      {data.advisors.length > 0 ? (
+        <section className={styles.advisorsSection}>
+          <div className="padding-global">
+            <div className="container-large">
+              <span className={`${styles.eyebrow} animate-on-scroll`}>Comité scientifique</span>
+              <h2 className={`${styles.sectionHeading} animate-on-scroll delay-1`}>
+                Un comité d&apos;experts au service de la qualité.
+              </h2>
+              <div className={styles.advisorsGrid}>
+                {data.advisors.map((a, i) => (
+                  <article
+                    key={a._id}
+                    className={`${styles.advisorCard} animate-on-scroll delay-${i}`}
+                  >
+                    {a.photo ? (
+                      <div className={styles.advisorAvatar}>
+                        <img
+                          src={urlForImage(a.photo).width(160).height(160).url()}
+                          alt={a.photo.alt ?? a.name}
+                          loading="lazy"
+                        />
+                      </div>
+                    ) : null}
+                    <h3 className={styles.advisorName}>{a.name}</h3>
+                    {a.role ? <p className={styles.advisorRole}>{a.role}</p> : null}
+                    {a.quote ? (
+                      <p className={styles.advisorQuote}>« {a.quote} »</p>
+                    ) : null}
+                  </article>
+                ))}
+              </div>
+              <div className={`${styles.advisorsCta} animate-on-scroll delay-3`}>
+                <Button href="/a-propos" variant="husk" size="sm">
+                  Voir le comité scientifique →
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {data.latestArticles.length > 0 ? (
+        <section className={styles.journalSection}>
+          <div className="padding-global">
+            <div className="container-large">
+              <div className={styles.journalHeader}>
+                <span className={`${styles.eyebrow} animate-on-scroll`}>Journal</span>
+                <h2 className={`${styles.sectionHeading} animate-on-scroll delay-1`}>
+                  Les dernières publications.
+                </h2>
+              </div>
+              <div className={styles.journalGrid}>
+                {data.latestArticles.map((article, i) => (
+                  <ArticleCard
+                    key={article._id}
+                    article={article}
+                    animationDelay={((i % 3) + 1) as 1 | 2 | 3}
+                  />
+                ))}
+              </div>
+              <div className={`${styles.journalCta} animate-on-scroll delay-3`}>
+                <Button href="/actualites" variant="dark" size="sm">
+                  Voir toutes les actualités →
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      <section className={styles.ctaSection}>
+        <div className={styles.ctaGlow} aria-hidden />
+        <div className="padding-global">
+          <div className="container-large">
+            <div className={styles.ctaInner}>
+              <h2 className={`${styles.ctaHeading} animate-on-scroll`}>
+                Rejoignez la communauté <em>OncoDigest</em>.
+              </h2>
+              <p className={`${styles.ctaSubtext} animate-on-scroll delay-1`}>
+                Accédez aux articles, rapports de congrès et vidéos exclusives.
+              </p>
+              <div className={`${styles.ctaButton} animate-on-scroll delay-2`}>
+                <Button href="/inscription" variant="yellow" size="sm">
+                  Créer mon compte
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {faqItems.length > 0 ? (
+        <section className={styles.faqSection}>
+          <div className="padding-global">
+            <div className="container-large">
+              <FAQAccordion items={faqItems} tag="FAQ" heading="Vos questions, nos réponses" />
+            </div>
+          </div>
+        </section>
+      ) : null}
+    </>
   );
 }

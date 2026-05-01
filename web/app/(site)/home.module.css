@@ -1,0 +1,228 @@
+/* Homepage section spacing + advisor/journal/CTA/FAQ scaffolding. */
+
+.eyebrow {
+  display: inline-block;
+  background: var(--cod-gray--50);
+  color: var(--cod-gray--500);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.sectionHeading {
+  font-family: var(--font-display-stack);
+  font-size: clamp(32px, 4.5vw, 56px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -1.2px;
+  color: var(--cod-gray--900);
+  margin: 0 0 48px;
+}
+
+/* ─── Advisors ──────────────────────────────────────── */
+
+.advisorsSection {
+  padding: 96px 0;
+}
+
+.advisorsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.advisorCard {
+  background: var(--cod-gray--0);
+  border: 1px solid var(--cod-gray--100);
+  border-radius: 16px;
+  padding: 32px;
+  transition: box-shadow 0.3s ease;
+}
+
+.advisorCard:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+.advisorAvatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--cod-gray--100);
+  margin-bottom: 16px;
+}
+
+.advisorAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.advisorName {
+  font-family: var(--font-display-stack);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--cod-gray--900);
+  margin: 0 0 4px;
+}
+
+.advisorRole {
+  font-size: 13px;
+  color: var(--cod-gray--600);
+  margin: 0 0 16px;
+}
+
+.advisorQuote {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--cod-gray--700);
+  font-style: italic;
+  margin: 0;
+}
+
+.advisorsCta {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* ─── Journal ──────────────────────────────────────── */
+
+.journalSection {
+  padding: 64px 0 96px;
+}
+
+.journalHeader {
+  margin-bottom: 32px;
+}
+
+.journalGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.journalCta {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ─── CTA ──────────────────────────────────────── */
+
+.ctaSection {
+  position: relative;
+  padding: 96px 0;
+  background: var(--cod-gray--900);
+  color: var(--cod-gray--0);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.ctaGlow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: radial-gradient(
+    circle,
+    rgba(234, 234, 215, 0.6) 0%,
+    rgba(247, 246, 239, 0.3) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+  animation: cta-glow-pulse 8s ease-in-out infinite;
+}
+
+@keyframes cta-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(-50%) scale(1.1);
+  }
+}
+
+.ctaInner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.ctaHeading {
+  font-family: var(--font-display-stack);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--cod-gray--0);
+  margin: 0 0 16px;
+}
+
+.ctaHeading em {
+  font-style: italic;
+}
+
+.ctaSubtext {
+  font-size: 15px;
+  color: var(--cod-gray--400);
+  margin: 0 0 32px;
+}
+
+.ctaButton {
+  display: flex;
+  justify-content: center;
+}
+
+/* ─── FAQ ──────────────────────────────────────── */
+
+.faqSection {
+  padding: 96px 0;
+}
+
+@media (max-width: 1024px) {
+  .advisorsGrid,
+  .journalGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .advisorsSection,
+  .ctaSection,
+  .faqSection {
+    padding: 64px 0;
+  }
+  .journalSection {
+    padding: 48px 0 64px;
+  }
+  .advisorsGrid,
+  .journalGrid {
+    grid-template-columns: 1fr;
+  }
+  .sectionHeading {
+    font-size: 28px;
+  }
+  .ctaGlow {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctaGlow {
+    animation: none !important;
+  }
+}

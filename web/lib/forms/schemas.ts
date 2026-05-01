@@ -55,3 +55,46 @@ export const forgotPasswordSchema = z.object({
 });
 
 export type ForgotPasswordInput = z.infer<typeof forgotPasswordSchema>;
+
+export const registrationSchema = z
+  .object({
+    nom: z
+      .string()
+      .min(2, 'Le nom doit faire au moins 2 caractères')
+      .max(80, 'Le nom est trop long')
+      .trim(),
+    prenom: z
+      .string()
+      .min(2, 'Le prénom doit faire au moins 2 caractères')
+      .max(80, 'Le prénom est trop long')
+      .trim(),
+    email: z
+      .string()
+      .email('Adresse email invalide')
+      .max(254, 'Email trop long')
+      .toLowerCase()
+      .trim(),
+    password: z
+      .string()
+      .min(8, 'Le mot de passe doit faire au moins 8 caractères')
+      .max(128, 'Mot de passe trop long')
+      .regex(/[A-Z]/, 'Doit contenir au moins une majuscule')
+      .regex(/[a-z]/, 'Doit contenir au moins une minuscule')
+      .regex(/[0-9]/, 'Doit contenir au moins un chiffre'),
+    passwordConfirm: z.string(),
+    profession: z.enum(
+      ['chirurgien', 'oncologue', 'gastro-enterologue', 'interne', 'autre'],
+      { message: 'Veuillez sélectionner une profession' },
+    ),
+    specialite: z.string().max(120).trim().optional().or(z.literal('')),
+    ville: z.string().max(120).trim().optional().or(z.literal('')),
+    acceptTerms: z.literal(true, {
+      message: "Vous devez accepter les conditions d'utilisation",
+    }),
+  })
+  .refine((data) => data.password === data.passwordConfirm, {
+    message: 'Les mots de passe ne correspondent pas',
+    path: ['passwordConfirm'],
+  });
+
+export type RegistrationInput = z.infer<typeof registrationSchema>;

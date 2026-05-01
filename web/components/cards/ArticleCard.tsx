@@ -2,6 +2,7 @@ import Image from 'next/image';
 import type { PortableTextBlock } from '@portabletext/types';
 import type { Image as SanityImage } from 'sanity';
 import { Card } from './Card';
+import { ArticlePlaceholder } from './ArticlePlaceholder';
 import { urlForImage } from '@/lib/sanity/image';
 import { blocksToPlainText } from '@/lib/sanity/portableText';
 import styles from './ArticleCard.module.css';
@@ -61,7 +62,10 @@ export function ArticleCard({ article, href, animationDelay }: ArticleCardProps)
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
           />
         ) : (
-          <div className={styles.imgPlaceholder} aria-hidden />
+          <ArticlePlaceholder
+            label={article.tag || article.category?.title || 'Article'}
+            seed={(article._id ?? '').length}
+          />
         )}
         {isLocked ? (
           <div className={styles.lockBadge} aria-label="Contenu réservé aux Pros">

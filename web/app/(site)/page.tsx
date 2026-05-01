@@ -9,6 +9,7 @@ import { BannerSection } from '@/components/home/BannerSection';
 import { ExpertiseSection } from '@/components/home/ExpertiseSection';
 import { DarkQuoteSection } from '@/components/home/DarkQuoteSection';
 import { LivesPreviewSection } from '@/components/home/LivesPreviewSection';
+import { CtaFormSection } from '@/components/home/CtaFormSection';
 import { FAQAccordion, type FAQItemData } from '@/components/home/FAQAccordion';
 import { ArticleCard, type ArticleCardData } from '@/components/cards/ArticleCard';
 import { type VideoCardData } from '@/components/cards/VideoCard';
@@ -177,26 +178,7 @@ export default async function HomePage() {
         </section>
       ) : null}
 
-      <section className={styles.ctaSection}>
-        <div className={styles.ctaGlow} aria-hidden />
-        <div className="padding-global">
-          <div className="container-large">
-            <div className={styles.ctaInner}>
-              <h2 className={`${styles.ctaHeading} animate-on-scroll`}>
-                Rejoignez la communauté <em>OncoDigest</em>.
-              </h2>
-              <p className={`${styles.ctaSubtext} animate-on-scroll delay-1`}>
-                Accédez aux articles, rapports de congrès et vidéos exclusives.
-              </p>
-              <div className={`${styles.ctaButton} animate-on-scroll delay-2`}>
-                <Button href="/inscription" variant="yellow" size="sm">
-                  Créer mon compte
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CtaFormSection />
 
       {faqItems.length > 0 ? (
         <section className={styles.faqSection}>

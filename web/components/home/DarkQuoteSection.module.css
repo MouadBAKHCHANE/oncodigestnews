@@ -1,0 +1,72 @@
+.section {
+  background: var(--cod-gray--900);
+  color: var(--cod-gray--0);
+  padding: 96px 24px;
+}
+
+.inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.text {
+  font-family: var(--font-display-stack);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  color: var(--cod-gray--0);
+  margin: 0 0 32px;
+}
+
+.text em {
+  font-style: italic;
+  color: var(--canary--300);
+}
+
+.author {
+  margin-bottom: 32px;
+}
+
+.authorName {
+  font-size: 14px;
+  color: var(--cod-gray--0);
+  margin-bottom: 4px;
+}
+
+.authorRole {
+  font-size: 13px;
+  color: var(--cod-gray--400);
+}
+
+.cta {
+  display: flex;
+  justify-content: center;
+}
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--cod-gray--0);
+  font-family: var(--font-body-stack);
+  font-size: 13px;
+  letter-spacing: -0.2px;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.ctaLink:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 64px 16px;
+  }
+}

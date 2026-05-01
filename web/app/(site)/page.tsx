@@ -4,8 +4,13 @@ import type { PortableTextBlock } from '@portabletext/types';
 import type { Image as SanityImage } from 'sanity';
 import { Hero } from '@/components/home/Hero';
 import { PromesseSection } from '@/components/home/PromesseSection';
+import { PartnersSection } from '@/components/home/PartnersSection';
+import { BannerSection } from '@/components/home/BannerSection';
+import { DarkQuoteSection } from '@/components/home/DarkQuoteSection';
+import { LivesPreviewSection } from '@/components/home/LivesPreviewSection';
 import { FAQAccordion, type FAQItemData } from '@/components/home/FAQAccordion';
 import { ArticleCard, type ArticleCardData } from '@/components/cards/ArticleCard';
+import { type VideoCardData } from '@/components/cards/VideoCard';
 import { Button } from '@/components/ui/Button';
 import styles from './home.module.css';
 
@@ -31,6 +36,7 @@ interface HomeData {
     answer: PortableTextBlock[];
   }>;
   latestArticles: ArticleCardData[];
+  latestVideos: VideoCardData[];
 }
 
 const homeQuery = /* groq */ `{
@@ -47,10 +53,16 @@ const homeQuery = /* groq */ `{
     _id, title, slug, excerpt, coverImage, publishedAt, readingTime, access, tag,
     "category": category->{title, slug},
     "author": author->{name, photo}
+  },
+  "latestVideos": *[_type == "video"] | order(publishedAt desc)[0...3] {
+    _id, title, slug, thumbnail, durationSeconds, publishedAt, access,
+    "category": category->{title, slug},
+    "speakerLine": array::join(speakers[]->name, ' · ')
   }
 }`;
 
 const FALLBACK_HERO_IMAGE = '/hero-fallback.jpg';
+const FALLBACK_PROMESSE_IMAGE = '/promesse-fallback.jpg';
 
 export default async function HomePage() {
   const data = await sanityClient.fetch<HomeData>(homeQuery);
@@ -62,7 +74,9 @@ export default async function HomePage() {
   const heroAlt =
     data.settings?.heroImage?.alt ?? 'Chirurgie robotique — OncoDigest';
 
-  const promesseImageUrl = heroImageUrl;
+  const promesseImageUrl = data.settings?.heroImage
+    ? urlForImage(data.settings.heroImage).width(1200).height(1600).url()
+    : FALLBACK_PROMESSE_IMAGE;
 
   const faqItems: FAQItemData[] = data.faqs ?? [];
 
@@ -78,7 +92,11 @@ export default async function HomePage() {
         }
       />
 
+      <PartnersSection />
+
       <PromesseSection imageUrl={promesseImageUrl} />
+
+      <BannerSection />
 
       {data.advisors.length > 0 ? (
         <section className={styles.advisorsSection}>
@@ -119,6 +137,12 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
+      ) : null}
+
+      <DarkQuoteSection />
+
+      {data.latestVideos.length > 0 ? (
+        <LivesPreviewSection videos={data.latestVideos} />
       ) : null}
 
       {data.latestArticles.length > 0 ? (

@@ -1,0 +1,84 @@
+.section {
+  padding: 64px 0;
+}
+
+.card {
+  background: var(--husk--50);
+  border-radius: 24px;
+  padding: 80px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--cod-gray--0);
+  color: var(--husk--900);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.heading {
+  font-family: var(--font-display-stack);
+  font-size: clamp(28px, 4.5vw, 56px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -1.2px;
+  color: var(--cod-gray--900);
+  margin: 0;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--husk--900);
+  margin: 8px 0 12px;
+}
+
+.featureItem {
+  font-weight: 500;
+}
+
+.dot {
+  color: var(--husk--600);
+  flex-shrink: 0;
+}
+
+.cta {
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 48px 24px;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 32px 16px;
+  }
+  .features {
+    gap: 8px;
+    font-size: 12px;
+  }
+}

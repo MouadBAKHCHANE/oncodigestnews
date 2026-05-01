@@ -1,0 +1,198 @@
+/* /congres — copied verbatim from congres.html .featured-congress +
+   .congress_grid (lines 636-790). */
+
+.section {
+  padding: 96px 0 80px;
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--cod-gray--50);
+  color: var(--cod-gray--500);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.heading {
+  font-family: var(--font-display-stack);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -1.2px;
+  color: var(--cod-gray--900);
+  margin: 16px 0 12px;
+}
+
+.lead {
+  font-family: var(--font-body-stack);
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--cod-gray--600);
+  max-width: 640px;
+  margin: 0;
+}
+
+.empty {
+  text-align: center;
+  font-style: italic;
+  color: var(--cod-gray--500);
+  padding: 64px 16px;
+}
+
+/* Featured */
+.featuredSection {
+  padding: 0 0 64px;
+}
+
+.featuredCard {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  gap: 0;
+  border: 1px solid var(--cod-gray--100);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--cod-gray--0);
+  transition: box-shadow 0.3s ease;
+}
+
+.featuredCard:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+.featuredImgWrap {
+  overflow: hidden;
+}
+
+.featuredImg {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.featuredImgPlaceholder {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, #f8f5ec 0%, #e8dfca 100%);
+}
+
+.featuredContent {
+  padding: 48px;
+  background: var(--satin-linen--50);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.featuredBadge {
+  display: inline-block;
+  font-size: 12px;
+  padding: 4px 14px;
+  background: var(--canary--300);
+  color: var(--canary--900);
+  border-radius: 20px;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.featuredTitle {
+  font-family: var(--font-display-stack);
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--cod-gray--900);
+  margin: 16px 0;
+}
+
+.featuredDetails {
+  font-size: 14px;
+  color: var(--cod-gray--500);
+  line-height: 1.6;
+}
+
+.featuredDetails p {
+  margin: 0 0 4px;
+}
+
+.featuredLink {
+  margin-top: 24px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cod-gray--900);
+  text-decoration: none;
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  transition: gap 0.3s ease;
+  width: fit-content;
+}
+
+.featuredLink:hover {
+  gap: 10px;
+}
+
+/* Grid */
+.gridSection {
+  padding: 0 0 64px;
+}
+
+.gridHeading {
+  font-family: var(--font-display-stack);
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--cod-gray--900);
+  margin: 0 0 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .featuredCard {
+    grid-template-columns: 1fr;
+  }
+  .featuredContent {
+    padding: 32px;
+  }
+  .featuredTitle {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 0 60px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .featuredContent {
+    padding: 24px;
+  }
+  .featuredTitle {
+    font-size: 22px;
+  }
+  .heading {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    gap: 16px;
+  }
+}

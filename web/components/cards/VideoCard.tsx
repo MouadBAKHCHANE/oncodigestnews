@@ -12,7 +12,7 @@ export interface VideoCardData {
   durationSeconds: number;
   publishedAt?: string;
   access: 'public' | 'pro';
-  category?: { title: string } | null;
+  category?: { title: string; slug?: { current: string } } | null;
   /** Optional speaker(s) summary line, e.g. "Dr. M. Dhib" or "Dr. X · Dr. Y". */
   speakerLine?: string | null;
   /** Override default tag (defaults to category title or empty). */

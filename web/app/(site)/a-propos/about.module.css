@@ -1,0 +1,347 @@
+/* /a-propos — copied verbatim from a-propos.html .section_founder /
+   .expertise_* / .editorial_* (lines 631-820 + responsive). */
+
+.heroSection {
+  padding: 96px 0 64px;
+}
+
+.header {
+  max-width: 720px;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--cod-gray--50);
+  color: var(--cod-gray--500);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.heading {
+  font-family: var(--font-display-stack);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -1.2px;
+  color: var(--cod-gray--900);
+  margin: 16px 0 12px;
+}
+
+.lead {
+  font-family: var(--font-body-stack);
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--cod-gray--600);
+  margin: 0;
+}
+
+.sectionHeading {
+  font-family: var(--font-display-stack);
+  font-size: clamp(28px, 3.6vw, 40px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+  color: var(--cod-gray--900);
+  margin: 24px 0 32px;
+}
+
+/* Founder */
+.founderSection {
+  padding: 64px 0;
+}
+
+.founderGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.founderImageWrap {
+  position: relative;
+}
+
+.founderImage {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
+.founderImagePlaceholder {
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(135deg, #f8f5ec 0%, #e8dfca 100%);
+  border-radius: 16px;
+}
+
+.founderContent {
+  min-width: 0;
+}
+
+.founderName {
+  font-family: var(--font-display-stack);
+  font-size: clamp(28px, 3.6vw, 40px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+  color: var(--cod-gray--900);
+  margin: 16px 0 8px;
+}
+
+.founderTitle {
+  font-size: 15px;
+  color: var(--cod-gray--600);
+  margin: 0 0 24px;
+}
+
+.founderBio {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--cod-gray--700);
+  margin-bottom: 24px;
+}
+
+.founderBio :global(p) {
+  margin-bottom: 16px;
+}
+
+.founderBio :global(p:last-child) {
+  margin-bottom: 0;
+}
+
+.founderKeyfact {
+  background: var(--husk--50);
+  border-left: 3px solid var(--husk--600);
+  padding: 16px 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--husk--900);
+  font-style: italic;
+  margin: 24px 0 0;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Expertise */
+.expertiseSection {
+  padding: 64px 0;
+}
+
+.expertiseGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.expertiseCard {
+  background: var(--cod-gray--0);
+  border: 1px solid var(--cod-gray--100);
+  border-radius: 16px;
+  padding: 32px;
+  transition: box-shadow 0.3s ease;
+}
+
+.expertiseCard:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+.expertiseTitle {
+  font-family: var(--font-display-stack);
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--cod-gray--900);
+  margin: 0 0 12px;
+}
+
+.expertiseDesc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--cod-gray--600);
+  margin: 0;
+}
+
+/* Advisors */
+.advisorsSection {
+  padding: 64px 0;
+}
+
+.advisorsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.advisorCard {
+  background: var(--cod-gray--0);
+  border: 1px solid var(--cod-gray--100);
+  border-radius: 16px;
+  padding: 32px;
+  transition: box-shadow 0.3s ease;
+}
+
+.advisorCard:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+.advisorAvatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--cod-gray--100);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.advisorAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.advisorName {
+  font-family: var(--font-display-stack);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--cod-gray--900);
+  margin: 0 0 4px;
+}
+
+.advisorRole {
+  font-size: 13px;
+  color: var(--cod-gray--600);
+  margin: 0 0 4px;
+}
+
+.advisorInstitution {
+  font-size: 12px;
+  color: var(--cod-gray--500);
+  margin: 0 0 16px;
+}
+
+.advisorQuote {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--cod-gray--700);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Editorial process */
+.editorialSection {
+  padding: 64px 0;
+}
+
+.editorialSteps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.editorialStep {
+  background: var(--cod-gray--0);
+  border: 1px solid var(--cod-gray--100);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.editorialStepNumber {
+  font-family: var(--font-display-stack);
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--husk--600);
+  display: block;
+  margin-bottom: 16px;
+  line-height: 1;
+}
+
+.editorialStepTitle {
+  font-family: var(--font-display-stack);
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--cod-gray--900);
+  margin: 0 0 8px;
+}
+
+.editorialStepDesc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--cod-gray--600);
+  margin: 0;
+}
+
+/* CTA */
+.ctaSection {
+  padding: 96px 0 32px;
+  text-align: center;
+}
+
+.ctaHeading {
+  font-family: var(--font-display-stack);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 300;
+  letter-spacing: -0.8px;
+  color: var(--cod-gray--900);
+  margin: 0 0 12px;
+}
+
+.ctaSubtext {
+  font-size: 15px;
+  color: var(--cod-gray--600);
+  margin: 0 0 24px;
+}
+
+.ctaButton {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .founderGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .expertiseGrid,
+  .advisorsGrid,
+  .editorialSteps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 80px 0 48px;
+  }
+  .founderImage {
+    max-height: 350px;
+  }
+  .heading,
+  .founderName {
+    font-size: 32px;
+  }
+  .expertiseGrid,
+  .advisorsGrid,
+  .editorialSteps {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .founderImage {
+    max-height: 280px;
+  }
+  .expertiseCard,
+  .editorialStep,
+  .advisorCard {
+    padding: 20px;
+  }
+}

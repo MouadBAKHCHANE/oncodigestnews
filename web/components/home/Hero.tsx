@@ -85,8 +85,7 @@ export function Hero({
                   ref={imgRef}
                   src={imageUrl}
                   alt={imageAlt}
-                  width={1600}
-                  height={900}
+                  fill
                   priority
                   className={styles.img}
                   sizes="(max-width: 1024px) 100vw, 520px"

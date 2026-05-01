@@ -6,6 +6,7 @@ import { Hero } from '@/components/home/Hero';
 import { PromesseSection } from '@/components/home/PromesseSection';
 import { PartnersSection } from '@/components/home/PartnersSection';
 import { BannerSection } from '@/components/home/BannerSection';
+import { ExpertiseSection } from '@/components/home/ExpertiseSection';
 import { DarkQuoteSection } from '@/components/home/DarkQuoteSection';
 import { LivesPreviewSection } from '@/components/home/LivesPreviewSection';
 import { FAQAccordion, type FAQItemData } from '@/components/home/FAQAccordion';
@@ -97,6 +98,8 @@ export default async function HomePage() {
       <PromesseSection imageUrl={promesseImageUrl} />
 
       <BannerSection />
+
+      <ExpertiseSection />
 
       {data.advisors.length > 0 ? (
         <section className={styles.advisorsSection}>

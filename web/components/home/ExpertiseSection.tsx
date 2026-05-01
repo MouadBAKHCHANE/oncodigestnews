@@ -1,0 +1,124 @@
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import styles from './ExpertiseSection.module.css';
+
+interface ExpertiseItem {
+  number: string;
+  title: string;
+  heading: string;
+  text: string;
+  imageUrl: string;
+  imageAlt: string;
+  ctaHref: string;
+  ctaLabel: string;
+}
+
+const ITEMS: ExpertiseItem[] = [
+  {
+    number: '01',
+    title: 'Chirurgie digestive',
+    heading: 'De la technique opératoire aux résultats cliniques.',
+    text: 'Retrouvez les dernières avancées en chirurgie colorectale, hépatobiliaire, pancréatique et bariatrique, analysées par des praticiens de terrain.',
+    imageUrl: '/founder-fallback.jpg',
+    imageAlt: 'Chirurgie digestive — Dr. Benzakour',
+    ctaHref: '/articles-scientifiques',
+    ctaLabel: 'Voir les articles',
+  },
+  {
+    number: '02',
+    title: 'Oncologie',
+    heading: 'Comprendre les avancées thérapeutiques.',
+    text: "Immunothérapie, thérapies ciblées, essais cliniques : suivez l'évolution des traitements en oncologie digestive avec des synthèses claires et documentées.",
+    imageUrl: '/promesse-fallback.jpg',
+    imageAlt: 'Oncologie — Bloc opératoire',
+    ctaHref: '/articles-scientifiques',
+    ctaLabel: 'Voir les articles',
+  },
+  {
+    number: '03',
+    title: 'Congrès',
+    heading: "L'essentiel des congrès, en synthèse.",
+    text: 'ASCO, ESMO, SFCD, JFHOD — nous couvrons les congrès majeurs avec des rapports structurés, des points clés et des interviews d\'experts.',
+    imageUrl: '/hero-fallback.jpg',
+    imageAlt: 'Congrès — Salle de conférence',
+    ctaHref: '/congres',
+    ctaLabel: 'Voir les rapports',
+  },
+];
+
+export function ExpertiseSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = ITEMS[activeIndex];
+
+  return (
+    <section className={styles.section}>
+      <div className="padding-global">
+        <div className="container-large">
+          <div className={styles.grid}>
+            <div className={styles.imagePanel}>
+              {ITEMS.map((item, i) => (
+                <img
+                  key={item.number}
+                  src={item.imageUrl}
+                  alt={item.imageAlt}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  className={`${styles.image} ${i === activeIndex ? styles.imageActive : ''}`}
+                />
+              ))}
+            </div>
+
+            <div className={styles.accordion}>
+              {ITEMS.map((item, i) => {
+                const isOpen = i === activeIndex;
+                return (
+                  <div
+                    key={item.number}
+                    className={`${styles.item} ${isOpen ? styles.itemOpen : ''}`}
+                  >
+                    <button
+                      type="button"
+                      className={styles.itemHeader}
+                      onClick={() => setActiveIndex(i)}
+                      aria-expanded={isOpen}
+                    >
+                      <span className={styles.itemNumber}>{item.number}</span>
+                      <span className={styles.itemTitle}>{item.title}</span>
+                      <span className={styles.itemIcon} aria-hidden>
+                        <span className={`${styles.bar} ${styles.barH}`} />
+                        <span className={`${styles.bar} ${styles.barV}`} />
+                      </span>
+                    </button>
+                    <div className={styles.itemDivider} />
+                    <div className={styles.itemBody}>
+                      <h3 className={styles.itemHeading}>{active.heading === item.heading ? active.heading : item.heading}</h3>
+                      <p className={styles.itemText}>{item.text}</p>
+                      <Link href={item.ctaHref} className={styles.itemCta}>
+                        {item.ctaLabel}
+                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden>
+                          <path
+                            d="M8 0.77C7.27 0.77 6.69 1.36 6.69 2.08C6.69 2.81 7.27 3.4 8 3.4C8.73 3.4 9.31 2.81 9.31 2.08C9.31 1.36 8.73 0.77 8 0.77Z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M8 5.77C7.27 5.77 6.69 6.36 6.69 7.08C6.69 7.81 7.27 8.4 8 8.4C8.73 8.4 9.31 7.81 9.31 7.08C9.31 6.36 8.73 5.77 8 5.77Z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M8 10.77C7.27 10.77 6.69 11.36 6.69 12.08C6.69 12.81 7.27 13.4 8 13.4C8.73 13.4 9.31 12.81 9.31 12.08C9.31 11.36 8.73 10.77 8 10.77Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

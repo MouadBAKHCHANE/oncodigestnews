@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { BrandIllustration, type BrandVariant } from '@/components/ui/BrandIllustration';
 import styles from './ExpertiseSection.module.css';
 
 interface ExpertiseItem {
@@ -9,8 +10,8 @@ interface ExpertiseItem {
   title: string;
   heading: string;
   text: string;
-  imageUrl: string;
-  imageAlt: string;
+  illustration: BrandVariant;
+  illustrationLabel: string;
   ctaHref: string;
   ctaLabel: string;
 }
@@ -21,8 +22,8 @@ const ITEMS: ExpertiseItem[] = [
     title: 'Chirurgie digestive',
     heading: 'De la technique opératoire aux résultats cliniques.',
     text: 'Retrouvez les dernières avancées en chirurgie colorectale, hépatobiliaire, pancréatique et bariatrique, analysées par des praticiens de terrain.',
-    imageUrl: '/founder-fallback.jpg',
-    imageAlt: 'Chirurgie digestive — Dr. Benzakour',
+    illustration: 'digestive',
+    illustrationLabel: 'Illustration — Chirurgie digestive',
     ctaHref: '/articles-scientifiques',
     ctaLabel: 'Voir les articles',
   },
@@ -31,8 +32,8 @@ const ITEMS: ExpertiseItem[] = [
     title: 'Oncologie',
     heading: 'Comprendre les avancées thérapeutiques.',
     text: "Immunothérapie, thérapies ciblées, essais cliniques : suivez l'évolution des traitements en oncologie digestive avec des synthèses claires et documentées.",
-    imageUrl: '/promesse-fallback.jpg',
-    imageAlt: 'Oncologie — Bloc opératoire',
+    illustration: 'oncology',
+    illustrationLabel: 'Illustration — Oncologie',
     ctaHref: '/articles-scientifiques',
     ctaLabel: 'Voir les articles',
   },
@@ -40,9 +41,9 @@ const ITEMS: ExpertiseItem[] = [
     number: '03',
     title: 'Congrès',
     heading: "L'essentiel des congrès, en synthèse.",
-    text: 'ASCO, ESMO, SFCD, JFHOD — nous couvrons les congrès majeurs avec des rapports structurés, des points clés et des interviews d\'experts.',
-    imageUrl: '/hero-fallback.jpg',
-    imageAlt: 'Congrès — Salle de conférence',
+    text: "ASCO, ESMO, SFCD, JFHOD — nous couvrons les congrès majeurs avec des rapports structurés, des points clés et des interviews d'experts.",
+    illustration: 'congress',
+    illustrationLabel: 'Illustration — Congrès',
     ctaHref: '/congres',
     ctaLabel: 'Voir les rapports',
   },
@@ -59,13 +60,13 @@ export function ExpertiseSection() {
           <div className={styles.grid}>
             <div className={styles.imagePanel}>
               {ITEMS.map((item, i) => (
-                <img
+                <div
                   key={item.number}
-                  src={item.imageUrl}
-                  alt={item.imageAlt}
-                  loading={i === 0 ? 'eager' : 'lazy'}
                   className={`${styles.image} ${i === activeIndex ? styles.imageActive : ''}`}
-                />
+                  aria-hidden={i !== activeIndex}
+                >
+                  <BrandIllustration variant={item.illustration} label={item.illustrationLabel} />
+                </div>
               ))}
             </div>
 

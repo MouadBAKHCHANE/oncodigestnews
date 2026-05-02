@@ -63,19 +63,21 @@ const homeQuery = /* groq */ `{
   }
 }`;
 
-const FALLBACK_HERO_IMAGE = '/hero-fallback.jpg';
 const FALLBACK_PROMESSE_IMAGE = '/promesse-fallback.jpg';
 
 export default async function HomePage() {
   const data = await sanityClient.fetch<HomeData>(homeQuery);
 
+  // Hero: real Sanity image OR null → BrandIllustration variant="hero"
   const heroImageUrl = data.settings?.heroImage
     ? urlForImage(data.settings.heroImage).width(1600).height(1200).url()
-    : FALLBACK_HERO_IMAGE;
+    : null;
 
   const heroAlt =
-    data.settings?.heroImage?.alt ?? 'Chirurgie robotique — OncoDigest';
+    data.settings?.heroImage?.alt ?? 'OncoDigest — Information oncologique';
 
+  // Promesse: needs a real image (venetian strips slice it). Falls back to
+  // a neutral medical photo (no people) until a Sanity image is set.
   const promesseImageUrl = data.settings?.heroImage
     ? urlForImage(data.settings.heroImage).width(1200).height(1600).url()
     : FALLBACK_PROMESSE_IMAGE;

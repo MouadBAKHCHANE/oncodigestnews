@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { useRef } from 'react';
 import { useHeroParallax } from '@/lib/hooks/useHeroParallax';
 import { useTypewriter } from '@/lib/hooks/useTypewriter';
+import { BrandIllustration } from '@/components/ui/BrandIllustration';
 import styles from './Hero.module.css';
 
 interface HeroProps {
-  imageUrl: string;
+  /** Sanity-hosted hero image URL. When omitted, a BrandIllustration is rendered. */
+  imageUrl?: string | null;
   imageAlt?: string;
   typewriterWords?: string[];
 }
@@ -81,15 +83,19 @@ export function Hero({
           <div className={`${styles.right} animate-on-scroll delay-2`}>
             <div className={styles.imgWrapper}>
               <div className={styles.imgInner}>
-                <Image
-                  ref={imgRef}
-                  src={imageUrl}
-                  alt={imageAlt}
-                  fill
-                  priority
-                  className={styles.img}
-                  sizes="(max-width: 1024px) 100vw, 520px"
-                />
+                {imageUrl ? (
+                  <Image
+                    ref={imgRef}
+                    src={imageUrl}
+                    alt={imageAlt}
+                    fill
+                    priority
+                    className={styles.img}
+                    sizes="(max-width: 1024px) 100vw, 520px"
+                  />
+                ) : (
+                  <BrandIllustration variant="hero" label={imageAlt} />
+                )}
               </div>
             </div>
           </div>

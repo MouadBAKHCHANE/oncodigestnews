@@ -1,0 +1,459 @@
+/* Évènements — full dark mode, inspired by RockFi events page */
+
+/* ── Base ── */
+
+.page {
+  background: #0b0e0c;
+  color: #f0ede4;
+  min-height: 100vh;
+}
+
+/* ─────────────────────────────────────────────
+   1. HEADER
+───────────────────────────────────────────── */
+
+.header {
+  padding: calc(var(--nav-height) + 64px) 0 56px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.headerInner {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 20px;
+}
+
+.eyebrowDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #d6e57c;
+  flex-shrink: 0;
+}
+
+.h1 {
+  font-family: var(--font-display-stack);
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -3px;
+  color: #f0ede4;
+  margin: 0;
+}
+
+.headerDesc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(240, 237, 228, 0.5);
+  max-width: 420px;
+  align-self: end;
+  padding-bottom: 4px;
+}
+
+.headerDesc em {
+  color: rgba(240, 237, 228, 0.8);
+  font-style: normal;
+}
+
+/* ─────────────────────────────────────────────
+   2. FEATURED EVENT
+───────────────────────────────────────────── */
+
+.featured {
+  padding: 72px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.featuredVisual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #141a14;
+  margin-bottom: 40px;
+}
+
+.featuredImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featuredIllustration {
+  position: absolute;
+  inset: 0;
+  opacity: 0.85;
+}
+
+.featuredLabel {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  padding: 5px 10px;
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.featuredStatusLive {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #d6e57c;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  padding: 5px 12px;
+  border-radius: 32px;
+  border: 1px solid rgba(214, 229, 124, 0.3);
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d6e57c;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.featuredBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.featuredTitle {
+  font-family: var(--font-display-stack);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  color: #f0ede4;
+  margin: 0 0 16px;
+}
+
+.featuredMeta {
+  font-size: 13px;
+  color: rgba(240, 237, 228, 0.4);
+  margin: 0 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.featuredMetaSep {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.featuredDesc {
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(240, 237, 228, 0.55);
+  margin: 0;
+}
+
+.featuredRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  padding-top: 4px;
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 32px;
+  font-size: 12px;
+  color: rgba(240, 237, 228, 0.6);
+  background: rgba(255, 255, 255, 0.04);
+  letter-spacing: 0.1px;
+}
+
+.tagAccent {
+  border-color: rgba(214, 229, 124, 0.3);
+  color: #d6e57c;
+  background: rgba(214, 229, 124, 0.06);
+}
+
+.btnOutline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 32px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #f0ede4;
+  text-decoration: none;
+  background: transparent;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.btnOutline:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btnOutlineAccent {
+  border-color: rgba(214, 229, 124, 0.4);
+  color: #d6e57c;
+}
+
+.btnOutlineAccent:hover {
+  border-color: #d6e57c;
+  background: rgba(214, 229, 124, 0.06);
+  color: #d6e57c;
+}
+
+/* ─────────────────────────────────────────────
+   3. PAST EVENTS LIST
+───────────────────────────────────────────── */
+
+.pastSection {
+  padding: 64px 0 96px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.pastSectionNoBorder {
+  padding: 0 0 96px;
+}
+
+.pastHeading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 40px;
+}
+
+.pastHeadingLine {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.eventList {
+  display: flex;
+  flex-direction: column;
+}
+
+.eventRow {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 32px;
+  align-items: center;
+  padding: 24px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  text-decoration: none;
+  transition: background 0.2s;
+  border-radius: 8px;
+  margin: 0 -16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.eventRow:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.eventRow:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.eventDate {
+  font-size: 12px;
+  color: rgba(240, 237, 228, 0.35);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.eventInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.eventName {
+  font-family: var(--font-display-stack);
+  font-size: 18px;
+  font-weight: 300;
+  color: #f0ede4;
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+}
+
+.eventMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  color: rgba(240, 237, 228, 0.35);
+}
+
+.eventMetaDot {
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.eventArrow {
+  color: rgba(255, 255, 255, 0.2);
+  transition: color 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.eventRow:hover .eventArrow {
+  color: rgba(255, 255, 255, 0.6);
+  transform: translateX(4px);
+}
+
+/* ── Empty state ── */
+
+.emptyState {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.emptyText {
+  font-size: 15px;
+  color: rgba(240, 237, 228, 0.3);
+}
+
+/* ─────────────────────────────────────────────
+   4. CTA BOTTOM
+───────────────────────────────────────────── */
+
+.ctaSection {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 72px 0;
+  text-align: center;
+}
+
+.ctaHeading {
+  font-family: var(--font-display-stack);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 300;
+  letter-spacing: -1.2px;
+  color: #f0ede4;
+  margin: 0 0 12px;
+}
+
+.ctaHeading em {
+  color: #d6e57c;
+  font-style: italic;
+}
+
+.ctaSub {
+  font-size: 14px;
+  color: rgba(240, 237, 228, 0.4);
+  margin: 0 0 32px;
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .headerInner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .headerDesc {
+    align-self: auto;
+  }
+  .featuredBody {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .eventRow {
+    grid-template-columns: 100px 1fr auto;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding-top: calc(var(--nav-height) + 40px);
+    padding-bottom: 40px;
+  }
+  .h1 {
+    letter-spacing: -2px;
+  }
+  .featured {
+    padding: 48px 0;
+  }
+  .featuredVisual {
+    aspect-ratio: 16 / 9;
+  }
+  .eventRow {
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+  }
+  .eventDate {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .eventName {
+    font-size: 16px;
+  }
+  .pastSection {
+    padding: 48px 0 64px;
+  }
+}

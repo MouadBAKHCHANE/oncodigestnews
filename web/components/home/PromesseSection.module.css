@@ -73,11 +73,12 @@
   display: none;
 }
 
-.mobileImg img {
+.mobileImg img,
+.mobileImg svg {
   width: 100%;
   height: auto;
   border-radius: 16px;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
 }
 

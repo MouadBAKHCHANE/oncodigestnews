@@ -13,6 +13,7 @@ export const structure: StructureResolver = (S) =>
               S.documentTypeListItem('article').title('Articles'),
               S.documentTypeListItem('scientificArticle').title('Scientific articles'),
               S.documentTypeListItem('congress').title('Congress'),
+              S.documentTypeListItem('evenement').title('Évènements'),
               S.documentTypeListItem('video').title('Videos'),
               S.documentTypeListItem('live').title('Lives'),
             ]),

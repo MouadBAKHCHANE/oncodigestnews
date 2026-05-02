@@ -1,151 +1,272 @@
-/* Hero — copied verbatim from index.html .section_hero + .hero_* (lines 257-422). */
+/* Hero — creative redesign */
 
 .section {
   display: flex;
   flex-direction: column;
-  padding: 0 0 30.4761px;
   min-height: 100vh;
   position: relative;
+  background: var(--satin-linen--50, #f7f6ef);
 }
 
 .padding {
-  padding: 0 11.4286px;
+  padding: 0 11px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: 1fr 520px;
-  gap: 48px;
-  max-width: 1440px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 860px;
   margin: 0 auto;
   width: 100%;
-  min-height: calc(100vh - var(--nav-height));
-  align-items: stretch;
+  flex: 1;
   padding-top: var(--nav-height);
+  padding-bottom: 64px;
 }
+
+/* ── Left column ── */
 
 .left {
   display: flex;
   flex-direction: column;
-  padding: 32px 24px 32px 32px;
+  padding: 64px 32px;
 }
 
-.topContent {
+/* Eyebrow */
+
+.eyebrowRow {
   display: flex;
-  flex-direction: column;
-  gap: 24px;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
 }
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cod-gray--400);
+  flex-shrink: 0;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  color: var(--cod-gray--600);
+}
+
+.eyebrowSep {
+  color: var(--cod-gray--300);
+  font-size: 12px;
+}
+
+.eyebrowAccess {
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  color: var(--cod-gray--400);
+}
+
+/* Headline */
 
 .h1 {
   font-family: var(--font-display-stack);
-  font-size: clamp(36px, 5vw, 64px);
+  font-size: clamp(38px, 5vw, 68px);
   font-weight: 300;
-  line-height: 1.05;
-  letter-spacing: -1.2px;
+  line-height: 1.03;
+  letter-spacing: -2px;
   color: var(--cod-gray--900);
-  margin: 0;
+  margin: 0 0 22px;
 }
 
+.h1Em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cod-gray--700);
+}
+
+/* Tagline */
+
+.tagline {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--cod-gray--500);
+  margin: 0 0 28px;
+  max-width: 500px;
+}
+
+/* Divider */
+
+.divider {
+  width: 40px;
+  height: 1px;
+  background: var(--cod-gray--200);
+  margin-bottom: 22px;
+}
+
+/* Typewriter */
+
 .typewriterWrapper {
-  height: 24px;
-  position: relative;
+  height: 26px;
   display: flex;
   align-items: center;
   gap: 0;
+  margin-bottom: 32px;
 }
 
 .typewriterPrefix {
-  font-size: 18px;
-  line-height: 20px;
-  color: rgb(176, 176, 176);
-  letter-spacing: -0.3px;
+  font-size: 15px;
+  color: var(--cod-gray--400);
+  letter-spacing: -0.2px;
   white-space: nowrap;
 }
 
 .typewriterText {
-  font-size: 21px;
-  line-height: 20px;
-  color: var(--cod-gray--600);
-  letter-spacing: -0.3px;
+  font-size: 15px;
+  color: var(--cod-gray--700);
+  letter-spacing: -0.2px;
   font-weight: 500;
-  position: relative;
   white-space: nowrap;
 }
 
 .typewriterCursor {
   display: inline-block;
-  width: 1px;
+  width: 1.5px;
   height: 14px;
-  background: var(--cod-gray--400);
-  margin-left: 1px;
+  background: var(--cod-gray--500);
+  margin-left: 2px;
   vertical-align: middle;
-  animation: cursorBlink 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+  animation: cursorBlink 0.8s ease-in-out infinite;
 }
 
 @keyframes cursorBlink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-.btnGroup {
+/* Actions */
+
+.actions {
   display: flex;
-  gap: 5.06667px;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
 }
 
 .btnDark {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 8.84354px 15.9183px;
+  gap: 6px;
+  padding: 11px 22px;
   background: var(--cod-gray--900);
   color: var(--cod-gray--0);
   border-radius: 32px;
-  font-family: var(--font-body-stack);
-  font-size: 12.3809px;
-  letter-spacing: -0.2px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.1px;
   text-decoration: none;
-  transition: background 0.3s ease;
+  transition: background 0.25s ease;
+  white-space: nowrap;
 }
 
 .btnDark:hover {
-  background: var(--cod-gray--800);
+  background: var(--cod-gray--700);
 }
 
-.tagline {
-  margin-top: auto;
-  padding-top: 48px;
-  font-size: 14px;
-  line-height: 1.5;
-  max-width: 480px;
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 22px;
+  background: transparent;
+  color: var(--cod-gray--600);
+  border: 1px solid var(--cod-gray--200);
+  border-radius: 32px;
+  font-size: 13px;
+  letter-spacing: -0.1px;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  white-space: nowrap;
 }
 
-.tagline p {
-  margin: 0;
-  color: rgb(136, 136, 136);
+.btnGhost:hover {
+  border-color: var(--cod-gray--500);
+  color: var(--cod-gray--900);
+  background: var(--cod-gray--50);
 }
+
+/* Topic pills */
+
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.topicPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 13px;
+  background: var(--cod-gray--0, #fff);
+  color: var(--cod-gray--500);
+  border: 1px solid var(--cod-gray--100);
+  border-radius: 100px;
+  font-size: 12px;
+  letter-spacing: 0.1px;
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+
+.topicPill:hover {
+  background: var(--cod-gray--900);
+  color: var(--cod-gray--0);
+  border-color: var(--cod-gray--900);
+}
+
+/* ── Right column ── */
 
 .right {
   position: relative;
-  display: block;
-  padding-top: 40px;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  padding: 48px 0;
+}
+
+.imgFrame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+}
+
+/* Decorative offset frame behind the illustration */
+.frameAccent {
+  position: absolute;
+  inset: 16px -12px -12px 12px;
+  border: 1px solid var(--cod-gray--150, #e2ddd4);
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .imgWrapper {
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 500px;
+  z-index: 1;
 }
 
 .imgInner {
   position: relative;
   width: 100%;
   height: 100%;
+  min-height: 420px;
   overflow: hidden;
   border-radius: 16px;
 }
@@ -154,41 +275,152 @@
   object-fit: cover;
 }
 
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 0;
-    min-height: auto;
-  }
-  .right {
-    margin-top: 32px;
-  }
-  .imgWrapper {
-    min-height: 360px;
-    max-height: 50vh;
-  }
-  .left {
-    padding-top: 40px;
-  }
-}
+/* ── Responsive ── */
 
 @media (max-width: 768px) {
   .h1 {
-    font-size: clamp(28px, 7vw, 40px);
-    line-height: 1.1;
-    letter-spacing: -1px;
+    font-size: clamp(30px, 8vw, 42px);
+    letter-spacing: -1.2px;
   }
-  .imgWrapper {
-    min-height: 280px;
-    max-height: 40vh;
-  }
-  .tagline {
-    padding-top: 32px;
+  .left {
+    padding: 48px 20px 32px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .typewriterCursor {
+    animation: none !important;
+  }
+}
+
+/* ── Animated background ── */
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Ensure content sits above bg */
+.padding {
+  position: relative;
+  z-index: 1;
+}
+
+/* Floating rings */
+.bgRing {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(130, 115, 76, 0.13);
+  animation: ringFloat 14s ease-in-out infinite alternate;
+}
+
+.bgRingA {
+  width: 480px;
+  height: 480px;
+  top: -80px;
+  right: 18%;
+  animation-duration: 16s;
+}
+
+.bgRingB {
+  width: 260px;
+  height: 260px;
+  bottom: 5%;
+  left: 40%;
+  border-color: rgba(130, 115, 76, 0.08);
+  animation-duration: 11s;
+  animation-direction: alternate-reverse;
+}
+
+.bgRingC {
+  width: 140px;
+  height: 140px;
+  top: 30%;
+  left: 20%;
+  border-color: rgba(130, 115, 76, 0.07);
+  animation-duration: 9s;
+}
+
+/* Thin floating lines */
+.bgLine {
+  position: absolute;
+  background: rgba(130, 115, 76, 0.1);
+  border-radius: 2px;
+  animation: lineFloat 13s ease-in-out infinite alternate;
+}
+
+.bgLineA {
+  width: 180px;
+  height: 1px;
+  top: 22%;
+  right: 32%;
+  transform: rotate(-18deg);
+  animation-duration: 15s;
+}
+
+.bgLineB {
+  width: 90px;
+  height: 1px;
+  bottom: 28%;
+  left: 25%;
+  transform: rotate(8deg);
+  animation-duration: 10s;
+  animation-direction: alternate-reverse;
+}
+
+/* Floating dots */
+.bgDot {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(130, 115, 76, 0.2);
+  animation: dotFloat 10s ease-in-out infinite alternate;
+}
+
+.bgDotA {
+  width: 5px;
+  height: 5px;
+  top: 18%;
+  right: 42%;
+  animation-duration: 12s;
+}
+
+.bgDotB {
+  width: 3px;
+  height: 3px;
+  bottom: 35%;
+  right: 28%;
+  animation-duration: 8s;
+  animation-direction: alternate-reverse;
+}
+
+.bgDotC {
+  width: 4px;
+  height: 4px;
+  top: 60%;
+  left: 45%;
+  animation-duration: 14s;
+}
+
+@keyframes ringFloat {
+  0%   { transform: translate(0, 0) scale(1); opacity: 0.8; }
+  100% { transform: translate(-16px, 20px) scale(1.04); opacity: 1; }
+}
+
+@keyframes lineFloat {
+  0%   { transform: rotate(-18deg) translateX(0); opacity: 0.7; }
+  100% { transform: rotate(-18deg) translateX(12px); opacity: 1; }
+}
+
+@keyframes dotFloat {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(8px, -12px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bgRing, .bgLine, .bgDot {
     animation: none !important;
   }
 }

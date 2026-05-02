@@ -1,0 +1,133 @@
+.root {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 340px;
+  width: calc(100vw - 48px);
+}
+
+.skipLink {
+  background: transparent;
+  border: none;
+  font-size: 12px;
+  color: var(--cod-gray--500);
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+.skipLink:hover {
+  color: var(--cod-gray--900);
+}
+
+.card {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.06);
+  width: 100%;
+}
+
+.close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cod-gray--50);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--cod-gray--500);
+  transition: background 0.2s, color 0.2s;
+}
+.close:hover {
+  background: var(--cod-gray--100);
+  color: var(--cod-gray--900);
+}
+
+.title {
+  font-family: var(--font-display-stack);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--cod-gray--900);
+  margin: 0 0 10px;
+  padding-right: 24px;
+}
+
+.body {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--cod-gray--500);
+  margin: 0 0 18px;
+}
+
+.policyLink {
+  color: var(--cod-gray--700);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.policyLink:hover {
+  color: var(--cod-gray--900);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btnRefuse {
+  flex: 1;
+  padding: 9px 16px;
+  background: transparent;
+  border: 1px solid var(--cod-gray--200);
+  border-radius: 32px;
+  font-size: 12.5px;
+  color: var(--cod-gray--600);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+.btnRefuse:hover {
+  border-color: var(--cod-gray--400);
+  color: var(--cod-gray--900);
+  background: var(--cod-gray--50);
+}
+
+.btnAccept {
+  flex: 1;
+  padding: 9px 16px;
+  background: var(--cod-gray--900);
+  border: 1px solid var(--cod-gray--900);
+  border-radius: 32px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.btnAccept:hover {
+  background: var(--cod-gray--700);
+  border-color: var(--cod-gray--700);
+}
+
+@media (max-width: 480px) {
+  .root {
+    bottom: 16px;
+    left: 12px;
+    right: 12px;
+    max-width: none;
+    width: auto;
+  }
+}

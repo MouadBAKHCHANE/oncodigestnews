@@ -2,10 +2,13 @@
 
 import { useRef } from 'react';
 import { useVenetianReveal } from '@/lib/hooks/useVenetianReveal';
+import { BrandIllustration, type BrandVariant } from '@/components/ui/BrandIllustration';
 import styles from './PromesseSection.module.css';
 
 interface PromesseSectionProps {
   imageUrl: string;
+  /** When set, renders a BrandIllustration on mobile instead of an <img>. */
+  illustrationVariant?: BrandVariant;
   bgHeading?: string;
   panelTag?: string;
   panelHeading?: string;
@@ -14,6 +17,7 @@ interface PromesseSectionProps {
 
 export function PromesseSection({
   imageUrl,
+  illustrationVariant,
   bgHeading = 'La rigueur scientifique au service de la pratique quotidienne.',
   panelTag = 'Notre mission',
   panelHeading = 'La rigueur scientifique au service de la pratique quotidienne.',
@@ -42,7 +46,11 @@ export function PromesseSection({
         <div ref={containerRef} className={styles.stripsContainer} aria-hidden />
 
         <div className={styles.mobileImg}>
-          <img src={imageUrl} alt="" loading="lazy" />
+          {illustrationVariant ? (
+            <BrandIllustration variant={illustrationVariant} label={panelHeading} />
+          ) : (
+            <img src={imageUrl} alt="" loading="lazy" />
+          )}
         </div>
 
         <div ref={panelRef} className={styles.panel}>

@@ -12,6 +12,7 @@ const links = [
   { href: '/articles-scientifiques', label: 'Articles scientifiques' },
   { href: '/congres', label: 'Congrès' },
   { href: '/videos', label: 'Vidéos' },
+  { href: '/evenements', label: 'Évènements' },
   { href: '/contact', label: 'Contact' },
 ];
 

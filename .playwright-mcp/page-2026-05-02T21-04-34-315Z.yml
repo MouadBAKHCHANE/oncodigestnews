@@ -1,0 +1,391 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic:
+      - generic:
+        - 'dialog "Plateforme de Gestion du Consentement : Personnalisez vos Options"':
+          - generic [ref=e2]:
+            - text: Axeptio consent
+            - checkbox [ref=e3]
+          - generic [ref=e4]:
+            - paragraph [ref=e5]: "Plateforme de Gestion du Consentement : Personnalisez vos Options"
+            - paragraph [ref=e6]: Notre plateforme vous permet d'adapter et de gérer vos paramètres de confidentialité, en garantissant la conformité avec les réglementations. Personnalisez vos préférences pour contrôler la manière dont vos informations sont manipulées.
+        - button "Gérez vos préférences en matière de cookies et données personnelles" [ref=e7] [cursor=pointer]:
+          - img [ref=e11]
+  - generic [ref=e14]:
+    - banner [ref=e16]:
+      - link "home" [ref=e17] [cursor=pointer]:
+        - /url: /
+        - img [ref=e19]
+      - navigation [ref=e26]:
+        - link "Nos conseillers" [ref=e27] [cursor=pointer]:
+          - /url: /nos-conseillers
+        - link "Notre modèle" [ref=e28] [cursor=pointer]:
+          - /url: /notre-modele
+        - link "Notre mission" [ref=e29] [cursor=pointer]:
+          - /url: /notre-mission
+        - link "Journal" [ref=e30] [cursor=pointer]:
+          - /url: /journal
+        - link "Évènements" [ref=e31] [cursor=pointer]:
+          - /url: /evenements
+      - generic [ref=e33]:
+        - link "Mon espace client" [ref=e34] [cursor=pointer]:
+          - /url: https://client.rockfi.fr/
+          - img [ref=e36]
+          - generic [ref=e43]: Mon espace client
+        - link "Devenir Client" [ref=e44] [cursor=pointer]:
+          - /url: /contact-particulier
+          - generic [ref=e45]: Devenir Client
+    - link "Acte I – 1ère Keynote RockFi | Voir la Keynote →" [ref=e46] [cursor=pointer]:
+      - /url: /evenements/rockfi-acte-i
+      - generic [ref=e48]:
+        - generic [ref=e50]: Acte I – 1ère Keynote RockFi
+        - generic [ref=e52]: "|"
+        - generic [ref=e55]: Voir la Keynote →
+    - main [ref=e56]:
+      - generic [ref=e59]:
+        - generic [ref=e60]:
+          - generic [ref=e61]:
+            - heading "La nouvelle gestion privée." [level=1] [ref=e63]:
+              - generic [ref=e64]: La
+              - generic [ref=e65]: nouvelle
+              - generic [ref=e66]: gestion
+              - generic [ref=e67]: privée.
+            - list [ref=e69]:
+              - listitem [ref=e70]: Entrepreneurs
+              - listitem [ref=e71]: Dirigeants
+              - listitem [ref=e72]: Sportifs de haut niveau
+              - listitem [ref=e73]: Professionnels indépendants
+              - listitem [ref=e74]: Entrepreneurs
+              - listitem [ref=e75]: Dirigeants
+              - listitem [ref=e76]: Sportifs de haut niveau
+              - listitem [ref=e77]: Professionnels indépendants
+            - link "Échanger avec un conseiller" [ref=e80] [cursor=pointer]:
+              - /url: /contact-particulier
+              - generic [ref=e81]: Échanger avec un conseiller
+              - img [ref=e83]
+          - generic [ref=e87]:
+            - img [ref=e89]
+            - paragraph [ref=e99]: Pensez-nous comme un Family Office moderne pour l’ensemble de vos enjeux patrimoniaux.
+        - generic [ref=e101]:
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - generic [ref=e104]: Damien Lévêque
+              - generic [ref=e105]: Conseiller RockFi
+            - link "Voir tous nos conseillers" [ref=e106] [cursor=pointer]:
+              - /url: /nos-conseillers
+              - generic [ref=e107]: Voir tous nos conseillers
+              - img [ref=e109]
+          - img "Portrait d'un homme souriant avec une barbe courte, portant un costume bleu foncé, une chemise blanche et une cravate noire, sur fond bleu." [ref=e116]
+      - generic [ref=e120]:
+        - generic [ref=e121]:
+          - generic [ref=e123]: Notre promesse
+          - heading "L'expérience d'un conseiller privé, la puissance de la technologie." [level=2] [ref=e125]:
+            - generic [ref=e126]: L'expérience
+            - generic [ref=e127]: d'un
+            - generic [ref=e128]: conseiller
+            - generic [ref=e129]: privé,
+            - generic [ref=e130]: la
+            - generic [ref=e131]: puissance
+            - generic [ref=e132]: de
+            - generic [ref=e133]: la
+            - generic [ref=e134]: technologie.
+          - paragraph [ref=e136]: RockFi est né de la rencontre d'anciens dirigeants de banques privées et d'ingénieurs des plus grandes fintechs européennes unis par la mission de faire entrer la gestion privée dans une nouvelle ère.
+        - img "Trois personnes debout, deux regardant vers la droite, une en avant-plan floue." [ref=e138]
+        - img "Smartphone displaying a financial app with advisor Olivier Gouzian and portfolio value of 1,483,269 euros with a rising graph on a wooden surface." [ref=e140]
+      - generic [ref=e142]:
+        - heading "Nos partenaires" [level=2] [ref=e144]
+        - generic [ref=e146]:
+          - img [ref=e149]
+          - img [ref=e154]
+          - img [ref=e158]
+          - img [ref=e162]
+          - img [ref=e177]
+      - generic [ref=e197]:
+        - generic [ref=e198]:
+          - generic [ref=e199]: Notre vision
+          - heading "Une tarification fixe pour un conseil objectif." [level=2] [ref=e201]
+          - generic [ref=e203]:
+            - generic [ref=e204]: Objectivité du conseil
+            - img [ref=e206]
+            - generic [ref=e208]: Transparence sur les frais
+            - img [ref=e210]
+            - generic [ref=e212]: Alignement des intérêts
+          - link "Découvrez notre modèle" [ref=e213] [cursor=pointer]:
+            - /url: /notre-modele
+            - generic [ref=e214]: Découvrez notre modèle
+        - generic:
+          - img
+      - generic [ref=e219]:
+        - generic [ref=e220]:
+          - img "Tableau financier montrant le patrimoine de Fabien C. à 1 483 269 € avec une hausse de 68 %, détaillé en assurance vie Generali 828 540 €, assurance vie luxembourgeoise La Mondiale Europartner 497 949 €, et contrat de capitalisation CNP 156 780 €." [ref=e223]
+          - 'img "Portrait d''un homme en costume bleu et cravate posant devant un fond bleu avec des icônes représentant les rôles : Middle office, Analyste marché, Ingénieur patrimonial, Macroéconomiste, Avocat fiscaliste." [ref=e226]'
+          - img "Interface d'application mobile affichant l'évolution d'un patrimoine financier avec un graphique et la répartition par classes d'actifs en euros." [ref=e229]
+        - generic [ref=e230]:
+          - generic:
+            - generic [ref=e231]:
+              - img [ref=e234]
+              - heading "La stratégie avant les produits." [level=2] [ref=e246]
+              - paragraph [ref=e248]: À partir de la stratégie définie avec vous, nous sélectionnons les produits les plus pertinents pour la servir, auprès des meilleures maisons de gestion et sur l’ensemble des classes d’actifs.
+              - link "En savoir plus" [ref=e250] [cursor=pointer]:
+                - /url: /notre-modele
+                - generic [ref=e251]: En savoir plus
+                - img [ref=e253]
+            - link "Architecture ouverte" [ref=e257] [cursor=pointer]:
+              - /url: "#Architecture"
+              - generic [ref=e258]: Architecture ouverte
+            - link "Conseiller" [ref=e259] [cursor=pointer]:
+              - /url: "#Conseiller"
+              - generic [ref=e260]: Conseiller
+            - link "Technologie" [ref=e261] [cursor=pointer]:
+              - /url: "#Technologie"
+              - generic [ref=e262]: Technologie
+      - generic [ref=e266]:
+        - generic [ref=e267]:
+          - generic [ref=e270]: Nos conseillers
+          - heading "Vous n’ouvrez pas un compte, vous commencez une relation." [level=2] [ref=e272]:
+            - generic [ref=e273]: Vous
+            - generic [ref=e274]: n’ouvrez
+            - generic [ref=e275]: pas
+            - generic [ref=e276]: un
+            - generic [ref=e277]: compte,
+            - generic [ref=e278]: vous
+            - generic [ref=e279]: commencez
+            - generic [ref=e280]: une
+            - generic [ref=e281]: relation.
+          - generic [ref=e282]:
+            - img [ref=e284]
+            - paragraph [ref=e294]: Ce qui fait la différence, c’est la personne qui vous accompagne. Nos conseillers privés, tous associés, s’engagent dans une relation exigeante et durable, auprès d’un nombre de clients limité.
+        - list [ref=e296]:
+          - listitem [ref=e297]:
+            - link [ref=e298] [cursor=pointer]:
+              - /url: /conseillers/rene-vignau-loustau
+            - link "“Aujourd'hui je suis fier de faire partie de cette aventure. L'indépendance, oui, mais portée par une vision collective et ambitieuse.”" [ref=e300] [cursor=pointer]:
+              - /url: /conseillers/rene-vignau-loustau
+              - generic [ref=e301]: “Aujourd'hui je suis fier de faire partie de cette aventure. L'indépendance, oui, mais portée par une vision collective et ambitieuse.”
+            - generic [ref=e303]:
+              - generic [ref=e304]: René Vignau Loustau
+              - list [ref=e306]:
+                - listitem [ref=e307]:
+                  - generic [ref=e308]: Associé
+          - listitem [ref=e309]:
+            - link [ref=e310] [cursor=pointer]:
+              - /url: /conseillers/yann-garnier
+            - link "“Rejoindre RockFi, c’est pour moi l’opportunité de conjuguer mon envie d’indépendance avec une vision moderne de la gestion de patrimoine.”" [ref=e312] [cursor=pointer]:
+              - /url: /conseillers/yann-garnier
+              - generic [ref=e313]: “Rejoindre RockFi, c’est pour moi l’opportunité de conjuguer mon envie d’indépendance avec une vision moderne de la gestion de patrimoine.”
+            - generic [ref=e315]:
+              - generic [ref=e316]: Yann Garnier
+              - list [ref=e318]:
+                - listitem [ref=e319]:
+                  - generic [ref=e320]: Directeur Associé
+          - listitem [ref=e321]:
+            - link [ref=e322] [cursor=pointer]:
+              - /url: /conseillers/stephane-carles
+            - 'link "“J’ai fait un choix : celui de l’entrepreneuriat, avec une ambition claire — reconstruire la gestion privée autour de ce qui en fait sa valeur, le conseil par une présence forte auprès de nos clients.”" [ref=e324] [cursor=pointer]':
+              - /url: /conseillers/stephane-carles
+              - generic [ref=e325]: "“J’ai fait un choix : celui de l’entrepreneuriat, avec une ambition claire — reconstruire la gestion privée autour de ce qui en fait sa valeur, le conseil par une présence forte auprès de nos clients.”"
+            - generic [ref=e327]:
+              - generic [ref=e328]: Stéphane Carles
+              - list [ref=e330]:
+                - listitem [ref=e331]:
+                  - generic [ref=e332]: Directeur Associé
+        - generic [ref=e333]:
+          - link "Découvrez nos conseillers" [ref=e334] [cursor=pointer]:
+            - /url: /nos-conseillers
+            - generic [ref=e335]: Découvrez nos conseillers
+          - link "Échanger avec un conseiller" [ref=e336] [cursor=pointer]:
+            - /url: /contact-particulier
+            - img [ref=e338]
+            - generic [ref=e346]: Échanger avec un conseiller
+      - generic [ref=e350]:
+        - generic [ref=e351]:
+          - img [ref=e353]
+          - heading "Nos clients ne cherchent pas un produit. Ils attendent un accompagnement." [level=2] [ref=e364]:
+            - generic [ref=e365]: Nos
+            - generic [ref=e366]: clients
+            - generic [ref=e367]: ne
+            - generic [ref=e368]: cherchent
+            - generic [ref=e369]: pas
+            - generic [ref=e370]: un
+            - generic [ref=e371]: produit.
+            - generic [ref=e372]: Ils
+            - generic [ref=e373]: attendent
+            - generic [ref=e374]: un
+            - generic [ref=e375]: accompagnement.
+          - link "Devenir client RockFi" [ref=e377] [cursor=pointer]:
+            - /url: /contact-particulier
+            - generic [ref=e378]: Devenir client RockFi
+            - img [ref=e380]
+        - generic [ref=e384]:
+          - generic:
+            - 'img "Liste des objectifs financiers avec des icônes de points : Constituer son épargne, Optimiser son patrimoine, Préparer sa retraite, Protéger sa famille, Optimiser sa fiscalité, Transmettre son patrimoine."'
+            - 'img "Liste des objectifs financiers avec des icônes de points : Constituer son épargne, Optimiser son patrimoine, Préparer sa retraite, Protéger sa famille, Optimiser sa fiscalité, Transmettre son patrimoine."'
+      - generic [ref=e388]:
+        - generic [ref=e389]:
+          - generic [ref=e392]: Notre journal
+          - heading "Notre regard sur le monde patrimonial." [level=2] [ref=e394]:
+            - generic [ref=e395]: Notre
+            - generic [ref=e396]: regard
+            - generic [ref=e397]: sur
+            - generic [ref=e398]: le
+            - generic [ref=e399]: monde
+            - generic [ref=e400]: patrimonial.
+          - generic [ref=e401]:
+            - img [ref=e403]
+            - paragraph [ref=e413]: "Ce qui retient notre attention, ce qui mérite d’être formulé, débattu, écrit. Le journal RockFi donne voix aux idées qui façonnent notre approche patrimoniale. Débats, analyses, prises de position : notre vision interroge les codes de la gestion privée, elle fait aussi parler de nous dans la presse."
+        - generic [ref=e414]:
+          - list [ref=e416]:
+            - listitem [ref=e417]:
+              - generic [ref=e418]:
+                - link [ref=e419] [cursor=pointer]:
+                  - /url: /blog-post/comment-est-calculee-votre-performance-methode-rockfi
+                - link "Comment est calculée votre performance ? Derrière un calcul de performance, il y a toujours un choix. Celui de mesurer ce qui est facile, ou celui de mesurer ce qui est juste. RockFi explique sa méthode. Marie Bedu 10/4/2026" [ref=e422] [cursor=pointer]:
+                  - /url: /blog-post/comment-est-calculee-votre-performance-methode-rockfi
+                  - heading "Comment est calculée votre performance ?" [level=2] [ref=e424]
+                  - generic [ref=e425]: Derrière un calcul de performance, il y a toujours un choix. Celui de mesurer ce qui est facile, ou celui de mesurer ce qui est juste. RockFi explique sa méthode.
+                  - generic [ref=e426]:
+                    - generic [ref=e427]: Marie Bedu
+                    - generic [ref=e428]: 10/4/2026
+          - list [ref=e430]:
+            - listitem [ref=e431]:
+              - generic [ref=e432]:
+                - link "Soirées Exclusives Ritz Paris" [ref=e433] [cursor=pointer]:
+                  - /url: /evenements/soirees-exclusives-ritz-paris
+                  - img "Soirées Exclusives Ritz Paris" [ref=e435]
+                - link "Soirées Exclusives Ritz Paris Ces dernières semaines, plusieurs de nos conseillers ont souhaité réunir leurs clients dans un cadre d’exception afin de célébrer l’année écoulée et d’échanger sur leurs enjeux patrimoniaux. RockFi a ainsi organisé deux soirées exclusives au Ritz Paris, réunissant plus de 200 invités. Une occasion privilégiée de renforcer la relation de confiance entre nos conseillers et les familles qu’ils accompagnent. 4/12/2025" [ref=e437] [cursor=pointer]:
+                  - /url: /evenements/soirees-exclusives-ritz-paris
+                  - heading "Soirées Exclusives Ritz Paris" [level=2] [ref=e439]
+                  - generic [ref=e440]:
+                    - generic [ref=e441]: Ces dernières semaines, plusieurs de nos conseillers ont souhaité réunir leurs clients dans un cadre d’exception afin de célébrer l’année écoulée et d’échanger sur leurs enjeux patrimoniaux. RockFi a ainsi organisé deux soirées exclusives au Ritz Paris, réunissant plus de 200 invités. Une occasion privilégiée de renforcer la relation de confiance entre nos conseillers et les familles qu’ils accompagnent.
+                    - generic [ref=e442]: 4/12/2025
+            - listitem [ref=e443]:
+              - generic [ref=e444]:
+                - link "RockFi Acte I" [ref=e445] [cursor=pointer]:
+                  - /url: /evenements/rockfi-acte-i
+                  - img "RockFi Acte I" [ref=e447]
+                - 'link "RockFi Acte I Le 20 janvier, nous organisions notre première prise de parole publique afin de dévoiler notre vision de la nouvelle gestion privée devant plus de 400 invités. Cette soirée à l''Automobile Club de France a été l’occasion de présenter notre modèle à tarification fixe, pensé pour offrir un conseil objectif, pleinement aligné avec les intérêts de nos clients. Cela s’inscrit dans le choix ambitieux de RockFi : être précurseur et faire bouger les lignes, depuis sa création. 20/1/2026" [ref=e449] [cursor=pointer]':
+                  - /url: /evenements/rockfi-acte-i
+                  - heading "RockFi Acte I" [level=2] [ref=e451]
+                  - generic [ref=e452]:
+                    - generic [ref=e453]: "Le 20 janvier, nous organisions notre première prise de parole publique afin de dévoiler notre vision de la nouvelle gestion privée devant plus de 400 invités. Cette soirée à l'Automobile Club de France a été l’occasion de présenter notre modèle à tarification fixe, pensé pour offrir un conseil objectif, pleinement aligné avec les intérêts de nos clients. Cela s’inscrit dans le choix ambitieux de RockFi : être précurseur et faire bouger les lignes, depuis sa création."
+                    - generic [ref=e454]: 20/1/2026
+        - generic [ref=e455]:
+          - link "Consultez le journal" [ref=e456] [cursor=pointer]:
+            - /url: /journal
+            - generic [ref=e457]: Consultez le journal
+          - link "En savoir plus sur RockFi" [ref=e458] [cursor=pointer]:
+            - /url: /notre-mission
+            - img [ref=e460]
+            - generic [ref=e468]: En savoir plus sur RockFi
+      - generic [ref=e472]:
+        - generic [ref=e474]: FAQ
+        - generic [ref=e475]:
+          - heading "Vos questions, nos réponses" [level=2] [ref=e477]:
+            - generic [ref=e478]: Vos
+            - generic [ref=e479]: questions,
+            - generic [ref=e480]: nos
+            - generic [ref=e481]: réponses
+          - list [ref=e483]:
+            - listitem [ref=e484]:
+              - generic [ref=e485] [cursor=pointer]:
+                - generic [ref=e486]: Qui sont les conseillers privés RockFi ?
+                - img [ref=e489]
+              - paragraph [ref=e494]: "Nos conseillers sont d’anciens banquiers privés, expérimentés, indépendants, cooptés et triés sur le volet. Leur seule priorité : vos priorités."
+            - listitem [ref=e495]:
+              - generic [ref=e496] [cursor=pointer]:
+                - generic [ref=e497]: À partir de quel montant peut-on devenir client ?
+                - img [ref=e500]
+              - paragraph [ref=e505]: Notre service est conçu pour les patrimoines ambitieux, mais nous adaptons nos solutions selon le contexte. Contactez-nous pour une évaluation personnalisée afin de savoir si RockFi est fait pour vous.
+            - listitem [ref=e506]:
+              - generic [ref=e507] [cursor=pointer]:
+                - generic [ref=e508]: Quel est le rôle de la technologie dans votre accompagnement ?
+                - img [ref=e511]
+              - paragraph [ref=e516]: "Elle permet de donner de la clarté et de la visibilité : reporting consolidé, historique des mouvements, projections. Son objectif est de renforcer la confiance dans la relation, pas de remplacer le conseil humain."
+            - listitem [ref=e517]:
+              - generic [ref=e518] [cursor=pointer]:
+                - generic [ref=e519]: Quels produits / solutions propose RockFi ?
+                - img [ref=e522]
+              - paragraph [ref=e527]: "Nous proposons une large gamme de produits, sélectionnés pour leur performance : assurance vie (France & Luxembourg), fonds structurés, private equity, SCPI, PEA, comptes-titres, mandats personnalisés. Ces produits sont avant tout au service d’une stratégie : votre conseiller vous oriente vers ceux qui répondent le plus efficacement à vos besoins."
+            - listitem [ref=e528]:
+              - generic [ref=e529] [cursor=pointer]:
+                - generic [ref=e530]: Que se passe-t-il si vos objectifs changent ?
+                - img [ref=e533]
+              - paragraph [ref=e538]: Votre stratégie peut évoluer. Nous adaptons nos plans, arbitrages et allocations selon vos nouvelles priorités, votre situation familiale ou économique.
+            - listitem [ref=e539]:
+              - generic [ref=e540] [cursor=pointer]:
+                - generic [ref=e541]: Comment vos données sont-elles protégées ?
+                - img [ref=e544]
+              - paragraph [ref=e549]: Nous utilisons des protocoles de sécurité, architecture et cryptage ultra sécurisés de niveau bancaire. Vos données sont confidentielles, utilisées uniquement pour votre accompagnement. Vos conseillers n'ont aucun droit d'écriture et d'accès à votre espace.
+      - generic [ref=e551]:
+        - generic [ref=e553]:
+          - generic [ref=e554]:
+            - heading "Suivez nos dernières actualités" [level=2] [ref=e556]:
+              - generic [ref=e557]: Suivez
+              - generic [ref=e558]: nos
+              - generic [ref=e559]: dernières
+              - generic [ref=e560]: actualités
+            - generic [ref=e562]:
+              - text: En vous abonnant, vous acceptez de recevoir nos communications et vous reconnaissez avoir pris connaissance de notre
+              - link "politique de confidentialité." [ref=e563] [cursor=pointer]:
+                - /url: /politique-de-confidentialite
+            - form "Newsletter Footer" [ref=e565]:
+              - textbox "Inscrivez votre email" [ref=e566]
+              - button "S’abonner" [ref=e567] [cursor=pointer]
+          - generic [ref=e568]:
+            - img [ref=e571]
+            - heading "Faites l’expérience de la nouvelle gestion privée." [level=2] [ref=e582]:
+              - generic [ref=e583]: Faites
+              - generic [ref=e584]: l’expérience
+              - generic [ref=e585]: de
+              - generic [ref=e586]: la
+              - generic [ref=e587]: nouvelle
+              - generic [ref=e588]: gestion
+              - generic [ref=e589]: privée.
+            - link "Être rappelé en 24h" [ref=e591] [cursor=pointer]:
+              - /url: /contact-particulier
+              - generic [ref=e592]: Être rappelé en 24h
+              - img [ref=e594]
+            - generic:
+              - img
+        - generic [ref=e598]:
+          - generic [ref=e600]:
+            - link [ref=e603] [cursor=pointer]:
+              - /url: /
+              - img [ref=e605]
+            - generic [ref=e608]:
+              - generic [ref=e610]: Entreprise
+              - generic [ref=e611]:
+                - link "Nos conseillers" [ref=e612] [cursor=pointer]:
+                  - /url: /nos-conseillers
+                - link "Notre modèle" [ref=e613] [cursor=pointer]:
+                  - /url: /notre-modele
+                - link "Notre mission" [ref=e614] [cursor=pointer]:
+                  - /url: /notre-mission
+            - generic [ref=e615]:
+              - generic [ref=e617]: Ressources
+              - generic [ref=e618]:
+                - link "Articles" [ref=e619] [cursor=pointer]:
+                  - /url: /articles
+                - link "Journal" [ref=e620] [cursor=pointer]:
+                  - /url: /journal
+                - link "Nos évenements" [ref=e621] [cursor=pointer]:
+                  - /url: /evenements
+            - generic [ref=e622]:
+              - generic [ref=e624]: Nous suivre
+              - generic [ref=e625]:
+                - link "Nous contacter" [ref=e626] [cursor=pointer]:
+                  - /url: /contact-particulier
+                  - generic [ref=e627]: Nous contacter
+                - link "LinkedIn" [ref=e628] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/rockfi/
+                  - img [ref=e630]
+                  - generic [ref=e632]: LinkedIn
+            - generic [ref=e634]:
+              - link "Légal" [ref=e636] [cursor=pointer]:
+                - /url: /mention-legale
+              - generic [ref=e637]:
+                - link "Mentions légales" [ref=e638] [cursor=pointer]:
+                  - /url: /mention-legale
+                - link "Politique de confidentialité" [ref=e639] [cursor=pointer]:
+                  - /url: /politique-de-confidentialite
+          - generic [ref=e641]: RockFi est immatriculée au registre de l’ORIAS sous le numéro 23004556 en tant que courtier d’assurance et conseiller en investissements financiers. RockFi est soumise au contrôle de l’Autorité de Contrôle Prudentiel et de Résolution (ACPR) et de l’Autorité des Marchés Financiers (AMF). RockFi est membre de l’Anacofi (référencée sous le numéro E010552).

@@ -3,6 +3,7 @@ import { Footer } from '@/components/layout/Footer';
 import { PageLoader } from '@/components/layout/PageLoader';
 import { GrainOverlay } from '@/components/layout/GrainOverlay';
 import { SiteEffects } from '@/components/layout/SiteEffects';
+import { CookieBanner } from '@/components/layout/CookieBanner';
 import styles from './siteLayout.module.css';
 
 /**
@@ -29,6 +30,7 @@ export default function SiteLayout({
       <GrainOverlay />
       <Navbar />
       <SiteEffects />
+      <CookieBanner />
       <div className={styles.pageWrapper}>
         <main>{children}</main>
         <Footer />

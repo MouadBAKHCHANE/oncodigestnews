@@ -69,15 +69,17 @@
   flex-shrink: 0;
 }
 
-/* Override Button.module.css btnWhite to match the navbar's borderless variant */
+/* Override Button.module.css btnWhite — white pill with border (RockFi-style secondary) */
 .navbarButtonWrapper :global(a[class*='btnWhite']) {
-  background: transparent;
+  background: #fff;
   color: var(--cod-gray--600);
-  padding: 7px 0;
+  border: 1px solid var(--cod-gray--150, #e4dfd8);
+  padding: 7px 14px;
 }
 .navbarButtonWrapper :global(a[class*='btnWhite']:hover) {
+  background: var(--cod-gray--50);
+  border-color: var(--cod-gray--300);
   color: var(--cod-gray--900);
-  background: transparent;
 }
 
 .navbarHamburger {

@@ -14,7 +14,10 @@ import { FAQAccordion, type FAQItemData } from '@/components/home/FAQAccordion';
 import { ArticleCard, type ArticleCardData } from '@/components/cards/ArticleCard';
 import { type VideoCardData } from '@/components/cards/VideoCard';
 import { Button } from '@/components/ui/Button';
+import { BrandIllustration, type BrandVariant } from '@/components/ui/BrandIllustration';
 import styles from './home.module.css';
+
+const ADVISOR_VARIANTS: BrandVariant[] = ['digestive', 'oncology', 'abstract'];
 
 export const revalidate = 600;
 
@@ -63,7 +66,7 @@ const homeQuery = /* groq */ `{
   }
 }`;
 
-const FALLBACK_PROMESSE_IMAGE = '/promesse-fallback.jpg';
+const FALLBACK_PROMESSE_IMAGE = '/mission-illustration.svg';
 
 export default async function HomePage() {
   const data = await sanityClient.fetch<HomeData>(homeQuery);
@@ -96,9 +99,12 @@ export default async function HomePage() {
         }
       />
 
-      <PartnersSection />
+      <PromesseSection
+        imageUrl={promesseImageUrl}
+        illustrationVariant={data.settings?.heroImage ? undefined : 'mission'}
+      />
 
-      <PromesseSection imageUrl={promesseImageUrl} />
+      <PartnersSection />
 
       <BannerSection />
 
@@ -118,15 +124,12 @@ export default async function HomePage() {
                     key={a._id}
                     className={`${styles.advisorCard} animate-on-scroll delay-${i}`}
                   >
-                    {a.photo ? (
-                      <div className={styles.advisorAvatar}>
-                        <img
-                          src={urlForImage(a.photo).width(160).height(160).url()}
-                          alt={a.photo.alt ?? a.name}
-                          loading="lazy"
-                        />
-                      </div>
-                    ) : null}
+                    <div className={styles.advisorAvatar}>
+                      <BrandIllustration
+                        variant={ADVISOR_VARIANTS[i % ADVISOR_VARIANTS.length]}
+                        label={a.name}
+                      />
+                    </div>
                     <h3 className={styles.advisorName}>{a.name}</h3>
                     {a.role ? <p className={styles.advisorRole}>{a.role}</p> : null}
                     {a.quote ? (

@@ -5,7 +5,8 @@ export type BrandVariant =
   | 'oncology' // concentric cells, canary palette
   | 'congress' // architecture / stage spotlights
   | 'abstract' // generic geometric grid, neutral
-  | 'hero'; // wide cinematic split with diagonal sweep
+  | 'hero' // wide cinematic split with diagonal sweep
+  | 'mission'; // portrait knowledge-network, Notre mission section
 
 interface BrandIllustrationProps {
   variant?: BrandVariant;
@@ -41,9 +42,10 @@ export function BrandIllustration({
   label,
   className,
 }: BrandIllustrationProps) {
+  const viewBox = variant === 'mission' ? '0 0 900 1200' : '0 0 1200 900';
   return (
     <svg
-      viewBox="0 0 1200 900"
+      viewBox={viewBox}
       preserveAspectRatio="xMidYMid slice"
       className={`${styles.svg} ${className ?? ''}`}
       role={label ? 'img' : 'presentation'}
@@ -55,6 +57,7 @@ export function BrandIllustration({
       {variant === 'congress' ? <CongressLayer /> : null}
       {variant === 'abstract' ? <AbstractLayer /> : null}
       {variant === 'hero' ? <HeroLayer /> : null}
+      {variant === 'mission' ? <MissionLayer /> : null}
     </svg>
   );
 }
@@ -223,6 +226,83 @@ function AbstractLayer() {
       <line x1="60" y1="780" x2="900" y2="120" stroke={c.accent} strokeWidth="1" opacity="0.42" />
       <circle cx="900" cy="120" r="5" fill={c.accent} opacity="0.6" />
       <circle cx="60" cy="780" r="3.5" fill={c.accent} opacity="0.45" />
+    </>
+  );
+}
+
+/* ─── Variant: mission ────────────────────────────────────── */
+
+function MissionLayer() {
+  const c = SAND;
+  const rulings = [120, 195, 270, 345, 420, 495, 570, 645, 720, 795, 870, 945, 1020];
+  const spokes: [number, number][] = [
+    [450, 285], [748, 432], [748, 728],
+    [450, 875], [152, 728], [152, 432],
+  ];
+  return (
+    <>
+      <defs>
+        <linearGradient id="bi-mission" x1="0" y1="0" x2="0.4" y2="1">
+          <stop offset="0%" stopColor="#f5f1e6" />
+          <stop offset="100%" stopColor="#ddd0b0" />
+        </linearGradient>
+        <radialGradient id="bi-mission-glow" cx="50%" cy="45%" r="55%">
+          <stop offset="0%" stopColor="#ede6cf" stopOpacity="0.7" />
+          <stop offset="100%" stopColor="#ede6cf" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <rect width="900" height="1200" fill="url(#bi-mission)" />
+      <rect width="900" height="1200" fill="url(#bi-mission-glow)" />
+
+      {/* Left margin line */}
+      <line x1="130" y1="90" x2="130" y2="1110" stroke={c.accent} strokeWidth="0.6" opacity="0.18" />
+
+      {/* Horizontal rulings */}
+      {rulings.map((y) => (
+        <line key={y} x1="160" y1={y} x2="820" y2={y} stroke={c.accent} strokeWidth="0.5" opacity="0.1" />
+      ))}
+
+      {/* Top arc + corner bracket + accent circle */}
+      <path d="M 180 175 Q 450 100 720 175" fill="none" stroke={c.accent} strokeWidth="0.9" strokeLinecap="round" opacity="0.25" />
+      <path d="M 800 70 L 860 70 L 860 130" fill="none" stroke={c.accent} strokeWidth="0.8" opacity="0.28" />
+      <circle cx="770" cy="140" r="18" fill="none" stroke={c.accent} strokeWidth="0.6" opacity="0.28" />
+      <circle cx="770" cy="140" r="4" fill={c.accent} opacity="0.38" />
+
+      {/* Radial spokes */}
+      {spokes.map(([x2, y2]) => (
+        <line key={`${x2}-${y2}`} x1="450" y1="580" x2={x2} y2={y2} stroke={c.accent} strokeWidth="0.5" opacity="0.15" />
+      ))}
+
+      {/* Concentric circles */}
+      {[218, 148, 85, 36, 14].map((r, i) => (
+        <circle key={r} cx="450" cy="580" r={r} fill="none" stroke={c.accent} strokeWidth={i === 0 ? 1.1 : 0.8 - i * 0.1} opacity={0.3 - i * 0.025} />
+      ))}
+      <circle cx="450" cy="580" r="7" fill={c.accent} opacity="0.62" />
+
+      {/* Inner crosshair */}
+      <line x1="450" y1="480" x2="450" y2="680" stroke={c.accent} strokeWidth="0.4" opacity="0.14" />
+      <line x1="350" y1="580" x2="550" y2="580" stroke={c.accent} strokeWidth="0.4" opacity="0.14" />
+
+      {/* Satellite nodes */}
+      {spokes.map(([cx, cy], i) => (
+        <g key={`sat-${cx}-${cy}`}>
+          <circle cx={cx} cy={cy} r={i % 3 === 0 ? 5 : 4} fill={c.accent} opacity="0.45" />
+          <circle cx={cx} cy={cy} r={i % 3 === 0 ? 22 : 16} fill="none" stroke={c.accent} strokeWidth="0.5" opacity="0.2" />
+        </g>
+      ))}
+
+      {/* Lower curves (human dimension) */}
+      <path d="M 90 960 Q 270 900 450 938 Q 630 975 810 920" fill="none" stroke={c.accent} strokeWidth="1.1" strokeLinecap="round" opacity="0.3" />
+      <path d="M 90 990 Q 290 940 450 966 Q 610 992 810 950" fill="none" stroke={c.accent} strokeWidth="0.65" strokeLinecap="round" opacity="0.2" />
+
+      {/* Bottom text-like blocks */}
+      <rect x="170" y="1065" width="190" height="3.5" rx="1.75" fill={c.accent} opacity="0.12" />
+      <rect x="170" y="1078" width="130" height="3.5" rx="1.75" fill={c.accent} opacity="0.09" />
+      <rect x="430" y="1065" width="210" height="3.5" rx="1.75" fill={c.accent} opacity="0.12" />
+      <rect x="430" y="1078" width="95" height="3.5" rx="1.75" fill={c.accent} opacity="0.09" />
+
+      {/* Bottom-left accent */}
+      <path d="M 50 1140 L 50 1170 L 80 1170" fill="none" stroke={c.accent} strokeWidth="0.7" opacity="0.25" />
     </>
   );
 }

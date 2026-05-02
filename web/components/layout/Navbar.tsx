@@ -20,68 +20,112 @@ export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  // Close the menu on route change so navigation doesn't leave it stuck open.
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+  useEffect(() => { setOpen(false); }, [pathname]);
 
-  // Lock body scroll when the mobile menu is open.
   useEffect(() => {
     if (typeof document === 'undefined') return;
     document.body.style.overflow = open ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
+    return () => { document.body.style.overflow = ''; };
   }, [open]);
 
   return (
-    <div className={styles.navFixed} id="navbar">
-      <div className={styles.navbarComponent}>
-        <Link href="/" className={styles.navbarLogoLink} aria-label="OncoDigest — accueil">
-          <Logo />
-        </Link>
+    <>
+      <div className={styles.navFixed} id="navbar">
+        <div className={styles.navbarComponent}>
 
-        <nav
-          className={`${styles.navbarMenu} ${open ? styles.navbarMenuOpen : ''}`}
-          aria-label="Navigation principale"
-        >
-          {links.map((link) => {
+          {/* Logo */}
+          <Link href="/" className={styles.navbarLogoLink} aria-label="OncoDigest — accueil">
+            <Logo />
+          </Link>
+
+          {/* Desktop nav links */}
+          <nav className={styles.navbarMenu} aria-label="Navigation principale">
+            {links.map((link) => {
+              const active = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`${styles.navbarLink} ${active ? styles.navbarLinkActive : ''}`}
+                  aria-current={active ? 'page' : undefined}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Desktop buttons (hidden on mobile) */}
+          <div className={styles.navbarButtonWrapper}>
+            <Button href="/inscription" variant="white" size="sm">
+              S&apos;inscrire
+            </Button>
+            <Button href="/connexion" variant="yellow" size="sm">
+              Accès Pro
+            </Button>
+          </div>
+
+          {/* Mobile right: Accès Pro + hamburger */}
+          <div className={styles.mobileRight}>
+            <Link href="/connexion" className={styles.mobileCtaBtn}>
+              Accès Pro
+            </Link>
+            <button
+              type="button"
+              className={`${styles.navbarHamburger} ${open ? styles.navbarHamburgerOpen : ''}`}
+              aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              onClick={() => setOpen((p) => !p)}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Full-screen mobile menu */}
+      <div
+        id="mobile-menu"
+        className={`${styles.mobileMenu} ${open ? styles.mobileMenuOpen : ''}`}
+        aria-hidden={!open}
+      >
+        <nav className={styles.mobileNav} aria-label="Navigation mobile">
+          {links.map((link, i) => {
             const active = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`${styles.navbarLink} ${active ? styles.navbarLinkActive : ''}`}
+                className={`${styles.mobileNavLink} ${active ? styles.mobileNavLinkActive : ''}`}
                 aria-current={active ? 'page' : undefined}
+                tabIndex={open ? 0 : -1}
               >
-                {link.label}
+                <span className={styles.mobileNavNum} aria-hidden>
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span className={styles.mobileNavLabel}>{link.label}</span>
+                <svg className={styles.mobileNavArrow} width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </Link>
             );
           })}
         </nav>
 
-        <div className={styles.navbarButtonWrapper}>
-          <Button href="/inscription" variant="white" size="sm">
-            S&apos;inscrire
-          </Button>
-          <Button href="/connexion" variant="yellow" size="sm">
-            Accès Pro
-          </Button>
+        <div className={styles.mobileMenuFooter}>
+          <Link
+            href="/inscription"
+            className={styles.mobileSignupLink}
+            tabIndex={open ? 0 : -1}
+          >
+            Pas encore inscrit&nbsp;? <span>S&apos;inscrire gratuitement →</span>
+          </Link>
         </div>
-
-        <button
-          type="button"
-          className={`${styles.navbarHamburger} ${open ? styles.navbarHamburgerOpen : ''}`}
-          aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
-          aria-expanded={open}
-          aria-controls="navbar"
-          onClick={() => setOpen((prev) => !prev)}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
       </div>
-    </div>
+    </>
   );
 }

@@ -1,4 +1,4 @@
-/* Navbar — copied verbatim from index.html (lines 94-251 + responsive blocks). */
+/* ── Fixed bar ── */
 
 .navFixed {
   position: fixed;
@@ -8,7 +8,8 @@
   z-index: var(--z-navbar);
   height: var(--nav-height);
   background: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  transition: border-color 0.3s ease;
 }
 
 .navbarComponent {
@@ -21,11 +22,15 @@
   padding: 0 32px;
 }
 
+/* ── Logo ── */
+
 .navbarLogoLink {
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
+
+/* ── Desktop nav links ── */
 
 .navbarMenu {
   display: flex;
@@ -49,7 +54,7 @@
   font-weight: 500;
 }
 
-/* Dot separator between adjacent links */
+/* Dot separators */
 .navbarLink + .navbarLink::before {
   content: '';
   position: absolute;
@@ -62,6 +67,8 @@
   background: var(--cod-gray--200);
 }
 
+/* ── Desktop button group ── */
+
 .navbarButtonWrapper {
   display: flex;
   align-items: center;
@@ -69,7 +76,7 @@
   flex-shrink: 0;
 }
 
-/* Override Button.module.css btnWhite — white pill with border (RockFi-style secondary) */
+/* S'inscrire — white pill with border */
 .navbarButtonWrapper :global(a[class*='btnWhite']) {
   background: #fff;
   color: var(--cod-gray--600);
@@ -82,21 +89,92 @@
   color: var(--cod-gray--900);
 }
 
+/* ── Mobile right zone (hidden on desktop) ── */
+
+.mobileRight {
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Accès Pro pill — mobile inline */
+.mobileCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  background: var(--canary--300);
+  color: var(--canary--900);
+  border-radius: 32px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.1px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.mobileCtaBtn:hover {
+  background: var(--canary--400);
+}
+
+/* ── Hamburger ── */
+
 .navbarHamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  width: 36px;
+  height: 36px;
+}
+
+.navbarHamburger span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--cod-gray--900);
+  transition: transform 0.3s ease, opacity 0.2s ease;
+  transform-origin: center;
+}
+
+.navbarHamburgerOpen span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.navbarHamburgerOpen span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.navbarHamburgerOpen span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* ═══════════════════════════════════════════
+   FULL-SCREEN MOBILE MENU
+═══════════════════════════════════════════ */
+
+.mobileMenu {
+  /* Hidden on desktop */
   display: none;
 }
 
-/* Tablet: shrink links, hide btn-white */
+/* ═══════════════════════════════════════════
+   TABLET BREAKPOINT (≤ 1024px)
+═══════════════════════════════════════════ */
+
 @media (max-width: 1024px) {
   .navbarLink {
     font-size: 11.5px;
   }
   .navbarMenu {
-    gap: 24px;
+    gap: 20px;
   }
   .navbarLink + .navbarLink::before {
-    left: -14px;
+    left: -12px;
   }
+  /* Hide S'inscrire, keep Accès Pro */
   .navbarButtonWrapper :global(a[class*='btnWhite']) {
     display: none;
   }
@@ -105,65 +183,151 @@
   }
 }
 
-/* Mobile: hamburger appears, menu becomes a fixed dropdown */
+/* ═══════════════════════════════════════════
+   MOBILE BREAKPOINT (≤ 768px)
+═══════════════════════════════════════════ */
+
 @media (max-width: 768px) {
   .navbarComponent {
-    padding: 0 12px;
+    padding: 0 16px;
   }
+
+  /* Hide desktop nav + buttons */
   .navbarMenu {
     display: none;
   }
-  .navbarMenuOpen {
+  .navbarButtonWrapper {
+    display: none;
+  }
+
+  /* Show mobile right zone */
+  .mobileRight {
+    display: flex;
+  }
+  .navbarHamburger {
+    display: flex;
+  }
+
+  /* ── Full-screen menu ── */
+  .mobileMenu {
     display: flex;
     position: fixed;
     top: var(--nav-height);
     left: 0;
     right: 0;
-    background: #fff;
+    bottom: 0;
+    background: #0d0f0d;
     flex-direction: column;
-    padding: 24px;
-    gap: 18px;
-    z-index: var(--z-mobile-menu);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    z-index: calc(var(--z-navbar) - 1);
+    overflow-y: auto;
+
+    /* Animated hide */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.28s ease, transform 0.28s ease;
   }
-  .navbarMenuOpen .navbarLink {
-    font-size: 16px;
-    padding: 8px 0;
+
+  .mobileMenuOpen {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
   }
-  .navbarHamburger {
+
+  /* Nav list */
+  .mobileNav {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 8px;
-    background: transparent;
-    border: none;
+    padding: 12px 0 0;
+    flex: 1;
   }
-  .navbarHamburger span {
+
+  .mobileNavLink {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+  .mobileNavLink:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .mobileNavLink:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .mobileNavNum {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.2);
+    font-family: var(--font-body-stack);
+    width: 20px;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mobileNavLabel {
+    font-family: var(--font-display-stack);
+    font-size: clamp(22px, 6vw, 30px);
+    font-weight: 300;
+    letter-spacing: -0.6px;
+    color: rgba(255, 255, 255, 0.65);
+    flex: 1;
+    transition: color 0.18s;
+    line-height: 1;
+  }
+  .mobileNavLink:hover .mobileNavLabel {
+    color: #fff;
+  }
+
+  .mobileNavLinkActive .mobileNavLabel {
+    color: #fff;
+  }
+  .mobileNavLinkActive .mobileNavNum {
+    color: var(--canary--300);
+  }
+
+  .mobileNavArrow {
+    color: rgba(255, 255, 255, 0.15);
+    flex-shrink: 0;
+    transition: color 0.18s, transform 0.18s;
+  }
+  .mobileNavLink:hover .mobileNavArrow {
+    color: rgba(255, 255, 255, 0.5);
+    transform: translateX(4px);
+  }
+
+  /* Footer */
+  .mobileMenuFooter {
+    padding: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .mobileSignupLink {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.35);
+    text-decoration: none;
     display: block;
-    width: 18px;
-    height: 1.5px;
-    background: var(--cod-gray--900);
-    transition: transform 0.3s ease, opacity 0.2s ease;
+    transition: color 0.2s;
   }
-  /* Hide dot separators when stacked vertically */
-  .navbarLink + .navbarLink::before {
-    display: none;
+  .mobileSignupLink span {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
-  /* Hamburger → X when open */
-  .navbarHamburgerOpen span:nth-child(1) {
-    transform: translateY(6.5px) rotate(45deg);
+  .mobileSignupLink:hover {
+    color: rgba(255, 255, 255, 0.5);
   }
-  .navbarHamburgerOpen span:nth-child(2) {
-    opacity: 0;
-  }
-  .navbarHamburgerOpen span:nth-child(3) {
-    transform: translateY(-6.5px) rotate(-45deg);
+  .mobileSignupLink:hover span {
+    color: #fff;
   }
 }
 
 @media (max-width: 390px) {
   .navbarComponent {
-    padding: 0 10px;
+    padding: 0 12px;
   }
 }

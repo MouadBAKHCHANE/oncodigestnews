@@ -5,7 +5,7 @@ import { requireAdmin } from '@/lib/auth';
 import { QuickApproveButton } from './QuickApproveButton';
 import styles from './overview.module.css';
 
-export const metadata = { title: 'Vue d\'ensemble — Admin' };
+export const metadata = { title: 'Dashboard — Admin' };
 export const dynamic = 'force-dynamic';
 
 interface RecentSignup {
@@ -81,71 +81,64 @@ export default async function AdminOverviewPage() {
   const firstName = me.full_name.split(' ')[0];
 
   return (
-    <div className={styles.wrap}>
+    <main className={styles.page}>
+      <div className={styles.wrap}>
 
-      {/* ── Greeting ── */}
-      <header className={styles.header}>
-        <div>
-          <p className={styles.eyebrow}>Tableau de bord administrateur</p>
-          <h1 className={styles.heading}>
-            Bonjour, <em>{firstName}</em>.
-          </h1>
-        </div>
-        {(pendingCount ?? 0) > 0 && (
-          <div className={styles.alert}>
-            <span className={styles.alertDot} aria-hidden />
-            <span>
-              <strong>{pendingCount}</strong> demande{(pendingCount ?? 0) > 1 ? 's' : ''} en attente
-            </span>
-            <Link href="/admin/users?tab=pending" className={styles.alertLink}>
-              Examiner →
+        {/* ── Greeting (matches Pro dashboard pattern) ── */}
+        <header className={styles.header}>
+          <div>
+            <p className={styles.eyebrow}>Espace Admin · OncoDigest</p>
+            <h1 className={styles.heading}>
+              Bonjour, <em>{firstName}</em>.
+            </h1>
+            <p className={styles.lead}>
+              Vue d&apos;ensemble de la plateforme. Gérez les inscriptions, le
+              contenu et les paramètres du site.
+            </p>
+          </div>
+          <div className={styles.headerActions}>
+            <Link href="/dashboard" className={styles.btnGhost}>
+              Espace Pro
+            </Link>
+            <Link href="/admin/studio" className={styles.btnDark}>
+              Ouvrir Studio →
             </Link>
           </div>
-        )}
-      </header>
+        </header>
 
-      {/* ── Stats grid ── */}
-      <section className={styles.statsGrid}>
-        <StatCard
-          label="Utilisateurs total"
-          value={totalUsers ?? 0}
-          href="/admin/users?tab=approved"
-        />
-        <StatCard
-          label="En attente"
-          value={pendingCount ?? 0}
-          href="/admin/users?tab=pending"
-          accent={(pendingCount ?? 0) > 0 ? 'warn' : undefined}
-        />
-        <StatCard
-          label="Approuvés"
-          value={approvedCount ?? 0}
-          href="/admin/users?tab=approved"
-        />
-        <StatCard
-          label="Révoqués"
-          value={revokedCount ?? 0}
-          href="/admin/users?tab=revoked"
-        />
-      </section>
+        {/* ── Stats strip (matches Pro dashboard pattern) ── */}
+        <section className={styles.stats}>
+          <Stat label="Utilisateurs total" value={totalUsers ?? 0} />
+          <Stat label="En attente" value={pendingCount ?? 0} />
+          <Stat label="Approuvés" value={approvedCount ?? 0} />
+          <Stat label="Révoqués" value={revokedCount ?? 0} />
+          {(pendingCount ?? 0) > 0 ? (
+            <Link href="/admin/users?tab=pending" className={styles.statBadgeAlert}>
+              <span className={styles.statDotPulse} aria-hidden />
+              {pendingCount} à examiner →
+            </Link>
+          ) : (
+            <div className={styles.statBadge}>
+              <span className={styles.statDot} aria-hidden />
+              Tout est à jour
+            </div>
+          )}
+        </section>
 
-      {/* ── Two-column: Recent signups + Recent articles ── */}
-      <div className={styles.twoCol}>
-
-        {/* Recent signups */}
-        <section className={styles.panel}>
-          <header className={styles.panelHeader}>
-            <h2 className={styles.panelTitle}>Inscriptions récentes</h2>
-            <Link href="/admin/users" className={styles.panelLink}>
+        {/* ── Recent signups ── */}
+        <section className={styles.section}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionHeading}>Inscriptions récentes</h2>
+            <Link href="/admin/users" className={styles.sectionLink}>
               Voir tout →
             </Link>
-          </header>
+          </div>
           {recent.length === 0 ? (
-            <p className={styles.empty}>Aucune inscription pour le moment.</p>
+            <div className={styles.empty}>Aucune inscription pour le moment.</div>
           ) : (
-            <ul className={styles.list}>
+            <div className={styles.list}>
               {recent.map((u) => (
-                <li key={u.id} className={styles.row}>
+                <div key={u.id} className={styles.row}>
                   <div className={styles.rowMain}>
                     <span className={styles.rowName}>{u.full_name || '—'}</span>
                     <span className={styles.rowMeta}>
@@ -162,32 +155,30 @@ export default async function AdminOverviewPage() {
                     </span>
                     <QuickApproveButton profileId={u.id} disabled={u.id === me.id} />
                   </div>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           )}
         </section>
 
-        {/* Recent articles + content stats */}
-        <section className={styles.panel}>
-          <header className={styles.panelHeader}>
-            <h2 className={styles.panelTitle}>Contenu publié</h2>
-            <Link href="/admin/studio" className={styles.panelLink}>
+        {/* ── Content overview ── */}
+        <section className={styles.section}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionHeading}>Contenu publié</h2>
+            <Link href="/admin/studio" className={styles.sectionLink}>
               Ouvrir Studio →
             </Link>
-          </header>
+          </div>
           <div className={styles.contentMini}>
             <MiniStat label="Articles" value={sanityData.articles} />
             <MiniStat label="Vidéos" value={sanityData.videos} />
             <MiniStat label="Congrès" value={sanityData.congress} />
             <MiniStat label="Évènements" value={sanityData.evenements} />
           </div>
-          {sanityData.recent.length === 0 ? (
-            <p className={styles.empty}>Aucun article publié.</p>
-          ) : (
-            <ul className={styles.list}>
+          {sanityData.recent.length > 0 && (
+            <div className={styles.list}>
               {sanityData.recent.map((a) => (
-                <li key={a._id} className={styles.row}>
+                <div key={a._id} className={styles.row}>
                   <div className={styles.rowMain}>
                     <span className={styles.rowName}>{a.title}</span>
                     <span className={styles.rowMeta}>
@@ -195,70 +186,62 @@ export default async function AdminOverviewPage() {
                       {a.publishedAt ? ` · ${new Date(a.publishedAt).toLocaleDateString('fr-FR')}` : ''}
                     </span>
                   </div>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           )}
         </section>
 
+        {/* ── Quick actions (matches Pro dashboard pattern) ── */}
+        <section className={styles.actions}>
+          <h2 className={styles.sectionHeading}>Raccourcis</h2>
+          <div className={styles.actionGrid}>
+            <ActionCard
+              href="/admin/users?tab=pending"
+              title="Examiner les inscriptions"
+              desc="Approuver ou refuser les nouveaux comptes."
+              badge={pendingCount && pendingCount > 0 ? String(pendingCount) : undefined}
+            />
+            <ActionCard
+              href="/admin/studio"
+              title="Publier du contenu"
+              desc="Articles, vidéos, congrès, évènements."
+            />
+            <ActionCard
+              href="/admin/studio/desk/siteSettings"
+              title="Réglages du site"
+              desc="Image hero, tagline, mots du typewriter."
+            />
+            <ActionCard
+              href="/dashboard"
+              title="Voir l'espace Pro"
+              desc="L'expérience telle que vue par les utilisateurs."
+            />
+          </div>
+        </section>
+
+        {/* ── Footer info ── */}
+        <footer className={styles.footer}>
+          <span>
+            Newsletter: <strong>{newsletterCount ?? 0}</strong> abonnés
+          </span>
+          <span aria-hidden>·</span>
+          <span>
+            Connecté en tant que <strong>{me.email}</strong>
+          </span>
+        </footer>
+
       </div>
-
-      {/* ── Quick actions ── */}
-      <section className={styles.actions}>
-        <h2 className={styles.actionsTitle}>Raccourcis</h2>
-        <div className={styles.actionsGrid}>
-          <ActionTile
-            href="/admin/users?tab=pending"
-            title="Examiner les inscriptions"
-            desc="Approuver ou refuser les nouveaux comptes."
-            badge={pendingCount && pendingCount > 0 ? String(pendingCount) : undefined}
-          />
-          <ActionTile
-            href="/admin/studio"
-            title="Publier du contenu"
-            desc="Articles, vidéos, congrès, évènements."
-          />
-          <ActionTile
-            href="/admin/studio/desk/siteSettings"
-            title="Réglages du site"
-            desc="Image hero, tagline, mots du typewriter."
-          />
-          <ActionTile
-            href="/dashboard"
-            title="Voir l'espace Pro"
-            desc="L'expérience telle que vue par les utilisateurs."
-          />
-        </div>
-      </section>
-
-      {/* ── Footer info ── */}
-      <footer className={styles.footer}>
-        <span>
-          Newsletter: <strong>{newsletterCount ?? 0}</strong> abonnés
-        </span>
-        <span aria-hidden>·</span>
-        <span>
-          Connecté en tant que <strong>{me.email}</strong>
-        </span>
-      </footer>
-
-    </div>
+    </main>
   );
 }
 
-function StatCard({
-  label, value, href, accent,
-}: {
-  label: string;
-  value: number;
-  href: string;
-  accent?: 'warn';
-}) {
+function Stat({ label, value }: { label: string; value: number }) {
   return (
-    <Link href={href} className={`${styles.statCard} ${accent === 'warn' ? styles.statCardWarn : ''}`}>
-      <span className={styles.statValue}>{value}</span>
-      <span className={styles.statLabel}>{label}</span>
-    </Link>
+    <div className={styles.stat}>
+      <div className={styles.statValue}>{value}</div>
+      <div className={styles.statLabel}>{label}</div>
+    </div>
   );
 }
 
@@ -271,7 +254,7 @@ function MiniStat({ label, value }: { label: string; value: number }) {
   );
 }
 
-function ActionTile({
+function ActionCard({
   href, title, desc, badge,
 }: {
   href: string;
@@ -280,13 +263,16 @@ function ActionTile({
   badge?: string;
 }) {
   return (
-    <Link href={href} className={styles.actionTile}>
-      <div className={styles.actionHead}>
-        <span className={styles.actionTitle}>{title}</span>
-        {badge && <span className={styles.actionBadge}>{badge}</span>}
+    <Link href={href} className={styles.actionCard}>
+      <div className={styles.actionTitle}>
+        {title}
+        {badge ? (
+          <span className={styles.actionBadge}>{badge}</span>
+        ) : (
+          <span className={styles.actionArrow} aria-hidden>→</span>
+        )}
       </div>
       <p className={styles.actionDesc}>{desc}</p>
-      <span className={styles.actionArrow} aria-hidden>→</span>
     </Link>
   );
 }

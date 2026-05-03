@@ -15,7 +15,7 @@ export default function AdminLayout({
         </Link>
         <nav className={styles.tabs}>
           <Link href="/admin" className={styles.tab}>
-            Vue d&apos;ensemble
+            Dashboard
           </Link>
           <Link href="/admin/users" className={styles.tab}>
             Utilisateurs

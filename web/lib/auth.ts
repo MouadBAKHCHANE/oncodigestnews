@@ -2,14 +2,14 @@
  * Auth helpers — wraps Supabase Auth so the rest of the app talks to a single
  * `getSession()` / `getProfile()` API regardless of underlying provider.
  *
- * Auth.js (NextAuth v5) is installed but currently we route auth through
- * Supabase's own session cookie because:
- *   - the user database lives in Supabase
- *   - row-level security policies key off `auth.uid()`
- * Auth.js stays installed for future OAuth providers (LinkedIn, Google).
+ * Strategy:
+ *   - getSession()  → reads JWT from cookie directly (no network hop)
+ *   - getProfile()  → uses service-role client to query profiles (no RLS friction)
+ *   - requireAdmin / requireApproved → thin wrappers over getProfile()
  */
 
 import { getSupabaseServerClient } from '@/lib/supabase/server';
+import { getSupabaseAdminClient } from '@/lib/supabase/admin';
 
 export type ProfileStatus = 'pending' | 'approved' | 'revoked';
 export type ProfileRole = 'user' | 'admin';
@@ -27,18 +27,23 @@ export interface Profile {
   approved_at: string | null;
 }
 
+/** Returns the Supabase user from the session cookie — no network call. */
 export async function getSession() {
   const supabase = await getSupabaseServerClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  return user;
+  const { data: { session } } = await supabase.auth.getSession();
+  return session?.user ?? null;
 }
 
+/**
+ * Returns the full profile for the currently logged-in user.
+ * Uses getSession() (cookie read, fast) + service-role client (no RLS).
+ */
 export async function getProfile(): Promise<Profile | null> {
-  const supabase = await getSupabaseServerClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const user = await getSession();
   if (!user) return null;
 
-  const { data: profile } = await supabase
+  const admin = getSupabaseAdminClient();
+  const { data: profile } = await admin
     .from('profiles')
     .select('*')
     .eq('id', user.id)

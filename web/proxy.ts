@@ -40,7 +40,7 @@ export async function proxy(request: NextRequest) {
 
   // Unauthenticated user trying to access protected routes → redirect to login
   if (!user) {
-    if (path.startsWith('/admin') || path.startsWith('/account')) {
+    if (path.startsWith('/admin') || path.startsWith('/account') || path.startsWith('/dashboard')) {
       const url = request.nextUrl.clone();
       url.pathname = '/connexion';
       url.searchParams.set('next', path);
@@ -135,6 +135,8 @@ export const config = {
   matcher: [
     '/admin/:path*',
     '/account/:path*',
+    '/dashboard/:path*',
+    '/dashboard',
     '/article/:path*',
     '/videos/:path*',
   ],

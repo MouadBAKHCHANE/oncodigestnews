@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
+import { createClient } from '@supabase/supabase-js';
 
 /**
  * Route protection per AUTH-STATES.md §"Middleware: route protection".
@@ -36,7 +37,8 @@ export async function proxy(request: NextRequest) {
     },
   );
 
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { session } } = await supabase.auth.getSession();
+  const user = session?.user ?? null;
 
   // Unauthenticated user trying to access protected routes → redirect to login
   if (!user) {
@@ -49,12 +51,17 @@ export async function proxy(request: NextRequest) {
     return response;
   }
 
-  // Look up profile to check status / role
-  const { data: profile } = await supabase
+  // Profile lookup via service role (bypasses RLS, reliable)
+  const adminDb = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    { auth: { autoRefreshToken: false, persistSession: false } },
+  );
+  const { data: profile } = await adminDb
     .from('profiles')
     .select('status, role')
     .eq('id', user.id)
-    .single();
+    .maybeSingle();
 
   if (!profile) return response;
 
@@ -108,7 +115,8 @@ async function enforceAdmin(request: NextRequest): Promise<NextResponse> {
     },
   );
 
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { session } } = await supabase.auth.getSession();
+  const user = session?.user ?? null;
   if (!user) {
     const url = request.nextUrl.clone();
     url.pathname = '/connexion';
@@ -116,11 +124,16 @@ async function enforceAdmin(request: NextRequest): Promise<NextResponse> {
     return NextResponse.redirect(url);
   }
 
-  const { data: profile } = await supabase
+  const admin = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    { auth: { autoRefreshToken: false, persistSession: false } },
+  );
+  const { data: profile } = await admin
     .from('profiles')
     .select('role, status')
     .eq('id', user.id)
-    .single();
+    .maybeSingle();
 
   if (!profile || profile.role !== 'admin' || profile.status !== 'approved') {
     const url = request.nextUrl.clone();

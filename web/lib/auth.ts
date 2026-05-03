@@ -1,4 +1,5 @@
 import { getSupabaseServerClient } from '@/lib/supabase/server';
+import { createClient } from '@supabase/supabase-js';
 
 export type ProfileStatus = 'pending' | 'approved' | 'revoked';
 export type ProfileRole = 'user' | 'admin';
@@ -16,6 +17,14 @@ export interface Profile {
   approved_at: string | null;
 }
 
+function adminClient() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    { auth: { autoRefreshToken: false, persistSession: false } },
+  );
+}
+
 export async function getSession() {
   const supabase = await getSupabaseServerClient();
   const { data: { session } } = await supabase.auth.getSession();
@@ -23,26 +32,29 @@ export async function getSession() {
 }
 
 export async function getProfile(): Promise<Profile | null> {
-  const supabase = await getSupabaseServerClient();
-  const { data: { session } } = await supabase.auth.getSession();
-  const user = session?.user ?? null;
+  const user = await getSession();
   if (!user) {
-    console.error('[getProfile] no session/user');
+    console.error('[getProfile] no session');
+    return null;
+  }
+  if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    console.error('[getProfile] SUPABASE_SERVICE_ROLE_KEY missing in env');
     return null;
   }
 
-  const { data: profile, error } = await supabase
+  const admin = adminClient();
+  const { data: profile, error } = await admin
     .from('profiles')
     .select('*')
     .eq('id', user.id)
     .maybeSingle();
 
   if (error) {
-    console.error('[getProfile] profile query error:', JSON.stringify(error), 'userId:', user.id);
+    console.error('[getProfile] query error:', error.message, error.code);
     return null;
   }
   if (!profile) {
-    console.error('[getProfile] profile not found for userId:', user.id);
+    console.error('[getProfile] profile row not found for', user.id);
     return null;
   }
 
@@ -59,12 +71,7 @@ export async function requireApproved(): Promise<Profile> {
 
 export async function requireAdmin(): Promise<Profile> {
   const profile = await getProfile();
-  if (!profile) {
-    console.error('[requireAdmin] no profile');
-    throw new Error('FORBIDDEN');
-  }
-  if (profile.role !== 'admin' || profile.status !== 'approved') {
-    console.error('[requireAdmin] role/status mismatch:', { role: profile.role, status: profile.status });
+  if (!profile || profile.role !== 'admin' || profile.status !== 'approved') {
     throw new Error('FORBIDDEN');
   }
   return profile;

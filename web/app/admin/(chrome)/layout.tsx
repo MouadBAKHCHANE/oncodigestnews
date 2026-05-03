@@ -1,14 +1,6 @@
 import Link from 'next/link';
 import styles from './admin.module.css';
 
-/**
- * Admin shell — Option A unified Content (Studio) + Users dashboard.
- *
- * Access control: enforced by middleware.ts (admin role required).
- * The Studio sub-route handles its own internal layout, so this layout
- * intentionally does not wrap /admin/studio in the tab chrome — Studio
- * needs full viewport.
- */
 export default function AdminLayout({
   children,
 }: {
@@ -22,14 +14,20 @@ export default function AdminLayout({
           <span className={styles.brandTag}>admin</span>
         </Link>
         <nav className={styles.tabs}>
-          <Link href="/admin/studio" className={styles.tab}>
-            Content
+          <Link href="/admin" className={styles.tab}>
+            Vue d&apos;ensemble
           </Link>
           <Link href="/admin/users" className={styles.tab}>
-            Users
+            Utilisateurs
+          </Link>
+          <Link href="/admin/studio" className={styles.tab}>
+            Contenu
           </Link>
         </nav>
         <div className={styles.spacer} />
+        <Link href="/dashboard" className={styles.exitBtn}>
+          ← Espace Pro
+        </Link>
       </header>
       <main className={styles.main}>{children}</main>
     </div>

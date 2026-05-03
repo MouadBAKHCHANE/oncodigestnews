@@ -1,13 +1,12 @@
 .page {
-  padding: 64px 0 80px;
-  min-height: calc(100vh - 56px);
-  background: var(--satin-linen--50, #f7f6ef);
+  padding: 56px 0 80px;
+  min-height: 100vh;
 }
 
 .wrap {
-  max-width: 1280px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 40px;
 }
 
 /* ── Header (matches /dashboard) ── */

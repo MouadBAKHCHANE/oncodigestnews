@@ -117,8 +117,10 @@ export function Footer() {
                 <div className={styles.footerLinksRight}>
                   <FooterColumn heading="Plateforme">
                     <Link href="/actualites">Actualités</Link>
-                    <Link href="/articles-scientifiques">Articles</Link>
+                    <Link href="/articles-scientifiques">Articles scientifiques</Link>
                     <Link href="/congres">Congrès</Link>
+                    <Link href="/videos">Vidéos</Link>
+                    <Link href="/evenements">Évènements</Link>
                   </FooterColumn>
                   <FooterColumn heading="Ressources">
                     <Link href="/a-propos">Comité scientifique</Link>

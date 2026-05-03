@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/Button';
 import { Logo } from '@/components/ui/Logo';
+import { UserMenu } from './UserMenu';
 import styles from './Navbar.module.css';
 
 const links = [
@@ -55,21 +55,14 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Desktop buttons (hidden on mobile) */}
+          {/* Desktop user menu (avatar dropdown when logged in, or guest pills) */}
           <div className={styles.navbarButtonWrapper}>
-            <Button href="/inscription" variant="white" size="sm">
-              S&apos;inscrire
-            </Button>
-            <Button href="/connexion" variant="yellow" size="sm">
-              Accès Pro
-            </Button>
+            <UserMenu />
           </div>
 
-          {/* Mobile right: Accès Pro + hamburger */}
+          {/* Mobile right: user menu + hamburger */}
           <div className={styles.mobileRight}>
-            <Link href="/connexion" className={styles.mobileCtaBtn}>
-              Accès Pro
-            </Link>
+            <UserMenu />
             <button
               type="button"
               className={`${styles.navbarHamburger} ${open ? styles.navbarHamburgerOpen : ''}`}

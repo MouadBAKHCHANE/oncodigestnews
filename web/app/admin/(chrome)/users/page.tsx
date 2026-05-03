@@ -1,4 +1,4 @@
-import { getSupabaseServerClient } from '@/lib/supabase/server';
+import { createClient } from '@supabase/supabase-js';
 import { requireAdmin } from '@/lib/auth';
 import { UserActions } from './UserActions';
 import styles from './users.module.css';
@@ -28,14 +28,22 @@ export default async function UsersPage({
   const sp = await searchParams;
   const tab = sp.tab ?? 'pending';
 
-  const supabase = await getSupabaseServerClient();
-  const { data: profiles } = await supabase
+  const adminClient = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    { auth: { autoRefreshToken: false, persistSession: false } },
+  );
+  const { data: profiles, error: queryError } = await adminClient
     .from('profiles')
     .select(
       'id, email, full_name, specialty, hospital, rpps_number, status, role, created_at, approved_at',
     )
     .eq('status', tab)
     .order('created_at', { ascending: false });
+
+  if (queryError) {
+    console.error('[admin/users] query error:', queryError.message);
+  }
 
   const list = (profiles ?? []) as ProfileRow[];
 

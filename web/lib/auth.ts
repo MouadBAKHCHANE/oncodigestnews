@@ -1,8 +1,3 @@
-/**
- * Auth helpers — uses getSession() to read the user from the cookie JWT
- * (no network round-trip), then queries profiles with the same session client.
- */
-
 import { getSupabaseServerClient } from '@/lib/supabase/server';
 
 export type ProfileStatus = 'pending' | 'approved' | 'revoked';
@@ -31,15 +26,27 @@ export async function getProfile(): Promise<Profile | null> {
   const supabase = await getSupabaseServerClient();
   const { data: { session } } = await supabase.auth.getSession();
   const user = session?.user ?? null;
-  if (!user) return null;
+  if (!user) {
+    console.error('[getProfile] no session/user');
+    return null;
+  }
 
-  const { data: profile } = await supabase
+  const { data: profile, error } = await supabase
     .from('profiles')
     .select('*')
     .eq('id', user.id)
-    .single();
+    .maybeSingle();
 
-  return profile as Profile | null;
+  if (error) {
+    console.error('[getProfile] profile query error:', JSON.stringify(error), 'userId:', user.id);
+    return null;
+  }
+  if (!profile) {
+    console.error('[getProfile] profile not found for userId:', user.id);
+    return null;
+  }
+
+  return profile as Profile;
 }
 
 export async function requireApproved(): Promise<Profile> {
@@ -52,7 +59,12 @@ export async function requireApproved(): Promise<Profile> {
 
 export async function requireAdmin(): Promise<Profile> {
   const profile = await getProfile();
-  if (!profile || profile.role !== 'admin' || profile.status !== 'approved') {
+  if (!profile) {
+    console.error('[requireAdmin] no profile');
+    throw new Error('FORBIDDEN');
+  }
+  if (profile.role !== 'admin' || profile.status !== 'approved') {
+    console.error('[requireAdmin] role/status mismatch:', { role: profile.role, status: profile.status });
     throw new Error('FORBIDDEN');
   }
   return profile;

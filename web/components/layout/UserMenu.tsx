@@ -34,18 +34,31 @@ export function UserMenu() {
     let active = true;
 
     async function load() {
-      const { data: { user } } = await supabase.auth.getUser();
+      const { data: { session } } = await supabase.auth.getSession();
+      const user = session?.user ?? null;
       if (!active) return;
       if (!user) {
         setProfile(null);
         return;
       }
-      const { data } = await supabase
+      const { data, error } = await supabase
         .from('profiles')
         .select('id, email, full_name, role, status')
         .eq('id', user.id)
         .maybeSingle();
       if (!active) return;
+      if (error) {
+        // Fallback: synthesize a minimal profile from the session JWT itself
+        // so the avatar still renders even if RLS blocks the profile read.
+        setProfile({
+          id: user.id,
+          email: user.email ?? '',
+          full_name: (user.user_metadata?.full_name as string | undefined) ?? null,
+          role: 'user',
+          status: 'approved',
+        });
+        return;
+      }
       setProfile((data as ProfileSnapshot) ?? null);
     }
 

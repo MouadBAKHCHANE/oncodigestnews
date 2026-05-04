@@ -93,9 +93,10 @@
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 6px;
-  padding: 44px 36px;
+  padding: 40px 24px;
   max-width: 460px;
   width: 38%;
+  text-align: center;
   opacity: 0;
   pointer-events: none;
   transition:
@@ -176,7 +177,7 @@
 
 @media (max-width: 768px) {
   .panel {
-    padding: 32px 24px;
+    padding: 32px 16px;
   }
   .heading {
     font-size: clamp(22px, 5vw, 28px);
@@ -188,7 +189,7 @@
     padding: 40px 16px;
   }
   .panel {
-    padding: 24px 20px;
+    padding: 24px 12px;
   }
   .heading {
     font-size: 20px;

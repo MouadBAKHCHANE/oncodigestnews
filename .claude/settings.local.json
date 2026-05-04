@@ -106,7 +106,8 @@
       "Bash(curl -s \"https://oncodigestnews.vercel.app/api/debug-auth\")",
       "Bash(curl -s -f https://oncodigestnews.vercel.app/api/debug-admin-query)",
       "mcp__plugin_supabase_supabase__apply_migration",
-      "Bash(curl -s https://oncodigestnews.vercel.app/api/debug-admin-query)"
+      "Bash(curl -s https://oncodigestnews.vercel.app/api/debug-admin-query)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{redirect_url}\\\\n\" -L --max-redirs 0 https://oncodigestnews.vercel.app/admin/studio)"
     ],
     "additionalDirectories": [
       "D:\\Downloads\\oncodigest\\web\\app\\admin\\studio",

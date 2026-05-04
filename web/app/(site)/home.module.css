@@ -26,7 +26,7 @@
 /* ─── Advisors ──────────────────────────────────────── */
 
 .advisorsSection {
-  padding: 96px 0;
+  padding: 120px 0;
 }
 
 .advisorsGrid {
@@ -93,7 +93,7 @@
 /* ─── Journal ──────────────────────────────────────── */
 
 .journalSection {
-  padding: 64px 0 96px;
+  padding: 120px 0;
 }
 
 .journalHeader {
@@ -116,7 +116,7 @@
 
 .ctaSection {
   position: relative;
-  padding: 96px 0;
+  padding: 120px 0;
   background: var(--cod-gray--900);
   color: var(--cod-gray--0);
   overflow: hidden;
@@ -189,7 +189,7 @@
 /* ─── FAQ ──────────────────────────────────────── */
 
 .faqSection {
-  padding: 96px 0;
+  padding: 120px 0;
 }
 
 @media (max-width: 1024px) {
@@ -202,11 +202,9 @@
 @media (max-width: 768px) {
   .advisorsSection,
   .ctaSection,
-  .faqSection {
-    padding: 64px 0;
-  }
+  .faqSection,
   .journalSection {
-    padding: 48px 0 64px;
+    padding: 72px 0;
   }
   .advisorsGrid,
   .journalGrid {

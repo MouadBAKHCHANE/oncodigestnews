@@ -31,7 +31,7 @@ body {
   line-height: 20px;
   letter-spacing: -0.285715px;
   color: rgb(93, 93, 93);
-  background: var(--satin-linen--50);
+  background: #ffffff;
   overflow-x: hidden;
 }
 

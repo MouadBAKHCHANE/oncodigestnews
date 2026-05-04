@@ -1,7 +1,7 @@
 /* Expertise section — verbatim from index.html .section_expertise + .expertise_*. */
 
 .section {
-  padding: 96px 0;
+  padding: 120px 0;
 }
 
 .grid {
@@ -183,7 +183,7 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: 64px 0;
+    padding: 72px 0;
   }
   .imagePanel {
     height: 280px;

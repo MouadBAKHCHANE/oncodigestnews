@@ -5,7 +5,7 @@
   flex-direction: column;
   min-height: 100vh;
   position: relative;
-  background: var(--satin-linen--50, #f7f6ef);
+  background: #ffffff;
 }
 
 .padding {

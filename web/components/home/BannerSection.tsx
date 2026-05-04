@@ -7,6 +7,7 @@ export function BannerSection() {
       <div className="padding-global">
         <div className="container-large">
           <div className={styles.card}>
+            <div className={styles.bgArt} aria-hidden />
             <div className={styles.content}>
               <span className={`${styles.tag} animate-on-scroll`}>Notre vision</span>
               <h2 className={`${styles.heading} animate-on-scroll delay-1`}>

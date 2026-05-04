@@ -19,6 +19,8 @@ const SAND = { from: '#f8f5ec', to: '#e8dfca', accent: '#82734c', text: '#82734c
 const CREAM = { from: '#fbf8eb', to: '#eadfb9', accent: '#9a8848', text: '#82734c' };
 const SKY = { from: '#eef0f5', to: '#cfd5e1', accent: '#5b6577', text: '#3d4555' };
 const DARK = { from: '#1d2820', to: '#0a120c', accent: '#d6e57c', text: '#d6e57c' };
+/* News — soft slate-mint, distinct from the warm cream variants */
+const NEWS = { from: '#e8efe8', to: '#c9d8cf', accent: '#5b7264', text: '#3a4a42' };
 
 /**
  * BrandIllustration — pure-SVG visual language for OncoDigest. No photos,
@@ -65,7 +67,7 @@ export function BrandIllustration({
 /* ─── Variant: digestive ──────────────────────────────────── */
 
 function DigestiveLayer() {
-  const c = SAND;
+  const c = NEWS;
   return (
     <>
       <defs>

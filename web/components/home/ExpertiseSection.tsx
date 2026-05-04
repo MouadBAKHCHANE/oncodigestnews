@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { BrandIllustration, type BrandVariant } from '@/components/ui/BrandIllustration';
+import { useReducedMotion } from '@/lib/hooks/useReducedMotion';
 import styles from './ExpertiseSection.module.css';
 
 interface ExpertiseItem {
@@ -61,6 +62,49 @@ const ITEMS: ExpertiseItem[] = [
 
 export function ExpertiseSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const sceneRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const reducedMotion = useReducedMotion();
+
+  // Track which scene is closest to the viewport center → that's the active one
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    let ticking = false;
+    const compute = () => {
+      const center = window.innerHeight / 2;
+      let bestIdx = 0;
+      let bestDist = Infinity;
+      sceneRefs.current.forEach((el, i) => {
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const sceneCenter = rect.top + rect.height / 2;
+        const dist = Math.abs(sceneCenter - center);
+        if (dist < bestDist) {
+          bestDist = dist;
+          bestIdx = i;
+        }
+      });
+      setActiveIndex((prev) => (prev === bestIdx ? prev : bestIdx));
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        compute();
+        ticking = false;
+      });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    compute();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
+
   const active = ITEMS[activeIndex];
 
   return (
@@ -68,65 +112,62 @@ export function ExpertiseSection() {
       <div className="padding-global">
         <div className="container-large">
           <div className={styles.grid}>
-            <div className={styles.imagePanel}>
+
+            {/* ── Left: scrollable image stack ── */}
+            <div className={styles.imageColumn}>
               {ITEMS.map((item, i) => (
                 <div
                   key={item.number}
-                  className={`${styles.image} ${i === activeIndex ? styles.imageActive : ''}`}
-                  aria-hidden={i !== activeIndex}
+                  ref={(el) => {
+                    sceneRefs.current[i] = el;
+                  }}
+                  className={`${styles.scene} ${i === activeIndex ? styles.sceneActive : ''}`}
                 >
-                  <BrandIllustration variant={item.illustration} label={item.illustrationLabel} />
+                  <div className={styles.imageFrame}>
+                    <BrandIllustration variant={item.illustration} label={item.illustrationLabel} />
+                    {/* Bottom-left label — current item legend */}
+                    <div className={styles.legend}>
+                      <span className={styles.legendNum}>{item.number}</span>
+                      <span className={styles.legendText}>{item.title}</span>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
 
-            <div className={styles.accordion}>
-              {ITEMS.map((item, i) => {
-                const isOpen = i === activeIndex;
-                return (
-                  <div
-                    key={item.number}
-                    className={`${styles.item} ${isOpen ? styles.itemOpen : ''}`}
-                  >
-                    <button
-                      type="button"
-                      className={styles.itemHeader}
-                      onClick={() => setActiveIndex(i)}
-                      aria-expanded={isOpen}
+            {/* ── Right: sticky text panel — heading + desc + CTA fade with active ── */}
+            <div className={styles.textColumn}>
+              <div className={styles.stickyPanel}>
+
+                {/* Item index list (no expand/collapse, just labels with active state) */}
+                <ul className={styles.itemList}>
+                  {ITEMS.map((item, i) => (
+                    <li
+                      key={item.number}
+                      className={`${styles.itemRow} ${i === activeIndex ? styles.itemRowActive : ''}`}
+                      aria-current={i === activeIndex ? 'true' : undefined}
                     >
                       <span className={styles.itemNumber}>{item.number}</span>
                       <span className={styles.itemTitle}>{item.title}</span>
-                      <span className={styles.itemIcon} aria-hidden>
-                        <span className={`${styles.bar} ${styles.barH}`} />
-                        <span className={`${styles.bar} ${styles.barV}`} />
-                      </span>
-                    </button>
-                    <div className={styles.itemDivider} />
-                    <div className={styles.itemBody}>
-                      <h3 className={styles.itemHeading}>{active.heading === item.heading ? active.heading : item.heading}</h3>
-                      <p className={styles.itemText}>{item.text}</p>
-                      <Link href={item.ctaHref} className={styles.itemCta}>
-                        {item.ctaLabel}
-                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden>
-                          <path
-                            d="M8 0.77C7.27 0.77 6.69 1.36 6.69 2.08C6.69 2.81 7.27 3.4 8 3.4C8.73 3.4 9.31 2.81 9.31 2.08C9.31 1.36 8.73 0.77 8 0.77Z"
-                            fill="currentColor"
-                          />
-                          <path
-                            d="M8 5.77C7.27 5.77 6.69 6.36 6.69 7.08C6.69 7.81 7.27 8.4 8 8.4C8.73 8.4 9.31 7.81 9.31 7.08C9.31 6.36 8.73 5.77 8 5.77Z"
-                            fill="currentColor"
-                          />
-                          <path
-                            d="M8 10.77C7.27 10.77 6.69 11.36 6.69 12.08C6.69 12.81 7.27 13.4 8 13.4C8.73 13.4 9.31 12.81 9.31 12.08C9.31 11.36 8.73 10.77 8 10.77Z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </Link>
-                    </div>
-                  </div>
-                );
-              })}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Active heading + description + CTA — keyed so it remounts on change */}
+                <div key={active.number} className={`${styles.activePanel} ${reducedMotion ? '' : styles.activePanelAnimate}`}>
+                  <h3 className={styles.activeHeading}>{active.heading}</h3>
+                  <p className={styles.activeText}>{active.text}</p>
+                  <Link href={active.ctaHref} className={styles.activeCta}>
+                    {active.ctaLabel}
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+                      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </Link>
+                </div>
+
+              </div>
             </div>
+
           </div>
         </div>
       </div>

@@ -11,10 +11,12 @@ import { DarkQuoteSection } from '@/components/home/DarkQuoteSection';
 import { LivesPreviewSection } from '@/components/home/LivesPreviewSection';
 import { CtaFormSection } from '@/components/home/CtaFormSection';
 import { FAQAccordion, type FAQItemData } from '@/components/home/FAQAccordion';
-import { ArticleCard, type ArticleCardData } from '@/components/cards/ArticleCard';
+import { JournalSection, type JournalData } from '@/components/home/JournalSection';
+import { type ArticleCardData } from '@/components/cards/ArticleCard';
 import { type VideoCardData } from '@/components/cards/VideoCard';
 import { Button } from '@/components/ui/Button';
 import { BrandIllustration, type BrandVariant } from '@/components/ui/BrandIllustration';
+import { TitleReveal } from '@/components/ui/TitleReveal';
 import styles from './home.module.css';
 
 const ADVISOR_VARIANTS: BrandVariant[] = ['digestive', 'oncology', 'abstract'];
@@ -42,6 +44,7 @@ interface HomeData {
   }>;
   latestArticles: ArticleCardData[];
   latestVideos: VideoCardData[];
+  journal: JournalData;
 }
 
 const homeQuery = /* groq */ `{
@@ -63,6 +66,20 @@ const homeQuery = /* groq */ `{
     _id, title, slug, thumbnail, durationSeconds, publishedAt, access,
     "category": category->{title, slug},
     "speakerLine": array::join(speakers[]->name, ' · ')
+  },
+  "journal": {
+    "article": *[_type == "article"] | order(publishedAt desc)[0]{
+      _id, title, slug, excerpt, publishedAt, coverImage,
+      "category": category->{title},
+      "author": author->{name}
+    },
+    "congress": *[_type == "congress"] | order(startDate desc)[0]{
+      _id, title, slug, shortName, startDate
+    },
+    "video": *[_type == "video"] | order(publishedAt desc)[0]{
+      _id, title, slug, publishedAt,
+      "speakerLine": array::join(speakers[]->name, ' · ')
+    }
   }
 }`;
 
@@ -115,9 +132,9 @@ export default async function HomePage() {
           <div className="padding-global">
             <div className="container-large">
               <span className={`${styles.eyebrow} animate-on-scroll`}>Comité scientifique</span>
-              <h2 className={`${styles.sectionHeading} animate-on-scroll delay-1`}>
-                Un comité d&apos;experts au service de la qualité.
-              </h2>
+              <TitleReveal as="h2" className={styles.sectionHeading}>
+                {"Un comité d'experts au service de la qualité."}
+              </TitleReveal>
               <div className={styles.advisorsGrid}>
                 {data.advisors.map((a, i) => (
                   <article
@@ -139,7 +156,7 @@ export default async function HomePage() {
                 ))}
               </div>
               <div className={`${styles.advisorsCta} animate-on-scroll delay-3`}>
-                <Button href="/a-propos" variant="husk" size="sm">
+                <Button href="/comite-scientifique" variant="husk" size="sm">
                   Voir le comité scientifique →
                 </Button>
               </div>
@@ -154,34 +171,7 @@ export default async function HomePage() {
         <LivesPreviewSection videos={data.latestVideos} />
       ) : null}
 
-      {data.latestArticles.length > 0 ? (
-        <section className={styles.journalSection}>
-          <div className="padding-global">
-            <div className="container-large">
-              <div className={styles.journalHeader}>
-                <span className={`${styles.eyebrow} animate-on-scroll`}>Journal</span>
-                <h2 className={`${styles.sectionHeading} animate-on-scroll delay-1`}>
-                  Les dernières publications.
-                </h2>
-              </div>
-              <div className={styles.journalGrid}>
-                {data.latestArticles.map((article, i) => (
-                  <ArticleCard
-                    key={article._id}
-                    article={article}
-                    animationDelay={((i % 3) + 1) as 1 | 2 | 3}
-                  />
-                ))}
-              </div>
-              <div className={`${styles.journalCta} animate-on-scroll delay-3`}>
-                <Button href="/actualites" variant="dark" size="sm">
-                  Voir toutes les actualités →
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-      ) : null}
+      <JournalSection data={data.journal} />
 
       <CtaFormSection />
 

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { sanityClient } from '@/lib/sanity/client';
 import { urlForImage } from '@/lib/sanity/image';
 import { CongressCard, type CongressCardData } from '@/components/cards/CongressCard';
+import { CongressCover } from '@/components/cards/CongressCover';
 import { blocksToPlainText } from '@/lib/sanity/portableText';
 import type { PortableTextBlock } from '@portabletext/types';
 import type { Image as SanityImage } from 'sanity';
@@ -138,7 +139,11 @@ function FeaturedCongress({ congress }: { congress: FeaturedCongress }) {
               sizes="(max-width: 1024px) 100vw, 45vw"
             />
           ) : (
-            <div className={styles.featuredImgPlaceholder} aria-hidden />
+            <CongressCover
+              shortName={congress.shortName ?? congress.title.split(' ')[0]}
+              year={new Date(congress.startDate).getFullYear()}
+              className={styles.featuredImg}
+            />
           )}
         </div>
         <div className={styles.featuredContent}>

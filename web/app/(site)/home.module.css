@@ -93,18 +93,28 @@
 /* ─── Journal ──────────────────────────────────────── */
 
 .journalSection {
-  padding: 120px 0;
+  padding: 56px 0;
 }
 
 .journalHeader {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+}
+
+/* Tighter spacing inside the journal header */
+.journalHeader .eyebrow {
+  margin-bottom: 10px;
+}
+
+.journalHeader .sectionHeading {
+  margin-bottom: 0;
+  font-size: clamp(26px, 3.4vw, 40px);
 }
 
 .journalGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 32px;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
 .journalCta {

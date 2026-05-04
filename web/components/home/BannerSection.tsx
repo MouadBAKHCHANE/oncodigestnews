@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/Button';
+import { TitleReveal } from '@/components/ui/TitleReveal';
 import styles from './BannerSection.module.css';
 
 export function BannerSection() {
@@ -10,9 +11,9 @@ export function BannerSection() {
             <div className={styles.bgArt} aria-hidden />
             <div className={styles.content}>
               <span className={`${styles.tag} animate-on-scroll`}>Notre vision</span>
-              <h2 className={`${styles.heading} animate-on-scroll delay-1`}>
-                Une information libre de tout conflit d&apos;intérêt.
-              </h2>
+              <TitleReveal as="h2" className={styles.heading}>
+                {"Une information libre de tout conflit d'intérêt."}
+              </TitleReveal>
               <div className={`${styles.features} animate-on-scroll delay-2`}>
                 <span className={styles.featureItem}>Indépendance éditoriale</span>
                 <Dot />

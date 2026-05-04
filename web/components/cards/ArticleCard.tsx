@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import type { PortableTextBlock } from '@portabletext/types';
 import type { Image as SanityImage } from 'sanity';
 import { Card } from './Card';
@@ -53,13 +52,12 @@ export function ArticleCard({ article, href, animationDelay }: ArticleCardProps)
     <Card href={linkHref} className={`${styles.articleCard} ${animateClass}`} ariaLabel={article.title}>
       <div className={styles.imgWrapper}>
         {article.coverImage ? (
-          <Image
-            src={urlForImage(article.coverImage).width(800).height(450).url()}
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={urlForImage(article.coverImage).width(800).height(450).fit('crop').url()}
             alt={article.coverImage.alt ?? article.title}
-            width={800}
-            height={450}
             className={styles.img}
-            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+            loading="lazy"
           />
         ) : (
           <ArticlePlaceholder

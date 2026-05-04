@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useRef } from 'react';
 import { useTypewriter } from '@/lib/hooks/useTypewriter';
+import { TitleReveal } from '@/components/ui/TitleReveal';
 import styles from './Hero.module.css';
 
 interface HeroProps {
@@ -54,12 +55,13 @@ export function Hero({
           {/* ── Left ── */}
           <div className={styles.left}>
 
-            <h1 className={`${styles.h1} animate-on-scroll`}>
-              L&apos;information{' '}
-              <em className={styles.h1Em}>oncologique</em>,
-              <br />
-              rigoureuse et accessible.
-            </h1>
+            <TitleReveal
+              as="h1"
+              className={styles.h1}
+              emWords="oncologique"
+            >
+              {"L'information oncologique, rigoureuse et accessible."}
+            </TitleReveal>
 
             <div className={styles.divider} aria-hidden />
 

@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { useVenetianReveal } from '@/lib/hooks/useVenetianReveal';
 import { BrandIllustration, type BrandVariant } from '@/components/ui/BrandIllustration';
+import { TitleReveal } from '@/components/ui/TitleReveal';
 import styles from './PromesseSection.module.css';
 
 interface PromesseSectionProps {
@@ -55,7 +56,9 @@ export function PromesseSection({
 
         <div ref={panelRef} className={styles.panel}>
           <span className={styles.tag}>{panelTag}</span>
-          <h2 className={styles.heading}>{panelHeading}</h2>
+          <TitleReveal as="h2" className={styles.heading}>
+            {panelHeading}
+          </TitleReveal>
           <p className={styles.body}>{panelBody}</p>
         </div>
       </div>

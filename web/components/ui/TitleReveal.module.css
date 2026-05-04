@@ -1,0 +1,48 @@
+/* TitleReveal — word-by-word slide-up animation
+   Pattern: each word is masked by its parent (overflow:hidden) and the
+   inner span starts translated below, then slides up on viewport entry. */
+
+.reveal {
+  /* Inherit all styles from the host element (h1, h2, etc.) — only define
+     the bits we need to support the per-word masking. */
+  display: block;
+}
+
+.word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  /* The inner span needs a tiny extra height to avoid descender clipping */
+  padding-bottom: 0.06em;
+}
+
+.wordInner {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+  transition:
+    transform 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s ease-out;
+  transition-delay:
+    calc(var(--reveal-delay, 0ms) + var(--i, 0) * 55ms);
+  will-change: transform, opacity;
+}
+
+.revealVisible .wordInner {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.em {
+  font-style: italic;
+  /* Slightly muted vs. the surrounding text for typographic contrast */
+  color: var(--cod-gray--700, #4c4c4c);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wordInner {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

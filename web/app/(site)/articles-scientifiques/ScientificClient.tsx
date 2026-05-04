@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { PortableTextBlock } from '@portabletext/types';
@@ -29,19 +28,18 @@ export interface ScientificArticleData {
   congress?: { title: string; slug: { current: string }; shortName?: string | null } | null;
 }
 
-interface CongressOption {
-  title: string;
-  slug: string;
+interface YearOption {
+  value: string;
+  label: string;
 }
 
-interface YearOption {
+interface SpecialtyOption {
   value: string;
   label: string;
 }
 
 interface ScientificClientProps {
   articles: ScientificArticleData[];
-  congresses: CongressOption[];
 }
 
 const ALL = '__all__';
@@ -57,17 +55,10 @@ function plainTag(article: ScientificArticleData): string {
   return article.category?.title ?? 'Article';
 }
 
-export function ScientificClient({ articles, congresses }: ScientificClientProps) {
-  const searchParams = useSearchParams();
-  const congressParam = searchParams.get('congress');
-
+export function ScientificClient({ articles }: ScientificClientProps) {
   const [search, setSearch] = useState('');
-  const [congressFilter, setCongressFilter] = useState<string>(congressParam ?? ALL);
+  const [specialtyFilter, setSpecialtyFilter] = useState<string>(ALL);
   const [yearFilter, setYearFilter] = useState<string>(ALL);
-
-  useEffect(() => {
-    setCongressFilter(congressParam ?? ALL);
-  }, [congressParam]);
 
   const yearOptions = useMemo<YearOption[]>(() => {
     const years = new Set<number>();
@@ -79,10 +70,23 @@ export function ScientificClient({ articles, congresses }: ScientificClientProps
       .map((y) => ({ value: String(y), label: String(y) }));
   }, [articles]);
 
+  const specialtyOptions = useMemo<SpecialtyOption[]>(() => {
+    // Distinct categories (used as specialties), keyed by slug, label = title.
+    const map = new Map<string, string>();
+    for (const a of articles) {
+      const slug = a.category?.slug?.current;
+      const label = a.category?.title;
+      if (slug && label && !map.has(slug)) map.set(slug, label);
+    }
+    return [...map.entries()]
+      .map(([value, label]) => ({ value, label }))
+      .sort((a, b) => a.label.localeCompare(b.label, 'fr'));
+  }, [articles]);
+
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
     return articles.filter((a) => {
-      if (congressFilter !== ALL && a.congress?.slug.current !== congressFilter) return false;
+      if (specialtyFilter !== ALL && a.category?.slug?.current !== specialtyFilter) return false;
       if (yearFilter !== ALL) {
         const y = a.publishedAt ? new Date(a.publishedAt).getFullYear().toString() : '';
         if (y !== yearFilter) return false;
@@ -100,7 +104,7 @@ export function ScientificClient({ articles, congresses }: ScientificClientProps
       }
       return true;
     });
-  }, [articles, search, congressFilter, yearFilter]);
+  }, [articles, search, specialtyFilter, yearFilter]);
 
   const featured = filtered[0];
   const grid = filtered.slice(1);
@@ -116,14 +120,14 @@ export function ScientificClient({ articles, congresses }: ScientificClientProps
         <div className={styles.dropdowns}>
           <select
             className={styles.select}
-            value={congressFilter}
-            onChange={(e) => setCongressFilter(e.target.value)}
-            aria-label="Filtrer par congrès"
+            value={specialtyFilter}
+            onChange={(e) => setSpecialtyFilter(e.target.value)}
+            aria-label="Filtrer par spécialité"
           >
-            <option value={ALL}>Tous les congrès</option>
-            {congresses.map((c) => (
-              <option key={c.slug} value={c.slug}>
-                {c.title}
+            <option value={ALL}>Toutes les spécialités</option>
+            {specialtyOptions.map((s) => (
+              <option key={s.value} value={s.value}>
+                {s.label}
               </option>
             ))}
           </select>

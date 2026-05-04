@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import type { Image as SanityImage } from 'sanity';
 import { Card } from './Card';
+import { CongressCover } from './CongressCover';
 import { urlForImage } from '@/lib/sanity/image';
 import styles from './CongressCard.module.css';
 
@@ -76,7 +77,11 @@ export function CongressCard({ congress, href, animationDelay }: CongressCardPro
             sizes="(max-width: 768px) 100vw, 50vw"
           />
         ) : (
-          <div className={styles.imgPlaceholder} aria-hidden />
+          <CongressCover
+            shortName={congress.shortName ?? congress.title.split(' ')[0]}
+            year={new Date(congress.startDate).getFullYear()}
+            className={styles.img}
+          />
         )}
       </div>
       <div className={styles.content}>

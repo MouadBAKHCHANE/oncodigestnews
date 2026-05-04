@@ -123,7 +123,7 @@ export function Footer() {
                     <Link href="/evenements">Évènements</Link>
                   </FooterColumn>
                   <FooterColumn heading="Ressources">
-                    <Link href="/a-propos">Comité scientifique</Link>
+                    <Link href="/comite-scientifique">Comité scientifique</Link>
                     <Link href="/a-propos">À propos</Link>
                     <Link href="/contact">Contact</Link>
                   </FooterColumn>

@@ -1,7 +1,6 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArticleCard, type ArticleCardData } from '@/components/cards/ArticleCard';
 import { FilterPills, type FilterPill } from '@/components/ui/FilterPills';
@@ -135,14 +134,15 @@ function FeaturedCard({ article }: { article: ArticleCardData }) {
       <Link href={`/article/${article.slug.current}`} className={styles.featuredCard}>
         <div className={styles.featuredImgWrap}>
           {article.coverImage ? (
-            <Image
-              src={urlForImage(article.coverImage).width(1200).height(900).url()}
+            // Sanity CDN already handles format + sizing — use plain <img> so we
+            // skip Next.js's image-optimizer proxy (which can show broken icons
+            // intermittently in dev).
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={urlForImage(article.coverImage).width(1200).height(900).fit('crop').url()}
               alt={article.coverImage.alt ?? article.title}
-              width={1200}
-              height={900}
               className={styles.featuredImg}
-              sizes="(max-width: 1024px) 100vw, 45vw"
-              priority
+              loading="eager"
             />
           ) : (
             <div className={styles.featuredImgPlaceholder} aria-hidden />

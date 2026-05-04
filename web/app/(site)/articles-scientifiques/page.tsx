@@ -12,14 +12,14 @@ export const metadata: Metadata = {
 
 export const revalidate = 600;
 
-interface CongressOption {
-  title: string;
-  slug: string;
+interface SpecialtyOption {
+  value: string;
+  label: string;
 }
 
 interface SanityResponse {
   articles: ScientificArticleData[];
-  congresses: CongressOption[];
+  specialties: SpecialtyOption[];
 }
 
 const indexQuery = /* groq */ `{
@@ -29,14 +29,14 @@ const indexQuery = /* groq */ `{
     "category": category->{title, slug},
     "congress": congress->{title, "slug": slug, shortName}
   },
-  "congresses": *[_type == "congress"] | order(startDate desc) {
-    "title": title,
-    "slug": slug.current
+  "specialties": *[_type == "category"] | order(title asc) {
+    "value": slug.current,
+    "label": title
   }
 }`;
 
 export default async function ArticlesScientifiquesPage() {
-  const { articles, congresses } = await sanityClient.fetch<SanityResponse>(indexQuery);
+  const { articles, specialties } = await sanityClient.fetch<SanityResponse>(indexQuery);
 
   return (
     <section className={styles.section}>
@@ -45,7 +45,7 @@ export default async function ArticlesScientifiquesPage() {
           <header className={styles.header}>
             <span className={`${styles.tag} animate-on-scroll`}>Articles scientifiques</span>
             <h1 className={`${styles.heading} animate-on-scroll delay-1`}>
-              Articles scientifiques et synthèses de congrès.
+              Articles scientifiques.
             </h1>
             <p className={`${styles.lead} animate-on-scroll delay-2`}>
               Sélection rigoureuse des publications les plus marquantes en oncologie digestive,
@@ -54,7 +54,7 @@ export default async function ArticlesScientifiquesPage() {
           </header>
 
           <Suspense fallback={null}>
-            <ScientificClient articles={articles} congresses={congresses} />
+            <ScientificClient articles={articles} />
           </Suspense>
         </div>
       </div>

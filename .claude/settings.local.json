@@ -108,7 +108,8 @@
       "mcp__plugin_supabase_supabase__apply_migration",
       "Bash(curl -s https://oncodigestnews.vercel.app/api/debug-admin-query)",
       "Bash(curl -s -o /dev/null -w \"%{http_code} %{redirect_url}\\\\n\" -L --max-redirs 0 https://oncodigestnews.vercel.app/admin/studio)",
-      "Bash(node scripts/remove-bg.mjs)"
+      "Bash(node scripts/remove-bg.mjs)",
+      "Bash(awk '/featured-congress_details|congress_meta|congress_summary|congress_dates|congress_location/{found=1} found{print NR\": \"$0; if\\(/<\\\\/p>|<\\\\/div>/&&++c>2\\){c=0;found=0}}' d:/Downloads/oncodigest/congres.html)"
     ],
     "additionalDirectories": [
       "D:\\Downloads\\oncodigest\\web\\app\\admin\\studio",

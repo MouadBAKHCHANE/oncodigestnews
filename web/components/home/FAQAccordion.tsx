@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import type { PortableTextBlock } from '@portabletext/types';
 import { ProseFromPortableText } from '@/lib/sanity/portableText';
+import { TitleReveal } from '@/components/ui/TitleReveal';
 import styles from './FAQAccordion.module.css';
 
 export interface FAQItemData {
@@ -76,7 +77,7 @@ export function FAQAccordion({
             </span>
           </div>
           {tag ? <span className={styles.tag}>{tag}</span> : null}
-          <h2 className={`${styles.heading} animate-on-scroll`}>{heading}</h2>
+          <TitleReveal as="h2" className={styles.heading}>{heading}</TitleReveal>
         </div>
       </div>
 

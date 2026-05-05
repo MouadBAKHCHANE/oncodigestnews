@@ -22,7 +22,7 @@ function initials(name: string | null, email: string) {
   return (email[0] ?? '?').toUpperCase();
 }
 
-export function UserMenu() {
+export function UserMenu({ compact = false }: { compact?: boolean } = {}) {
   const router = useRouter();
   const [profile, setProfile] = useState<ProfileSnapshot | null | 'loading'>('loading');
   const [open, setOpen] = useState(false);
@@ -102,22 +102,30 @@ export function UserMenu() {
     router.refresh();
   }
 
-  // ── Logged out: show signup + login pills ──
+  // ── Logged out ──
   if (profile === null) {
+    // Compact mode (mobile): render nothing — the navbar already shows
+    // a static "Nous rejoindre" canary pill in this state.
+    if (compact) return null;
     return (
       <div className={styles.guestWrap}>
-        <Link href="/inscription" className={styles.guestSignup}>
-          S&apos;inscrire
+        <Link href="/inscription" className={styles.guestJoin}>
+          Nous rejoindre
         </Link>
-        <Link href="/connexion" className={styles.guestLogin}>
-          Accès Pro
+        <Link href="/connexion" className={styles.guestSpace}>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+            <circle cx="8" cy="5.5" r="2.5" stroke="currentColor" strokeWidth="1.4" />
+            <path d="M3 13c.5-2.5 2.5-4 5-4s4.5 1.5 5 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+          </svg>
+          Mon espace
         </Link>
       </div>
     );
   }
 
-  // ── Loading: small skeleton ──
+  // ── Loading ──
   if (profile === 'loading') {
+    if (compact) return null;
     return <div className={styles.skeleton} aria-hidden />;
   }
 

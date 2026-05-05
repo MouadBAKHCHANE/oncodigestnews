@@ -83,7 +83,7 @@ const homeQuery = /* groq */ `{
   }
 }`;
 
-const FALLBACK_PROMESSE_IMAGE = '/mission-illustration.svg';
+const FALLBACK_PROMESSE_IMAGE = '/oncodigest_doctors_conference.png';
 
 export default async function HomePage() {
   const data = await sanityClient.fetch<HomeData>(homeQuery);
@@ -118,7 +118,7 @@ export default async function HomePage() {
 
       <PromesseSection
         imageUrl={promesseImageUrl}
-        illustrationVariant={data.settings?.heroImage ? undefined : 'mission'}
+        illustrationVariant={undefined}
       />
 
       <PartnersSection />

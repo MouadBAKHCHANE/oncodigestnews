@@ -48,6 +48,33 @@
   color: #fff;
 }
 
+/* Specialty design badge — bottom-right overlay on the card image */
+.specialtyBadge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 130px;
+  height: 52px;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  z-index: 2;
+  transition: transform 0.4s ease;
+}
+
+.articleCard:hover .specialtyBadge {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .specialtyBadge {
+    width: 110px;
+    height: 44px;
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
 .content {
   padding: 24px;
 }

@@ -19,13 +19,6 @@ const DEFAULT_WORDS = [
   'les internes',
 ];
 
-const TOPICS = [
-  { label: 'Actualités', href: '/actualites' },
-  { label: 'Articles scientifiques', href: '/articles-scientifiques' },
-  { label: 'Congrès', href: '/congres' },
-  { label: 'Vidéos', href: '/videos' },
-];
-
 export function Hero({
   imageUrl,
   imageAlt = 'OncoDigest',
@@ -76,14 +69,6 @@ export function Hero({
                 Découvrir nos contenus
               </Link>
             </div>
-
-            <nav className={styles.topics} aria-label="Rubriques">
-              {TOPICS.map(({ label, href }) => (
-                <Link key={href} href={href} className={styles.topicPill}>
-                  {label}
-                </Link>
-              ))}
-            </nav>
 
           </div>
 

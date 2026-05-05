@@ -67,26 +67,13 @@
   background: var(--cod-gray--200);
 }
 
-/* ── Desktop button group ── */
+/* ── Desktop button group (UserMenu) ── */
 
 .navbarButtonWrapper {
   display: flex;
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
-}
-
-/* S'inscrire — white pill with border */
-.navbarButtonWrapper :global(a[class*='btnWhite']) {
-  background: #fff;
-  color: var(--cod-gray--600);
-  border: 1px solid var(--cod-gray--150, #e4dfd8);
-  padding: 7px 14px;
-}
-.navbarButtonWrapper :global(a[class*='btnWhite']:hover) {
-  background: var(--cod-gray--50);
-  border-color: var(--cod-gray--300);
-  color: var(--cod-gray--900);
 }
 
 /* ── Mobile right zone (hidden on desktop) ── */
@@ -97,14 +84,14 @@
   gap: 10px;
 }
 
-/* Accès Pro pill — mobile inline */
-.mobileCtaBtn {
+/* "Nous rejoindre" canary pill — only shown on mobile/tablet */
+.mobileJoinBtn {
   display: inline-flex;
   align-items: center;
-  padding: 7px 14px;
+  padding: 7px 16px;
   background: var(--canary--300);
   color: var(--canary--900);
-  border-radius: 32px;
+  border-radius: 999px;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: -0.1px;
@@ -112,8 +99,14 @@
   white-space: nowrap;
   transition: background 0.2s;
 }
-.mobileCtaBtn:hover {
+.mobileJoinBtn:hover {
   background: var(--canary--400);
+}
+
+/* When the user is logged in (UserMenu compact rendered an avatar button),
+   hide the static "Nous rejoindre" link — the avatar replaces it. */
+.mobileRight:has(button[aria-haspopup="menu"]) .mobileJoinBtn {
+  display: none;
 }
 
 /* ── Hamburger ── */
@@ -174,10 +167,6 @@
   .navbarLink + .navbarLink::before {
     left: -12px;
   }
-  /* Hide S'inscrire, keep Accès Pro */
-  .navbarButtonWrapper :global(a[class*='btnWhite']) {
-    display: none;
-  }
   .navbarComponent {
     padding: 0 20px;
   }
@@ -208,7 +197,7 @@
     display: flex;
   }
 
-  /* ── Full-screen menu ── */
+  /* ── Full-screen menu — light, RockFi-style ── */
   .mobileMenu {
     display: flex;
     position: fixed;
@@ -216,16 +205,16 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: #0d0f0d;
+    background: #ffffff;
     flex-direction: column;
     z-index: calc(var(--z-navbar) - 1);
     overflow-y: auto;
 
-    /* Animated hide */
+    /* Animated show/hide */
     opacity: 0;
     pointer-events: none;
-    transform: translateY(-10px);
-    transition: opacity 0.28s ease, transform 0.28s ease;
+    transform: translateY(-6px);
+    transition: opacity 0.22s ease, transform 0.22s ease;
   }
 
   .mobileMenuOpen {
@@ -234,95 +223,60 @@
     transform: translateY(0);
   }
 
-  /* Nav list */
+  /* Nav list — clean horizontal rows */
   .mobileNav {
     display: flex;
     flex-direction: column;
-    padding: 12px 0 0;
+    padding: 4px 24px 24px;
     flex: 1;
   }
 
   .mobileNavLink {
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 22px 24px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    gap: 10px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--cod-gray--100);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--cod-gray--800);
     text-decoration: none;
-    transition: background 0.18s;
-  }
-  .mobileNavLink:hover {
-    background: rgba(255, 255, 255, 0.04);
-  }
-  .mobileNavLink:first-child {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-  }
-
-  .mobileNavNum {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    color: rgba(255, 255, 255, 0.2);
-    font-family: var(--font-body-stack);
-    width: 20px;
-    flex-shrink: 0;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .mobileNavLabel {
-    font-family: var(--font-display-stack);
-    font-size: clamp(22px, 6vw, 30px);
-    font-weight: 300;
-    letter-spacing: -0.6px;
-    color: rgba(255, 255, 255, 0.65);
-    flex: 1;
     transition: color 0.18s;
-    line-height: 1;
-  }
-  .mobileNavLink:hover .mobileNavLabel {
-    color: #fff;
   }
 
-  .mobileNavLinkActive .mobileNavLabel {
-    color: #fff;
-  }
-  .mobileNavLinkActive .mobileNavNum {
-    color: var(--canary--300);
+  .mobileNavLink:hover,
+  .mobileNavLink:active {
+    color: var(--cod-gray--900);
   }
 
-  .mobileNavArrow {
-    color: rgba(255, 255, 255, 0.15);
-    flex-shrink: 0;
-    transition: color 0.18s, transform 0.18s;
-  }
-  .mobileNavLink:hover .mobileNavArrow {
-    color: rgba(255, 255, 255, 0.5);
-    transform: translateX(4px);
+  .mobileNavLink:first-child {
+    border-top: 1px solid var(--cod-gray--100);
   }
 
-  /* Footer */
-  .mobileMenuFooter {
-    padding: 24px;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  .mobileNavLinkActive {
+    color: var(--cod-gray--900);
+    font-weight: 500;
   }
 
-  .mobileSignupLink {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.35);
-    text-decoration: none;
-    display: block;
-    transition: color 0.2s;
+  /* "Mon espace" row — has the user icon, slightly distinct */
+  .mobileNavSpace {
+    margin-top: 8px;
+    color: var(--cod-gray--600);
   }
-  .mobileSignupLink span {
-    color: rgba(255, 255, 255, 0.6);
-    text-decoration: underline;
-    text-underline-offset: 3px;
+
+  .mobileNavSpace svg {
+    color: var(--cod-gray--500);
   }
-  .mobileSignupLink:hover {
-    color: rgba(255, 255, 255, 0.5);
+
+  .mobileNavSpace:hover svg {
+    color: var(--cod-gray--900);
   }
-  .mobileSignupLink:hover span {
-    color: #fff;
+
+  /* When the user is logged in (avatar button is rendered inside .mobileRight),
+     hide the "Mon espace" entry from the menu — the avatar dropdown already
+     exposes "Mon profil" / sign out / etc. */
+  .navFixed:has(.mobileRight button[aria-haspopup="menu"]) ~ .mobileMenu .mobileNavSpace {
+    display: none;
   }
 }
 

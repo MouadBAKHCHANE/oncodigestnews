@@ -60,9 +60,16 @@ export function Navbar() {
             <UserMenu />
           </div>
 
-          {/* Mobile right: user menu + hamburger */}
+          {/* Mobile right zone:
+              - Logged out → "Nous rejoindre" canary pill + hamburger
+              - Logged in  → avatar circle (UserMenu compact) + hamburger
+                (the static "Nous rejoindre" link is auto-hidden by CSS
+                when the avatar button is present, via :has())  */}
           <div className={styles.mobileRight}>
-            <UserMenu />
+            <Link href="/inscription" className={styles.mobileJoinBtn}>
+              Nous rejoindre
+            </Link>
+            <UserMenu compact />
             <button
               type="button"
               className={`${styles.navbarHamburger} ${open ? styles.navbarHamburgerOpen : ''}`}
@@ -80,14 +87,14 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Full-screen mobile menu */}
+      {/* Full-screen mobile menu — light theme, RockFi-style */}
       <div
         id="mobile-menu"
         className={`${styles.mobileMenu} ${open ? styles.mobileMenuOpen : ''}`}
         aria-hidden={!open}
       >
         <nav className={styles.mobileNav} aria-label="Navigation mobile">
-          {links.map((link, i) => {
+          {links.map((link) => {
             const active = pathname === link.href;
             return (
               <Link
@@ -97,27 +104,23 @@ export function Navbar() {
                 aria-current={active ? 'page' : undefined}
                 tabIndex={open ? 0 : -1}
               >
-                <span className={styles.mobileNavNum} aria-hidden>
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <span className={styles.mobileNavLabel}>{link.label}</span>
-                <svg className={styles.mobileNavArrow} width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                {link.label}
               </Link>
             );
           })}
-        </nav>
-
-        <div className={styles.mobileMenuFooter}>
+          {/* "Mon espace" with icon — inside the menu list */}
           <Link
-            href="/inscription"
-            className={styles.mobileSignupLink}
+            href="/connexion"
+            className={`${styles.mobileNavLink} ${styles.mobileNavSpace}`}
             tabIndex={open ? 0 : -1}
           >
-            Pas encore inscrit&nbsp;? <span>S&apos;inscrire gratuitement →</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+              <circle cx="8" cy="5.5" r="2.5" stroke="currentColor" strokeWidth="1.4" />
+              <path d="M3 13c.5-2.5 2.5-4 5-4s4.5 1.5 5 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+            </svg>
+            Mon espace
           </Link>
-        </div>
+        </nav>
       </div>
     </>
   );

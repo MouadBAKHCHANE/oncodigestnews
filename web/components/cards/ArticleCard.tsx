@@ -2,6 +2,7 @@ import type { PortableTextBlock } from '@portabletext/types';
 import type { Image as SanityImage } from 'sanity';
 import { Card } from './Card';
 import { ArticlePlaceholder } from './ArticlePlaceholder';
+import { SpecialtyBadge } from './SpecialtyBadge';
 import { urlForImage } from '@/lib/sanity/image';
 import { blocksToPlainText } from '@/lib/sanity/portableText';
 import styles from './ArticleCard.module.css';
@@ -79,6 +80,14 @@ export function ArticleCard({ article, href, animationDelay }: ArticleCardProps)
               <path d="M7 11V7a5 5 0 0 1 10 0v4" />
             </svg>
           </div>
+        ) : null}
+
+        {/* Specialty design badge — bottom-right corner overlay */}
+        {article.category?.title ? (
+          <SpecialtyBadge
+            specialty={article.category.title}
+            className={styles.specialtyBadge}
+          />
         ) : null}
       </div>
       <div className={styles.content}>

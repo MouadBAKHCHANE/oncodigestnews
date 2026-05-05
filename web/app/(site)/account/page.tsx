@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getProfile } from '@/lib/auth';
 import { ProfileForm } from './ProfileForm';
@@ -24,6 +25,13 @@ export default async function AccountPage() {
       <div className="padding-global">
         <div className="container-large">
           <div className={styles.wrap}>
+            <Link href="/" className={styles.backLink}>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+                <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Retour
+            </Link>
+
             <header className={styles.header}>
               <h1 className={styles.heading}>Mon compte</h1>
               <SignOutInline />

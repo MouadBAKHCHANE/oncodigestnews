@@ -13,7 +13,7 @@ interface Stat {
 const STATS: Stat[] = [
   { target: 200, suffix: '+', label: 'Articles publiés' },
   { target: 50, suffix: '+', label: 'Congrès couverts' },
-  { target: 1000, suffix: '+', label: 'Professionnels inscrits' },
+  { target: 100, suffix: '+', label: 'Professionnels inscrits' },
 ];
 
 const DURATION_MS = 2000;

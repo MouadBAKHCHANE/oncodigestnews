@@ -1,11 +1,36 @@
 .section {
-  padding: 96px 0 80px;
+  padding: 56px 0 80px;
   min-height: calc(100vh - var(--nav-height));
 }
 
 .wrap {
   max-width: 720px;
   margin: 0 auto;
+}
+
+/* "← Retour" link at the top of the page */
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--cod-gray--500);
+  text-decoration: none;
+  margin-bottom: 24px;
+  padding: 6px 0;
+  transition: color 0.18s ease;
+}
+
+.backLink:hover {
+  color: var(--cod-gray--900);
+}
+
+.backLink svg {
+  transition: transform 0.18s ease;
+}
+
+.backLink:hover svg {
+  transform: translateX(-3px);
 }
 
 .header {

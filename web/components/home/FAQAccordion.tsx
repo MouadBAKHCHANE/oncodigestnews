@@ -76,7 +76,12 @@ export function FAQAccordion({
               {watermarkNum}
             </span>
           </div>
-          {tag ? <span className={styles.tag}>{tag}</span> : null}
+          {tag ? (
+          <div className={styles.tag}>
+            <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
+            <span>{tag}</span>
+          </div>
+        ) : null}
           <TitleReveal as="h2" className={styles.heading}>{heading}</TitleReveal>
         </div>
       </div>

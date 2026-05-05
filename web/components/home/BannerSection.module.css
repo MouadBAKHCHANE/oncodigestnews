@@ -39,7 +39,10 @@
 }
 
 .tag {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
   background: transparent;
   color: var(--husk--900);
   font-family: var(--font-body-stack);
@@ -49,6 +52,9 @@
   border: 1px solid rgba(81, 73, 50, 0.25);
   border-radius: 8px;
   letter-spacing: 0.1px;
+}
+.tag .dotIcon {
+  flex-shrink: 0;
 }
 
 .heading {

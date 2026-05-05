@@ -277,13 +277,63 @@
 
 /* ── Responsive ── */
 
-@media (max-width: 768px) {
-  .h1 {
-    font-size: clamp(30px, 8vw, 42px);
-    letter-spacing: -1.2px;
+@media (max-width: 1024px) {
+  .section {
+    min-height: auto;
+  }
+  .grid {
+    padding-top: calc(var(--nav-height) + 8px);
+    padding-bottom: 32px;
   }
   .left {
-    padding: 48px 20px 32px;
+    padding: 32px 24px;
+  }
+  .h1 {
+    font-size: clamp(34px, 5vw, 48px);
+    margin-bottom: 18px;
+    letter-spacing: -1.4px;
+  }
+  .divider {
+    margin-bottom: 18px;
+  }
+  .typewriterWrapper {
+    margin-bottom: 24px;
+  }
+  .actions {
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    padding-top: calc(var(--nav-height) + 4px);
+    padding-bottom: 24px;
+  }
+  .left {
+    padding: 20px 16px 24px;
+  }
+  .h1 {
+    font-size: clamp(28px, 8vw, 38px);
+    letter-spacing: -1.1px;
+    margin-bottom: 14px;
+  }
+  .divider {
+    margin-bottom: 14px;
+  }
+  .typewriterWrapper {
+    margin-bottom: 20px;
+    height: 22px;
+  }
+  .typewriterPrefix,
+  .typewriterText {
+    font-size: 14px;
+  }
+  .actions {
+    margin-bottom: 0;
+  }
+  .btnDark {
+    padding: 10px 18px;
+    font-size: 12.5px;
   }
 }
 

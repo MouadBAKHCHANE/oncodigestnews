@@ -58,6 +58,16 @@ const ITEMS: ExpertiseItem[] = [
     ctaHref: '/videos',
     ctaLabel: 'Voir les vidéos',
   },
+  {
+    number: '05',
+    title: 'Événements',
+    heading: 'Rencontres et formations continues.',
+    text: 'Participez à nos masterclasses, ateliers pratiques et journées de formation dédiées aux professionnels de la chirurgie et de l\'oncologie.',
+    illustration: 'abstract',
+    illustrationLabel: 'Illustration — Événements',
+    ctaHref: '/evenements',
+    ctaLabel: 'Voir les événements',
+  },
 ];
 
 export function ExpertiseSection() {
@@ -107,13 +117,44 @@ export function ExpertiseSection() {
 
   const active = ITEMS[activeIndex];
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollPills = (dir: 'left' | 'right') => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: dir === 'left' ? -150 : 150, behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className={styles.section}>
       <div className="padding-global">
         <div className="container-large">
+          
+          {/* Mobile Category Switcher (Visible only on mobile/tablet) */}
+          <div className={styles.mobileSwitcherContainer}>
+            <button className={`${styles.scrollArrow} ${styles.scrollArrowLeft}`} onClick={() => scrollPills('left')} aria-label="Scroll left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div className={styles.mobileSwitcher} ref={scrollRef}>
+              {ITEMS.map((item, i) => (
+                <button
+                  key={item.number}
+                  onClick={() => setActiveIndex(i)}
+                  className={`${styles.mobilePill} ${i === activeIndex ? styles.mobilePillActive : ''}`}
+                >
+                  <span className={styles.pillNum}>{item.number}</span>
+                  <span className={styles.pillTitle}>{item.title}</span>
+                </button>
+              ))}
+            </div>
+            <button className={`${styles.scrollArrow} ${styles.scrollArrowRight}`} onClick={() => scrollPills('right')} aria-label="Scroll right">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+
           <div className={styles.grid}>
 
-            {/* ── Left: scrollable image stack ── */}
+            {/* ── Left: scrollable image stack (Desktop only, or used as the image source on mobile) ── */}
             <div className={styles.imageColumn}>
               {ITEMS.map((item, i) => (
                 <div
@@ -125,7 +166,6 @@ export function ExpertiseSection() {
                 >
                   <div className={styles.imageFrame}>
                     <BrandIllustration variant={item.illustration} label={item.illustrationLabel} />
-                    {/* Bottom-left label — current item legend */}
                     <div className={styles.legend}>
                       <span className={styles.legendNum}>{item.number}</span>
                       <span className={styles.legendText}>{item.title}</span>
@@ -135,17 +175,19 @@ export function ExpertiseSection() {
               ))}
             </div>
 
-            {/* ── Right: sticky text panel — heading + desc + CTA fade with active ── */}
+            {/* ── Right: sticky text panel ── */}
             <div className={styles.textColumn}>
               <div className={styles.stickyPanel}>
 
-                {/* Item index list (no expand/collapse, just labels with active state) */}
+                {/* Desktop Item List */}
                 <ul className={styles.itemList}>
                   {ITEMS.map((item, i) => (
                     <li
                       key={item.number}
+                      onClick={() => setActiveIndex(i)}
                       className={`${styles.itemRow} ${i === activeIndex ? styles.itemRowActive : ''}`}
                       aria-current={i === activeIndex ? 'true' : undefined}
+                      style={{ cursor: 'pointer' }}
                     >
                       <span className={styles.itemNumber}>{item.number}</span>
                       <span className={styles.itemTitle}>{item.title}</span>
@@ -153,16 +195,24 @@ export function ExpertiseSection() {
                   ))}
                 </ul>
 
-                {/* Active heading + description + CTA — keyed so it remounts on change */}
+                {/* Mobile Active Illustration (Visible only on mobile/tablet) */}
+                <div className={styles.mobileImage}>
+                  <div className={styles.imageFrame}>
+                    <BrandIllustration variant={active.illustration} label={active.illustrationLabel} />
+                  </div>
+                </div>
+
+                {/* Active heading + description + CTA */}
                 <div key={active.number} className={`${styles.activePanel} ${reducedMotion ? '' : styles.activePanelAnimate}`}>
                   <h3 className={styles.activeHeading}>{active.heading}</h3>
                   <p className={styles.activeText}>{active.text}</p>
-                  <Link href={active.ctaHref} className={styles.activeCta}>
-                    {active.ctaLabel}
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
-                      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </Link>
+                  
+                  <div className={styles.ctaWrapper}>
+                    <Link href={active.ctaHref} className={styles.activeCta}>
+                      <span className={styles.ctaLabel}>{active.ctaLabel}</span>
+                      <img src="/arrow-dots-light.svg" alt="" width={16} height={16} aria-hidden />
+                    </Link>
+                  </div>
                 </div>
 
               </div>

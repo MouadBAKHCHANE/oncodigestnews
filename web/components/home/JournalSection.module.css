@@ -12,7 +12,10 @@
 }
 
 .tag {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
   background: transparent;
   color: var(--cod-gray--600);
   font-family: var(--font-body-stack);
@@ -23,6 +26,9 @@
   border-radius: 8px;
   letter-spacing: 0.1px;
   margin-bottom: 12px;
+}
+.tag .dotIcon {
+  flex-shrink: 0;
 }
 
 .heading {
@@ -235,6 +241,7 @@
 .ctaText {
   display: inline-flex;
   align-items: center;
+  gap: 6px;
   padding: 10px 18px;
   background: transparent;
   color: var(--cod-gray--700);
@@ -260,6 +267,10 @@
     grid-template-columns: 1fr;
     gap: 16px;
     align-items: start;
+  }
+  .ctaRow {
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
 

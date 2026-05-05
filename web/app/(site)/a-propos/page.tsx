@@ -84,7 +84,11 @@ export default async function AboutPage() {
         <div className="padding-global">
           <div className="container-large">
             <header className={styles.header}>
-              <span className={`${styles.tag} animate-on-scroll`}>À propos</span>
+              <span className={`${styles.tag} animate-on-scroll`}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
+                <span>À propos</span>
+              </span>
               <h1 className={`${styles.heading} animate-on-scroll delay-1`}>
                 L&apos;information oncologique, validée par des praticiens.
               </h1>
@@ -124,7 +128,11 @@ export default async function AboutPage() {
         <section className={styles.advisorsSection}>
           <div className="padding-global">
             <div className="container-large">
-              <span className={`${styles.tag} animate-on-scroll`}>Comité scientifique</span>
+              <span className={`${styles.tag} animate-on-scroll`}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
+                <span>Comité scientifique</span>
+              </span>
               <h2 className={`${styles.sectionHeading} animate-on-scroll delay-1`}>
                 Un comité d&apos;experts au service de la qualité
               </h2>
@@ -219,7 +227,11 @@ function FounderSection({ founder }: { founder: AdvisorDoc }) {
               )}
             </div>
             <div className={`${styles.founderContent} animate-on-scroll delay-1`}>
-              <span className={styles.tag}>Fondateur</span>
+              <span className={styles.tag}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
+                <span>Fondateur</span>
+              </span>
               <h2 className={styles.founderName}>{founder.name}</h2>
               {founder.role ? <p className={styles.founderTitle}>{founder.role}</p> : null}
               {founder.bio && founder.bio.length > 0 ? (

@@ -159,9 +159,8 @@ export default async function EvenementsPage() {
                         : {})}
                     >
                       Découvrir l&apos;évènement
-                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
-                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src="/arrow-dots-light.svg" alt="" width={16} height={16} aria-hidden />
                     </Link>
                   )}
                 </div>
@@ -270,9 +269,8 @@ function EventRow({ ev }: { ev: Evenement }) {
           <span>{locationLabel(ev)}</span>
         </div>
       </div>
-      <svg className={styles.eventArrow} width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/arrow-dots-light.svg" alt="" width={16} height={16} className={styles.eventArrow} aria-hidden />
     </Link>
   );
 }

@@ -21,7 +21,11 @@ export default function InscriptionPage() {
         <div className="container-large">
           <div className={styles.grid}>
             <div className={`${styles.left} animate-on-scroll`}>
-              <span className={styles.tag}>Inscription</span>
+              <span className={styles.tag}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
+                <span>Inscription</span>
+              </span>
               <h1 className={styles.heading}>Rejoignez OncoDigest.</h1>
               <p className={styles.lead}>
                 Accédez aux articles scientifiques, rapports de congrès et vidéos exclusives.

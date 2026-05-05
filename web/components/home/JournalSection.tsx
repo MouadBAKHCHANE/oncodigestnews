@@ -65,7 +65,10 @@ export function JournalSection({ data }: { data: JournalData }) {
           {/* Header */}
           <div className={styles.header}>
             <div>
-              <span className={`${styles.tag} animate-on-scroll`}>Actualités</span>
+              <div className={`${styles.tag} animate-on-scroll`}>
+                <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
+                <span>Actualités</span>
+              </div>
               <TitleReveal as="h2" className={styles.heading}>
                 Les dernières publications.
               </TitleReveal>
@@ -120,7 +123,7 @@ export function JournalSection({ data }: { data: JournalData }) {
                   <span>{fmtDate(data.article?.publishedAt) || '12/03/2026'}</span>
                 </div>
                 <span className={styles.cardRead}>
-                  Lire <span className={styles.arrow}>→</span>
+                  Lire <img src="/arrow-dots-light.svg" alt="" width={16} height={16} className={styles.btnIcon} />
                 </span>
               </div>
             </Link>
@@ -159,7 +162,7 @@ export function JournalSection({ data }: { data: JournalData }) {
                   <span>{fmtDate(data.congress?.startDate) || '08/03/2026'}</span>
                 </div>
                 <span className={styles.cardRead}>
-                  Lire <span className={styles.arrow}>→</span>
+                  Lire <img src="/arrow-dots-light.svg" alt="" width={16} height={16} className={styles.btnIcon} />
                 </span>
               </div>
             </Link>
@@ -191,7 +194,7 @@ export function JournalSection({ data }: { data: JournalData }) {
                   <span>{fmtDate(data.video?.publishedAt) || '01/03/2026'}</span>
                 </div>
                 <span className={styles.cardRead}>
-                  Lire <span className={styles.arrow}>→</span>
+                  Lire <img src="/arrow-dots-light.svg" alt="" width={16} height={16} className={styles.btnIcon} />
                 </span>
               </div>
             </Link>
@@ -201,10 +204,12 @@ export function JournalSection({ data }: { data: JournalData }) {
           {/* CTA row */}
           <div className={styles.ctaRow}>
             <Link href="/actualites" className={styles.ctaDark}>
-              Tous les articles →
+              Tous les articles
+              <img src="/arrow-dots-light.svg" alt="" width={16} height={16} className={styles.btnIcon} />
             </Link>
             <Link href="/videos" className={styles.ctaText}>
               Voir les vidéos
+              <img src="/arrow-dots.svg" alt="" width={16} height={16} className={styles.btnIcon} />
             </Link>
           </div>
 

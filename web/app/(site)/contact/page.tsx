@@ -16,7 +16,11 @@ export default function ContactPage() {
         <div className="container-large">
           <div className={styles.grid}>
             <div className={styles.left}>
-              <span className={`${styles.tag} animate-on-scroll`}>Contact</span>
+              <span className={`${styles.tag} animate-on-scroll`}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
+                <span>Contact</span>
+              </span>
               <h1 className={`${styles.heading} animate-on-scroll`}>Contactez-nous.</h1>
               <p className={`${styles.lead} animate-on-scroll delay-1`}>
                 Une question, une proposition d&apos;article, un partenariat&nbsp;? Écrivez-nous.

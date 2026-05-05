@@ -246,6 +246,12 @@
   .footerLinks {
     grid-template-columns: 1fr;
   }
+  .footerLinksLeft {
+    margin-bottom: 32px;
+  }
+  .footerLogoLink {
+    padding-left: 0;
+  }
   .footerLinksRight {
     grid-template-columns: repeat(4, 1fr);
   }

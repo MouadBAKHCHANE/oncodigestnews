@@ -45,7 +45,11 @@ export default async function ComitePage() {
           <div className="container-large">
             <div className={styles.heroGrid}>
               <div className={styles.heroLeft}>
-                <span className={styles.tag}>Comité scientifique</span>
+                <span className={styles.tag}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
+                  <span>Comité scientifique</span>
+                </span>
                 <TitleReveal as="h1" className={styles.heading}>
                   Celles et ceux qui valident chaque publication.
                 </TitleReveal>
@@ -127,7 +131,11 @@ export default async function ComitePage() {
         <div className="padding-global">
           <div className="container-large">
             <div className={styles.processHeader}>
-              <span className={styles.tag}>Notre processus</span>
+              <span className={styles.tag}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
+                <span>Notre processus</span>
+              </span>
               <TitleReveal as="h2" className={styles.processHeading}>
                 Comment nous validons chaque publication.
               </TitleReveal>
@@ -191,7 +199,9 @@ export default async function ComitePage() {
                 chirurgie digestive et oncologie. Contactez-nous pour en discuter.
               </p>
               <Link href="/contact" className={styles.ctaBtn}>
-                Nous contacter →
+                Nous contacter
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/arrow-dots.svg" alt="" width={16} height={16} aria-hidden />
               </Link>
             </div>
           </div>

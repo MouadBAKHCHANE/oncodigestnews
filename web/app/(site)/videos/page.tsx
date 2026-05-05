@@ -48,7 +48,11 @@ export default async function VideosPage() {
       <div className="padding-global">
         <div className="container-large">
           <header className={styles.header}>
-            <span className={`${styles.tag} animate-on-scroll`}>Vidéos & Lives</span>
+            <span className={`${styles.tag} animate-on-scroll`}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
+              <span>Vidéos & Lives</span>
+            </span>
             <h1 className={`${styles.heading} animate-on-scroll delay-1`}>
               Conférences, démonstrations et lives en direct.
             </h1>

@@ -23,7 +23,10 @@
 }
 
 .tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
   background: transparent;
   color: var(--cod-gray--600);
   font-family: var(--font-body-stack);
@@ -34,6 +37,10 @@
   border-radius: 8px;
   letter-spacing: 0.1px;
   margin-bottom: 28px;
+}
+
+.tag .dotIcon {
+  flex-shrink: 0;
 }
 
 .heading {

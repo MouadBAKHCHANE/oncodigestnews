@@ -223,7 +223,11 @@ function FeaturedCard({ article }: { article: ScientificArticleData }) {
           <p className={styles.featuredMeta}>
             {[article.authors[0], formattedDate].filter(Boolean).join(' · ')}
           </p>
-          <span className={styles.featuredLink}>Lire l&apos;article →</span>
+          <span className={styles.featuredLink}>
+            Lire l&apos;article
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/arrow-dots.svg" alt="" width={16} height={16} aria-hidden />
+          </span>
         </div>
       </Link>
     </section>

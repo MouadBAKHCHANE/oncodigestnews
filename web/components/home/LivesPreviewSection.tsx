@@ -22,7 +22,9 @@ export function LivesPreviewSection({ videos }: LivesPreviewSectionProps) {
               </h2>
             </div>
             <Link href="/videos" className={`${styles.headerLink} animate-on-scroll delay-2`}>
-              Voir tout →
+              Voir tout
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/arrow-dots.svg" alt="" width={16} height={16} aria-hidden />
             </Link>
           </div>
 
@@ -34,7 +36,9 @@ export function LivesPreviewSection({ videos }: LivesPreviewSectionProps) {
 
           <div className={`${styles.cta} animate-on-scroll delay-3`}>
             <Button href="/videos" variant="dark" size="sm">
-              Voir le calendrier des lives →
+              Voir le calendrier des lives
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/arrow-dots-light.svg" alt="" width={16} height={16} aria-hidden />
             </Button>
           </div>
         </div>

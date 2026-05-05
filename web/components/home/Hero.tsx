@@ -67,6 +67,7 @@ export function Hero({
             <div className={`${styles.actions} animate-on-scroll delay-2`}>
               <Link href="/actualites" className={styles.btnDark}>
                 Découvrir nos contenus
+                <img src="/arrow-dots-light.svg" alt="" width={16} height={16} className={styles.btnIcon} />
               </Link>
             </div>
 

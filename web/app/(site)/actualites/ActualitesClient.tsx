@@ -158,7 +158,9 @@ function FeaturedCard({ article }: { article: ArticleCardData }) {
             </p>
           )}
           <span className={styles.featuredLink}>
-            Lire l&apos;article →
+            Lire l&apos;article
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/arrow-dots.svg" alt="" width={16} height={16} aria-hidden />
           </span>
         </div>
       </Link>

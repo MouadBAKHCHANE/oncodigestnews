@@ -65,7 +65,11 @@ export default async function CongresPage() {
       <div className="padding-global">
         <div className="container-large">
           <header className={styles.header}>
-            <span className={`${styles.tag} animate-on-scroll`}>Congrès</span>
+            <span className={`${styles.tag} animate-on-scroll`}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
+              <span>Congrès</span>
+            </span>
             <h1 className={`${styles.heading} animate-on-scroll delay-1`}>
               Les congrès qui font l&apos;oncologie digestive.
             </h1>
@@ -160,7 +164,9 @@ function FeaturedCongress({ congress }: { congress: FeaturedCongress }) {
             href={`/articles-scientifiques?congress=${congress.slug.current}`}
             className={styles.featuredLink}
           >
-            Voir les articles →
+            Voir les articles
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/arrow-dots.svg" alt="" width={16} height={16} aria-hidden />
           </Link>
         </div>
       </div>

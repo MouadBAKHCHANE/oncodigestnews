@@ -10,7 +10,10 @@ export function BannerSection() {
           <div className={styles.card}>
             <div className={styles.bgArt} aria-hidden />
             <div className={styles.content}>
-              <span className={`${styles.tag} animate-on-scroll`}>Notre vision</span>
+              <div className={`${styles.tag} animate-on-scroll`}>
+                <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
+                <span>Notre vision</span>
+              </div>
               <TitleReveal as="h2" className={styles.heading}>
                 {"Une information libre de tout conflit d'intérêt."}
               </TitleReveal>

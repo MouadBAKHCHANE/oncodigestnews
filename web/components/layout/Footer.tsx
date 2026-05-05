@@ -85,20 +85,8 @@ export function Footer() {
                 <div>
                   <Link href="/inscription" className={styles.footerCtaBtn}>
                     Créer mon compte
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-                      <path
-                        d="M8 0.77C7.27 0.77 6.69 1.36 6.69 2.08C6.69 2.81 7.27 3.4 8 3.4C8.73 3.4 9.31 2.81 9.31 2.08C9.31 1.36 8.73 0.77 8 0.77Z"
-                        fill="currentColor"
-                      />
-                      <path
-                        d="M8 5.77C7.27 5.77 6.69 6.36 6.69 7.08C6.69 7.81 7.27 8.4 8 8.4C8.73 8.4 9.31 7.81 9.31 7.08C9.31 6.36 8.73 5.77 8 5.77Z"
-                        fill="currentColor"
-                      />
-                      <path
-                        d="M8 10.77C7.27 10.77 6.69 11.36 6.69 12.08C6.69 12.81 7.27 13.4 8 13.4C8.73 13.4 9.31 12.81 9.31 12.08C9.31 11.36 8.73 10.77 8 10.77Z"
-                        fill="currentColor"
-                      />
-                    </svg>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/arrow-dots-light.svg" alt="" width={16} height={16} aria-hidden />
                   </Link>
                 </div>
               </div>

@@ -131,7 +131,11 @@ export default async function HomePage() {
         <section className={styles.advisorsSection}>
           <div className="padding-global">
             <div className="container-large">
-              <span className={`${styles.eyebrow} animate-on-scroll`}>Comité scientifique</span>
+              <span className={`${styles.eyebrow} animate-on-scroll`}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
+                <span>Comité scientifique</span>
+              </span>
               <TitleReveal as="h2" className={styles.sectionHeading}>
                 {"Un comité d'experts au service de la qualité."}
               </TitleReveal>
@@ -157,7 +161,9 @@ export default async function HomePage() {
               </div>
               <div className={`${styles.advisorsCta} animate-on-scroll delay-3`}>
                 <Button href="/comite-scientifique" variant="husk" size="sm">
-                  Voir le comité scientifique →
+                  Voir le comité scientifique
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/arrow-dots.svg" alt="" width={16} height={16} aria-hidden />
                 </Button>
               </div>
             </div>

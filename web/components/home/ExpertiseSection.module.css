@@ -229,31 +229,6 @@
     margin-bottom: 32px;
   }
 
-  .scrollArrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: none;
-    color: var(--cod-gray--400);
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    z-index: 2;
-  }
-
-  .scrollArrow:hover {
-    color: var(--cod-gray--900);
-  }
-
-  .scrollArrowLeft {
-    margin-right: -8px;
-  }
-
-  .scrollArrowRight {
-    margin-left: -8px;
-  }
-
   .mobileSwitcher {
     display: flex;
     gap: 8px;

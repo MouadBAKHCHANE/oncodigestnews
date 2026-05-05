@@ -1,13 +1,49 @@
 .section {
-  padding: 80px 0;
+  padding: 56px 0;
   background: #ffffff;
+  position: relative;
 }
 
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  gap: 80px;
   align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.imageColumn {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  padding: 22px 0 22px 22px;
+}
+
+.imageBackdrop {
+  position: absolute;
+  top: 0;
+  right: 22px;
+  width: calc(100% - 44px);
+  height: 100%;
+  background: var(--husk--50, #f4f1e8);
+  border-radius: 16px;
+  transform: translate(22px, 22px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.imageDotGrid {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: 96px;
+  height: 96px;
+  background-image: radial-gradient(circle, var(--cod-gray--300) 1px, transparent 1.2px);
+  background-size: 10px 10px;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .imageWrapper {
@@ -15,13 +51,14 @@
   border-radius: 16px;
   overflow: hidden;
   position: relative;
+  z-index: 1;
 }
 
 .imageWrapper img,
 .imageWrapper svg {
   width: 100%;
   height: auto;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
   display: block;
 }
@@ -31,6 +68,7 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
+  position: relative;
 }
 
 .tag {
@@ -65,10 +103,19 @@
 }
 
 .body {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--cod-gray--600);
+  font-family: var(--font-handwritten), var(--font-display-stack);
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--cod-gray--700);
   margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.tag,
+.heading {
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 1024px) {
@@ -78,15 +125,30 @@
   .container {
     grid-template-columns: 1fr;
     gap: 32px;
+    max-width: none;
+  }
+  .imageColumn {
+    max-width: none;
+    padding: 0;
+  }
+  .imageBackdrop,
+  .imageDotGrid {
+    display: none;
   }
   .imageWrapper img,
   .imageWrapper svg {
     aspect-ratio: 4 / 3;
+  }
+  .body {
+    font-size: 20px;
   }
 }
 
 @media (max-width: 768px) {
   .section {
     padding: 48px 0;
+  }
+  .body {
+    font-size: 19px;
   }
 }

@@ -119,12 +119,6 @@ export function ExpertiseSection() {
 
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const scrollPills = (dir: 'left' | 'right') => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: dir === 'left' ? -150 : 150, behavior: 'smooth' });
-    }
-  };
-
   return (
     <section className={styles.section}>
       <div className="padding-global">
@@ -132,9 +126,6 @@ export function ExpertiseSection() {
           
           {/* Mobile Category Switcher (Visible only on mobile/tablet) */}
           <div className={styles.mobileSwitcherContainer}>
-            <button className={`${styles.scrollArrow} ${styles.scrollArrowLeft}`} onClick={() => scrollPills('left')} aria-label="Scroll left">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            </button>
             <div className={styles.mobileSwitcher} ref={scrollRef}>
               {ITEMS.map((item, i) => (
                 <button
@@ -147,9 +138,6 @@ export function ExpertiseSection() {
                 </button>
               ))}
             </div>
-            <button className={`${styles.scrollArrow} ${styles.scrollArrowRight}`} onClick={() => scrollPills('right')} aria-label="Scroll right">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </button>
           </div>
 
           <div className={styles.grid}>

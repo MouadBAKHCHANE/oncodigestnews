@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Fraunces, Inter } from 'next/font/google';
+import { Fraunces, Inter, Caveat } from 'next/font/google';
 import './globals.css';
 
 /**
@@ -25,6 +25,16 @@ const inter = Inter({
   display: 'swap',
 });
 
+/**
+ * Handwritten accent — used for editorial body excerpts (e.g. PromesseSection).
+ */
+const caveat = Caveat({
+  subsets: ['latin'],
+  variable: '--font-handwritten',
+  weight: ['400', '500'],
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: {
     default: 'OncoDigest',
@@ -46,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${fraunces.variable} ${inter.variable}`}>
+    <html lang="fr" className={`${fraunces.variable} ${inter.variable} ${caveat.variable}`}>
       <body>{children}</body>
     </html>
   );

@@ -25,12 +25,16 @@ export function PromesseSection({
     <section className={styles.section}>
       <div className="padding-global">
         <div className={`container-large ${styles.container}`}>
-          <div className={styles.imageWrapper}>
-            {illustrationVariant ? (
-              <BrandIllustration variant={illustrationVariant} label={panelHeading} />
-            ) : (
-              <img src={imageUrl} alt="" loading="lazy" />
-            )}
+          <div className={styles.imageColumn}>
+            <span className={styles.imageBackdrop} aria-hidden />
+            <span className={styles.imageDotGrid} aria-hidden />
+            <div className={styles.imageWrapper}>
+              {illustrationVariant ? (
+                <BrandIllustration variant={illustrationVariant} label={panelHeading} />
+              ) : (
+                <img src={imageUrl} alt="" loading="lazy" />
+              )}
+            </div>
           </div>
 
           <div className={styles.textWrapper}>

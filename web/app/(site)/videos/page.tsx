@@ -62,12 +62,10 @@ export default async function VideosPage() {
             </p>
           </header>
 
-          {lives.length > 0 ? (
-            <section className={styles.livesSection}>
-              <h2 className={styles.sectionHeading}>Calendrier des lives</h2>
-              <LivesCalendar events={lives} />
-            </section>
-          ) : null}
+          <section className={styles.livesSection}>
+            <h2 className={styles.sectionHeading}>Prochains lives</h2>
+            <LivesCalendar events={lives} />
+          </section>
 
           <section className={styles.videosSection}>
             <h2 className={styles.sectionHeading}>Vidéos</h2>

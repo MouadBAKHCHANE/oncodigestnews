@@ -121,8 +121,13 @@ export function LivesCalendar({ events, initialDate }: LivesCalendarProps) {
     setSelectedDay(null);
   }
 
+  const panelLabel = selectedDay
+    ? selectedDay.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' }).toUpperCase()
+    : 'LIVES';
+
   return (
-    <div className={`${styles.calendar} animate-on-scroll`}>
+    <div className={`${styles.layout} animate-on-scroll`}>
+      <div className={styles.calendar}>
       <div className={styles.header}>
         <button
           type="button"
@@ -212,13 +217,18 @@ export function LivesCalendar({ events, initialDate }: LivesCalendarProps) {
         })}
       </div>
 
-      <div className={styles.eventsPanel}>
-        {eventsToShow.length === 0 ? (
-          <p className={styles.empty}>Aucun live prévu pour ce mois.</p>
-        ) : (
-          eventsToShow.map((event) => <LiveEventCard key={event._id} event={event} />)
-        )}
       </div>
+
+      <aside className={styles.eventsAside} aria-label="Lives à venir">
+        <span className={styles.eventsLabel}>{panelLabel}</span>
+        <div className={styles.eventsPanel}>
+          {eventsToShow.length === 0 ? (
+            <p className={styles.empty}>Aucun live prévu prochainement</p>
+          ) : (
+            eventsToShow.map((event) => <LiveEventCard key={event._id} event={event} />)
+          )}
+        </div>
+      </aside>
     </div>
   );
 }

@@ -57,10 +57,24 @@
 
 .livesSection {
   margin: 64px 0;
+  background: var(--husk--50, #f4f1e8);
+  border-radius: 20px;
+  padding: 32px;
+}
+
+.livesSection .sectionHeading {
+  margin-bottom: 24px;
 }
 
 .videosSection {
   margin: 64px 0 0;
+}
+
+@media (max-width: 768px) {
+  .livesSection {
+    padding: 20px;
+    border-radius: 14px;
+  }
 }
 
 .filterRow {

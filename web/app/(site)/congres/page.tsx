@@ -5,6 +5,7 @@ import { sanityClient } from '@/lib/sanity/client';
 import { urlForImage } from '@/lib/sanity/image';
 import { CongressCard, type CongressCardData } from '@/components/cards/CongressCard';
 import { CongressCover } from '@/components/cards/CongressCover';
+import { TitleReveal } from '@/components/ui/TitleReveal';
 import { blocksToPlainText } from '@/lib/sanity/portableText';
 import type { PortableTextBlock } from '@portabletext/types';
 import type { Image as SanityImage } from 'sanity';
@@ -70,9 +71,9 @@ export default async function CongresPage() {
               <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
               <span>Congrès</span>
             </span>
-            <h1 className={`${styles.heading} animate-on-scroll delay-1`}>
+            <TitleReveal as="h1" className={styles.heading}>
               Les congrès qui font l&apos;oncologie digestive.
-            </h1>
+            </TitleReveal>
             <p className={`${styles.lead} animate-on-scroll delay-2`}>
               Synthèses, comptes-rendus et abstracts des principaux congrès internationaux et
               nationaux. Cliquez sur un congrès pour voir les articles associés.

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { sanityClient } from '@/lib/sanity/client';
 import type { ArticleCardData } from '@/components/cards/ArticleCard';
+import { TitleReveal } from '@/components/ui/TitleReveal';
 import { ActualitesClient } from './ActualitesClient';
 import styles from './actualites.module.css';
 
@@ -47,9 +48,9 @@ export default async function ActualitesPage() {
               <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
               <span>Actualités</span>
             </span>
-            <h1 className={`${styles.heading} animate-on-scroll delay-1`}>
+            <TitleReveal as="h1" className={styles.heading}>
               L&apos;information oncologique, rigoureuse et accessible.
-            </h1>
+            </TitleReveal>
             <p className={`${styles.lead} animate-on-scroll delay-2`}>
               Articles, rapports de congrès et vidéos sélectionnés par notre comité scientifique.
             </p>

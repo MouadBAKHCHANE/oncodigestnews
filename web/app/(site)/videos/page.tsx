@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { sanityClient } from '@/lib/sanity/client';
 import type { VideoCardData } from '@/components/cards/VideoCard';
 import { LivesCalendar, type LiveEvent } from '@/components/home/LivesCalendar';
+import { TitleReveal } from '@/components/ui/TitleReveal';
 import { VideosClient } from './VideosClient';
 import styles from './videos.module.css';
 
@@ -53,9 +54,9 @@ export default async function VideosPage() {
               <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
               <span>Vidéos & Lives</span>
             </span>
-            <h1 className={`${styles.heading} animate-on-scroll delay-1`}>
+            <TitleReveal as="h1" className={styles.heading}>
               Conférences, démonstrations et lives en direct.
-            </h1>
+            </TitleReveal>
             <p className={`${styles.lead} animate-on-scroll delay-2`}>
               Suivez les interventions de notre comité scientifique en replay, et inscrivez-vous
               aux prochains lives réservés aux professionnels de santé.

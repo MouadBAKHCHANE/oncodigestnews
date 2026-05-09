@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { sanityClient } from '@/lib/sanity/client';
+import { TitleReveal } from '@/components/ui/TitleReveal';
 import { ScientificClient, type ScientificArticleData } from './ScientificClient';
 import styles from './scientific.module.css';
 
@@ -48,9 +49,9 @@ export default async function ArticlesScientifiquesPage() {
               <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
               <span>Articles scientifiques</span>
             </span>
-            <h1 className={`${styles.heading} animate-on-scroll delay-1`}>
+            <TitleReveal as="h1" className={styles.heading}>
               Articles scientifiques.
-            </h1>
+            </TitleReveal>
             <p className={`${styles.lead} animate-on-scroll delay-2`}>
               Sélection rigoureuse des publications les plus marquantes en oncologie digestive,
               avec commentaires éditoriaux pour les membres.

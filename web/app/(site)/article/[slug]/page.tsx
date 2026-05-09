@@ -22,6 +22,7 @@ interface ArticleDetail {
   tag?: string | null;
   excerpt: PortableTextBlock[];
   body?: PortableTextBlock[];
+  bodyPreview?: PortableTextBlock[];
   coverImage: (SanityImage & { alt?: string }) | null;
   publishedAt: string;
   readingTime?: number | null;
@@ -44,11 +45,15 @@ interface ArticleDetail {
 }
 
 function articleQuery(includeBody: boolean): string {
+  // When the visitor is gated, only ship the first two paragraph blocks
+  // (style "normal", not headings) as a teaser preview before the gate.
   return /* groq */ `*[_type == "article" && slug.current == $slug][0]{
     _id, title, slug, tag, excerpt, coverImage, publishedAt, readingTime, access,
     "category": category->{title, slug},
     "author": author->{name, role, photo, bio},
-    ${includeBody ? 'body,' : ''}
+    ${includeBody
+      ? 'body,'
+      : '"bodyPreview": body[_type == "block" && style == "normal"][0...2],'}
     "relatedArticles": relatedArticles[]->{
       _id, title, slug, coverImage, publishedAt,
       "category": category->title
@@ -177,7 +182,14 @@ export default async function ArticlePage({
         </div>
 
         {isGated ? (
-          <ContentGate />
+          <>
+            {article.bodyPreview && article.bodyPreview.length > 0 ? (
+              <div className={styles.gatedPreview}>
+                <ProseFromPortableText value={article.bodyPreview} />
+              </div>
+            ) : null}
+            <ContentGate />
+          </>
         ) : article.body && article.body.length > 0 ? (
           <ProseFromPortableText value={article.body} />
         ) : null}
@@ -255,7 +267,7 @@ function ContentGate() {
           <path d="M7 11V7a5 5 0 0 1 10 0v4" />
         </svg>
         <h3 className={styles.gateHeading}>
-          Cet article est réservé aux professionnels de santé.
+          Ce contenu est réservé aux membres inscrits.
         </h3>
         <p className={styles.gateDesc}>
           Créez un compte gratuit pour accéder à l&apos;intégralité de nos publications.

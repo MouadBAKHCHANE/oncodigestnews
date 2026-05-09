@@ -4,6 +4,7 @@ import { sanityClient } from '@/lib/sanity/client';
 import { urlForImage } from '@/lib/sanity/image';
 import type { Image as SanityImage } from 'sanity';
 import { BrandIllustration } from '@/components/ui/BrandIllustration';
+import { TitleReveal } from '@/components/ui/TitleReveal';
 import styles from './evenements.module.css';
 
 export const metadata: Metadata = {
@@ -91,7 +92,7 @@ export default async function EvenementsPage() {
               <span className={styles.eyebrowDot} aria-hidden />
               L&apos;expérience OncoDigest
             </div>
-            <h1 className={styles.h1}>Évènements</h1>
+            <TitleReveal as="h1" className={styles.h1}>Évènements</TitleReveal>
           </div>
         </div>
       </section>

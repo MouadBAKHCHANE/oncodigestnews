@@ -1,11 +1,9 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import Link from 'next/link';
 import { ArticleCard, type ArticleCardData } from '@/components/cards/ArticleCard';
 import { FilterPills, type FilterPill } from '@/components/ui/FilterPills';
 import { SearchInput } from '@/components/ui/SearchInput';
-import { urlForImage } from '@/lib/sanity/image';
 import { blocksToPlainText } from '@/lib/sanity/portableText';
 import styles from './actualites.module.css';
 
@@ -52,8 +50,7 @@ export function ActualitesClient({
     });
   }, [articles, search, category]);
 
-  const featured = filtered[0];
-  const grid = filtered.slice(1, visibleCount);
+  const grid = filtered.slice(0, visibleCount);
   const hasMore = filtered.length > visibleCount;
 
   const pills: FilterPill[] = [
@@ -88,8 +85,6 @@ export function ActualitesClient({
         </p>
       ) : null}
 
-      {featured ? <FeaturedCard article={featured} /> : null}
-
       {grid.length > 0 ? (
         <section className={styles.gridSection}>
           <div className={styles.grid}>
@@ -116,54 +111,5 @@ export function ActualitesClient({
         </section>
       ) : null}
     </>
-  );
-}
-
-function FeaturedCard({ article }: { article: ArticleCardData }) {
-  const excerptText = blocksToPlainText(article.excerpt);
-  const formattedDate = article.publishedAt
-    ? new Date(article.publishedAt).toLocaleDateString('fr-FR', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-      })
-    : null;
-
-  return (
-    <section className={styles.featuredSection}>
-      <Link href={`/article/${article.slug.current}`} className={styles.featuredCard}>
-        <div className={styles.featuredImgWrap}>
-          {article.coverImage ? (
-            // Sanity CDN already handles format + sizing — use plain <img> so we
-            // skip Next.js's image-optimizer proxy (which can show broken icons
-            // intermittently in dev).
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={urlForImage(article.coverImage).width(1200).height(900).fit('crop').url()}
-              alt={article.coverImage.alt ?? article.title}
-              className={styles.featuredImg}
-              loading="eager"
-            />
-          ) : (
-            <div className={styles.featuredImgPlaceholder} aria-hidden />
-          )}
-        </div>
-        <div className={styles.featuredContent}>
-          {article.tag ? <span className={styles.featuredTag}>{article.tag}</span> : null}
-          <h2 className={styles.featuredTitle}>{article.title}</h2>
-          {excerptText ? <p className={styles.featuredExcerpt}>{excerptText}</p> : null}
-          {(article.author?.name || formattedDate) && (
-            <p className={styles.featuredMeta}>
-              {[article.author?.name, formattedDate].filter(Boolean).join(' · ')}
-            </p>
-          )}
-          <span className={styles.featuredLink}>
-            Lire l&apos;article
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/arrow-dots.svg" alt="" width={16} height={16} aria-hidden />
-          </span>
-        </div>
-      </Link>
-    </section>
   );
 }

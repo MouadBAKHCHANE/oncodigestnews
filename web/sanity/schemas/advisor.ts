@@ -27,7 +27,6 @@ export const advisor = defineType({
       name: 'photo',
       type: 'image',
       options: { hotspot: true },
-      validation: (Rule) => Rule.required(),
       fields: [{ name: 'alt', type: 'string', title: 'Alt text' }],
     }),
     defineField({
@@ -44,6 +43,13 @@ export const advisor = defineType({
       name: 'specialties',
       type: 'array',
       of: [{ type: 'string' }],
+    }),
+    defineField({
+      name: 'specialty',
+      type: 'string',
+      hidden: true,
+      readOnly: true,
+      deprecated: { reason: "Legacy single-value field. Use 'specialties' (array) instead." },
     }),
     defineField({
       name: 'links',

@@ -34,7 +34,7 @@ export function Navbar() {
         <div className={styles.navbarComponent}>
 
           {/* Logo */}
-          <Link href="/" className={styles.navbarLogoLink} aria-label="OncoDigest — accueil">
+          <Link href="/" className={styles.navbarLogoLink} aria-label="OncoDigest news — accueil">
             <Logo />
           </Link>
 

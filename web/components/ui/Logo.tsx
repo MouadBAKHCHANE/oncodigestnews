@@ -36,15 +36,16 @@ export function Logo({
 
   if (variant === 'mark') {
     return (
-      <span className={cls} style={style} aria-label="OncoDigest">
+      <span className={cls} style={style} aria-label="OncoDigest news">
         OD
       </span>
     );
   }
 
   return (
-    <span className={cls} style={style} aria-label="OncoDigest">
-      OncoDigest
+    <span className={cls} style={style} aria-label="OncoDigest news">
+      <span>OncoDigest</span>
+      <span className={styles.suffix} aria-hidden>news</span>
     </span>
   );
 }

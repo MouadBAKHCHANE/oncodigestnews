@@ -110,7 +110,9 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code} %{redirect_url}\\\\n\" -L --max-redirs 0 https://oncodigestnews.vercel.app/admin/studio)",
       "Bash(node scripts/remove-bg.mjs)",
       "Bash(awk '/featured-congress_details|congress_meta|congress_summary|congress_dates|congress_location/{found=1} found{print NR\": \"$0; if\\(/<\\\\/p>|<\\\\/div>/&&++c>2\\){c=0;found=0}}' d:/Downloads/oncodigest/congres.html)",
-      "mcp__plugin_playwright_playwright__browser_close"
+      "mcp__plugin_playwright_playwright__browser_close",
+      "mcp__plugin_sanity_Sanity__unpublish_documents",
+      "mcp__plugin_sanity_Sanity__discard_drafts"
     ],
     "additionalDirectories": [
       "D:\\Downloads\\oncodigest\\web\\app\\admin\\studio",

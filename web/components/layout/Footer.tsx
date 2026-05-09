@@ -98,7 +98,7 @@ export function Footer() {
             <div className={styles.footerLinksBottom}>
               <div className={styles.footerLinks}>
                 <div className={styles.footerLinksLeft}>
-                  <Link href="/" className={styles.footerLogoLink} aria-label="OncoDigest — accueil">
+                  <Link href="/" className={styles.footerLogoLink} aria-label="OncoDigest news — accueil">
                     <Logo size={22} />
                   </Link>
                 </div>

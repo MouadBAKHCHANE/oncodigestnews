@@ -4,7 +4,9 @@
   color: var(--cod-gray--900);
   letter-spacing: -0.5px;
   line-height: 1;
-  display: inline-block;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
   white-space: nowrap;
   font-feature-settings: 'kern' 1, 'liga' 1, 'dlig' 1;
 }
@@ -17,4 +19,16 @@
   font-size: 18px;
   letter-spacing: -0.4px;
   font-weight: 400;
+}
+
+.suffix {
+  font-family: var(--font-handwritten), 'Caveat', cursive;
+  font-weight: 500;
+  font-size: 0.95em;
+  color: var(--canary--900, #4b590e);
+  letter-spacing: 0;
+  line-height: 1;
+  transform: translateY(-0.18em) rotate(-3deg);
+  transform-origin: left bottom;
+  font-feature-settings: normal;
 }

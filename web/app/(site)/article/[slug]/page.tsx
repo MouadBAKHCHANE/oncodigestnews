@@ -15,6 +15,11 @@ import styles from './article.module.css';
 
 export const revalidate = 600;
 
+type RelatedSummary = Pick<
+  ArticleCardData,
+  '_id' | 'title' | 'slug' | 'coverImage' | 'publishedAt' | 'access' | 'tag' | 'excerpt' | 'category' | 'author'
+>;
+
 interface ArticleDetail {
   _id: string;
   title: string;
@@ -22,7 +27,6 @@ interface ArticleDetail {
   tag?: string | null;
   excerpt: PortableTextBlock[];
   body?: PortableTextBlock[];
-  bodyPreview?: PortableTextBlock[];
   coverImage: (SanityImage & { alt?: string }) | null;
   publishedAt: string;
   readingTime?: number | null;
@@ -34,32 +38,26 @@ interface ArticleDetail {
     photo?: (SanityImage & { alt?: string }) | null;
     bio?: PortableTextBlock[] | null;
   } | null;
-  relatedArticles?: Array<{
-    _id: string;
-    title: string;
-    slug: { current: string };
-    coverImage: (SanityImage & { alt?: string }) | null;
-    publishedAt: string;
-    category?: string | null;
-  }>;
+  relatedArticles?: RelatedSummary[];
+  fallbackRelated?: RelatedSummary[];
 }
 
-function articleQuery(includeBody: boolean): string {
-  // When the visitor is gated, only ship the first two paragraph blocks
-  // (style "normal", not headings) as a teaser preview before the gate.
-  return /* groq */ `*[_type == "article" && slug.current == $slug][0]{
-    _id, title, slug, tag, excerpt, coverImage, publishedAt, readingTime, access,
+const articleDetailQuery = /* groq */ `*[_type == "article" && slug.current == $slug][0]{
+  _id, title, slug, tag, excerpt, coverImage, publishedAt, readingTime, access,
+  body,
+  "category": category->{title, slug},
+  "author": author->{name, role, photo, bio},
+  "relatedArticles": relatedArticles[]->{
+    _id, title, slug, coverImage, publishedAt, access, excerpt, tag,
     "category": category->{title, slug},
-    "author": author->{name, role, photo, bio},
-    ${includeBody
-      ? 'body,'
-      : '"bodyPreview": body[_type == "block" && style == "normal"][0...2],'}
-    "relatedArticles": relatedArticles[]->{
-      _id, title, slug, coverImage, publishedAt,
-      "category": category->title
-    }
-  }`;
-}
+    "author": author->{name, photo}
+  },
+  "fallbackRelated": *[_type == "article" && slug.current != $slug] | order(publishedAt desc)[0...3]{
+    _id, title, slug, coverImage, publishedAt, access, excerpt, tag,
+    "category": category->{title, slug},
+    "author": author->{name, photo}
+  }
+}`;
 
 export async function generateMetadata({
   params,
@@ -85,15 +83,24 @@ export default async function ArticlePage({
 }) {
   const { slug } = await params;
   const profile = await getProfile();
-  const includeBody = canViewPro(profile);
 
-  const article = await sanityClient.fetch<ArticleDetail | null>(articleQuery(includeBody), {
+  const article = await sanityClient.fetch<ArticleDetail | null>(articleDetailQuery, {
     slug,
   });
 
   if (!article) notFound();
 
-  const isGated = article.access === 'pro' && !includeBody;
+  // A visitor can read the full body if either:
+  //   - the article is public (anyone gets the body), or
+  //   - the visitor has an approved profile (Pro access).
+  const isGated = article.access === 'pro' && !canViewPro(profile);
+  const fullBody = isGated ? null : article.body;
+  const bodyPreview = isGated
+    ? (article.body ?? []).filter(
+        (b) => (b as { _type?: string; style?: string })._type === 'block'
+          && (b as { style?: string }).style === 'normal',
+      ).slice(0, 2)
+    : [];
   const formattedDate = article.publishedAt
     ? new Date(article.publishedAt).toLocaleDateString('fr-FR', {
         day: 'numeric',
@@ -183,15 +190,15 @@ export default async function ArticlePage({
 
         {isGated ? (
           <>
-            {article.bodyPreview && article.bodyPreview.length > 0 ? (
+            {bodyPreview.length > 0 ? (
               <div className={styles.gatedPreview}>
-                <ProseFromPortableText value={article.bodyPreview} />
+                <ProseFromPortableText value={bodyPreview} />
               </div>
             ) : null}
             <ContentGate />
           </>
-        ) : article.body && article.body.length > 0 ? (
-          <ProseFromPortableText value={article.body} />
+        ) : fullBody && fullBody.length > 0 ? (
+          <ProseFromPortableText value={fullBody} />
         ) : null}
       </article>
 
@@ -221,29 +228,26 @@ export default async function ArticlePage({
         </aside>
       ) : null}
 
-      {article.relatedArticles && article.relatedArticles.length > 0 ? (
-        <section className={styles.related}>
-          <div className="padding-global">
-            <div className="container-large">
-              <h2 className={styles.relatedHeading}>Articles liés</h2>
-              <div className={styles.relatedGrid}>
-                {article.relatedArticles.slice(0, 3).map((r) => {
-                  const cardData: ArticleCardData = {
-                    _id: r._id,
-                    title: r.title,
-                    slug: r.slug,
-                    coverImage: r.coverImage,
-                    publishedAt: r.publishedAt,
-                    access: 'public',
-                    tag: r.category ?? null,
-                  };
-                  return <ArticleCard key={r._id} article={cardData} />;
-                })}
+      {(() => {
+        const manual = article.relatedArticles ?? [];
+        const fallback = article.fallbackRelated ?? [];
+        const related = (manual.length > 0 ? manual : fallback).slice(0, 3);
+        if (related.length === 0) return null;
+        return (
+          <section className={styles.related}>
+            <div className="padding-global">
+              <div className="container-large">
+                <h2 className={styles.relatedHeading}>À lire également</h2>
+                <div className={styles.relatedGrid}>
+                  {related.map((r) => (
+                    <ArticleCard key={r._id} article={r as ArticleCardData} />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-      ) : null}
+          </section>
+        );
+      })()}
     </>
   );
 }

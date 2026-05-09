@@ -233,12 +233,16 @@
   color: var(--cod-gray--900);
 }
 
-.body :global(a) {
+.body :global(p a),
+.body :global(li a),
+.body :global(blockquote a) {
   color: var(--cod-gray--900);
   text-decoration: underline;
 }
 
-.body :global(a:hover) {
+.body :global(p a:hover),
+.body :global(li a:hover),
+.body :global(blockquote a:hover) {
   color: var(--cod-gray--700);
 }
 
@@ -307,21 +311,23 @@
 /* Author Bio */
 .authorBio {
   max-width: 720px;
-  margin: 64px auto 0;
+  margin: 56px auto 0;
   padding: 0 24px;
 }
 
 .authorBioInner {
-  border-top: 1px solid var(--cod-gray--100);
-  padding-top: 32px;
   display: flex;
-  gap: 24px;
+  gap: 20px;
   align-items: flex-start;
+  background: var(--husk--50, #f4f1e8);
+  border: 1px solid var(--cod-gray--100);
+  border-radius: 16px;
+  padding: 24px 28px;
 }
 
 .bioPhoto {
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   background: var(--cod-gray--200);
   flex-shrink: 0;
@@ -346,23 +352,29 @@
 }
 
 .bioName {
-  font-family: var(--font-display-stack);
-  font-size: 20px;
-  font-weight: 300;
+  font-family: var(--font-body-stack);
+  font-size: 16px;
+  font-weight: 600;
   margin: 0 0 4px;
   color: var(--cod-gray--900);
+  letter-spacing: -0.1px;
 }
 
 .bioRole {
   font-size: 13px;
-  color: var(--cod-gray--500);
-  margin: 0 0 12px;
+  color: var(--cod-gray--600);
+  margin: 0 0 14px;
 }
 
 .bioText :global(p) {
   font-size: 14px;
   line-height: 1.6;
   color: var(--cod-gray--700);
+  margin: 0;
+}
+
+.bioText :global(p + p) {
+  margin-top: 8px;
 }
 
 /* Related */

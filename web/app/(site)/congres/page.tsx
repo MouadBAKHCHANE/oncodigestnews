@@ -153,16 +153,21 @@ function PastCongressCard({
   ]
     .filter(Boolean)
     .join(' ');
+  const eyebrow = congress.shortName ? `Synthèse · ${congress.shortName} ${year}` : 'Synthèse';
 
   return (
-    <Link href={detailHref} className={`${styles.pastCard} ${animateClass}`} aria-label={`${congress.title} — voir la synthèse`}>
+    <Link
+      href={detailHref}
+      className={`${styles.pastCard} ${animateClass}`}
+      aria-label={`${congress.title} — voir la synthèse`}
+    >
       <div className={styles.pastCover}>
         {congress.coverImage ? (
           <Image
-            src={urlForImage(congress.coverImage as SanityImage).width(640).height(640).url()}
+            src={urlForImage(congress.coverImage as SanityImage).width(800).height(560).url()}
             alt={(congress.coverImage as SanityImage & { alt?: string }).alt ?? congress.title}
-            width={640}
-            height={640}
+            width={800}
+            height={560}
             className={styles.pastCoverImg}
             sizes="(max-width: 768px) 100vw, 33vw"
           />
@@ -173,24 +178,15 @@ function PastCongressCard({
             className={styles.pastCoverImg}
           />
         )}
-        {congress.shortName ? (
-          <span className={styles.pastBadge}>
-            {congress.shortName} · {year}
-          </span>
-        ) : null}
       </div>
       <div className={styles.pastBody}>
-        <p className={styles.pastEyebrow}>Synthèse</p>
+        <span className={styles.pastEyebrow}>{eyebrow}</span>
         <h3 className={styles.pastTitle}>{congress.title}</h3>
         {dateRange || locationStr ? (
           <p className={styles.pastMeta}>
             {[dateRange, locationStr].filter(Boolean).join(' · ')}
           </p>
         ) : null}
-        <span className={styles.pastArrow} aria-hidden>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/arrow-dots.svg" alt="" width={16} height={16} />
-        </span>
       </div>
     </Link>
   );

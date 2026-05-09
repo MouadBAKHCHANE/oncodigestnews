@@ -169,38 +169,30 @@
   gap: 24px;
 }
 
-/* ── Past congress — compact 3-up "archive" cards ── */
+/* ── Past congress — editorial card pattern (mirrors /actualites ArticleCard) ── */
 .pastGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-top: 8px;
+  column-gap: 32px;
+  row-gap: 56px;
 }
 
 .pastCard {
-  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding: 14px 14px 22px;
-  background: var(--husk--50, #f4f1e8);
-  border-radius: 14px;
   text-decoration: none;
   color: inherit;
-  transition: background 0.25s ease, transform 0.25s ease;
-}
-
-.pastCard:hover {
-  background: var(--husk--100, #ece7d6);
-  transform: translateY(-2px);
+  background: transparent;
+  border: 0 none;
+  box-shadow: none;
 }
 
 .pastCover {
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  aspect-ratio: 1 / 1;
-  background: var(--cod-gray--50);
+  aspect-ratio: 5 / 3.5;
+  background: var(--husk--50, #f4f1e8);
 }
 
 .pastCoverImg {
@@ -208,56 +200,37 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform 0.5s ease;
 }
 
 .pastCard:hover .pastCoverImg {
-  transform: scale(1.04);
-}
-
-.pastBadge {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  display: inline-flex;
-  align-items: center;
-  padding: 5px 10px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(6px);
-  border-radius: 999px;
-  font-family: var(--font-body-stack);
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--cod-gray--900);
-  letter-spacing: 0.3px;
+  transform: scale(1.03);
 }
 
 .pastBody {
-  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 0 4px;
+  padding: 16px 0 0;
 }
 
 .pastEyebrow {
+  display: inline-block;
   font-family: var(--font-body-stack);
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
   color: var(--cod-gray--500);
-  margin: 0;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
 }
 
 .pastTitle {
   font-family: var(--font-display-stack);
   font-size: 20px;
   font-weight: 300;
-  line-height: 1.22;
+  line-height: 1.18;
   letter-spacing: -0.4px;
   color: var(--cod-gray--900);
-  margin: 0;
+  margin: 6px 0 0;
   transition: color 0.2s ease;
 }
 
@@ -267,29 +240,10 @@
 
 .pastMeta {
   font-family: var(--font-body-stack);
-  font-size: 12.5px;
-  line-height: 1.45;
-  color: var(--cod-gray--600);
-  margin: 4px 0 0;
-}
-
-.pastArrow {
-  position: absolute;
-  right: 4px;
-  top: 6px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: transparent;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.pastCard:hover .pastArrow {
-  background: rgba(255, 255, 255, 0.8);
-  transform: translateX(2px);
+  font-size: 12px;
+  color: var(--cod-gray--400);
+  margin: 14px 0 0;
+  letter-spacing: 0.1px;
 }
 
 @media (max-width: 1024px) {
@@ -304,7 +258,8 @@
   }
   .pastGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    column-gap: 24px;
+    row-gap: 40px;
   }
 }
 
@@ -326,10 +281,10 @@
   }
   .pastGrid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    row-gap: 32px;
   }
   .pastTitle {
-    font-size: 19px;
+    font-size: 18px;
   }
 }
 

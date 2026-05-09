@@ -230,77 +230,90 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  column-gap: 32px;
+  row-gap: 56px;
 }
 
+/* Editorial card — borderless, image-led (mirrors ArticleCard on /actualites). */
 .card {
   display: flex;
   flex-direction: column;
+  background: transparent;
+  border: 0 none;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none !important;
 }
 
 .cardImg {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 5 / 3.5;
   overflow: hidden;
-  border-radius: 16px 16px 0 0;
-  background: var(--cod-gray--100);
+  border-radius: 8px;
+  background: var(--husk--50, #f4f1e8);
 }
 
 .cardImgEl {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.5s ease;
 }
 
 .card:hover .cardImgEl {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .cardLock {
   position: absolute;
   top: 12px;
   right: 12px;
-  width: 28px;
-  height: 28px;
-  background: rgba(0, 0, 0, 0.55);
+  width: 32px;
+  height: 32px;
+  background: var(--cod-gray--900);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--cod-gray--0);
+  z-index: 2;
 }
 
 .cardContent {
-  padding: 20px 24px 24px;
+  padding: 16px 0 0;
 }
 
 .cardTag {
   display: inline-block;
-  background: var(--cod-gray--50);
-  color: var(--cod-gray--600);
+  font-family: var(--font-body-stack);
   font-size: 11px;
   font-weight: 500;
-  padding: 4px 10px;
-  border-radius: 100px;
-  letter-spacing: 0.5px;
+  color: var(--cod-gray--500);
+  letter-spacing: 0.7px;
   text-transform: uppercase;
 }
 
 .cardTitle {
   font-family: var(--font-display-stack);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 300;
-  line-height: 1.3;
+  line-height: 1.18;
+  letter-spacing: -0.4px;
   color: var(--cod-gray--900);
-  margin: 12px 0 8px;
+  margin: 6px 0 0;
+  transition: color 0.2s ease;
+}
+
+.card:hover .cardTitle {
+  color: var(--cod-gray--700);
 }
 
 .cardExcerpt {
+  font-family: var(--font-body-stack);
   font-size: 13.5px;
   line-height: 1.55;
   color: var(--cod-gray--600);
-  margin: 0 0 12px;
+  margin: 8px 0 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -308,9 +321,11 @@
 }
 
 .cardMeta {
+  font-family: var(--font-body-stack);
   font-size: 12px;
   color: var(--cod-gray--400);
-  margin: 0;
+  margin: 14px 0 0;
+  letter-spacing: 0.1px;
 }
 
 @media (max-width: 1024px) {
@@ -334,6 +349,9 @@
   }
   .grid {
     grid-template-columns: 1fr;
+  }
+  .cardTitle {
+    font-size: 18px;
   }
   .featuredContent {
     padding: 24px 20px;

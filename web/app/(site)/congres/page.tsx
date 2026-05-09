@@ -26,13 +26,17 @@ interface FeaturedCongress extends CongressCardData {
   isFeatured?: boolean;
 }
 
+interface UpcomingCongress extends CongressCardData {
+  website?: string | null;
+}
+
 interface PastCongress extends CongressCardData {
   summary?: PortableTextBlock[];
 }
 
 interface SanityResponse {
   featured: FeaturedCongress | null;
-  upcoming: CongressCardData[];
+  upcoming: UpcomingCongress[];
   past: PastCongress[];
 }
 
@@ -41,7 +45,7 @@ const indexQuery = /* groq */ `{
     _id, title, slug, shortName, startDate, endDate, location, coverImage, summary, isFeatured
   },
   "upcoming": *[_type == "congress" && startDate >= now() && (isFeatured != true || count(*[_type=='congress' && isFeatured == true]) > 1)] | order(startDate asc) {
-    _id, title, slug, shortName, startDate, endDate, location, coverImage, isFeatured
+    _id, title, slug, shortName, startDate, endDate, location, coverImage, website, isFeatured
   },
   "past": *[_type == "congress" && startDate < now()] | order(startDate desc) {
     _id, title, slug, shortName, startDate, endDate, location, coverImage, summary, isFeatured
@@ -94,6 +98,11 @@ export default async function CongresPage() {
                   <CongressCard
                     key={c._id}
                     congress={c}
+                    cta={
+                      c.website
+                        ? { href: c.website, label: 'Site officiel', external: true }
+                        : undefined
+                    }
                     animationDelay={((i % 2) + 1) as 1 | 2}
                   />
                 ))}
@@ -104,11 +113,15 @@ export default async function CongresPage() {
           {past.length > 0 ? (
             <section className={styles.gridSection}>
               <h2 className={styles.gridHeading}>Congrès passés</h2>
-              <ul className={styles.pastList}>
-                {past.map((c) => (
-                  <PastCongressRow key={c._id} congress={c} />
+              <div className={styles.pastGrid}>
+                {past.map((c, i) => (
+                  <PastCongressCard
+                    key={c._id}
+                    congress={c}
+                    animationDelay={((i % 3) + 1) as 1 | 2 | 3}
+                  />
                 ))}
-              </ul>
+              </div>
             </section>
           ) : null}
 
@@ -121,61 +134,65 @@ export default async function CongresPage() {
   );
 }
 
-function PastCongressRow({ congress }: { congress: PastCongress }) {
+function PastCongressCard({
+  congress,
+  animationDelay,
+}: {
+  congress: PastCongress;
+  animationDelay?: 1 | 2 | 3;
+}) {
   const dateRange = formatDateRange(congress.startDate, congress.endDate);
   const locationStr = congress.location?.city
     ? [congress.location.city, congress.location.country].filter(Boolean).join(', ')
     : null;
-  const summaryText = blocksToPlainText(congress.summary);
+  const year = new Date(congress.startDate).getFullYear();
   const detailHref = `/congres/${congress.slug.current}`;
+  const animateClass = [
+    'animate-on-scroll',
+    animationDelay ? `delay-${animationDelay}` : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
-    <li className={`${styles.pastRow} animate-on-scroll`}>
-      <Link href={detailHref} className={styles.pastThumb} aria-label={`${congress.title} — voir la synthèse`}>
+    <Link href={detailHref} className={`${styles.pastCard} ${animateClass}`} aria-label={`${congress.title} — voir la synthèse`}>
+      <div className={styles.pastCover}>
         {congress.coverImage ? (
           <Image
-            src={urlForImage(congress.coverImage as SanityImage).width(640).height(480).url()}
+            src={urlForImage(congress.coverImage as SanityImage).width(640).height(640).url()}
             alt={(congress.coverImage as SanityImage & { alt?: string }).alt ?? congress.title}
             width={640}
-            height={480}
-            className={styles.pastThumbImg}
-            sizes="(max-width: 768px) 100vw, 280px"
+            height={640}
+            className={styles.pastCoverImg}
+            sizes="(max-width: 768px) 100vw, 33vw"
           />
         ) : (
           <CongressCover
             shortName={congress.shortName ?? congress.title.split(' ')[0]}
-            year={new Date(congress.startDate).getFullYear()}
-            className={styles.pastThumbImg}
+            year={year}
+            className={styles.pastCoverImg}
           />
         )}
-      </Link>
-      <div className={styles.pastBody}>
-        <div className={styles.pastMeta}>
-          {dateRange ? <span>{dateRange}</span> : null}
-          {locationStr ? (
-            <>
-              <span className={styles.pastMetaDot} aria-hidden />
-              <span>{locationStr}</span>
-            </>
-          ) : null}
-        </div>
-        <h3 className={styles.pastTitle}>
-          <Link href={detailHref}>{congress.title}</Link>
-        </h3>
-        {summaryText ? (
-          <p className={styles.pastSummary}>{summaryText}</p>
-        ) : (
-          <p className={styles.pastSummaryEmpty}>
-            Synthèse à venir prochainement.
-          </p>
-        )}
-        <Link href={detailHref} className={styles.pastCta}>
-          Voir la synthèse
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/arrow-dots.svg" alt="" width={16} height={16} aria-hidden />
-        </Link>
+        {congress.shortName ? (
+          <span className={styles.pastBadge}>
+            {congress.shortName} · {year}
+          </span>
+        ) : null}
       </div>
-    </li>
+      <div className={styles.pastBody}>
+        <p className={styles.pastEyebrow}>Synthèse</p>
+        <h3 className={styles.pastTitle}>{congress.title}</h3>
+        {dateRange || locationStr ? (
+          <p className={styles.pastMeta}>
+            {[dateRange, locationStr].filter(Boolean).join(' · ')}
+          </p>
+        ) : null}
+        <span className={styles.pastArrow} aria-hidden>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/arrow-dots.svg" alt="" width={16} height={16} />
+        </span>
+      </div>
+    </Link>
   );
 }
 

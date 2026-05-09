@@ -1,7 +1,6 @@
 import { article } from './article';
 import { scientificArticle } from './scientificArticle';
 import { congress } from './congress';
-import { evenement } from './evenement';
 import { video } from './video';
 import { live } from './live';
 import { advisor } from './advisor';
@@ -17,7 +16,6 @@ export const schemaTypes = [
   article,
   scientificArticle,
   congress,
-  evenement,
   video,
   live,
   advisor,

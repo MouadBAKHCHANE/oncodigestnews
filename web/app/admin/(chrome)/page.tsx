@@ -29,7 +29,6 @@ interface SanityCounts {
   articles: number;
   videos: number;
   congress: number;
-  evenements: number;
   recent: RecentArticle[];
 }
 
@@ -37,7 +36,6 @@ const sanityQuery = /* groq */ `{
   "articles": count(*[_type == "article"]),
   "videos": count(*[_type == "video"]),
   "congress": count(*[_type == "congress"]),
-  "evenements": count(*[_type == "evenement"]),
   "recent": *[_type == "article"] | order(publishedAt desc)[0...5] {
     _id, title, publishedAt, access, slug
   }
@@ -173,7 +171,6 @@ export default async function AdminOverviewPage() {
             <MiniStat label="Articles" value={sanityData.articles} />
             <MiniStat label="Vidéos" value={sanityData.videos} />
             <MiniStat label="Congrès" value={sanityData.congress} />
-            <MiniStat label="Évènements" value={sanityData.evenements} />
           </div>
           {sanityData.recent.length > 0 && (
             <div className={styles.list}>

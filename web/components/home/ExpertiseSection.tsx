@@ -58,16 +58,6 @@ const ITEMS: ExpertiseItem[] = [
     ctaHref: '/videos',
     ctaLabel: 'Voir les vidéos',
   },
-  {
-    number: '05',
-    title: 'Événements',
-    heading: 'Rencontres et formations continues.',
-    text: 'Participez à nos masterclasses, ateliers pratiques et journées de formation dédiées aux professionnels de la chirurgie et de l\'oncologie.',
-    illustration: 'abstract',
-    illustrationLabel: 'Illustration — Événements',
-    ctaHref: '/evenements',
-    ctaLabel: 'Voir les événements',
-  },
 ];
 
 export function ExpertiseSection() {

@@ -108,7 +108,6 @@ export function Footer() {
                     <Link href="/articles-scientifiques">Articles scientifiques</Link>
                     <Link href="/congres">Congrès</Link>
                     <Link href="/videos">Vidéos</Link>
-                    <Link href="/evenements">Évènements</Link>
                   </FooterColumn>
                   <FooterColumn heading="Ressources">
                     <Link href="/comite-scientifique">Comité scientifique</Link>

@@ -26,10 +26,14 @@ interface FeaturedCongress extends CongressCardData {
   isFeatured?: boolean;
 }
 
+interface PastCongress extends CongressCardData {
+  summary?: PortableTextBlock[];
+}
+
 interface SanityResponse {
   featured: FeaturedCongress | null;
   upcoming: CongressCardData[];
-  past: CongressCardData[];
+  past: PastCongress[];
 }
 
 const indexQuery = /* groq */ `{
@@ -40,7 +44,7 @@ const indexQuery = /* groq */ `{
     _id, title, slug, shortName, startDate, endDate, location, coverImage, isFeatured
   },
   "past": *[_type == "congress" && startDate < now()] | order(startDate desc) {
-    _id, title, slug, shortName, startDate, endDate, location, coverImage, isFeatured
+    _id, title, slug, shortName, startDate, endDate, location, coverImage, summary, isFeatured
   }
 }`;
 
@@ -100,15 +104,11 @@ export default async function CongresPage() {
           {past.length > 0 ? (
             <section className={styles.gridSection}>
               <h2 className={styles.gridHeading}>Congrès passés</h2>
-              <div className={styles.grid}>
-                {past.map((c, i) => (
-                  <CongressCard
-                    key={c._id}
-                    congress={c}
-                    animationDelay={((i % 2) + 1) as 1 | 2}
-                  />
+              <ul className={styles.pastList}>
+                {past.map((c) => (
+                  <PastCongressRow key={c._id} congress={c} />
                 ))}
-              </div>
+              </ul>
             </section>
           ) : null}
 
@@ -118,6 +118,64 @@ export default async function CongresPage() {
         </div>
       </div>
     </section>
+  );
+}
+
+function PastCongressRow({ congress }: { congress: PastCongress }) {
+  const dateRange = formatDateRange(congress.startDate, congress.endDate);
+  const locationStr = congress.location?.city
+    ? [congress.location.city, congress.location.country].filter(Boolean).join(', ')
+    : null;
+  const summaryText = blocksToPlainText(congress.summary);
+  const detailHref = `/congres/${congress.slug.current}`;
+
+  return (
+    <li className={`${styles.pastRow} animate-on-scroll`}>
+      <Link href={detailHref} className={styles.pastThumb} aria-label={`${congress.title} — voir la synthèse`}>
+        {congress.coverImage ? (
+          <Image
+            src={urlForImage(congress.coverImage as SanityImage).width(640).height(480).url()}
+            alt={(congress.coverImage as SanityImage & { alt?: string }).alt ?? congress.title}
+            width={640}
+            height={480}
+            className={styles.pastThumbImg}
+            sizes="(max-width: 768px) 100vw, 280px"
+          />
+        ) : (
+          <CongressCover
+            shortName={congress.shortName ?? congress.title.split(' ')[0]}
+            year={new Date(congress.startDate).getFullYear()}
+            className={styles.pastThumbImg}
+          />
+        )}
+      </Link>
+      <div className={styles.pastBody}>
+        <div className={styles.pastMeta}>
+          {dateRange ? <span>{dateRange}</span> : null}
+          {locationStr ? (
+            <>
+              <span className={styles.pastMetaDot} aria-hidden />
+              <span>{locationStr}</span>
+            </>
+          ) : null}
+        </div>
+        <h3 className={styles.pastTitle}>
+          <Link href={detailHref}>{congress.title}</Link>
+        </h3>
+        {summaryText ? (
+          <p className={styles.pastSummary}>{summaryText}</p>
+        ) : (
+          <p className={styles.pastSummaryEmpty}>
+            Synthèse à venir prochainement.
+          </p>
+        )}
+        <Link href={detailHref} className={styles.pastCta}>
+          Voir la synthèse
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/arrow-dots.svg" alt="" width={16} height={16} aria-hidden />
+        </Link>
+      </div>
+    </li>
   );
 }
 

@@ -116,7 +116,8 @@
     ],
     "additionalDirectories": [
       "D:\\Downloads\\oncodigest\\web\\app\\admin\\studio",
-      "\\tmp"
+      "\\tmp",
+      "d:\\Downloads\\oncodigest\\web\\app\\(site)\\congres"
     ]
   }
 }

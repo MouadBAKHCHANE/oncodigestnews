@@ -3,7 +3,6 @@ import type { Image as SanityImage } from 'sanity';
 import { Card } from './Card';
 import { CategoryCover } from './CategoryCover';
 import { ArticlePlaceholder } from './ArticlePlaceholder';
-import { SpecialtyBadge } from './SpecialtyBadge';
 import { urlForImage } from '@/lib/sanity/image';
 import { blocksToPlainText } from '@/lib/sanity/portableText';
 import styles from './ArticleCard.module.css';
@@ -52,6 +51,7 @@ export function ArticleCard({ article, href, animationDelay }: ArticleCardProps)
 
   const categoryTitle = article.category?.title;
   const hasCategoryCover = !article.coverImage && Boolean(categoryTitle);
+  const eyebrow = categoryTitle ?? article.tag ?? null;
 
   return (
     <Card href={linkHref} className={`${styles.articleCard} ${animateClass}`} ariaLabel={article.title}>
@@ -59,7 +59,7 @@ export function ArticleCard({ article, href, animationDelay }: ArticleCardProps)
         {article.coverImage ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={urlForImage(article.coverImage).width(800).height(450).fit('crop').url()}
+            src={urlForImage(article.coverImage).width(800).height(560).fit('crop').url()}
             alt={article.coverImage.alt ?? article.title}
             className={styles.img}
             loading="lazy"
@@ -87,14 +87,9 @@ export function ArticleCard({ article, href, animationDelay }: ArticleCardProps)
             </svg>
           </div>
         ) : null}
-
-        {/* Specialty design badge — only on real cover photos (the CategoryCover already shows the name big). */}
-        {article.coverImage && categoryTitle ? (
-          <SpecialtyBadge specialty={categoryTitle} className={styles.specialtyBadge} />
-        ) : null}
       </div>
       <div className={styles.content}>
-        {article.tag ? <span className={styles.tag}>{article.tag}</span> : null}
+        {eyebrow ? <span className={styles.eyebrow}>{eyebrow}</span> : null}
         <h3 className={styles.title}>{article.title}</h3>
         {excerptText ? <p className={styles.excerpt}>{excerptText}</p> : null}
         {(article.author?.name || formattedDate) && (

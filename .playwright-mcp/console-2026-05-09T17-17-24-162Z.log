@@ -1,0 +1,4 @@
+[     344ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.rockfi.fr/blog:0
+[     581ms] [LOG] Slater loaded Global js.js: https://slater.app/16927/46348.js 🤙 @ https://www.rockfi.fr/blog:29
+[     903ms] [LOG] Error loading file Event @ https://www.rockfi.fr/blog:13
+[     955ms] [LOG] Slater loaded Rockfi.js: https://slater.app/16962.js 🤙 @ https://www.rockfi.fr/blog:162

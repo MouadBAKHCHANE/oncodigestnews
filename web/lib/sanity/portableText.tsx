@@ -3,16 +3,37 @@ import type { PortableTextBlock } from '@portabletext/types';
 import Link from 'next/link';
 
 /**
- * Default components for rendering Sanity Portable Text. Tuned to match the
- * existing HTML's `.legal_content` typography (h1/h2/p/ul/li). Article body
- * rendering will reuse this with a different parent selector for spacing.
+ * Slugify a heading's plain text into a URL-safe anchor id. Used to wire
+ * sidebar TOC links to the matching <h2> inside the body.
+ */
+export function slugifyHeading(input: string): string {
+  return input
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '') // strip accents
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .slice(0, 80);
+}
+
+/**
+ * Default components for rendering Sanity Portable Text. h2 / h3 get a
+ * stable slug-based `id` so the sidebar TOC can deep-link to them.
  */
 const components: PortableTextComponents = {
   block: {
     normal: ({ children }) => <p>{children}</p>,
     h1: ({ children }) => <h1>{children}</h1>,
-    h2: ({ children }) => <h2>{children}</h2>,
-    h3: ({ children }) => <h3>{children}</h3>,
+    h2: ({ children, value }) => {
+      const text = blocksToPlainText([value as PortableTextBlock]);
+      return <h2 id={slugifyHeading(text)}>{children}</h2>;
+    },
+    h3: ({ children, value }) => {
+      const text = blocksToPlainText([value as PortableTextBlock]);
+      return <h3 id={slugifyHeading(text)}>{children}</h3>;
+    },
     blockquote: ({ children }) => <blockquote>{children}</blockquote>,
   },
   list: {

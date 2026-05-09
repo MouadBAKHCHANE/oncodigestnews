@@ -50,6 +50,14 @@ export const article = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'tableOfContents',
+      title: 'Sommaire (sidebar TOC)',
+      description:
+        'Liste des sections affichées dans le sommaire latéral. Le texte doit correspondre exactement à un titre H2 du corps de l\'article (les ancres sont générées automatiquement).',
+      type: 'array',
+      of: [{ type: 'string' }],
+    }),
+    defineField({
       name: 'body',
       title: 'Body (gated when Access = Pro)',
       type: 'array',

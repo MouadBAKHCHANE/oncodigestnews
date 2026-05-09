@@ -6,7 +6,7 @@ import type { PortableTextBlock } from '@portabletext/types';
 import type { Image as SanityImage } from 'sanity';
 import { sanityClient } from '@/lib/sanity/client';
 import { urlForImage } from '@/lib/sanity/image';
-import { ProseFromPortableText, blocksToPlainText } from '@/lib/sanity/portableText';
+import { ProseFromPortableText, blocksToPlainText, slugifyHeading } from '@/lib/sanity/portableText';
 import { ArticleCard, type ArticleCardData } from '@/components/cards/ArticleCard';
 import { Button } from '@/components/ui/Button';
 import { getProfile, canViewPro } from '@/lib/auth';
@@ -31,6 +31,7 @@ interface ArticleDetail {
   publishedAt: string;
   readingTime?: number | null;
   access: 'public' | 'pro';
+  tableOfContents?: string[] | null;
   category?: { title: string; slug: { current: string } } | null;
   author?: {
     name: string;
@@ -44,6 +45,7 @@ interface ArticleDetail {
 
 const articleDetailQuery = /* groq */ `*[_type == "article" && slug.current == $slug][0]{
   _id, title, slug, tag, excerpt, coverImage, publishedAt, readingTime, access,
+  tableOfContents,
   body,
   "category": category->{title, slug},
   "author": author->{name, role, photo, bio},
@@ -117,116 +119,176 @@ export default async function ArticlePage({
         .join('')
     : '';
 
+  const tocItems = (article.tableOfContents ?? []).map((label) => ({
+    label,
+    id: slugifyHeading(label),
+  }));
+
   return (
     <>
-      <header className={`${styles.header} animate-on-scroll`}>
-        <nav className={styles.breadcrumb} aria-label="Fil d'ariane">
-          <Link href="/actualites">Actualités</Link>
-          {article.category ? (
-            <>
-              <span aria-hidden>›</span>
-              <Link href={`/actualites?category=${article.category.slug.current}`}>
+      <div className={styles.layout}>
+        <aside className={styles.sidebar} aria-label="Sommaire et infos article">
+          <div className={`${styles.sideBlock} animate-on-scroll`}>
+            <span className={styles.sideEyebrow}>Article</span>
+            <p className={styles.sideMetaLine}>
+              {formattedDate}
+              {article.readingTime ? ` · ${article.readingTime} min de lecture` : ''}
+            </p>
+            {article.category ? (
+              <Link
+                href={`/actualites?category=${article.category.slug.current}`}
+                className={styles.sideCategory}
+              >
                 {article.category.title}
               </Link>
-            </>
-          ) : null}
-          <span aria-hidden>›</span>
-          <span className={styles.breadcrumbCurrent}>{article.title}</span>
-        </nav>
-
-        {article.tag ? <div className={styles.tag}>{article.tag}</div> : null}
-        <h1 className={styles.title}>{article.title}</h1>
-
-        <div className={styles.authorRow}>
-          <div className={styles.avatar} aria-hidden>
-            {article.author?.photo ? (
-              <Image
-                src={urlForImage(article.author.photo).width(96).height(96).url()}
-                alt={article.author.photo.alt ?? article.author.name}
-                width={48}
-                height={48}
-              />
-            ) : (
-              <span>{authorInitials || 'OD'}</span>
-            )}
-          </div>
-          {article.author ? (
-            <div className={styles.authorInfo}>
-              <span className={styles.authorName}>{article.author.name}</span>
-              {article.author.role ? (
-                <span className={styles.authorRole}>{article.author.role}</span>
-              ) : null}
-            </div>
-          ) : null}
-          <div className={styles.dateInfo}>
-            {formattedDate ? <span>{formattedDate}</span> : null}
-            {article.readingTime ? (
-              <span>{article.readingTime} min de lecture</span>
             ) : null}
           </div>
-        </div>
 
-        <ShareBar title={article.title} />
-      </header>
+          {tocItems.length > 0 ? (
+            <nav
+              className={`${styles.sideBlock} animate-on-scroll delay-1`}
+              aria-label="Sommaire"
+            >
+              <span className={styles.sideEyebrow}>Sommaire</span>
+              <ol className={styles.sideToc}>
+                {tocItems.map((item, i) => (
+                  <li key={item.id}>
+                    <a href={`#${item.id}`} className={styles.sideTocLink}>
+                      <span className={styles.sideTocNum}>
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span>{item.label}</span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          ) : null}
 
-      {article.coverImage ? (
-        <div className={`${styles.featuredImage} animate-on-scroll delay-1`}>
-          <Image
-            src={urlForImage(article.coverImage).width(1600).height(900).url()}
-            alt={article.coverImage.alt ?? article.title}
-            width={1600}
-            height={900}
-            priority
-            sizes="(max-width: 800px) 100vw, 800px"
-          />
-        </div>
-      ) : null}
-
-      <article className={`${styles.body} animate-on-scroll delay-2`}>
-        {/* Excerpt is always visible — even on gated articles */}
-        <div className={styles.preview}>
-          <ProseFromPortableText value={article.excerpt} />
-        </div>
-
-        {isGated ? (
-          <>
-            {bodyPreview.length > 0 ? (
-              <div className={styles.gatedPreview}>
-                <ProseFromPortableText value={bodyPreview} />
-              </div>
-            ) : null}
-            <ContentGate />
-          </>
-        ) : fullBody && fullBody.length > 0 ? (
-          <ProseFromPortableText value={fullBody} />
-        ) : null}
-      </article>
-
-      {article.author?.bio && article.author.bio.length > 0 ? (
-        <aside className={styles.authorBio}>
-          <div className={styles.authorBioInner}>
-            <div className={styles.bioPhoto} aria-hidden>
-              {article.author.photo ? (
-                <Image
-                  src={urlForImage(article.author.photo).width(160).height(160).url()}
-                  alt={article.author.photo.alt ?? article.author.name}
-                  width={80}
-                  height={80}
-                />
-              ) : (
-                <span>{authorInitials || 'OD'}</span>
-              )}
-            </div>
-            <div className={styles.bioText}>
-              <h2 className={styles.bioName}>{article.author.name}</h2>
-              {article.author.role ? (
-                <p className={styles.bioRole}>{article.author.role}</p>
-              ) : null}
-              <ProseFromPortableText value={article.author.bio} />
-            </div>
+          <div className={`${styles.sideCta} animate-on-scroll delay-2`}>
+            <h3 className={styles.sideCtaHeading}>Une question&nbsp;?</h3>
+            <p className={styles.sideCtaText}>
+              Notre comité scientifique vous répond — écrivez-nous pour
+              échanger sur un sujet ou proposer un article.
+            </p>
+            <Link href="/contact" className={styles.sideCtaBtn}>
+              Nous contacter
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/arrow-dots-light.svg" alt="" width={16} height={16} aria-hidden />
+            </Link>
           </div>
         </aside>
-      ) : null}
+
+        <main className={styles.main}>
+          <header className={`${styles.header} animate-on-scroll`}>
+            <nav className={styles.breadcrumb} aria-label="Fil d'ariane">
+              <Link href="/actualites">Actualités</Link>
+              {article.category ? (
+                <>
+                  <span aria-hidden>›</span>
+                  <Link href={`/actualites?category=${article.category.slug.current}`}>
+                    {article.category.title}
+                  </Link>
+                </>
+              ) : null}
+              <span aria-hidden>›</span>
+              <span className={styles.breadcrumbCurrent}>{article.title}</span>
+            </nav>
+
+            {article.tag ? <div className={styles.tag}>{article.tag}</div> : null}
+            <h1 className={styles.title}>{article.title}</h1>
+
+            <div className={styles.authorRow}>
+              <div className={styles.avatar} aria-hidden>
+                {article.author?.photo ? (
+                  <Image
+                    src={urlForImage(article.author.photo).width(96).height(96).url()}
+                    alt={article.author.photo.alt ?? article.author.name}
+                    width={48}
+                    height={48}
+                  />
+                ) : (
+                  <span>{authorInitials || 'OD'}</span>
+                )}
+              </div>
+              {article.author ? (
+                <div className={styles.authorInfo}>
+                  <span className={styles.authorName}>{article.author.name}</span>
+                  {article.author.role ? (
+                    <span className={styles.authorRole}>{article.author.role}</span>
+                  ) : null}
+                </div>
+              ) : null}
+              <div className={styles.dateInfo}>
+                {formattedDate ? <span>{formattedDate}</span> : null}
+                {article.readingTime ? (
+                  <span>{article.readingTime} min de lecture</span>
+                ) : null}
+              </div>
+            </div>
+
+            <ShareBar title={article.title} />
+          </header>
+
+          {article.coverImage ? (
+            <div className={`${styles.featuredImage} animate-on-scroll delay-1`}>
+              <Image
+                src={urlForImage(article.coverImage).width(1600).height(900).url()}
+                alt={article.coverImage.alt ?? article.title}
+                width={1600}
+                height={900}
+                priority
+                sizes="(max-width: 800px) 100vw, 664px"
+              />
+            </div>
+          ) : null}
+
+          <article className={`${styles.body} animate-on-scroll delay-2`}>
+            <div className={styles.preview}>
+              <ProseFromPortableText value={article.excerpt} />
+            </div>
+
+            {isGated ? (
+              <>
+                {bodyPreview.length > 0 ? (
+                  <div className={styles.gatedPreview}>
+                    <ProseFromPortableText value={bodyPreview} />
+                  </div>
+                ) : null}
+                <ContentGate />
+              </>
+            ) : fullBody && fullBody.length > 0 ? (
+              <ProseFromPortableText value={fullBody} />
+            ) : null}
+          </article>
+
+          {article.author?.bio && article.author.bio.length > 0 ? (
+            <aside className={styles.authorBio}>
+              <div className={styles.authorBioInner}>
+                <div className={styles.bioPhoto} aria-hidden>
+                  {article.author.photo ? (
+                    <Image
+                      src={urlForImage(article.author.photo).width(160).height(160).url()}
+                      alt={article.author.photo.alt ?? article.author.name}
+                      width={80}
+                      height={80}
+                    />
+                  ) : (
+                    <span>{authorInitials || 'OD'}</span>
+                  )}
+                </div>
+                <div className={styles.bioText}>
+                  <h2 className={styles.bioName}>{article.author.name}</h2>
+                  {article.author.role ? (
+                    <p className={styles.bioRole}>{article.author.role}</p>
+                  ) : null}
+                  <ProseFromPortableText value={article.author.bio} />
+                </div>
+              </div>
+            </aside>
+          ) : null}
+        </main>
+      </div>
 
       {(() => {
         const manual = article.relatedArticles ?? [];

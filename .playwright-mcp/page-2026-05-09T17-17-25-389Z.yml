@@ -1,0 +1,10 @@
+- generic [active] [ref=e1]:
+  - button "Manage your preferences about cookies" [ref=e2] [cursor=pointer]:
+    - img [ref=e6]
+  - generic [ref=e10]:
+    - heading "Page introuvable" [level=3] [ref=e11]
+    - generic [ref=e12]: La page que vous recherchez n'existe pas ou a été déplacée
+    - link "Retour à la home" [ref=e13] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e14]: Retour à la home
+      - img [ref=e16]

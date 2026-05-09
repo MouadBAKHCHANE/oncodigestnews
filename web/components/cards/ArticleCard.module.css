@@ -1,14 +1,20 @@
-/* ArticleCard — copied verbatim from actualites.html .article_* rules. */
+/* ArticleCard — editorial pattern: borderless, image-led, serif title.
+   Overrides the base .card box (white/border/radius) so the thumbnail is
+   the visual anchor and the text block below sits on the page bg. */
 
 .articleCard {
-  /* Base hover/border/radius is inherited from Card.module.css */
+  background: transparent;
+  border: 0 none;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none !important;
 }
 
 .imgWrapper {
   position: relative;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 5 / 3.5;
   overflow: hidden;
-  border-radius: 16px 16px 0 0;
+  border-radius: 8px;
   background: var(--husk--50);
 }
 
@@ -16,17 +22,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.imgPlaceholder {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #f8f5ec 0%, #e8dfca 100%);
+  transition: transform 0.5s ease;
 }
 
 .articleCard:hover .img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .lockBadge {
@@ -40,6 +40,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
 }
 
 .lockBadge svg {
@@ -48,63 +49,41 @@
   color: #fff;
 }
 
-/* Specialty design badge — bottom-right overlay on the card image */
-.specialtyBadge {
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  width: 130px;
-  height: 52px;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  pointer-events: none;
-  z-index: 2;
-  transition: transform 0.4s ease;
-}
-
-.articleCard:hover .specialtyBadge {
-  transform: translateY(-2px);
-}
-
-@media (max-width: 480px) {
-  .specialtyBadge {
-    width: 110px;
-    height: 44px;
-    bottom: 10px;
-    right: 10px;
-  }
-}
-
 .content {
-  padding: 24px;
+  padding: 16px 0 0;
 }
 
-.tag {
+.eyebrow {
   display: inline-block;
-  background: var(--cod-gray--50);
-  color: rgb(136, 136, 136);
+  font-family: var(--font-body-stack);
   font-size: 11px;
   font-weight: 500;
-  padding: 4px 10px;
-  border-radius: 100px;
-  letter-spacing: 0.5px;
+  color: var(--cod-gray--500);
+  letter-spacing: 0.7px;
   text-transform: uppercase;
 }
 
 .title {
   font-family: var(--font-display-stack);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 300;
-  line-height: 1.3;
+  line-height: 1.18;
+  letter-spacing: -0.4px;
   color: var(--cod-gray--900);
-  margin-top: 12px;
+  margin: 6px 0 0;
+  transition: color 0.2s ease;
+}
+
+.articleCard:hover .title {
+  color: var(--cod-gray--700);
 }
 
 .excerpt {
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--cod-gray--500);
-  margin-top: 8px;
+  font-family: var(--font-body-stack);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--cod-gray--600);
+  margin: 8px 0 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -112,13 +91,15 @@
 }
 
 .meta {
+  font-family: var(--font-body-stack);
   font-size: 12px;
   color: var(--cod-gray--400);
-  margin-top: 16px;
+  margin: 14px 0 0;
+  letter-spacing: 0.1px;
 }
 
 @media (max-width: 768px) {
   .title {
-    font-size: 15px;
+    font-size: 18px;
   }
 }

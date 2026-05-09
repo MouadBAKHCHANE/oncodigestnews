@@ -41,26 +41,59 @@ const indexQuery = /* groq */ `{
   }
 }`;
 
+function formatNextLive(startsAt: string): string {
+  const d = new Date(startsAt);
+  const date = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' });
+  const time = d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+  return `Prochain live · ${date} · ${time}`;
+}
+
 export default async function VideosPage() {
   const { videos, categories, lives } = await sanityClient.fetch<SanityResponse>(indexQuery);
+
+  const now = Date.now();
+  const nextLive = [...lives]
+    .filter((l) => new Date(l.startsAt).getTime() >= now)
+    .sort((a, b) => new Date(a.startsAt).getTime() - new Date(b.startsAt).getTime())[0];
+
+  const liveStatusLabel = nextLive
+    ? formatNextLive(nextLive.startsAt)
+    : 'Aucun live prévu prochainement';
 
   return (
     <section className={styles.section}>
       <div className="padding-global">
         <div className="container-large">
           <header className={styles.header}>
-            <span className={`${styles.tag} animate-on-scroll`}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
-              <span>Vidéos & Lives</span>
-            </span>
-            <TitleReveal as="h1" className={styles.heading}>
-              Conférences, démonstrations et lives en direct.
-            </TitleReveal>
-            <p className={`${styles.lead} animate-on-scroll delay-2`}>
-              Suivez les interventions de notre comité scientifique en replay, et inscrivez-vous
-              aux prochains lives réservés aux professionnels de santé.
-            </p>
+            <div className={styles.headerInner}>
+              <div className={styles.headerLeft}>
+                <span className={`${styles.tag} animate-on-scroll`}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/dot-grid.svg"
+                    alt=""
+                    width={16}
+                    height={16}
+                    className={styles.dotIcon}
+                  />
+                  <span>Vidéos & Lives</span>
+                </span>
+                <TitleReveal as="h1" className={styles.heading}>
+                  Conférences, démonstrations et lives en direct.
+                </TitleReveal>
+                <p className={`${styles.lead} animate-on-scroll delay-2`}>
+                  Suivez les interventions de notre comité scientifique en replay, et inscrivez-vous
+                  aux prochains lives réservés aux professionnels de santé.
+                </p>
+              </div>
+              <div className={`${styles.headerStatus} animate-on-scroll delay-1`}>
+                <span
+                  className={`${styles.liveDot} ${nextLive ? styles.liveDotActive : ''}`}
+                  aria-hidden
+                />
+                <span className={styles.liveStatusLabel}>{liveStatusLabel}</span>
+              </div>
+            </div>
           </header>
 
           <section className={styles.livesSection}>

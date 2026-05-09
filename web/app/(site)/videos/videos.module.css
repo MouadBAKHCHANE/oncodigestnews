@@ -8,6 +8,58 @@
   margin-bottom: 48px;
 }
 
+.headerInner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 24px;
+}
+
+.headerLeft {
+  min-width: 0;
+}
+
+.headerStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: var(--cod-gray--0);
+  border: 1px solid var(--cod-gray--200);
+  border-radius: 999px;
+  font-family: var(--font-body-stack);
+  font-size: 12px;
+  color: var(--cod-gray--700);
+  white-space: nowrap;
+  margin-top: 4px;
+}
+
+.liveDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cod-gray--300);
+  flex-shrink: 0;
+}
+
+.liveDotActive {
+  background: var(--canary--900, #d6e57c);
+  box-shadow: 0 0 0 4px rgba(214, 229, 124, 0.25);
+}
+
+.liveStatusLabel {
+  letter-spacing: 0.1px;
+}
+
+@media (max-width: 768px) {
+  .headerInner {
+    grid-template-columns: 1fr;
+  }
+  .headerStatus {
+    width: fit-content;
+  }
+}
+
 .tag {
   display: inline-flex;
   align-items: center;

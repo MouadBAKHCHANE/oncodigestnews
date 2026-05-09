@@ -1,6 +1,7 @@
 import type { PortableTextBlock } from '@portabletext/types';
 import type { Image as SanityImage } from 'sanity';
 import { Card } from './Card';
+import { CategoryCover } from './CategoryCover';
 import { ArticlePlaceholder } from './ArticlePlaceholder';
 import { SpecialtyBadge } from './SpecialtyBadge';
 import { urlForImage } from '@/lib/sanity/image';
@@ -49,6 +50,9 @@ export function ArticleCard({ article, href, animationDelay }: ArticleCardProps)
     .filter(Boolean)
     .join(' ');
 
+  const categoryTitle = article.category?.title;
+  const hasCategoryCover = !article.coverImage && Boolean(categoryTitle);
+
   return (
     <Card href={linkHref} className={`${styles.articleCard} ${animateClass}`} ariaLabel={article.title}>
       <div className={styles.imgWrapper}>
@@ -60,9 +64,11 @@ export function ArticleCard({ article, href, animationDelay }: ArticleCardProps)
             className={styles.img}
             loading="lazy"
           />
+        ) : hasCategoryCover ? (
+          <CategoryCover category={categoryTitle as string} className={styles.img} />
         ) : (
           <ArticlePlaceholder
-            label={article.tag || article.category?.title || 'Article'}
+            label={article.tag || categoryTitle || 'Article'}
             seed={(article._id ?? '').length}
           />
         )}
@@ -82,12 +88,9 @@ export function ArticleCard({ article, href, animationDelay }: ArticleCardProps)
           </div>
         ) : null}
 
-        {/* Specialty design badge — bottom-right corner overlay */}
-        {article.category?.title ? (
-          <SpecialtyBadge
-            specialty={article.category.title}
-            className={styles.specialtyBadge}
-          />
+        {/* Specialty design badge — only on real cover photos (the CategoryCover already shows the name big). */}
+        {article.coverImage && categoryTitle ? (
+          <SpecialtyBadge specialty={categoryTitle} className={styles.specialtyBadge} />
         ) : null}
       </div>
       <div className={styles.content}>

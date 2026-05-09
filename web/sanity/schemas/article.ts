@@ -79,7 +79,8 @@ export const article = defineType({
       type: 'image',
       options: { hotspot: true },
       fields: [{ name: 'alt', type: 'string', title: 'Alt text' }],
-      validation: (Rule) => Rule.required(),
+      description:
+        'Optional. When omitted, a category-themed cover is rendered automatically (Chirurgie / Innovation / Oncologie variants).',
     }),
     defineField({
       name: 'author',

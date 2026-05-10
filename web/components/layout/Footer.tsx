@@ -99,7 +99,7 @@ export function Footer() {
               <div className={styles.footerLinks}>
                 <div className={styles.footerLinksLeft}>
                   <Link href="/" className={styles.footerLogoLink} aria-label="OncoDigest news — accueil">
-                    <Logo size={42} />
+                    <Logo size={42} dark />
                   </Link>
                   <p className={styles.footerSlogan}>
                     L&apos;information oncologique, rigoureuse et accessible.

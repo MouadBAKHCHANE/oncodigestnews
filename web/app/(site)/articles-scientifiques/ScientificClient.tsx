@@ -177,7 +177,7 @@ function FeaturedCard({ article }: { article: ScientificArticleData }) {
   const isLocked = article.access === 'pro';
   const excerptText = blocksToPlainText(article.excerpt);
   const tag = plainTag(article);
-  const href = article.externalUrl ?? `/article/${article.slug.current}`;
+  const href = article.externalUrl ?? `/articles-scientifiques/${article.slug.current}`;
   const isExternal = !!article.externalUrl;
 
   return (
@@ -252,7 +252,7 @@ function ScientificCard({
   const excerptText = blocksToPlainText(article.excerpt);
   const tag = plainTag(article);
   const isExternal = !!article.externalUrl;
-  const href = article.externalUrl ?? `/article/${article.slug.current}`;
+  const href = article.externalUrl ?? `/articles-scientifiques/${article.slug.current}`;
 
   return (
     <Card

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import styles from './admin.module.css';
 
-type Accent = 'canary' | 'husk' | 'dark' | 'mint';
+type Accent = 'slate' | 'canary' | 'husk' | 'dark' | 'mint';
 
 interface Launcher {
   href: string;
@@ -14,6 +14,19 @@ interface Launcher {
 }
 
 const LAUNCHERS: Launcher[] = [
+  {
+    href: '/admin',
+    label: 'Dashboard',
+    accent: 'slate',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="7" height="7" rx="1.4" />
+        <rect x="14" y="3" width="7" height="7" rx="1.4" />
+        <rect x="3" y="14" width="7" height="7" rx="1.4" />
+        <rect x="14" y="14" width="7" height="7" rx="1.4" />
+      </svg>
+    ),
+  },
   {
     href: '/admin/users?tab=pending',
     label: 'Inscriptions',

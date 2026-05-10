@@ -1,7 +1,8 @@
 /* Footer — copied verbatim from index.html (lines 1593-1797 + responsive). */
 
 .footer {
-  background: transparent;
+  background: var(--cod-gray--900);
+  color: var(--cod-gray--200);
 }
 
 .footerPaddingVertical {
@@ -170,6 +171,7 @@
 .footerLinksLeft {
   display: flex;
   flex-direction: column;
+  gap: 16px;
   border-radius: 5.06667px;
 }
 
@@ -179,9 +181,62 @@
   padding-left: 11.4286px;
 }
 
+.footerSlogan {
+  font-family: var(--font-display-stack);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.35;
+  letter-spacing: -0.2px;
+  color: var(--cod-gray--200);
+  margin: 0;
+  padding-left: 11.4286px;
+  max-width: 280px;
+}
+
+.footerSocial {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 11.4286px;
+  margin-top: 4px;
+}
+
+.footerSocialLabel {
+  font-family: var(--font-body-stack);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: var(--cod-gray--400);
+}
+
+.footerSocialIcons {
+  display: flex;
+  gap: 10px;
+}
+
+.footerSocialIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--cod-gray--100);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.footerSocialIcon:hover {
+  background: var(--cod-gray--0, #fff);
+  border-color: var(--cod-gray--0, #fff);
+  color: var(--cod-gray--900);
+}
+
 .footerLinksRight {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 11.4286px;
 }
 
@@ -191,8 +246,8 @@
 
 .footerLinkHeading {
   font-size: 13.3333px;
-  font-weight: 400;
-  color: var(--cod-gray--700);
+  font-weight: 500;
+  color: var(--cod-gray--100);
   line-height: 20px;
   letter-spacing: -0.285715px;
   font-family: var(--font-body-stack);
@@ -207,7 +262,7 @@
 .footerLinkList a {
   display: block;
   font-size: 13.3333px;
-  color: rgb(136, 136, 136);
+  color: var(--cod-gray--400);
   line-height: 20px;
   letter-spacing: -0.285715px;
   padding: 2.08px 0;
@@ -216,7 +271,7 @@
 }
 
 .footerLinkList a:hover {
-  color: rgb(76, 76, 76);
+  color: var(--cod-gray--0, #fff);
 }
 
 .isBtn {
@@ -249,11 +304,13 @@
   .footerLinksLeft {
     margin-bottom: 32px;
   }
-  .footerLogoLink {
+  .footerLogoLink,
+  .footerSlogan,
+  .footerSocial {
     padding-left: 0;
   }
   .footerLinksRight {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

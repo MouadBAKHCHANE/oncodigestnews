@@ -90,6 +90,10 @@
   transform: scale(1.05);
 }
 
+.launcher_slate .launcherIcon {
+  background: var(--cod-gray--100, #ebe8e2);
+  color: var(--cod-gray--800);
+}
 .launcher_canary .launcherIcon {
   background: var(--canary--300, #f0ff4d);
   color: var(--canary--900, #4b590e);
@@ -137,9 +141,9 @@
 .drawerBackdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(2px);
-  z-index: 40;
+  z-index: 9998;
   animation: drawerBackdropIn 0.2s ease-out;
 }
 
@@ -148,10 +152,15 @@
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 41;
+  z-index: 9999;
   width: min(320px, 86vw);
-  background: #fff;
-  box-shadow: -16px 0 32px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  background-image: none;
+  /* Force solid surface: kill any inherited transparency / blur from sticky parents. */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  isolation: isolate;
+  box-shadow: -16px 0 32px rgba(0, 0, 0, 0.18);
   display: flex;
   flex-direction: column;
   animation: drawerIn 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);

@@ -1,14 +1,14 @@
 .section {
-  padding: 56px 0 80px;
+  padding: 40px 0 56px;
 }
 
 /* Header — title left, lead text right */
 .header {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  gap: 28px;
   align-items: end;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 .tag {
@@ -71,7 +71,7 @@
 .cover {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
 }
 

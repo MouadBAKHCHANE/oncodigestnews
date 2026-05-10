@@ -16,7 +16,11 @@ export function LivesPreviewSection({ videos }: LivesPreviewSectionProps) {
         <div className="container-large">
           <div className={styles.header}>
             <div>
-              <span className={`${styles.eyebrow} animate-on-scroll`}>Vidéos & Lives</span>
+              <span className={`${styles.eyebrow} animate-on-scroll`}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
+                <span>Vidéos & Lives</span>
+              </span>
               <h2 className={`${styles.heading} animate-on-scroll delay-1`}>
                 Conférences, interviews et lives.
               </h2>
@@ -24,7 +28,7 @@ export function LivesPreviewSection({ videos }: LivesPreviewSectionProps) {
             <Link href="/videos" className={`${styles.headerLink} animate-on-scroll delay-2`}>
               Voir tout
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/arrow-dots.svg" alt="" width={16} height={16} aria-hidden />
+              <img src="/arrow-dots-light.svg" alt="" width={16} height={16} aria-hidden />
             </Link>
           </div>
 

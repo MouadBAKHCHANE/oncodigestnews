@@ -37,11 +37,6 @@ export const scientificArticle = defineType({
       description: 'e.g. NEJM, The Lancet Oncology',
     }),
     defineField({
-      name: 'doi',
-      type: 'string',
-      description: 'e.g. 10.1056/NEJMoa2023456',
-    }),
-    defineField({
       name: 'externalUrl',
       type: 'url',
       description: 'Link to original paper',
@@ -65,10 +60,37 @@ export const scientificArticle = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'body',
+      title: 'Body (gated when Access = Pro)',
+      type: 'array',
+      of: [
+        { type: 'block' },
+        {
+          type: 'image',
+          options: { hotspot: true },
+          fields: [{ name: 'alt', type: 'string', title: 'Alt text' }],
+        },
+        {
+          type: 'object',
+          name: 'callout',
+          fields: [
+            { name: 'text', type: 'text' },
+            {
+              name: 'tone',
+              type: 'string',
+              options: { list: ['info', 'warning', 'highlight'] },
+            },
+          ],
+        },
+      ],
+    }),
+    defineField({
       name: 'commentary',
-      title: 'Editorial commentary (gated when Access = Pro)',
+      title: 'Editorial commentary (legacy)',
       type: 'array',
       of: [{ type: 'block' }],
+      hidden: true,
+      deprecated: { reason: "Use 'body' instead." },
     }),
     defineField({
       name: 'coverImage',

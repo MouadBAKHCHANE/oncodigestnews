@@ -22,7 +22,7 @@ const ITEMS: ExpertiseItem[] = [
     number: '01',
     title: 'Actualités',
     heading: "L'actualité médicale, filtrée et expliquée.",
-    text: 'Chaque semaine, les publications les plus pertinentes en chirurgie digestive et oncologie — sélectionnées et commentées par nos experts pour la pratique clinique.',
+    text: 'Chaque semaine, les publications les plus pertinentes en chirurgie digestive et oncologie sélectionnées et commentées par nos experts pour la pratique clinique.',
     illustration: 'digestive',
     illustrationLabel: 'Illustration — Actualités',
     ctaHref: '/actualites',

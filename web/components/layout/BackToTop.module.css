@@ -1,0 +1,66 @@
+.btn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 50;
+
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--cod-gray--900);
+  color: var(--cod-gray--0, #fff);
+  border: 1px solid var(--cod-gray--900);
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+
+  cursor: pointer;
+  /* Hidden state */
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--cod-gray--700);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--canary--400, #e2f625);
+  outline-offset: 3px;
+}
+
+.btnVisible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Mobile: tighter inset, slightly smaller button */
+@media (max-width: 768px) {
+  .btn {
+    right: 16px;
+    bottom: 16px;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: opacity 0.15s ease;
+    transform: none;
+  }
+  .btnVisible {
+    transform: none;
+  }
+}

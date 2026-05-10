@@ -5,15 +5,15 @@ export const structure: StructureResolver = (S) =>
     .title('Content')
     .items([
       S.listItem()
-        .title('📰 Editorial')
+        .title('📰 Éditorial')
         .child(
           S.list()
-            .title('Editorial')
+            .title('Éditorial')
             .items([
-              S.documentTypeListItem('article').title('Articles'),
-              S.documentTypeListItem('scientificArticle').title('Scientific articles'),
-              S.documentTypeListItem('congress').title('Congress'),
-              S.documentTypeListItem('video').title('Videos'),
+              S.documentTypeListItem('article').title('Actualités'),
+              S.documentTypeListItem('scientificArticle').title('Articles scientifiques'),
+              S.documentTypeListItem('congress').title('Congrès'),
+              S.documentTypeListItem('video').title('Vidéos'),
               S.documentTypeListItem('live').title('Lives'),
             ]),
         ),

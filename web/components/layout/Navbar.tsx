@@ -8,6 +8,7 @@ import { UserMenu } from './UserMenu';
 import styles from './Navbar.module.css';
 
 const links = [
+  { href: '/', label: 'Accueil' },
   { href: '/actualites', label: 'Actualités' },
   { href: '/articles-scientifiques', label: 'Articles scientifiques' },
   { href: '/congres', label: 'Congrès' },

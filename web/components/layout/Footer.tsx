@@ -104,6 +104,7 @@ export function Footer() {
                 </div>
                 <div className={styles.footerLinksRight}>
                   <FooterColumn heading="Plateforme">
+                    <Link href="/">Accueil</Link>
                     <Link href="/actualites">Actualités</Link>
                     <Link href="/articles-scientifiques">Articles scientifiques</Link>
                     <Link href="/congres">Congrès</Link>

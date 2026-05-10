@@ -27,8 +27,6 @@ interface HomeData {
   settings: {
     siteName?: string;
     tagline?: string;
-    heroTypewriterWords?: string[];
-    heroImage?: (SanityImage & { alt?: string }) | null;
   } | null;
   advisors: Array<{
     _id: string;
@@ -49,7 +47,7 @@ interface HomeData {
 
 const homeQuery = /* groq */ `{
   "settings": *[_type == "siteSettings"][0]{
-    siteName, tagline, heroTypewriterWords, heroImage
+    siteName, tagline
   },
   "advisors": *[_type == "advisor"] | order(order asc)[0...3] {
     _id, name, role, photo, quote
@@ -88,33 +86,15 @@ const FALLBACK_PROMESSE_IMAGE = '/oncodigest_doctors_conference.png';
 export default async function HomePage() {
   const data = await sanityClient.fetch<HomeData>(homeQuery);
 
-  // Hero: real Sanity image OR null → BrandIllustration variant="hero"
-  const heroImageUrl = data.settings?.heroImage
-    ? urlForImage(data.settings.heroImage).width(1600).height(1200).url()
-    : null;
-
-  const heroAlt =
-    data.settings?.heroImage?.alt ?? 'OncoDigest — Information oncologique';
-
-  // Promesse: needs a real image (venetian strips slice it). Falls back to
-  // a neutral medical photo (no people) until a Sanity image is set.
-  const promesseImageUrl = data.settings?.heroImage
-    ? urlForImage(data.settings.heroImage).width(1200).height(1600).url()
-    : FALLBACK_PROMESSE_IMAGE;
+  // Hero uses BrandIllustration variant="hero" by default.
+  // Promesse falls back to a neutral medical photo (no people).
+  const promesseImageUrl = FALLBACK_PROMESSE_IMAGE;
 
   const faqItems: FAQItemData[] = data.faqs ?? [];
 
   return (
     <>
-      <Hero
-        imageUrl={heroImageUrl}
-        imageAlt={heroAlt}
-        typewriterWords={
-          data.settings?.heroTypewriterWords && data.settings.heroTypewriterWords.length > 0
-            ? data.settings.heroTypewriterWords
-            : undefined
-        }
-      />
+      <Hero imageUrl={null} imageAlt="OncoDigest — Information oncologique" />
 
       <PromesseSection
         imageUrl={promesseImageUrl}

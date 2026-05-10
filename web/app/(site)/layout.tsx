@@ -4,6 +4,7 @@ import { PageLoader } from '@/components/layout/PageLoader';
 import { GrainOverlay } from '@/components/layout/GrainOverlay';
 import { SiteEffects } from '@/components/layout/SiteEffects';
 import { CookieBanner } from '@/components/layout/CookieBanner';
+import { BackToTop } from '@/components/layout/BackToTop';
 import styles from './siteLayout.module.css';
 
 /**
@@ -35,6 +36,7 @@ export default function SiteLayout({
         <main>{children}</main>
         <Footer />
       </div>
+      <BackToTop />
     </>
   );
 }

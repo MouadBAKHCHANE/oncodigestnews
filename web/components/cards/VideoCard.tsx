@@ -9,6 +9,8 @@ export interface VideoCardData {
   title: string;
   slug: { current: string };
   thumbnail: (SanityImage & { alt?: string }) | null;
+  /** YouTube/Vimeo/MP4 URL — used as a thumbnail fallback when no Sanity image is set. */
+  videoUrl?: string | null;
   durationSeconds: number;
   publishedAt?: string;
   access: 'public' | 'pro';
@@ -17,6 +19,26 @@ export interface VideoCardData {
   speakerLine?: string | null;
   /** Override default tag (defaults to category title or empty). */
   tag?: string | null;
+}
+
+/** Extract the YouTube video id from a watch / youtu.be / shorts URL. Returns null otherwise. */
+function youtubeIdFromUrl(url: string | null | undefined): string | null {
+  if (!url) return null;
+  try {
+    const u = new URL(url);
+    if (/(^|\.)youtu\.be$/i.test(u.hostname)) {
+      return u.pathname.replace(/^\//, '').split('/')[0] || null;
+    }
+    if (/(^|\.)youtube\.com$/i.test(u.hostname)) {
+      const v = u.searchParams.get('v');
+      if (v) return v;
+      const m = /^\/(embed|shorts)\/([\w-]+)/.exec(u.pathname);
+      if (m) return m[2];
+    }
+  } catch {
+    return null;
+  }
+  return null;
 }
 
 interface VideoCardProps {
@@ -46,6 +68,9 @@ export function VideoCard({ video, href, animationDelay }: VideoCardProps) {
       })
     : null;
 
+  const ytId = youtubeIdFromUrl(video.videoUrl);
+  const ytThumb = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : null;
+
   const animateClass = [
     'animate-on-scroll',
     animationDelay ? `delay-${animationDelay}` : '',
@@ -68,6 +93,14 @@ export function VideoCard({ video, href, animationDelay }: VideoCardProps) {
             height={450}
             className={styles.img}
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          />
+        ) : ytThumb ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={ytThumb}
+            alt={video.title}
+            className={styles.img}
+            loading="lazy"
           />
         ) : (
           <div className={styles.imgPlaceholder} aria-hidden />

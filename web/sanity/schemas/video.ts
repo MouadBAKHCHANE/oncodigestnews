@@ -16,7 +16,8 @@ export const video = defineType({
       name: 'thumbnail',
       type: 'image',
       options: { hotspot: true },
-      validation: (Rule) => Rule.required(),
+      description:
+        "Optionnel. Si la vidéo provient de YouTube, l'image hqdefault du clip sera utilisée automatiquement.",
     }),
     defineField({
       name: 'videoUrl',

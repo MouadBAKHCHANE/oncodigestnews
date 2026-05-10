@@ -27,7 +27,7 @@ interface SanityResponse {
 
 const indexQuery = /* groq */ `{
   "videos": *[_type == "video"] | order(publishedAt desc) {
-    _id, title, slug, thumbnail, durationSeconds, publishedAt, access,
+    _id, title, slug, thumbnail, videoUrl, durationSeconds, publishedAt, access,
     "category": category->{title, slug},
     "speakerLine": array::join(speakers[]->name, ' · ')
   },

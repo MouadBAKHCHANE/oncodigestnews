@@ -8,6 +8,24 @@ export const siteSettings = defineType({
     defineField({ name: 'siteName', type: 'string', initialValue: 'OncoDigest' }),
     defineField({ name: 'tagline', type: 'string' }),
     defineField({
+      name: 'logo',
+      title: 'Logo (image)',
+      description:
+        'Logo bitmap principal — utilisé en remplacement du wordmark texte. Format conseillé : PNG/SVG transparent.',
+      type: 'image',
+      options: { hotspot: true },
+      fields: [{ name: 'alt', type: 'string', title: 'Alt text' }],
+    }),
+    defineField({
+      name: 'logoDark',
+      title: 'Logo (variante fond sombre, optionnel)',
+      description:
+        'Variante du logo destinée aux fonds sombres (footer, lives section). Si vide, le logo principal est utilisé partout.',
+      type: 'image',
+      options: { hotspot: true },
+      fields: [{ name: 'alt', type: 'string', title: 'Alt text' }],
+    }),
+    defineField({
       name: 'heroTypewriterWords',
       type: 'array',
       of: [{ type: 'string' }],

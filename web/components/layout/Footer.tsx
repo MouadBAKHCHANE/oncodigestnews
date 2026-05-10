@@ -99,8 +99,38 @@ export function Footer() {
               <div className={styles.footerLinks}>
                 <div className={styles.footerLinksLeft}>
                   <Link href="/" className={styles.footerLogoLink} aria-label="OncoDigest news — accueil">
-                    <Logo size={22} />
+                    <Logo size={42} />
                   </Link>
+                  <p className={styles.footerSlogan}>
+                    L&apos;information oncologique, rigoureuse et accessible.
+                  </p>
+                  <div className={styles.footerSocial}>
+                    <span className={styles.footerSocialLabel}>Nous suivre</span>
+                    <div className={styles.footerSocialIcons}>
+                      <a
+                        href="https://www.youtube.com/@DrABMOncoDigest"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="YouTube"
+                        className={styles.footerSocialIcon}
+                      >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                      </a>
+                      <a
+                        href="https://linkedin.com/company/oncodigest/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn"
+                        className={styles.footerSocialIcon}
+                      >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                          <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.65-1.85 3.4-1.85 3.64 0 4.31 2.39 4.31 5.5v6.24zM5.34 7.43c-1.14 0-2.06-.92-2.06-2.06s.92-2.06 2.06-2.06 2.06.92 2.06 2.06-.92 2.06-2.06 2.06zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
                 </div>
                 <div className={styles.footerLinksRight}>
                   <FooterColumn heading="Plateforme">
@@ -114,25 +144,6 @@ export function Footer() {
                     <Link href="/comite-scientifique">Comité scientifique</Link>
                     <Link href="/a-propos">À propos</Link>
                     <Link href="/contact">Contact</Link>
-                  </FooterColumn>
-                  <FooterColumn heading="Nous suivre">
-                    <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer" className={styles.isBtn}>
-                      YouTube
-                    </a>
-                    <a
-                      href="https://linkedin.com/company/oncodigest/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.isBtn}
-                    >
-                      <svg width="14" height="15" viewBox="0 0 14 15" fill="none" aria-hidden>
-                        <path
-                          d="M12.96 0.5H1.03C0.46 0.5 0 0.96 0 1.53V13.47C0 14.04 0.46 14.5 1.03 14.5H12.96C13.54 14.5 14 14.04 14 13.47V1.53C14 0.96 13.54 0.5 12.96 0.5ZM4.15 12.47H2.08V5.87H4.15V12.47ZM3.12 4.96C2.45 4.96 1.91 4.42 1.91 3.75C1.91 3.08 2.45 2.54 3.12 2.54C3.79 2.54 4.33 3.08 4.33 3.75C4.33 4.42 3.79 4.96 3.12 4.96ZM11.96 12.47H9.89V9.26C9.89 8.47 9.87 7.45 8.79 7.45C7.69 7.45 7.52 8.31 7.52 9.2V12.47H5.46V5.87H7.44V6.81H7.47C7.74 6.27 8.44 5.7 9.47 5.7C11.56 5.7 11.96 7.08 11.96 8.87V12.47Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                      LinkedIn
-                    </a>
                   </FooterColumn>
                   <FooterColumn heading="Légal">
                     <Link href="/mentions-legales">Mentions légales</Link>

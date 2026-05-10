@@ -35,7 +35,7 @@ export function Navbar() {
 
           {/* Logo */}
           <Link href="/" className={styles.navbarLogoLink} aria-label="OncoDigest news — accueil">
-            <Logo />
+            <Logo size={36} />
           </Link>
 
           {/* Desktop nav links */}

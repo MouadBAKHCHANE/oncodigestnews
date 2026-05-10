@@ -65,46 +65,41 @@ export default async function VideosPage() {
       <div className="padding-global">
         <div className="container-large">
           <header className={styles.header}>
-            <div className={styles.headerInner}>
-              <div className={styles.headerLeft}>
-                <span className={`${styles.tag} animate-on-scroll`}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/dot-grid.svg"
-                    alt=""
-                    width={16}
-                    height={16}
-                    className={styles.dotIcon}
-                  />
-                  <span>Vidéos & Lives</span>
-                </span>
-                <TitleReveal as="h1" className={styles.heading}>
-                  Conférences, démonstrations et lives en direct.
-                </TitleReveal>
-                <p className={`${styles.lead} animate-on-scroll delay-2`}>
-                  Suivez les interventions de notre comité scientifique en replay, et inscrivez-vous
-                  aux prochains lives réservés aux professionnels de santé.
-                </p>
-              </div>
-              <div className={`${styles.headerStatus} animate-on-scroll delay-1`}>
+            <span className={`${styles.tag} animate-on-scroll`}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
+              <span>Vidéos & Lives</span>
+            </span>
+            <TitleReveal as="h1" className={styles.heading}>
+              Conférences, démonstrations et lives en direct.
+            </TitleReveal>
+            <p className={`${styles.lead} animate-on-scroll delay-2`}>
+              Suivez les interventions de notre comité scientifique en replay, et inscrivez-vous
+              aux prochains lives réservés aux professionnels de santé.
+            </p>
+          </header>
+
+          <div className={styles.twoColLayout}>
+            <aside className={styles.livesAside}>
+              <h2 className={styles.sectionHeading}>Prochains lives</h2>
+              <LivesCalendar events={lives} />
+              <div
+                className={`${styles.liveStatusChip} ${nextLive ? styles.liveStatusChipActive : ''}`}
+                aria-live="polite"
+              >
                 <span
                   className={`${styles.liveDot} ${nextLive ? styles.liveDotActive : ''}`}
                   aria-hidden
                 />
                 <span className={styles.liveStatusLabel}>{liveStatusLabel}</span>
               </div>
-            </div>
-          </header>
+            </aside>
 
-          <section className={styles.livesSection}>
-            <h2 className={styles.sectionHeading}>Prochains lives</h2>
-            <LivesCalendar events={lives} />
-          </section>
-
-          <section className={styles.videosSection}>
-            <h2 className={styles.sectionHeading}>Vidéos</h2>
-            <VideosClient videos={videos} categories={categories} />
-          </section>
+            <section className={styles.videosColumn}>
+              <h2 className={styles.sectionHeading}>Vidéos</h2>
+              <VideosClient videos={videos} categories={categories} />
+            </section>
+          </div>
         </div>
       </div>
     </section>

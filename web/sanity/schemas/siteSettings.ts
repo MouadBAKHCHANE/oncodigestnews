@@ -26,6 +26,14 @@ export const siteSettings = defineType({
       fields: [{ name: 'alt', type: 'string', title: 'Alt text' }],
     }),
     defineField({
+      name: 'favicon',
+      title: 'Favicon',
+      description:
+        "Icône du site (favicon) — onglet du navigateur. Format conseillé : PNG carré 256×256 ou 512×512.",
+      type: 'image',
+      options: { hotspot: false },
+    }),
+    defineField({
       name: 'contact',
       type: 'object',
       fields: [

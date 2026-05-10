@@ -42,7 +42,7 @@ export const structure: StructureResolver = (S) =>
                   S.editor()
                     .id('siteSettings')
                     .schemaType('siteSettings')
-                    .documentId('siteSettings'),
+                    .documentId('662831bd-9ee2-4d1c-bdcc-1f8675d318e7'),
                 ),
             ]),
         ),

@@ -114,7 +114,11 @@
       "mcp__plugin_sanity_Sanity__unpublish_documents",
       "mcp__plugin_sanity_Sanity__discard_drafts",
       "mcp__plugin_sanity_Sanity__generate_image",
-      "Bash(pnpm exec *)"
+      "Bash(pnpm exec *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8765/logo-export.html)",
+      "Bash(python -m http.server 8765 --bind 127.0.0.1)",
+      "Bash(curl -sf -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8765/logo-export.html)",
+      "Bash(taskkill /F /IM python.exe)"
     ],
     "additionalDirectories": [
       "D:\\Downloads\\oncodigest\\web\\app\\admin\\studio",

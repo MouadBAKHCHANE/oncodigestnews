@@ -331,76 +331,100 @@ a.row:hover,
 /* ── Action cards (matches /dashboard) ── */
 
 .actions {
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 }
 
 .actionGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-top: 24px;
+  gap: 14px;
+  margin-top: 20px;
 }
 
+/* App-tile card — colored icon top-left, title below, badge top-right */
 .actionCard {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 24px;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px;
+  min-height: 124px;
   background: #fff;
   border: 1px solid var(--cod-gray--100);
-  border-radius: 14px;
+  border-radius: 16px;
   text-decoration: none;
-  transition: border-color 0.2s, transform 0.2s;
-  position: relative;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .actionCard:hover {
   border-color: var(--cod-gray--300);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.07);
+}
+
+.actionIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.actionCard:hover .actionIcon {
+  transform: scale(1.05);
+}
+
+/* Accent variants — tinted bg + matching contrast icon color */
+.actionIcon_canary {
+  background: var(--canary--300, #f0ff4d);
+  color: var(--canary--900, #4b590e);
+}
+
+.actionIcon_husk {
+  background: rgba(130, 115, 76, 0.12);
+  color: var(--husk--900, #514932);
+}
+
+.actionIcon_dark {
+  background: var(--cod-gray--900, #1a1a1a);
+  color: var(--cod-gray--0, #fff);
+}
+
+.actionIcon_mint {
+  background: rgba(45, 90, 77, 0.1);
+  color: rgb(45, 90, 77);
 }
 
 .actionTitle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
   font-family: var(--font-display-stack);
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 400;
   color: var(--cod-gray--900);
-  letter-spacing: -0.3px;
-}
-
-.actionArrow {
-  color: var(--cod-gray--300);
-  transition: color 0.2s, transform 0.2s;
-}
-
-.actionCard:hover .actionArrow {
-  color: var(--cod-gray--900);
-  transform: translateX(2px);
+  letter-spacing: -0.2px;
+  line-height: 1.2;
 }
 
 .actionBadge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-width: 22px;
   height: 22px;
   padding: 0 7px;
-  background: var(--canary--300, #d6e57c);
+  background: var(--canary--300, #f0ff4d);
   color: var(--canary--900, #4b590e);
-  border-radius: 32px;
+  border-radius: 999px;
   font-family: var(--font-body-stack);
   font-size: 11px;
   font-weight: 600;
-}
-
-.actionDesc {
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--cod-gray--500);
-  margin: 0;
+  box-shadow: 0 0 0 3px rgba(240, 255, 77, 0.25);
 }
 
 /* ── Footer info ── */
@@ -449,23 +473,66 @@ a.row:hover,
 
 @media (max-width: 768px) {
   .page {
-    padding: 40px 0 64px;
+    padding: 32px 0 56px;
   }
   .wrap {
     padding: 0 16px;
   }
   .header {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
+  /* Keep the app-tile feel on phones — 2-up, not stacked */
   .actionGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .actionCard {
+    min-height: 110px;
+    padding: 16px;
+    border-radius: 14px;
+  }
+  .actionIcon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+  .actionIcon svg {
+    width: 19px;
+    height: 19px;
+  }
+  .actionTitle {
+    font-size: 15px;
+  }
+  .actionBadge {
+    top: 12px;
+    right: 12px;
+  }
+  .stats {
+    border-radius: 12px;
   }
   .row {
     grid-template-columns: 1fr;
     gap: 8px;
-    padding: 14px 18px;
+    padding: 14px 16px;
   }
   .rowAction {
     justify-content: flex-start;
+    gap: 10px;
+  }
+  .sectionHeading {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 26px;
+    letter-spacing: -1px;
+  }
+  .statValue {
+    font-size: 26px;
+  }
+  .miniValue {
+    font-size: 22px;
   }
 }

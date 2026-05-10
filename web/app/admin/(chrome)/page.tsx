@@ -106,7 +106,7 @@ export default async function AdminOverviewPage() {
           <Stat label="Révoqués" value={revokedCount ?? 0} />
         </section>
 
-        {/* ── Quick actions (moved up — most-used-first) ── */}
+        {/* ── Quick actions — app-style tiles ── */}
         <section className={styles.actions}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionHeading}>Raccourcis</h2>
@@ -114,24 +114,49 @@ export default async function AdminOverviewPage() {
           <div className={styles.actionGrid}>
             <ActionCard
               href="/admin/users?tab=pending"
-              title="Examiner les inscriptions"
-              desc="Approuver ou refuser les nouveaux comptes."
+              title="Inscriptions"
+              accent="canary"
               badge={pendingCount && pendingCount > 0 ? String(pendingCount) : undefined}
+              icon={
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M19 8v6M22 11h-6" />
+                </svg>
+              }
             />
             <ActionCard
               href="/admin/studio"
-              title="Publier du contenu"
-              desc="Articles, vidéos, congrès, évènements."
+              title="Contenu"
+              accent="husk"
+              icon={
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 20h9" />
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                </svg>
+              }
             />
             <ActionCard
-              href="/admin/studio/desk/siteSettings"
-              title="Réglages du site"
-              desc="Image hero, tagline, mots du typewriter."
+              href="/admin/studio/structure/site;siteSettings"
+              title="Réglages"
+              accent="dark"
+              icon={
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h0a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                </svg>
+              }
             />
             <ActionCard
               href="/dashboard"
-              title="Voir l'espace Pro"
-              desc="L'expérience telle que vue par les utilisateurs."
+              title="Espace Pro"
+              accent="mint"
+              icon={
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              }
             />
           </div>
         </section>
@@ -263,25 +288,31 @@ function MiniStat({ label, value }: { label: string; value: number }) {
   );
 }
 
+type ActionAccent = 'canary' | 'husk' | 'dark' | 'mint';
+
 function ActionCard({
-  href, title, desc, badge,
+  href,
+  title,
+  icon,
+  accent = 'husk',
+  badge,
 }: {
   href: string;
   title: string;
-  desc: string;
+  icon: React.ReactNode;
+  accent?: ActionAccent;
   badge?: string;
 }) {
   return (
     <Link href={href} className={styles.actionCard}>
-      <div className={styles.actionTitle}>
-        {title}
-        {badge ? (
-          <span className={styles.actionBadge}>{badge}</span>
-        ) : (
-          <span className={styles.actionArrow} aria-hidden>→</span>
-        )}
-      </div>
-      <p className={styles.actionDesc}>{desc}</p>
+      <span
+        className={`${styles.actionIcon} ${styles[`actionIcon_${accent}`]}`}
+        aria-hidden
+      >
+        {icon}
+      </span>
+      <span className={styles.actionTitle}>{title}</span>
+      {badge ? <span className={styles.actionBadge}>{badge}</span> : null}
     </Link>
   );
 }

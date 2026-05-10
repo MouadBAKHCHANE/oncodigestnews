@@ -1,71 +1,68 @@
 .shell {
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 240px 1fr;
   background: var(--satin-linen--50, #f7f6ef);
-}
-
-/* ── Sidebar ── */
-
-.sidebar {
-  position: sticky;
-  top: 0;
-  align-self: start;
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 28px 16px;
-  background: #fff;
-  border-right: 1px solid var(--cod-gray--100);
+}
+
+/* ── Top app bar ── */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--cod-gray--100);
+}
+
+.topbarInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 4px 12px 20px;
   text-decoration: none;
-  border-bottom: 1px solid var(--cod-gray--100);
-  margin-bottom: 12px;
-}
-
-.brandName {
-  font-family: var(--font-display-stack);
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--cod-gray--900);
-  letter-spacing: -0.4px;
+  color: inherit;
+  flex-shrink: 0;
 }
 
 .brandTag {
+  font-family: var(--font-body-stack);
   font-size: 9.5px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.7px;
-  color: var(--cod-gray--500);
+  letter-spacing: 0.8px;
+  color: var(--cod-gray--600);
   background: var(--cod-gray--50);
   padding: 2px 7px;
   border-radius: 4px;
 }
 
-/* ── Nav ── */
-
 .nav {
+  margin-left: auto;
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  gap: 4px;
 }
 
 .navItem {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: var(--font-body-stack);
   font-size: 13px;
   font-weight: 500;
   color: var(--cod-gray--600);
-  padding: 9px 12px;
-  border-radius: 8px;
   text-decoration: none;
   transition: background 0.15s ease, color 0.15s ease;
 }
@@ -90,44 +87,35 @@
 /* ── Main ── */
 
 .main {
+  flex: 1;
   min-width: 0;
 }
 
-/* ── Responsive ── */
+/* ── Responsive — bigger touch targets, label hidden on phones ── */
 
 @media (max-width: 768px) {
-  .shell {
-    grid-template-columns: 1fr;
-  }
-  .sidebar {
-    position: static;
-    height: auto;
-    flex-direction: row;
+  .topbarInner {
+    padding: 10px 16px;
     gap: 12px;
-    padding: 12px 16px;
-    border-right: none;
-    border-bottom: 1px solid var(--cod-gray--100);
-    align-items: center;
-    overflow-x: auto;
   }
-  .brand {
-    border-bottom: none;
-    padding: 4px 8px 4px 0;
-    margin: 0;
-    border-right: 1px solid var(--cod-gray--100);
-    padding-right: 12px;
-    flex-shrink: 0;
+  .brandTag {
+    display: none;
   }
   .nav {
-    flex-direction: row;
-    gap: 4px;
+    gap: 2px;
   }
   .navItem {
-    padding: 7px 10px;
-    font-size: 12.5px;
-    white-space: nowrap;
+    padding: 9px 11px;
+  }
+  .navLabel {
+    display: none;
   }
   .navIcon {
-    display: none;
+    width: 18px;
+    height: 18px;
+  }
+  .navIcon svg {
+    width: 18px;
+    height: 18px;
   }
 }

@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { getSupabaseServerClient } from '@/lib/supabase/server';
+import { getSupabaseAdminClient } from '@/lib/supabase/admin';
 import { requireAdmin } from '@/lib/auth';
 import { sendEmail, suspensionEmail, welcomeEmail } from '@/lib/email';
 
@@ -28,7 +28,7 @@ export async function approveUser(profileId: string): Promise<ActionResult> {
     return { ok: false, error: 'Vous ne pouvez pas vous approuver vous-même.' };
   }
 
-  const supabase = await getSupabaseServerClient();
+  const supabase = getSupabaseAdminClient();
 
   const { data: target } = await supabase
     .from('profiles')
@@ -86,7 +86,7 @@ export async function revokeUser(
     return { ok: false, error: 'Vous ne pouvez pas révoquer votre propre compte.' };
   }
 
-  const supabase = await getSupabaseServerClient();
+  const supabase = getSupabaseAdminClient();
 
   const { data: target } = await supabase
     .from('profiles')
@@ -148,7 +148,7 @@ export async function resetToPending(profileId: string): Promise<ActionResult> {
     return { ok: false, error: 'Accès refusé.' };
   }
 
-  const supabase = await getSupabaseServerClient();
+  const supabase = getSupabaseAdminClient();
   const { error: updateError } = await supabase
     .from('profiles')
     .update({

@@ -1,34 +1,24 @@
 .logo {
-  font-family: var(--font-display-stack);
-  font-weight: 300;
-  color: var(--cod-gray--900);
-  letter-spacing: -0.5px;
-  line-height: 1;
-  display: inline-flex;
-  align-items: baseline;
-  gap: 4px;
+  display: inline-block;
+  vertical-align: middle;
   white-space: nowrap;
-  font-feature-settings: 'kern' 1, 'liga' 1, 'dlig' 1;
 }
 
+/* Image wordmark — height controlled via inline style; width auto. */
 .wordmark {
-  font-size: 20px;
+  display: inline-block;
+  height: 28px;
+  width: auto;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
+/* Text-only mark "OD" — used in tight squares (32px avatar circles, etc.). */
 .mark {
+  font-family: var(--font-display-stack);
+  font-weight: 400;
   font-size: 18px;
   letter-spacing: -0.4px;
-  font-weight: 400;
-}
-
-.suffix {
-  font-family: var(--font-handwritten), 'Caveat', cursive;
-  font-weight: 500;
-  font-size: 0.95em;
-  color: var(--canary--900, #4b590e);
-  letter-spacing: 0;
   line-height: 1;
-  transform: translateY(-0.18em) rotate(-3deg);
-  transform-origin: left bottom;
-  font-feature-settings: normal;
+  color: var(--cod-gray--900);
 }

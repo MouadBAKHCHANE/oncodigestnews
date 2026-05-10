@@ -106,60 +106,6 @@ export default async function AdminOverviewPage() {
           <Stat label="Révoqués" value={revokedCount ?? 0} />
         </section>
 
-        {/* ── Quick actions — app-style tiles ── */}
-        <section className={styles.actions}>
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionHeading}>Raccourcis</h2>
-          </div>
-          <div className={styles.actionGrid}>
-            <ActionCard
-              href="/admin/users?tab=pending"
-              title="Inscriptions"
-              accent="canary"
-              badge={pendingCount && pendingCount > 0 ? String(pendingCount) : undefined}
-              icon={
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M19 8v6M22 11h-6" />
-                </svg>
-              }
-            />
-            <ActionCard
-              href="/admin/studio"
-              title="Contenu"
-              accent="husk"
-              icon={
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 20h9" />
-                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                </svg>
-              }
-            />
-            <ActionCard
-              href="/admin/studio/structure/site;siteSettings"
-              title="Réglages"
-              accent="dark"
-              icon={
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="3" />
-                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h0a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-                </svg>
-              }
-            />
-            <ActionCard
-              href="/dashboard"
-              title="Espace Pro"
-              accent="mint"
-              icon={
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-              }
-            />
-          </div>
-        </section>
 
         {/* ── Recent signups (status badge instead of approve button) ── */}
         <section className={styles.section}>
@@ -288,31 +234,3 @@ function MiniStat({ label, value }: { label: string; value: number }) {
   );
 }
 
-type ActionAccent = 'canary' | 'husk' | 'dark' | 'mint';
-
-function ActionCard({
-  href,
-  title,
-  icon,
-  accent = 'husk',
-  badge,
-}: {
-  href: string;
-  title: string;
-  icon: React.ReactNode;
-  accent?: ActionAccent;
-  badge?: string;
-}) {
-  return (
-    <Link href={href} className={styles.actionCard}>
-      <span
-        className={`${styles.actionIcon} ${styles[`actionIcon_${accent}`]}`}
-        aria-hidden
-      >
-        {icon}
-      </span>
-      <span className={styles.actionTitle}>{title}</span>
-      {badge ? <span className={styles.actionBadge}>{badge}</span> : null}
-    </Link>
-  );
-}

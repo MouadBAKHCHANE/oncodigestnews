@@ -4,48 +4,62 @@ type Variant = 'wordmark' | 'mark';
 
 export interface LogoProps {
   variant?: Variant;
+  /** Pixel height of the rendered logo. Width auto-scales via aspect ratio for the wordmark. */
   size?: number;
-  /** Visual color — defaults to cod-gray-900 (dark). Pass any CSS color. */
+  /** Use the dark-bg variant (off-white serif + bright canary suffix). */
+  dark?: boolean;
+  /** For `variant="mark"` only — text color override. Ignored for the wordmark image. */
   color?: string;
   className?: string;
 }
 
+const WORDMARK_LIGHT = '/logo-oncodigest-news.png';
+const WORDMARK_DARK = '/logo-oncodigest-news-dark.png';
+// Native PNG aspect ratio (width / height). Both PNGs share the same canvas size.
+const WORDMARK_RATIO = 1133 / 298;
+
 /**
- * OncoDigest minimal text logo.
+ * OncoDigest brand mark.
  *
- *   <Logo />                  → "OncoDigest" wordmark, 20px, dark on light
- *   <Logo variant="mark" />   → "OD" monogram, used in tight squares
- *   <Logo size={28} color="white" /> → custom size + color
- *
- * Pure text — no SVG, no font file beyond Fraunces (already loaded). Inherits
- * the display font stack so it matches body headings.
+ *   <Logo />                          → wordmark PNG (dark "OncoDigest" + canary "news")
+ *   <Logo dark />                     → wordmark PNG for dark surfaces (off-white + bright canary)
+ *   <Logo size={28} />                → height 28px (width auto)
+ *   <Logo variant="mark" />           → "OD" text monogram for tight squares (avatars)
  */
 export function Logo({
   variant = 'wordmark',
   size,
+  dark = false,
   color,
   className,
 }: LogoProps) {
-  const cls = [styles.logo, variant === 'mark' ? styles.mark : styles.wordmark, className]
-    .filter(Boolean)
-    .join(' ');
-
-  const style: React.CSSProperties = {};
-  if (size) style.fontSize = `${size}px`;
-  if (color) style.color = color;
-
   if (variant === 'mark') {
+    const style: React.CSSProperties = {};
+    if (size) style.fontSize = `${size}px`;
+    if (color) style.color = color;
     return (
-      <span className={cls} style={style} aria-label="OncoDigest news">
+      <span
+        className={[styles.logo, styles.mark, className].filter(Boolean).join(' ')}
+        style={style}
+        aria-label="OncoDigest news"
+      >
         OD
       </span>
     );
   }
 
+  const height = size ?? 28;
+  const width = Math.round(height * WORDMARK_RATIO);
+
   return (
-    <span className={cls} style={style} aria-label="OncoDigest news">
-      <span>OncoDigest</span>
-      <span className={styles.suffix} aria-hidden>news</span>
-    </span>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={dark ? WORDMARK_DARK : WORDMARK_LIGHT}
+      alt="OncoDigest news"
+      width={width}
+      height={height}
+      className={[styles.logo, styles.wordmark, className].filter(Boolean).join(' ')}
+      style={{ height, width: 'auto' }}
+    />
   );
 }

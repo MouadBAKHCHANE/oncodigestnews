@@ -146,10 +146,20 @@ export default async function HomePage() {
                     className={`${styles.advisorCard} animate-on-scroll delay-${i}`}
                   >
                     <div className={styles.advisorAvatar}>
-                      <BrandIllustration
-                        variant={ADVISOR_VARIANTS[i % ADVISOR_VARIANTS.length]}
-                        label={a.name}
-                      />
+                      {a.photo ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={urlForImage(a.photo).width(480).height(480).fit('crop').url()}
+                          alt={a.photo.alt ?? a.name}
+                          className={styles.advisorPhoto}
+                          loading="lazy"
+                        />
+                      ) : (
+                        <BrandIllustration
+                          variant={ADVISOR_VARIANTS[i % ADVISOR_VARIANTS.length]}
+                          label={a.name}
+                        />
+                      )}
                     </div>
                     <h3 className={styles.advisorName}>{a.name}</h3>
                     {a.role ? <p className={styles.advisorRole}>{a.role}</p> : null}

@@ -19,16 +19,16 @@
 .topbarInner {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 12px 24px;
+  padding: 10px 24px;
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   text-decoration: none;
   color: inherit;
   flex-shrink: 0;
@@ -46,42 +46,184 @@
   border-radius: 4px;
 }
 
-.nav {
+/* ── Launcher row (replaces old nav) ── */
+
+.launcherRow {
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
 }
 
-.navItem {
+.launcher {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 14px;
+  padding: 6px 12px 6px 6px;
+  background: transparent;
   border-radius: 999px;
   font-family: var(--font-body-stack);
   font-size: 13px;
   font-weight: 500;
-  color: var(--cod-gray--600);
+  color: var(--cod-gray--800);
   text-decoration: none;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: background 0.15s ease, transform 0.15s ease;
 }
 
-.navItem:hover {
+.launcher:hover {
+  background: var(--cod-gray--50);
+  transform: translateY(-1px);
+}
+
+.launcherIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.launcher:hover .launcherIcon {
+  transform: scale(1.05);
+}
+
+.launcher_canary .launcherIcon {
+  background: var(--canary--300, #f0ff4d);
+  color: var(--canary--900, #4b590e);
+}
+.launcher_husk .launcherIcon {
+  background: rgba(130, 115, 76, 0.14);
+  color: var(--husk--900, #514932);
+}
+.launcher_dark .launcherIcon {
+  background: var(--cod-gray--900, #1a1a1a);
+  color: var(--cod-gray--0, #fff);
+}
+.launcher_mint .launcherIcon {
+  background: rgba(45, 90, 77, 0.12);
+  color: rgb(45, 90, 77);
+}
+
+.launcherLabel {
+  letter-spacing: 0.05px;
+}
+
+/* ── Hamburger (mobile only) ── */
+
+.hamburger {
+  display: none;
+  margin-left: auto;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--cod-gray--200);
+  border-radius: 10px;
+  color: var(--cod-gray--900);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.hamburger:hover {
+  background: var(--cod-gray--50);
+}
+
+/* ── Drawer ── */
+
+.drawerBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
+  z-index: 40;
+  animation: drawerBackdropIn 0.2s ease-out;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 41;
+  width: min(320px, 86vw);
+  background: #fff;
+  box-shadow: -16px 0 32px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  animation: drawerIn 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes drawerBackdropIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes drawerIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.drawerHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px 14px 22px;
+  border-bottom: 1px solid var(--cod-gray--100);
+}
+
+.drawerTitle {
+  font-family: var(--font-display-stack);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--cod-gray--900);
+  letter-spacing: -0.3px;
+}
+
+.drawerClose {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0 none;
+  border-radius: 8px;
+  color: var(--cod-gray--600);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.drawerClose:hover {
   background: var(--cod-gray--50);
   color: var(--cod-gray--900);
 }
 
-.navIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: var(--cod-gray--500);
+.drawerList {
+  list-style: none;
+  margin: 0;
+  padding: 12px 12px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.navItem:hover .navIcon {
+.drawerItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 12px;
+  border-radius: 12px;
+  font-family: var(--font-body-stack);
+  font-size: 15px;
+  font-weight: 500;
   color: var(--cod-gray--900);
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+.drawerItem:hover {
+  background: var(--cod-gray--50);
 }
 
 /* ── Main ── */
@@ -91,31 +233,28 @@
   min-width: 0;
 }
 
-/* ── Responsive — bigger touch targets, label hidden on phones ── */
+/* ── Responsive ── */
+
+@media (max-width: 1024px) {
+  .launcherLabel {
+    display: none;
+  }
+  .launcher {
+    padding: 4px;
+  }
+}
 
 @media (max-width: 768px) {
   .topbarInner {
     padding: 10px 16px;
-    gap: 12px;
   }
   .brandTag {
     display: none;
   }
-  .nav {
-    gap: 2px;
-  }
-  .navItem {
-    padding: 9px 11px;
-  }
-  .navLabel {
+  .launcherRow {
     display: none;
   }
-  .navIcon {
-    width: 18px;
-    height: 18px;
-  }
-  .navIcon svg {
-    width: 18px;
-    height: 18px;
+  .hamburger {
+    display: inline-flex;
   }
 }

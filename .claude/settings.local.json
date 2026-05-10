@@ -118,7 +118,13 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8765/logo-export.html)",
       "Bash(python -m http.server 8765 --bind 127.0.0.1)",
       "Bash(curl -sf -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8765/logo-export.html)",
-      "Bash(taskkill /F /IM python.exe)"
+      "Bash(taskkill /F /IM python.exe)",
+      "Bash(node -e \"console.log\\(require\\('sharp/package.json'\\).version\\)\")",
+      "Bash(node -e \"try { require\\('playwright'\\); console.log\\('playwright OK'\\) } catch\\(e\\) { console.log\\('no playwright', e.code\\) }\")",
+      "Bash(node chroma-key.cjs \"d:/Downloads/oncodigest/web/public/logo-oncodigest-news.png\" \"d:/Downloads/oncodigest/web/public/logo-oncodigest-news.png\" white)",
+      "Bash(curl -sf -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8765/logo-export-dark.html)",
+      "Bash(node chroma-key.cjs \"d:/Downloads/oncodigest/.playwright-mcp/logo-dark-raw.png\" \"d:/Downloads/oncodigest/web/public/logo-oncodigest-news-dark.png\" magenta)",
+      "Bash(node -e ' *)"
     ],
     "additionalDirectories": [
       "D:\\Downloads\\oncodigest\\web\\app\\admin\\studio",

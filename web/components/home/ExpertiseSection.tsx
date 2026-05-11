@@ -63,6 +63,7 @@ const ITEMS: ExpertiseItem[] = [
 export function ExpertiseSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const sceneRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const pillRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const reducedMotion = useReducedMotion();
 
   // Track which scene is closest to the viewport center → that's the active one
@@ -109,6 +110,18 @@ export function ExpertiseSection() {
 
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  // Keep the active pill in view inside the horizontal scroller — scroll
+  // it to the center as soon as the user advances past it via vertical scroll.
+  useEffect(() => {
+    const pill = pillRefs.current[activeIndex];
+    if (!pill) return;
+    pill.scrollIntoView({
+      behavior: reducedMotion ? 'auto' : 'smooth',
+      inline: 'center',
+      block: 'nearest',
+    });
+  }, [activeIndex, reducedMotion]);
+
   return (
     <section className={styles.section}>
       <div className="padding-global">
@@ -120,6 +133,9 @@ export function ExpertiseSection() {
               {ITEMS.map((item, i) => (
                 <button
                   key={item.number}
+                  ref={(el) => {
+                    pillRefs.current[i] = el;
+                  }}
                   onClick={() => setActiveIndex(i)}
                   className={`${styles.mobilePill} ${i === activeIndex ? styles.mobilePillActive : ''}`}
                 >

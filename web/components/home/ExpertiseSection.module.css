@@ -237,6 +237,9 @@
     -webkit-backdrop-filter: blur(8px);
     margin: 0 -16px 24px;
     padding: 12px 16px;
+    /* Right-edge fade hint so users see there are more pills off-screen */
+    -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 32px), transparent 100%);
+    mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 32px), transparent 100%);
   }
 
   .mobileSwitcher {

@@ -12,6 +12,7 @@ export interface LiveEvent {
   registrationUrl?: string | null;
   speakerLine?: string | null;
   description?: string | null;
+  access?: 'public' | 'pro' | null;
 }
 
 interface LivesCalendarProps {
@@ -19,6 +20,8 @@ interface LivesCalendarProps {
   events: LiveEvent[];
   /** Optional anchor month/year to start on. Defaults to today's month. */
   initialDate?: Date;
+  /** Whether the current viewer is allowed to access Pro-gated content. */
+  canViewPro?: boolean;
 }
 
 const WEEKDAYS = ['Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa', 'Di'];
@@ -65,7 +68,11 @@ function buildMonthGrid(viewYear: number, viewMonth: number): Date[] {
   return cells;
 }
 
-export function LivesCalendar({ events, initialDate }: LivesCalendarProps) {
+export function LivesCalendar({
+  events,
+  initialDate,
+  canViewPro = false,
+}: LivesCalendarProps) {
   const today = useMemo(() => startOfDay(new Date()), []);
   const seed = initialDate ?? today;
 
@@ -183,7 +190,11 @@ export function LivesCalendar({ events, initialDate }: LivesCalendarProps) {
       {upcomingEvents.length > 0 ? (
         <div className={styles.eventsPanel}>
           {upcomingEvents.map((event) => (
-            <LiveEventCard key={event._id} event={event} />
+            <LiveEventCard
+              key={event._id}
+              event={event}
+              canViewPro={canViewPro}
+            />
           ))}
         </div>
       ) : null}
@@ -191,7 +202,13 @@ export function LivesCalendar({ events, initialDate }: LivesCalendarProps) {
   );
 }
 
-function LiveEventCard({ event }: { event: LiveEvent }) {
+function LiveEventCard({
+  event,
+  canViewPro,
+}: {
+  event: LiveEvent;
+  canViewPro: boolean;
+}) {
   const start = new Date(event.startsAt);
   const dateStr = start.toLocaleDateString('fr-FR', {
     weekday: 'long',
@@ -204,11 +221,18 @@ function LiveEventCard({ event }: { event: LiveEvent }) {
     minute: '2-digit',
   });
 
+  const isGated = event.access === 'pro' && !canViewPro;
+
   return (
     <div className={styles.eventCard}>
       <p className={styles.eventDate}>
         {dateStr} · {timeStr}
         {event.durationMinutes ? ` · ${event.durationMinutes} min` : ''}
+        {event.access === 'pro' ? (
+          <span className={styles.eventProTag} aria-label="Réservé aux Pros">
+            {' '}· 🔒 Pro
+          </span>
+        ) : null}
       </p>
       <h4 className={styles.eventTitle}>{event.title}</h4>
       {event.speakerLine ? (
@@ -217,7 +241,16 @@ function LiveEventCard({ event }: { event: LiveEvent }) {
       {typeof event.description === 'string' && event.description ? (
         <p className={styles.eventDescription}>{event.description}</p>
       ) : null}
-      {event.registrationUrl ? (
+      {isGated ? (
+        <Button
+          href="/connexion"
+          variant="dark"
+          size="sm"
+          className={styles.eventCta}
+        >
+          Se connecter pour s&apos;inscrire
+        </Button>
+      ) : event.registrationUrl ? (
         <Button
           href={event.registrationUrl}
           variant="dark"

@@ -172,6 +172,13 @@
   margin: 0;
 }
 
+.eventProTag {
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--canary--900, #4b590e);
+  font-weight: 500;
+}
+
 .eventTitle {
   font-family: var(--font-display-stack);
   font-weight: 300;

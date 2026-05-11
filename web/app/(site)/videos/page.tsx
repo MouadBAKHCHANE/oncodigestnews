@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { sanityClient } from '@/lib/sanity/client';
+import { getProfile, canViewPro } from '@/lib/auth';
 import type { VideoCardData } from '@/components/cards/VideoCard';
 import { LivesCalendar, type LiveEvent } from '@/components/home/LivesCalendar';
 import { TitleReveal } from '@/components/ui/TitleReveal';
@@ -36,7 +37,7 @@ const indexQuery = /* groq */ `{
     "slug": slug.current
   },
   "lives": *[_type == "live"] | order(startsAt asc) {
-    _id, title, startsAt, durationMinutes, registrationUrl,
+    _id, title, startsAt, durationMinutes, registrationUrl, access,
     "description": pt::text(description),
     "speakerLine": array::join(speakers[]->name, ' · ')
   }
@@ -50,7 +51,11 @@ function formatNextLive(startsAt: string): string {
 }
 
 export default async function VideosPage() {
-  const { videos, categories, lives } = await sanityClient.fetch<SanityResponse>(indexQuery);
+  const [{ videos, categories, lives }, profile] = await Promise.all([
+    sanityClient.fetch<SanityResponse>(indexQuery),
+    getProfile(),
+  ]);
+  const userCanViewPro = canViewPro(profile);
 
   const now = Date.now();
   const nextLive = [...lives]
@@ -100,7 +105,7 @@ export default async function VideosPage() {
 
             <aside className={styles.livesAside}>
               <h2 className={styles.sectionHeading}>Prochains lives</h2>
-              <LivesCalendar events={lives} />
+              <LivesCalendar events={lives} canViewPro={userCanViewPro} />
             </aside>
           </div>
         </div>

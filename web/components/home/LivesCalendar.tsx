@@ -72,6 +72,7 @@ export function LivesCalendar({ events, initialDate }: LivesCalendarProps) {
   const [viewYear, setViewYear] = useState(seed.getFullYear());
   const [viewMonth, setViewMonth] = useState(seed.getMonth());
   const [selectedDay, setSelectedDay] = useState<Date | null>(null);
+  const [hoveredDay, setHoveredDay] = useState<Date | null>(null);
 
   // Index events by yyyy-mm-dd for O(1) lookup per day cell.
   const eventsByDay = useMemo(() => {
@@ -88,22 +89,8 @@ export function LivesCalendar({ events, initialDate }: LivesCalendarProps) {
 
   const cells = useMemo(() => buildMonthGrid(viewYear, viewMonth), [viewYear, viewMonth]);
 
-  const nextUpcoming = useMemo(() => {
-    return events
-      .map((e) => ({ e, t: new Date(e.startsAt).getTime() }))
-      .filter(({ t }) => t >= today.getTime())
-      .sort((a, b) => a.t - b.t)
-      .map(({ e }) => e)[0];
-  }, [events, today]);
-
   const eventsForDay = (d: Date): LiveEvent[] =>
     eventsByDay.get(`${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`) ?? [];
-
-  const eventsToShow: LiveEvent[] = selectedDay
-    ? eventsForDay(selectedDay)
-    : nextUpcoming
-      ? [nextUpcoming]
-      : [];
 
   function shiftMonth(delta: number) {
     let m = viewMonth + delta;
@@ -119,6 +106,7 @@ export function LivesCalendar({ events, initialDate }: LivesCalendarProps) {
     setViewYear(y);
     setViewMonth(m);
     setSelectedDay(null);
+    setHoveredDay(null);
   }
 
   return (
@@ -162,6 +150,8 @@ export function LivesCalendar({ events, initialDate }: LivesCalendarProps) {
           const dayEvents = eventsForDay(d);
           const hasEvent = dayEvents.length > 0;
           const isSelected = selectedDay && isSameDay(d, selectedDay);
+          const isHovered = hoveredDay && isSameDay(d, hoveredDay);
+          const col = i % 7;
 
           const cls = [
             styles.day,
@@ -191,34 +181,64 @@ export function LivesCalendar({ events, initialDate }: LivesCalendarProps) {
             );
           }
 
+          const popupVisible = !!(isHovered || isSelected);
+
           return (
-            <button
+            <div
               key={i}
-              type="button"
-              className={cls}
-              onClick={() => setSelectedDay(d)}
-              aria-pressed={!!isSelected}
-              aria-label={`${dayEvents.length} live${dayEvents.length > 1 ? 's' : ''} le ${d.toLocaleDateString('fr-FR', {
-                weekday: 'long',
-                day: 'numeric',
-                month: 'long',
-              })}`}
-              role="gridcell"
+              className={styles.dayCellWithEvent}
+              data-col={col}
+              onMouseEnter={() => setHoveredDay(d)}
+              onMouseLeave={() => setHoveredDay(null)}
             >
-              <span className={styles.dayNum}>{d.getDate()}</span>
-              <span className={styles.dot} aria-hidden />
-            </button>
+              <button
+                type="button"
+                className={cls}
+                onClick={() => setSelectedDay(isSelected ? null : d)}
+                aria-pressed={!!isSelected}
+                aria-label={`${dayEvents.length} live${dayEvents.length > 1 ? 's' : ''} le ${d.toLocaleDateString('fr-FR', {
+                  weekday: 'long',
+                  day: 'numeric',
+                  month: 'long',
+                })}`}
+                role="gridcell"
+              >
+                <span className={styles.dayNum}>{d.getDate()}</span>
+                <span className={styles.dot} aria-hidden />
+              </button>
+              {popupVisible ? (
+                <>
+                  <div
+                    className={styles.popupBackdrop}
+                    aria-hidden
+                    onClick={() => setSelectedDay(null)}
+                  />
+                  <div className={styles.popup} role="dialog" aria-label="Détails du live">
+                    <button
+                      type="button"
+                      className={styles.popupClose}
+                      aria-label="Fermer"
+                      onClick={() => setSelectedDay(null)}
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                      </svg>
+                    </button>
+                    {dayEvents.map((event) => (
+                      <LiveEventCard key={event._id} event={event} />
+                    ))}
+                  </div>
+                </>
+              ) : null}
+            </div>
           );
         })}
       </div>
 
-      {eventsToShow.length > 0 ? (
-        <div className={styles.eventsPanel}>
-          {eventsToShow.map((event) => (
-            <LiveEventCard key={event._id} event={event} />
-          ))}
-        </div>
-      ) : null}
+      <p className={styles.hint}>
+        Cliquez sur la date du live pour vous inscrire.
+      </p>
     </div>
   );
 }

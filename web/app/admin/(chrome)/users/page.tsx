@@ -3,7 +3,7 @@ import { requireAdmin } from '@/lib/auth';
 import { UserActions } from './UserActions';
 import styles from './users.module.css';
 
-export const metadata = { title: 'Users — Admin' };
+export const metadata = { title: 'Utilisateurs — Admin' };
 export const dynamic = 'force-dynamic';
 
 interface ProfileRow {
@@ -50,16 +50,16 @@ export default async function UsersPage({
   return (
     <div className={styles.wrap}>
       <header className={styles.header}>
-        <h1 className={styles.title}>Users</h1>
+        <h1 className={styles.title}>Utilisateurs</h1>
         <nav className={styles.subtabs}>
           <SubTab href="?tab=pending" current={tab} value="pending">
-            Pending
+            En attente
           </SubTab>
           <SubTab href="?tab=approved" current={tab} value="approved">
-            Approved
+            Approuvés
           </SubTab>
           <SubTab href="?tab=revoked" current={tab} value="revoked">
-            Revoked
+            Révoqués
           </SubTab>
         </nav>
       </header>
@@ -70,28 +70,28 @@ export default async function UsersPage({
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>Name</th>
+              <th>Nom</th>
               <th>Email</th>
               <th>Profession</th>
-              <th>Hospital</th>
+              <th>Hôpital</th>
               <th>RPPS</th>
-              <th>Created</th>
+              <th>Créé le</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {list.map((p) => (
               <tr key={p.id}>
-                <td>
+                <td data-label="Nom">
                   {p.full_name}
                   {p.role === 'admin' ? <span className={styles.adminTag}>admin</span> : null}
                 </td>
-                <td>{p.email}</td>
-                <td>{p.specialty ?? '—'}</td>
-                <td>{p.hospital ?? '—'}</td>
-                <td>{p.rpps_number ?? '—'}</td>
-                <td>{new Date(p.created_at).toLocaleDateString('fr-FR')}</td>
-                <td>
+                <td data-label="Email">{p.email}</td>
+                <td data-label="Profession">{p.specialty ?? '—'}</td>
+                <td data-label="Hôpital">{p.hospital ?? '—'}</td>
+                <td data-label="RPPS">{p.rpps_number ?? '—'}</td>
+                <td data-label="Créé le">{new Date(p.created_at).toLocaleDateString('fr-FR')}</td>
+                <td data-label="Actions">
                   <UserActions
                     profileId={p.id}
                     status={p.status}

@@ -8,12 +8,10 @@ import { PartnersSection } from '@/components/home/PartnersSection';
 import { BannerSection } from '@/components/home/BannerSection';
 import { ExpertiseSection } from '@/components/home/ExpertiseSection';
 import { DarkQuoteSection } from '@/components/home/DarkQuoteSection';
-import { LivesPreviewSection } from '@/components/home/LivesPreviewSection';
 import { CtaFormSection } from '@/components/home/CtaFormSection';
 import { FAQAccordion, type FAQItemData } from '@/components/home/FAQAccordion';
 import { JournalSection, type JournalData } from '@/components/home/JournalSection';
 import { type ArticleCardData } from '@/components/cards/ArticleCard';
-import { type VideoCardData } from '@/components/cards/VideoCard';
 import { Button } from '@/components/ui/Button';
 import { BrandIllustration, type BrandVariant } from '@/components/ui/BrandIllustration';
 import { TitleReveal } from '@/components/ui/TitleReveal';
@@ -41,7 +39,6 @@ interface HomeData {
     answer: PortableTextBlock[];
   }>;
   latestArticles: ArticleCardData[];
-  latestVideos: VideoCardData[];
   journal: JournalData;
 }
 
@@ -59,11 +56,6 @@ const homeQuery = /* groq */ `{
     _id, title, slug, excerpt, coverImage, publishedAt, readingTime, access, tag,
     "category": category->{title, slug},
     "author": author->{name, photo}
-  },
-  "latestVideos": *[_type == "video"] | order(publishedAt desc)[0...3] {
-    _id, title, slug, thumbnail, durationSeconds, publishedAt, access,
-    "category": category->{title, slug},
-    "speakerLine": array::join(speakers[]->name, ' · ')
   },
   "journal": {
     "article": *[_type == "article"] | order(publishedAt desc)[0]{
@@ -162,10 +154,6 @@ export default async function HomePage() {
       ) : null}
 
       <DarkQuoteSection />
-
-      {data.latestVideos.length > 0 ? (
-        <LivesPreviewSection videos={data.latestVideos} />
-      ) : null}
 
       <JournalSection data={data.journal} />
 

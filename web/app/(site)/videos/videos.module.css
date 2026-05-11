@@ -8,11 +8,19 @@
   margin-bottom: 40px;
 }
 
-/* ── Two-column layout: lives sidebar (left) | videos column (right) ── */
+.headerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ── Two-column layout: videos column (left) | lives sidebar (right) ── */
 
 .twoColLayout {
   display: grid;
-  grid-template-columns: 360px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) 360px;
   gap: 48px;
   align-items: start;
   margin-top: 24px;

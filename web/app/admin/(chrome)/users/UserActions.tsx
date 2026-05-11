@@ -119,7 +119,7 @@ export function UserActions({
             disabled={isPending}
             onClick={() => run(() => resetToPending(profileId))}
           >
-            Re-mettre en attente
+            Remettre en attente
           </button>
         </>
       ) : null}

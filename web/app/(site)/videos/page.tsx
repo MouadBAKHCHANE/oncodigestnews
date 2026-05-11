@@ -66,24 +66,12 @@ export default async function VideosPage() {
       <div className="padding-global">
         <div className="container-large">
           <header className={styles.header}>
-            <span className={`${styles.tag} animate-on-scroll`}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
-              <span>Vidéos & Lives</span>
-            </span>
-            <TitleReveal as="h1" className={styles.heading}>
-              Conférences, démonstrations et lives en direct.
-            </TitleReveal>
-            <p className={`${styles.lead} animate-on-scroll delay-2`}>
-              Suivez les interventions de notre comité scientifique en replay, et inscrivez-vous
-              aux prochains lives réservés aux professionnels de santé.
-            </p>
-          </header>
-
-          <div className={styles.twoColLayout}>
-            <aside className={styles.livesAside}>
-              <h2 className={styles.sectionHeading}>Prochains lives</h2>
-              <LivesCalendar events={lives} />
+            <div className={styles.headerTop}>
+              <span className={`${styles.tag} animate-on-scroll`}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/dot-grid.svg" alt="" width={16} height={16} className={styles.dotIcon} />
+                <span>Vidéos & Lives</span>
+              </span>
               <div
                 className={`${styles.liveStatusChip} ${nextLive ? styles.liveStatusChipActive : ''}`}
                 aria-live="polite"
@@ -94,12 +82,26 @@ export default async function VideosPage() {
                 />
                 <span className={styles.liveStatusLabel}>{liveStatusLabel}</span>
               </div>
-            </aside>
+            </div>
+            <TitleReveal as="h1" className={styles.heading}>
+              Conférences, démonstrations et lives en direct.
+            </TitleReveal>
+            <p className={`${styles.lead} animate-on-scroll delay-2`}>
+              Suivez les interventions de notre comité scientifique en replay, et inscrivez-vous
+              aux prochains lives réservés aux professionnels de santé.
+            </p>
+          </header>
 
+          <div className={styles.twoColLayout}>
             <section className={styles.videosColumn}>
               <h2 className={styles.sectionHeading}>Vidéos</h2>
               <VideosClient videos={videos} categories={categories} />
             </section>
+
+            <aside className={styles.livesAside}>
+              <h2 className={styles.sectionHeading}>Prochains lives</h2>
+              <LivesCalendar events={lives} />
+            </aside>
           </div>
         </div>
       </div>

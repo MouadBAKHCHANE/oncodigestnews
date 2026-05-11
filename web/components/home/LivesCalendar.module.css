@@ -117,11 +117,17 @@
 }
 
 .dot {
-  width: 4px;
-  height: 4px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
-  background: var(--canary--900);
+  background: var(--canary--400, #e2f625);
+  box-shadow: 0 0 0 2px rgba(226, 246, 37, 0.35);
   display: block;
+}
+
+.dayHasEvent .dayNum {
+  color: var(--canary--900);
+  font-weight: 600;
 }
 
 .daySelected {
@@ -132,6 +138,7 @@
 
 .daySelected .dot {
   background: var(--canary--900);
+  box-shadow: none;
 }
 
 /* Events panel — only renders when there are events to show */
@@ -190,6 +197,14 @@
 .eventCta {
   margin-top: 12px;
   align-self: flex-start;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.eventCta:hover,
+.eventCta:focus-visible {
+  background-color: var(--canary--400, #e2f625) !important;
+  color: var(--cod-gray--900) !important;
+  border-color: var(--canary--400, #e2f625) !important;
 }
 
 @media (max-width: 768px) {

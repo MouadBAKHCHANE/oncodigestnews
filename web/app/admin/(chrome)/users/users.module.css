@@ -191,3 +191,111 @@
   color: #d93025;
   flex-basis: 100%;
 }
+
+/* ── Mobile: stack table rows into cards with labels ── */
+
+@media (max-width: 768px) {
+  .wrap {
+    padding: 20px 14px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .subtabs {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .subtab {
+    flex: 1;
+    text-align: center;
+    padding: 8px 6px;
+  }
+
+  .table,
+  .table thead,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+
+  .table {
+    border: 0;
+    background: transparent;
+    overflow: visible;
+  }
+
+  .table thead {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .table tr {
+    margin-bottom: 12px;
+    padding: 12px 14px;
+    background: var(--cod-gray--0);
+    border: 1px solid var(--cod-gray--100);
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  }
+
+  .table td {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    column-gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--cod-gray--100);
+    color: var(--cod-gray--800);
+    word-break: break-word;
+  }
+
+  .table td:last-child {
+    border-bottom: 0;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--cod-gray--500);
+    align-self: center;
+  }
+
+  .table td[data-label="Actions"] {
+    grid-template-columns: 1fr;
+    padding-top: 12px;
+  }
+
+  .table td[data-label="Actions"]::before {
+    display: none;
+  }
+
+  .actionRow {
+    width: 100%;
+  }
+
+  .actionBtn,
+  .actionBtnGhost {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .confirmBox {
+    min-width: 0;
+    width: 100%;
+  }
+}

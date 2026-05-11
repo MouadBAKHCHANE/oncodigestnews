@@ -11,8 +11,6 @@ export interface VideoCardData {
   thumbnail: (SanityImage & { alt?: string }) | null;
   /** YouTube/Vimeo/MP4 URL — used as a thumbnail fallback when no Sanity image is set. */
   videoUrl?: string | null;
-  durationSeconds: number;
-  publishedAt?: string;
   access: 'public' | 'pro';
   category?: { title: string; slug?: { current: string } } | null;
   /** Optional speaker(s) summary line, e.g. "Dr. M. Dhib" or "Dr. X · Dr. Y". */
@@ -48,25 +46,10 @@ interface VideoCardProps {
   animationDelay?: 1 | 2 | 3;
 }
 
-function formatDuration(seconds: number): string {
-  if (!seconds || seconds < 0) return '';
-  const m = Math.floor(seconds / 60);
-  const s = Math.floor(seconds % 60);
-  return s === 0 ? `${m} min` : `${m}:${String(s).padStart(2, '0')}`;
-}
-
 export function VideoCard({ video, href, animationDelay }: VideoCardProps) {
   const linkHref = href ?? `/videos/${video.slug.current}`;
   const isLocked = video.access === 'pro';
   const tag = video.tag ?? video.category?.title ?? null;
-  const duration = formatDuration(video.durationSeconds);
-  const formattedDate = video.publishedAt
-    ? new Date(video.publishedAt).toLocaleDateString('fr-FR', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-      })
-    : null;
 
   const ytId = youtubeIdFromUrl(video.videoUrl);
   const ytThumb = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : null;
@@ -112,8 +95,6 @@ export function VideoCard({ video, href, animationDelay }: VideoCardProps) {
           </svg>
         </div>
 
-        {duration ? <span className={styles.durationBadge}>{duration}</span> : null}
-
         {isLocked ? (
           <div className={styles.lockBadge} aria-label="Vidéo réservée aux Pros">
             <svg
@@ -135,7 +116,6 @@ export function VideoCard({ video, href, animationDelay }: VideoCardProps) {
         {tag ? <span className={styles.tag}>{tag}</span> : null}
         <h3 className={styles.title}>{video.title}</h3>
         {video.speakerLine ? <p className={styles.speaker}>{video.speakerLine}</p> : null}
-        {formattedDate ? <p className={styles.date}>{formattedDate}</p> : null}
       </div>
     </Card>
   );

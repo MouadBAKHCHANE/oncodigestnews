@@ -1,14 +1,14 @@
 .section {
-  padding: 40px 0 56px;
+  padding: 24px 0 40px;
 }
 
 /* Header — title left, lead text right */
 .header {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  gap: 20px;
   align-items: end;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .tag {
@@ -19,13 +19,13 @@
   background: transparent;
   color: var(--cod-gray--600);
   font-family: var(--font-body-stack);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 400;
-  padding: 6px 12px;
+  padding: 5px 10px;
   border: 1px solid var(--cod-gray--200);
   border-radius: 8px;
   letter-spacing: 0.1px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .tag .dotIcon {
   flex-shrink: 0;
@@ -33,19 +33,19 @@
 
 .heading {
   font-family: var(--font-display-stack);
-  font-size: clamp(28px, 4vw, 48px);
+  font-size: clamp(24px, 3.2vw, 38px);
   font-weight: 300;
   line-height: 1.05;
-  letter-spacing: -1.2px;
+  letter-spacing: -1px;
   color: var(--cod-gray--900);
   margin: 0;
 }
 
 .lead {
-  font-size: 14px;
-  line-height: 1.55;
+  font-size: 13px;
+  line-height: 1.5;
   color: var(--cod-gray--500);
-  max-width: 460px;
+  max-width: 420px;
   margin: 0;
 }
 
@@ -53,8 +53,8 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: 32px;
+  gap: 10px;
+  margin-bottom: 24px;
 }
 
 /* Card */

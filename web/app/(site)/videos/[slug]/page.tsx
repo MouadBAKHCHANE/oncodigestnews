@@ -27,8 +27,6 @@ interface VideoDetail {
   slug: { current: string };
   videoUrl?: string | null;
   thumbnail?: (SanityImage & { alt?: string }) | null;
-  durationSeconds?: number | null;
-  publishedAt?: string | null;
   access: 'public' | 'pro';
   description?: PortableTextBlock[] | null;
   category?: { title: string; slug?: { current: string } } | null;
@@ -36,7 +34,7 @@ interface VideoDetail {
 }
 
 const detailQuery = /* groq */ `*[_type == "video" && slug.current == $slug][0]{
-  _id, title, slug, videoUrl, thumbnail, durationSeconds, publishedAt, access, description,
+  _id, title, slug, videoUrl, thumbnail, access, description,
   "category": category->{title, "slug": slug},
   "speakers": speakers[]->{ _id, name, role, photo }
 }`;
@@ -58,13 +56,6 @@ function youtubeIdFromUrl(url: string | null | undefined): string | null {
     return null;
   }
   return null;
-}
-
-function formatDuration(seconds?: number | null): string {
-  if (!seconds || seconds < 0) return '';
-  const m = Math.floor(seconds / 60);
-  const s = Math.floor(seconds % 60);
-  return s === 0 ? `${m} min` : `${m}:${String(s).padStart(2, '0')}`;
 }
 
 export async function generateMetadata({
@@ -104,15 +95,6 @@ export default async function VideoDetailPage({
     ? `https://www.youtube-nocookie.com/embed/${ytId}?rel=0&modestbranding=1`
     : null;
 
-  const formattedDate = video.publishedAt
-    ? new Date(video.publishedAt).toLocaleDateString('fr-FR', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
-      })
-    : null;
-  const duration = formatDuration(video.durationSeconds);
-
   const posterUrl = video.thumbnail
     ? urlForImage(video.thumbnail).width(1280).height(720).fit('crop').url()
     : ytId
@@ -142,21 +124,11 @@ export default async function VideoDetailPage({
             <TitleReveal as="h1" className={styles.title}>
               {video.title}
             </TitleReveal>
-            <div className={styles.metaLine}>
-              {formattedDate ? <span>{formattedDate}</span> : null}
-              {duration ? (
-                <>
-                  <span className={styles.metaDot} aria-hidden />
-                  <span>{duration}</span>
-                </>
-              ) : null}
-              {video.access === 'pro' ? (
-                <>
-                  <span className={styles.metaDot} aria-hidden />
-                  <span className={styles.proTag}>🔒 Pro</span>
-                </>
-              ) : null}
-            </div>
+            {video.access === 'pro' ? (
+              <div className={styles.metaLine}>
+                <span className={styles.proTag}>🔒 Pro</span>
+              </div>
+            ) : null}
           </header>
 
           <article className={styles.player}>

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     'Conférences, démonstrations chirurgicales et lives en direct sur l’oncologie digestive — réservés aux professionnels de santé.',
 };
 
-export const revalidate = 600;
+export const revalidate = 60;
 
 interface CategoryOption {
   title: string;
@@ -26,8 +26,8 @@ interface SanityResponse {
 }
 
 const indexQuery = /* groq */ `{
-  "videos": *[_type == "video"] | order(publishedAt desc) {
-    _id, title, slug, thumbnail, videoUrl, durationSeconds, publishedAt, access,
+  "videos": *[_type == "video"] | order(_createdAt desc) {
+    _id, title, slug, thumbnail, videoUrl, access,
     "category": category->{title, slug},
     "speakerLine": array::join(speakers[]->name, ' · ')
   },

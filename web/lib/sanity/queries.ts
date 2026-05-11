@@ -52,8 +52,8 @@ export const upcomingLivesQuery = /* groq */ `*[_type == "live" && startsAt >= n
   "speakers": speakers[]->{_id, name, role, photo}
 }`;
 
-export const videosIndexQuery = /* groq */ `*[_type == "video"] | order(publishedAt desc) {
-  _id, title, slug, description, thumbnail, videoUrl, durationSeconds, publishedAt, access,
+export const videosIndexQuery = /* groq */ `*[_type == "video"] | order(_createdAt desc) {
+  _id, title, slug, description, thumbnail, videoUrl, access,
   "category": category->{title, slug},
   "speakers": speakers[]->{_id, name, role}
 }`;

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     'Conférences, démonstrations chirurgicales et lives en direct sur l’oncologie digestive — réservés aux professionnels de santé.',
 };
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 
 interface CategoryOption {
   title: string;

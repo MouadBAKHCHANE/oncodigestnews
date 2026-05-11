@@ -29,6 +29,33 @@
   background: linear-gradient(135deg, #f8f5ec 0%, #e8dfca 100%);
 }
 
+.drivePoster {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #2a2f3a 0%, #4a3f28 100%);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.driveIcon {
+  width: 36px;
+  height: 36px;
+  opacity: 0.85;
+}
+
+.driveLabel {
+  font-family: var(--font-body-stack);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
 .playIcon {
   position: absolute;
   top: 50%;

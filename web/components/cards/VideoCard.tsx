@@ -39,6 +39,16 @@ function youtubeIdFromUrl(url: string | null | undefined): string | null {
   return null;
 }
 
+/** Detect a Google Drive share URL — returns true so the card can render a generic poster. */
+function isGoogleDriveUrl(url: string | null | undefined): boolean {
+  if (!url) return false;
+  try {
+    return /(^|\.)drive\.google\.com$/i.test(new URL(url).hostname);
+  } catch {
+    return false;
+  }
+}
+
 interface VideoCardProps {
   video: VideoCardData;
   /** Defaults to /videos/[slug] (real route arrives in Phase 6). */
@@ -53,6 +63,7 @@ export function VideoCard({ video, href, animationDelay }: VideoCardProps) {
 
   const ytId = youtubeIdFromUrl(video.videoUrl);
   const ytThumb = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : null;
+  const isDrive = !ytId && !video.thumbnail && isGoogleDriveUrl(video.videoUrl);
 
   const animateClass = [
     'animate-on-scroll',
@@ -85,6 +96,22 @@ export function VideoCard({ video, href, animationDelay }: VideoCardProps) {
             className={styles.img}
             loading="lazy"
           />
+        ) : isDrive ? (
+          <div className={styles.drivePoster} aria-hidden>
+            <svg
+              className={styles.driveIcon}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polygon points="23 7 16 12 23 17 23 7" />
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+            </svg>
+            <span className={styles.driveLabel}>Vidéo</span>
+          </div>
         ) : (
           <div className={styles.imgPlaceholder} aria-hidden />
         )}

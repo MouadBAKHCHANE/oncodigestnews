@@ -16,14 +16,21 @@
   flex-wrap: wrap;
 }
 
-/* ── Two-column layout: videos column (left) | lives sidebar (right) ── */
+/* ── Two-column layout: header+videos (left) | lives sidebar (right, top-aligned) ── */
 
 .twoColLayout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 360px;
   gap: 48px;
   align-items: start;
-  margin-top: 24px;
+  margin-top: 0;
+}
+
+.leftColumn {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .livesAside {
@@ -35,6 +42,9 @@
   padding: 24px;
   background: var(--husk--50, #f4f1e8);
   border-radius: 18px;
+  /* Pull the aside up so its "Prochains lives" heading sits near the
+     "Prochain live · …" chip in the page header on the left column. */
+  margin-top: 8px;
 }
 
 .livesAside .sectionHeading {
@@ -97,9 +107,13 @@
     grid-template-columns: minmax(0, 1fr);
     gap: 40px;
   }
+  .leftColumn {
+    gap: 32px;
+  }
   .livesAside {
     position: static;
     padding: 20px;
+    margin-top: 0;
   }
 }
 

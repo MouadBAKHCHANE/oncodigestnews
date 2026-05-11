@@ -281,12 +281,29 @@
   .grid {
     grid-template-columns: 1fr;
   }
-  /* Mobile: always show reveal partially since hover doesn't exist */
+
+  /* Mobile: stack cover + text panel vertically (no hover). The cover stays
+     square at the top; the text panel sits naturally below it, fully visible. */
+  .card {
+    overflow: hidden;
+    background: var(--cod-gray--900);
+  }
   .reveal {
-    transform: translateY(60%);
+    position: relative;
+    bottom: auto;
+    transform: none;
+    padding: 20px 20px 22px;
+    background: var(--cod-gray--900);
   }
   .reveal > * {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+    transition: none;
+  }
+  .cardTitle {
+    font-size: 19px;
+  }
+  .cardDesc {
+    -webkit-line-clamp: 3;
   }
 }

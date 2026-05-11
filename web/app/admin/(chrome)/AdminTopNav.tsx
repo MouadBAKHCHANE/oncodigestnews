@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import styles from './admin.module.css';
 
 type Accent = 'slate' | 'canary' | 'husk' | 'dark' | 'mint';
@@ -76,6 +77,11 @@ const LAUNCHERS: Launcher[] = [
 
 export function AdminTopNav() {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Close drawer on Escape + lock body scroll while open
   useEffect(() => {
@@ -127,56 +133,59 @@ export function AdminTopNav() {
         </svg>
       </button>
 
-      {drawerOpen ? (
-        <>
-          <div
-            className={styles.drawerBackdrop}
-            onClick={() => setDrawerOpen(false)}
-            aria-hidden
-          />
-          <aside
-            id="admin-drawer"
-            className={styles.drawer}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Menu admin"
-          >
-            <div className={styles.drawerHead}>
-              <span className={styles.drawerTitle}>Raccourcis</span>
-              <button
-                type="button"
-                className={styles.drawerClose}
-                aria-label="Fermer le menu"
+      {mounted && drawerOpen
+        ? createPortal(
+            <>
+              <div
+                className={styles.drawerBackdrop}
                 onClick={() => setDrawerOpen(false)}
+                aria-hidden
+              />
+              <aside
+                id="admin-drawer"
+                className={styles.drawer}
+                role="dialog"
+                aria-modal="true"
+                aria-label="Menu admin"
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                </svg>
-              </button>
-            </div>
-            <ul className={styles.drawerList}>
-              {LAUNCHERS.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className={styles.drawerItem}
+                <div className={styles.drawerHead}>
+                  <span className={styles.drawerTitle}>Raccourcis</span>
+                  <button
+                    type="button"
+                    className={styles.drawerClose}
+                    aria-label="Fermer le menu"
                     onClick={() => setDrawerOpen(false)}
                   >
-                    <span
-                      className={`${styles.launcherIcon} ${styles[`launcher_${l.accent}`]}`}
-                      aria-hidden
-                    >
-                      {l.icon}
-                    </span>
-                    <span>{l.label}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </aside>
-        </>
-      ) : null}
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                    </svg>
+                  </button>
+                </div>
+                <ul className={styles.drawerList}>
+                  {LAUNCHERS.map((l) => (
+                    <li key={l.href}>
+                      <Link
+                        href={l.href}
+                        className={styles.drawerItem}
+                        onClick={() => setDrawerOpen(false)}
+                      >
+                        <span
+                          className={`${styles.launcherIcon} ${styles[`launcher_${l.accent}`]}`}
+                          aria-hidden
+                        >
+                          {l.icon}
+                        </span>
+                        <span>{l.label}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+            </>,
+            document.body,
+          )
+        : null}
     </>
   );
 }

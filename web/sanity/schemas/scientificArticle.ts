@@ -32,6 +32,14 @@ export const scientificArticle = defineType({
       validation: (Rule) => Rule.required().min(1),
     }),
     defineField({
+      name: 'mainAuthor',
+      title: 'Auteur principal (photo + lien)',
+      type: 'reference',
+      to: [{ type: 'author' }],
+      description:
+        "Référence à l'auteur OncoDigest pour afficher sa photo et son rôle. Optionnel — sert d'affichage visuel ; la liste textuelle 'Authors' reste la source de vérité.",
+    }),
+    defineField({
       name: 'journal',
       type: 'string',
       description: 'e.g. NEJM, The Lancet Oncology',

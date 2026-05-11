@@ -17,6 +17,11 @@ interface ScientificDetail {
   title: string;
   slug: { current: string };
   authors: string[];
+  mainAuthor?: {
+    name: string;
+    role?: string | null;
+    photo?: (SanityImage & { alt?: string }) | null;
+  } | null;
   journal?: string | null;
   externalUrl?: string | null;
   excerpt: PortableTextBlock[];
@@ -37,6 +42,10 @@ interface ScientificDetail {
 const detailQuery = /* groq */ `*[_type == "scientificArticle" && slug.current == $slug][0]{
   _id, title, slug, authors, journal, externalUrl,
   excerpt, body, commentary, coverImage, publishedAt, access,
+  "mainAuthor": coalesce(
+    mainAuthor->{name, role, photo},
+    *[_type == "author" && name in ^.authors][0]{name, role, photo}
+  ),
   "category": category->{title, slug},
   "congress": congress->{title, slug, shortName}
 }`;
@@ -98,12 +107,18 @@ export default async function ScientificDetailPage({
     : null;
 
   const authorLine = article.authors?.join(', ') ?? '';
-  const initials = (article.authors?.[0] ?? 'OD')
+  const initialsSource = article.mainAuthor?.name ?? article.authors?.[0] ?? 'OD';
+  const initials = initialsSource
     .split(/\s+/)
     .filter(Boolean)
     .slice(0, 2)
     .map((p) => p[0]?.toUpperCase())
     .join('');
+  const authorPhotoUrl = article.mainAuthor?.photo
+    ? urlForImage(article.mainAuthor.photo).width(96).height(96).fit('crop').url()
+    : null;
+  const authorPhotoAlt = article.mainAuthor?.photo?.alt ?? article.mainAuthor?.name ?? 'Auteur';
+  const authorRole = article.mainAuthor?.role ?? article.journal ?? null;
 
   return (
     <>
@@ -176,12 +191,19 @@ export default async function ScientificDetailPage({
 
             <div className={styles.authorRow}>
               <div className={styles.avatar} aria-hidden>
-                <span>{initials || 'OD'}</span>
+                {authorPhotoUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={authorPhotoUrl} alt={authorPhotoAlt} />
+                ) : (
+                  <span>{initials || 'OD'}</span>
+                )}
               </div>
               <div className={styles.authorInfo}>
-                <span className={styles.authorName}>{authorLine || 'OncoDigest'}</span>
-                {article.journal ? (
-                  <span className={styles.authorRole}>{article.journal}</span>
+                <span className={styles.authorName}>
+                  {article.mainAuthor?.name ?? authorLine ?? 'OncoDigest'}
+                </span>
+                {authorRole ? (
+                  <span className={styles.authorRole}>{authorRole}</span>
                 ) : null}
               </div>
               <div className={styles.dateInfo}>

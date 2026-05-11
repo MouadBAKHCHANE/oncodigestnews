@@ -25,21 +25,11 @@ export const video = defineType({
       description: 'YouTube, Vimeo, or direct mp4',
       validation: (Rule) => Rule.required(),
     }),
-    defineField({
-      name: 'durationSeconds',
-      type: 'number',
-      validation: (Rule) => Rule.required().min(0),
-    }),
     defineField({ name: 'category', type: 'reference', to: [{ type: 'category' }] }),
     defineField({
       name: 'speakers',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'advisor' }, { type: 'author' }] }],
-    }),
-    defineField({
-      name: 'publishedAt',
-      type: 'datetime',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'access',

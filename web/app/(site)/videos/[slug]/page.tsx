@@ -58,6 +58,29 @@ function youtubeIdFromUrl(url: string | null | undefined): string | null {
   return null;
 }
 
+/**
+ * Extract a Google Drive file ID from any of the common share URL formats:
+ *   - https://drive.google.com/file/d/{ID}/view?usp=sharing
+ *   - https://drive.google.com/file/d/{ID}/preview
+ *   - https://drive.google.com/open?id={ID}
+ *   - https://drive.google.com/uc?id={ID}
+ * The file must be set to "Anyone with the link can view" for the embed to play.
+ */
+function googleDriveIdFromUrl(url: string | null | undefined): string | null {
+  if (!url) return null;
+  try {
+    const u = new URL(url);
+    if (!/(^|\.)drive\.google\.com$/i.test(u.hostname)) return null;
+    const fileMatch = /^\/file\/d\/([\w-]+)/.exec(u.pathname);
+    if (fileMatch) return fileMatch[1];
+    const id = u.searchParams.get('id');
+    if (id) return id;
+  } catch {
+    return null;
+  }
+  return null;
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -91,9 +114,12 @@ export default async function VideoDetailPage({
 
   const isGated = video.access === 'pro' && !canViewPro(profile);
   const ytId = youtubeIdFromUrl(video.videoUrl);
-  const ytEmbed = ytId
+  const driveId = ytId ? null : googleDriveIdFromUrl(video.videoUrl);
+  const embedUrl = ytId
     ? `https://www.youtube-nocookie.com/embed/${ytId}?rel=0&modestbranding=1`
-    : null;
+    : driveId
+      ? `https://drive.google.com/file/d/${driveId}/preview`
+      : null;
 
   const posterUrl = video.thumbnail
     ? urlForImage(video.thumbnail).width(1280).height(720).fit('crop').url()
@@ -171,11 +197,11 @@ export default async function VideoDetailPage({
                   </div>
                 </div>
               </div>
-            ) : ytEmbed ? (
+            ) : embedUrl ? (
               <div className={styles.iframeWrap}>
                 <iframe
                   className={styles.iframe}
-                  src={ytEmbed}
+                  src={embedUrl}
                   title={video.title}
                   loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

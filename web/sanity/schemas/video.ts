@@ -22,7 +22,8 @@ export const video = defineType({
     defineField({
       name: 'videoUrl',
       type: 'url',
-      description: 'YouTube, Vimeo, or direct mp4',
+      description:
+        'YouTube, Google Drive (file must be set to "Anyone with the link can view"), or direct mp4.',
       validation: (Rule) => Rule.required(),
     }),
     defineField({ name: 'category', type: 'reference', to: [{ type: 'category' }] }),

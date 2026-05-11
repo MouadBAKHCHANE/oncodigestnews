@@ -71,8 +71,6 @@ export function LivesCalendar({ events, initialDate }: LivesCalendarProps) {
 
   const [viewYear, setViewYear] = useState(seed.getFullYear());
   const [viewMonth, setViewMonth] = useState(seed.getMonth());
-  const [selectedDay, setSelectedDay] = useState<Date | null>(null);
-  const [hoveredDay, setHoveredDay] = useState<Date | null>(null);
 
   // Index events by yyyy-mm-dd for O(1) lookup per day cell.
   const eventsByDay = useMemo(() => {
@@ -92,6 +90,13 @@ export function LivesCalendar({ events, initialDate }: LivesCalendarProps) {
   const eventsForDay = (d: Date): LiveEvent[] =>
     eventsByDay.get(`${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`) ?? [];
 
+  // All upcoming events from today onwards, sorted ascending — listed under the calendar.
+  const upcomingEvents = useMemo(() => {
+    return events
+      .filter((e) => new Date(e.startsAt).getTime() >= today.getTime())
+      .sort((a, b) => new Date(a.startsAt).getTime() - new Date(b.startsAt).getTime());
+  }, [events, today]);
+
   function shiftMonth(delta: number) {
     let m = viewMonth + delta;
     let y = viewYear;
@@ -105,8 +110,6 @@ export function LivesCalendar({ events, initialDate }: LivesCalendarProps) {
     }
     setViewYear(y);
     setViewMonth(m);
-    setSelectedDay(null);
-    setHoveredDay(null);
   }
 
   return (
@@ -149,96 +152,41 @@ export function LivesCalendar({ events, initialDate }: LivesCalendarProps) {
           const isToday = isSameDay(d, today);
           const dayEvents = eventsForDay(d);
           const hasEvent = dayEvents.length > 0;
-          const isSelected = selectedDay && isSameDay(d, selectedDay);
-          const isHovered = hoveredDay && isSameDay(d, hoveredDay);
-          const col = i % 7;
 
           const cls = [
             styles.day,
             !inMonth && styles.dayOutside,
             isToday && styles.dayToday,
             hasEvent && styles.dayHasEvent,
-            isSelected && styles.daySelected,
           ]
             .filter(Boolean)
             .join(' ');
 
-          if (!hasEvent) {
-            return (
-              <div
-                key={i}
-                className={cls}
-                aria-disabled
-                role="gridcell"
-                aria-label={d.toLocaleDateString('fr-FR', {
-                  weekday: 'long',
-                  day: 'numeric',
-                  month: 'long',
-                })}
-              >
-                <span className={styles.dayNum}>{d.getDate()}</span>
-              </div>
-            );
-          }
-
-          const popupVisible = !!(isHovered || isSelected);
-
           return (
             <div
               key={i}
-              className={styles.dayCellWithEvent}
-              data-col={col}
-              onMouseEnter={() => setHoveredDay(d)}
-              onMouseLeave={() => setHoveredDay(null)}
+              className={cls}
+              role="gridcell"
+              aria-label={d.toLocaleDateString('fr-FR', {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long',
+              })}
             >
-              <button
-                type="button"
-                className={cls}
-                onClick={() => setSelectedDay(isSelected ? null : d)}
-                aria-pressed={!!isSelected}
-                aria-label={`${dayEvents.length} live${dayEvents.length > 1 ? 's' : ''} le ${d.toLocaleDateString('fr-FR', {
-                  weekday: 'long',
-                  day: 'numeric',
-                  month: 'long',
-                })}`}
-                role="gridcell"
-              >
-                <span className={styles.dayNum}>{d.getDate()}</span>
-                <span className={styles.dot} aria-hidden />
-              </button>
-              {popupVisible ? (
-                <>
-                  <div
-                    className={styles.popupBackdrop}
-                    aria-hidden
-                    onClick={() => setSelectedDay(null)}
-                  />
-                  <div className={styles.popup} role="dialog" aria-label="Détails du live">
-                    <button
-                      type="button"
-                      className={styles.popupClose}
-                      aria-label="Fermer"
-                      onClick={() => setSelectedDay(null)}
-                    >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                        <line x1="6" y1="6" x2="18" y2="18" />
-                        <line x1="18" y1="6" x2="6" y2="18" />
-                      </svg>
-                    </button>
-                    {dayEvents.map((event) => (
-                      <LiveEventCard key={event._id} event={event} />
-                    ))}
-                  </div>
-                </>
-              ) : null}
+              <span className={styles.dayNum}>{d.getDate()}</span>
+              {hasEvent ? <span className={styles.dot} aria-hidden /> : null}
             </div>
           );
         })}
       </div>
 
-      <p className={styles.hint}>
-        Cliquez sur la date du live pour vous inscrire.
-      </p>
+      {upcomingEvents.length > 0 ? (
+        <div className={styles.eventsPanel}>
+          {upcomingEvents.map((event) => (
+            <LiveEventCard key={event._id} event={event} />
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }

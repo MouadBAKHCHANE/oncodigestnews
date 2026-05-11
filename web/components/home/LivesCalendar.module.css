@@ -141,62 +141,12 @@
   box-shadow: none;
 }
 
-/* Day-with-event wrapper — anchors the hover/click popup */
-.dayCellWithEvent {
-  position: relative;
-}
-
-.dayCellWithEvent > .day {
-  width: 100%;
-}
-
-/* Popup card (desktop: floats near the cell; mobile: bottom sheet) */
-.popup {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%);
-  width: 280px;
-  z-index: 20;
-  animation: popupIn 0.18s ease-out;
-}
-
-@keyframes popupIn {
-  from { opacity: 0; transform: translateX(-50%) translateY(-4px); }
-  to { opacity: 1; transform: translateX(-50%) translateY(0); }
-}
-
-/* Edge handling: cells in right-most columns push popup leftward */
-.dayCellWithEvent[data-col="5"] .popup,
-.dayCellWithEvent[data-col="6"] .popup {
-  left: auto;
-  right: 0;
-  transform: translateX(0);
-}
-
-.dayCellWithEvent[data-col="0"] .popup,
-.dayCellWithEvent[data-col="1"] .popup {
-  left: 0;
-  transform: translateX(0);
-}
-
-.popupBackdrop {
-  display: none;
-}
-
-.popupClose {
-  display: none;
-}
-
-/* Hint line below calendar grid */
-.hint {
-  margin: 4px 0 0;
-  font-family: var(--font-body-stack);
-  font-size: 12px;
-  color: var(--cod-gray--500);
-  text-align: center;
-  font-style: italic;
-  letter-spacing: 0.1px;
+/* Events panel — lists all upcoming lives below the calendar grid */
+.eventsPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
 }
 
 .eventCard {
@@ -280,65 +230,6 @@
     font-size: 17px;
   }
 
-  /* Mobile: popup becomes a centered fixed sheet so it never overflows */
-  .popup,
-  .dayCellWithEvent[data-col="0"] .popup,
-  .dayCellWithEvent[data-col="1"] .popup,
-  .dayCellWithEvent[data-col="5"] .popup,
-  .dayCellWithEvent[data-col="6"] .popup {
-    position: fixed;
-    top: auto;
-    bottom: 16px;
-    left: 16px;
-    right: 16px;
-    width: auto;
-    transform: none;
-    z-index: 1000;
-    animation: popupInMobile 0.22s ease-out;
-  }
-  @keyframes popupInMobile {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .popupBackdrop {
-    display: block;
-    position: fixed;
-    inset: 0;
-    background: rgba(18, 14, 10, 0.45);
-    backdrop-filter: blur(2px);
-    z-index: 999;
-    animation: backdropFade 0.2s ease-out;
-  }
-  @keyframes backdropFade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  .popupClose {
-    display: inline-flex;
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 32px;
-    height: 32px;
-    align-items: center;
-    justify-content: center;
-    background: var(--cod-gray--50);
-    border: 0 none;
-    border-radius: 999px;
-    color: var(--cod-gray--700);
-    cursor: pointer;
-    z-index: 2;
-  }
-  .popupClose:hover {
-    background: var(--cod-gray--100);
-    color: var(--cod-gray--900);
-  }
-
-  .hint {
-    font-size: 11.5px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

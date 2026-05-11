@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { PageLoader } from '@/components/layout/PageLoader';
@@ -5,6 +6,7 @@ import { GrainOverlay } from '@/components/layout/GrainOverlay';
 import { SiteEffects } from '@/components/layout/SiteEffects';
 import { CookieBanner } from '@/components/layout/CookieBanner';
 import { BackToTop } from '@/components/layout/BackToTop';
+import { ScrollResetOnRouteChange } from '@/components/layout/ScrollResetOnRouteChange';
 import styles from './siteLayout.module.css';
 
 /**
@@ -27,6 +29,9 @@ export default function SiteLayout({
 }) {
   return (
     <>
+      <Suspense fallback={null}>
+        <ScrollResetOnRouteChange />
+      </Suspense>
       <PageLoader />
       <GrainOverlay />
       <Navbar />

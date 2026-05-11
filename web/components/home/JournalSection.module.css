@@ -280,30 +280,105 @@
   }
   .grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
-  /* Mobile: stack cover + text panel vertically (no hover). The cover stays
-     square at the top; the text panel sits naturally below it, fully visible. */
+  /* Mobile: horizontal editorial card — square thumbnail left, text right.
+     Light background, dark text, no hover overlay. */
   .card {
+    display: grid;
+    grid-template-columns: 112px 1fr;
+    gap: 14px;
     overflow: hidden;
-    background: var(--cod-gray--900);
+    background: var(--cod-gray--0, #fff);
+    border: 1px solid var(--cod-gray--100);
+    border-radius: 12px;
+    padding: 10px;
+    align-items: stretch;
   }
+
+  .cover {
+    aspect-ratio: 1 / 1;
+    width: 112px;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  .cover svg,
+  .cover img {
+    border-radius: 8px;
+  }
+
+  /* Reveal becomes a static text panel beside the cover */
   .reveal {
-    position: relative;
-    bottom: auto;
+    position: static;
+    inset: auto;
     transform: none;
-    padding: 20px 20px 22px;
-    background: var(--cod-gray--900);
+    background: transparent;
+    padding: 2px 4px 2px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    min-width: 0;
   }
+
   .reveal > * {
     opacity: 1;
     transform: none;
     transition: none;
   }
-  .cardTitle {
-    font-size: 19px;
+
+  .cardTag {
+    color: var(--cod-gray--500);
+    border: 1px solid var(--cod-gray--200);
+    background: transparent;
+    align-self: flex-start;
+    font-size: 10px;
+    letter-spacing: 0.9px;
+    padding: 3px 8px;
+    margin-bottom: 2px;
   }
+
+  .cardTitle {
+    color: var(--cod-gray--900);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.2px;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
   .cardDesc {
-    -webkit-line-clamp: 3;
+    display: none; /* keep card compact; description is shown on detail page */
+  }
+
+  .cardMeta {
+    color: var(--cod-gray--500);
+    font-size: 11.5px;
+    margin: 0;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .cardMeta span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .cardRead {
+    display: none; /* the whole card is tappable; no need for inline CTA */
+  }
+
+  /* Keep the cover image static on tap (no hover transform on mobile) */
+  .card:hover .cover svg,
+  .card:hover .cover img {
+    transform: none;
   }
 }

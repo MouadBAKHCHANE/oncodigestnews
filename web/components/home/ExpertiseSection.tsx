@@ -132,7 +132,7 @@ export function ExpertiseSection() {
 
           <div className={styles.grid}>
 
-            {/* ── Left: scrollable image stack (Desktop only, or used as the image source on mobile) ── */}
+            {/* ── Left: scrollable image stack (desktop) / full scene per item (mobile) ── */}
             <div className={styles.imageColumn}>
               {ITEMS.map((item, i) => (
                 <div
@@ -148,6 +148,17 @@ export function ExpertiseSection() {
                       <span className={styles.legendNum}>{item.number}</span>
                       <span className={styles.legendText}>{item.title}</span>
                     </div>
+                  </div>
+
+                  {/* Mobile-only inline text per scene — drives scroll-through navigation */}
+                  <div className={styles.sceneText}>
+                    <h3 className={styles.sceneHeading}>{item.heading}</h3>
+                    <p className={styles.sceneDesc}>{item.text}</p>
+                    <Link href={item.ctaHref} className={styles.sceneCta}>
+                      <span>{item.ctaLabel}</span>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src="/arrow-dots-light.svg" alt="" width={16} height={16} aria-hidden />
+                    </Link>
                   </div>
                 </div>
               ))}

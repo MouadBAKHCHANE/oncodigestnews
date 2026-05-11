@@ -246,7 +246,7 @@ function LiveEventCard({ event }: { event: LiveEvent }) {
       {event.speakerLine ? (
         <p className={styles.eventSpeaker}>{event.speakerLine}</p>
       ) : null}
-      {event.description ? (
+      {typeof event.description === 'string' && event.description ? (
         <p className={styles.eventDescription}>{event.description}</p>
       ) : null}
       {event.registrationUrl ? (

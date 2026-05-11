@@ -36,7 +36,8 @@ const indexQuery = /* groq */ `{
     "slug": slug.current
   },
   "lives": *[_type == "live"] | order(startsAt asc) {
-    _id, title, startsAt, durationMinutes, registrationUrl, description,
+    _id, title, startsAt, durationMinutes, registrationUrl,
+    "description": pt::text(description),
     "speakerLine": array::join(speakers[]->name, ' · ')
   }
 }`;

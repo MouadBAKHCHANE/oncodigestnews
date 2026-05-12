@@ -36,7 +36,9 @@ body {
   letter-spacing: -0.285715px;
   color: rgb(93, 93, 93);
   background: #ffffff;
-  overflow-x: hidden;
+  /* NB: do not set overflow-x here — it establishes a new scroll container
+     that breaks `position: sticky` deep in the tree. The horizontal clamp
+     is set on <html> via `overflow-x: clip` (which doesn't break sticky). */
 }
 
 a {

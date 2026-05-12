@@ -79,15 +79,26 @@
 /* ── Right: sticky text panel ── */
 .textColumn {
   position: relative;
-  height: 100%;
+  /* Self-align to start so the sticky child can scroll within the full
+     imageColumn height without being center-aligned by the grid. */
+  align-self: start;
 }
 
 .stickyPanel {
   position: sticky;
-  top: 18vh;
+  /* Pin just under the fixed navbar with a comfortable offset. */
+  top: calc(var(--nav-height, 64px) + 32px);
   display: flex;
   flex-direction: column;
   gap: 28px;
+  /* Cap the height so very tall content can still scroll inside the panel
+     if it ever overflows the viewport. */
+  max-height: calc(100vh - var(--nav-height, 64px) - 64px);
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.stickyPanel::-webkit-scrollbar {
+  display: none;
 }
 
 /* Mobile Switcher */

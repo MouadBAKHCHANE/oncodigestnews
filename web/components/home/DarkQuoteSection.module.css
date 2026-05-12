@@ -95,8 +95,10 @@
     padding: 48px 16px;
   }
   .section::before {
-    width: 320px;
-    left: -25%;
-    opacity: 0.16;
+    width: 78vw;
+    max-width: 360px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.22;
   }
 }

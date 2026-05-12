@@ -127,7 +127,9 @@
       "Bash(node -e ' *)",
       "Bash(curl -s 'https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=__TRACKED_VAR__&format=json')",
       "Bash(node make-favicon.cjs)",
-      "WebFetch(domain:www.youtube.com)"
+      "WebFetch(domain:www.youtube.com)",
+      "mcp__plugin_sanity_Sanity__add_cors_origin",
+      "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(32\\).toString\\('base64url'\\)\\)\")"
     ],
     "additionalDirectories": [
       "D:\\Downloads\\oncodigest\\web\\app\\admin\\studio",

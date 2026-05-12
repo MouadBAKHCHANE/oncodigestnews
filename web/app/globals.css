@@ -16,6 +16,10 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* iOS Safari respects horizontal overflow on <html>, not on <body>.
+     `overflow-x: clip` clamps overflow without breaking position: sticky
+     in children (which `overflow-x: hidden` can sometimes do). */
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: no-preference) {

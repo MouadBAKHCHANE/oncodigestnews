@@ -19,6 +19,7 @@
     "@portabletext/react": "^6.0.3",
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^5.22.0",
+    "@sanity/webhook": "^4.0.4",
     "@supabase/ssr": "^0.10.2",
     "@supabase/supabase-js": "^2.105.0",
     "@vercel/config": "^0.2.1",

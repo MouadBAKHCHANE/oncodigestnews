@@ -129,7 +129,8 @@
       "Bash(node make-favicon.cjs)",
       "WebFetch(domain:www.youtube.com)",
       "mcp__plugin_sanity_Sanity__add_cors_origin",
-      "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(32\\).toString\\('base64url'\\)\\)\")"
+      "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(32\\).toString\\('base64url'\\)\\)\")",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__resize_page"
     ],
     "additionalDirectories": [
       "D:\\Downloads\\oncodigest\\web\\app\\admin\\studio",

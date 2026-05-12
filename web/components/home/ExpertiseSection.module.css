@@ -76,12 +76,13 @@
   letter-spacing: -0.2px;
 }
 
-/* ── Right: sticky text panel ── */
+/* ── Right: sticky text panel ──
+   IMPORTANT: textColumn must stretch to the full row height (handled by
+   the grid's `align-items: stretch`). Do NOT set `align-self: start` here
+   — that collapses the column to its content height and breaks sticky. */
 .textColumn {
   position: relative;
-  /* Self-align to start so the sticky child can scroll within the full
-     imageColumn height without being center-aligned by the grid. */
-  align-self: start;
+  height: 100%;
 }
 
 .stickyPanel {
@@ -91,14 +92,6 @@
   display: flex;
   flex-direction: column;
   gap: 28px;
-  /* Cap the height so very tall content can still scroll inside the panel
-     if it ever overflows the viewport. */
-  max-height: calc(100vh - var(--nav-height, 64px) - 64px);
-  overflow-y: auto;
-  scrollbar-width: none;
-}
-.stickyPanel::-webkit-scrollbar {
-  display: none;
 }
 
 /* Mobile Switcher */

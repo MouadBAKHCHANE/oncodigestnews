@@ -156,7 +156,7 @@ export function ExpertiseSection() {
                   ref={(el) => {
                     sceneRefs.current[i] = el;
                   }}
-                  className={`${styles.scene} ${i === activeIndex ? styles.sceneActive : ''}`}
+                  className={`${styles.scene} ${i === activeIndex ? styles.sceneActive : ''} animate-on-scroll`}
                 >
                   <div className={styles.imageFrame}>
                     <BrandIllustration variant={item.illustration} label={item.illustrationLabel} />
@@ -167,7 +167,7 @@ export function ExpertiseSection() {
                   </div>
 
                   {/* Mobile-only inline text per scene — drives scroll-through navigation */}
-                  <div className={styles.sceneText}>
+                  <div className={`${styles.sceneText} animate-on-scroll delay-1`}>
                     <h3 className={styles.sceneHeading}>{item.heading}</h3>
                     <p className={styles.sceneDesc}>{item.text}</p>
                     <Link href={item.ctaHref} className={styles.sceneCta}>

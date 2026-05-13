@@ -156,7 +156,12 @@ export function ExpertiseSection() {
                   ref={(el) => {
                     sceneRefs.current[i] = el;
                   }}
-                  className={`${styles.scene} ${i === activeIndex ? styles.sceneActive : ''} animate-on-scroll`}
+                  /* className MUST stay static across renders — the global
+                     IntersectionObserver toggles `.visible` on this element
+                     and any reactive className change would strip it. The
+                     active state is exposed via data-active for CSS. */
+                  className={`${styles.scene} animate-on-scroll`}
+                  data-active={i === activeIndex ? 'true' : undefined}
                 >
                   <div className={styles.imageFrame}>
                     <BrandIllustration variant={item.illustration} label={item.illustrationLabel} />

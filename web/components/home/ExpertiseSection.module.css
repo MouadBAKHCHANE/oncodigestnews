@@ -39,7 +39,7 @@
   transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-.sceneActive .imageFrame {
+.scene[data-active='true'] .imageFrame {
   transform: scale(1.005);
 }
 
